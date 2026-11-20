@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="google" content="notranslate">
+<meta name="theme-color" content="#16202b">
+<title>one-pager ビューア</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- 一覧 -->
+<section id="home" class="view">
+  <header class="bar">
+    <h1>one-pager</h1>
+    <button id="btnInfo" class="ic" aria-label="このアプリについて">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>
+    </button>
+  </header>
+  <main id="homeMain">
+    <div id="list"></div>
+    <p class="note">個人で作成した学習用のまとめ。診療に使うときは、各シートに記載の原典・最新のガイドラインを確認すること。</p>
+  </main>
+  <div class="dock">
+    <div id="chips" class="chips" role="tablist"></div>
+    <label class="search">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+      <input id="q" type="search" placeholder="病名・薬剤名・本文をさがす" autocomplete="off" enterkeyhint="search">
+      <button id="qClear" class="ic sm" aria-label="検索を消す" hidden><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </label>
+  </div>
+</section>
+
+<!-- 表示 -->
+<section id="viewer" class="view" hidden>
+  <header class="bar">
+    <button id="btnBack" class="ic" aria-label="一覧に戻る"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <div class="ttl"><b id="vName"></b><span id="vSub"></span></div>
+    <button id="btnStar" class="ic" aria-label="お気に入り"><svg viewBox="0 0 24 24"><path d="M12 3.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.7l5.8-.8z"/></svg></button>
+  </header>
+  <div id="scroller"><div id="pages"></div></div>
+  <div id="loading" class="loading" hidden><span></span><p id="loadMsg">読み込み中</p></div>
+  <div class="dock vdock">
+    <button id="btnToc" class="tb"><svg viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h9"/></svg><span>目次</span></button>
+    <span id="pageNo" class="pno">1 / 1</span>
+    <span class="sp"></span>
+    <button id="btnOut" class="ic" aria-label="縮小"><svg viewBox="0 0 24 24"><path d="M6 12h12"/></svg></button>
+    <button id="btnZoom" class="zv" aria-label="元の大きさに戻す">100%</button>
+    <button id="btnIn" class="ic" aria-label="拡大"><svg viewBox="0 0 24 24"><path d="M6 12h12M12 6v12"/></svg></button>
+  </div>
+</section>
+
+<!-- 下から出るパネル -->
+<div id="shade" hidden></div>
+<aside id="sheet" hidden>
+  <div class="grip"></div>
+  <div id="sheetBody"></div>
+</aside>
+<div id="toast" hidden></div>
+
+<script src="lib/pdf.min.js"></script>
+<script src="catalog.js"></script>
+<script src="search.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
