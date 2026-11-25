@@ -539,6 +539,21 @@
   if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost" || location.hostname === "127.0.0.1")) {
     navigator.serviceWorker.register("sw.js").catch(function () {});
   }
+  /* 新しい版が出ていたら、一覧を見ているときに1回だけ自動で読み込み直す */
+  function checkFresh() {
+    if (cur || !$("sheet").hidden || !navigator.onLine) return;
+    fetch("catalog.js?t=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.ok ? r.text() : ""; }).then(function (t) {
+      var u = (t.match(/"updated":"([^"]*)"/) || [])[1], done = null;
+      if (!u || u === C.updated || cur) return;
+      try { done = sessionStorage.getItem("opFresh"); sessionStorage.setItem("opFresh", u); } catch (e) { return; }
+      if (done === u) return;     // 同じ版で2回は読み込み直さない
+      var go = function () { location.reload(); };
+      if (navigator.serviceWorker && navigator.serviceWorker.getRegistration) navigator.serviceWorker.getRegistration().then(function (r) { return r && r.update(); }).catch(function () {}).then(go);
+      else go();
+    }).catch(function () {});
+  }
+  setTimeout(checkFresh, 1200);
+  document.addEventListener("visibilitychange", function () { if (!document.hidden) checkFresh(); });
   var m = location.hash.match(/^#([a-z0-9-]+)(?:\/(\d+))?$/);
   history.replaceState({}, "", location.pathname + location.search);
   renderHome();

@@ -43,7 +43,7 @@ self.addEventListener("fetch", (e) => {
   e.respondWith(
     caches.open(SHELL_CACHE).then(async (c) => {
       try {
-        const res = await Promise.race([fetch(req), timeout(2500)]);
+        const res = await Promise.race([fetch(req, { cache: "no-cache" }), timeout(2500)]);   // ブラウザの一時保存を使わず、毎回サーバーに新しい版がないか確かめる
         if (res && res.ok) c.put(req, res.clone());
         return res;
       } catch (err) {
