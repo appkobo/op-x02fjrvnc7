@@ -1,0 +1,84 @@
+{
+ "published": {
+  "dm": {
+   "driveId": "1orScihonVdefc152CCBPMAWNz_f7UyZN",
+   "modified": "2026-11-23T22:44:25.799Z",
+   "name": "糖尿病"
+  },
+  "aki": {
+   "driveId": "1eQTREh-z5MqSPP4Rokpb3Bn4d3P55Jgv",
+   "modified": "2026-11-23T22:44:12.500Z",
+   "name": "AKI・薬剤性腎障害"
+  },
+  "pna": {
+   "driveId": "1a5AiOMqDTz123R6kh-oc7pyHaNGFWQ50",
+   "modified": "2026-11-23T22:44:49.539Z",
+   "name": "肺炎"
+  },
+  "uti": {
+   "driveId": "1PGdAHPuRANAfLxtip8yYrCSp9jzXI6yR",
+   "modified": "2026-11-23T22:44:51.765Z",
+   "name": "尿路感染症"
+  },
+  "hu": {
+   "driveId": "1d0w-n2xJjI_x4o5Z2RSnGZnEqo5JvNx1",
+   "modified": "2026-11-23T22:44:29.917Z",
+   "name": "血尿・腎生検・頻尿"
+  },
+  "ha": {
+   "driveId": "1vzdOjAXAk6itoGkQ5ShYnVQe0CDKWMZ-",
+   "modified": "2026-11-23T22:44:27.882Z",
+   "name": "頭痛"
+  },
+  "an": {
+   "driveId": "1yHG597iwS5qv0KIU8VA-B1G1oe7C-yPh",
+   "modified": "2026-11-23T22:44:14.806Z",
+   "name": "拒食症"
+  },
+  "flow": {
+   "driveId": "1XdPF39aWdTjAWvuRz2UWEOobgXsP_BUL",
+   "modified": "2026-11-23T22:44:42.724Z",
+   "name": "腎臓診療フロー"
+  },
+  "ckd": {
+   "driveId": "1nZeZuqQKUfRsYzFarpflKhXLAC06PUrJ",
+   "modified": "2026-11-23T22:44:21.294Z",
+   "name": "CKD"
+  },
+  "kca": {
+   "driveId": "1JMNHP0bL_F8WiIYU-aQwVvjvmjY0Mkiu",
+   "modified": "2026-11-23T22:44:40.687Z",
+   "name": "K・Ca異常"
+  },
+  "na": {
+   "driveId": "1hMhBZ75RZ-0rkGSY_t9elO38gfGh6O9M",
+   "modified": "2026-11-23T22:44:44.999Z",
+   "name": "Na異常"
+  },
+  "vol": {
+   "driveId": "1O9MxEfgbYwrjtyTSlWzk-pdLmT8biV4W",
+   "modified": "2026-11-23T22:44:53.569Z",
+   "name": "体液量・浮腫・利尿薬"
+  },
+  "ie": {
+   "driveId": "1Z7mQ4OBtGFxjEVm3SZ1pHPSwLwL48D69",
+   "modified": "2026-11-23T22:44:38.894Z",
+   "name": "感染性心内膜炎"
+  },
+  "pleura": {
+   "driveId": "1mHZ0S_icET8PXz6XKj9kYedsgpD1FjWw",
+   "modified": "2026-11-23T22:44:47.105Z",
+   "name": "胸膜・肺の感染症"
+  },
+  "dem": {
+   "driveId": "1NooINvPR_Jy0sIZKsNRIMq7RR6WrxBFD",
+   "modified": "2026-11-23T22:44:23.371Z",
+   "name": "認知症"
+  },
+  "crbsi": {
+   "driveId": "14-6ehAIdCQzdONiG4wels3bKReAkUSa6",
+   "modified": "2026-11-25T12:46:19.335Z",
+   "name": "カテーテル関連血流感染症"
+  }
+ }
+}

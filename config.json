@@ -1,0 +1,412 @@
+{
+ "list": {
+  "artifact": "https://claude.ai/artifact/HC2EJ4Xw7CTBHtxTRUD6gx",
+  "id": "831c2855-a9ea-4f2c-8d15-6619b90ceb51",
+  "node": "fc3140aa-3c95",
+  "sheet": "確認リスト"
+ },
+ "driveSmartphoneFolder": "148voSf08-lbSDO5y3dI69pnnPMcODlew",
+ "cats": [
+  {
+   "id": "jun",
+   "name": "循環器"
+  },
+  {
+   "id": "dm",
+   "name": "糖尿病・代謝・内分泌"
+  },
+  {
+   "id": "jin",
+   "name": "腎臓"
+  },
+  {
+   "id": "el",
+   "name": "電解質"
+  },
+  {
+   "id": "kan",
+   "name": "感染症"
+  },
+  {
+   "id": "shin",
+   "name": "神経"
+  },
+  {
+   "id": "gi",
+   "name": "消化器・栄養"
+  },
+  {
+   "id": "ed",
+   "name": "精神科"
+  },
+  {
+   "id": "sx",
+   "name": "症候"
+  },
+  {
+   "id": "etc",
+   "name": "その他"
+  }
+ ],
+ "sheets": [
+  {
+   "id": "ht",
+   "cat": "jun",
+   "name": "高血圧",
+   "sub": "",
+   "theme": "高血圧管理",
+   "match": [
+    "高血圧"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "hf",
+   "cat": "jun",
+   "name": "心不全",
+   "sub": "",
+   "theme": "心不全",
+   "match": [
+    "心不全"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "dm",
+   "cat": "dm",
+   "name": "糖尿病",
+   "sub": "初診・入院時",
+   "theme": "糖尿病 初診・入院時",
+   "match": [
+    "糖尿病"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "ckd",
+   "cat": "jin",
+   "name": "CKD",
+   "sub": "全身管理",
+   "theme": "CKD全身管理",
+   "match": [
+    "CKD"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "flow",
+   "cat": "jin",
+   "name": "腎臓診療フロー",
+   "sub": "",
+   "theme": "腎臓診療フローチャート",
+   "match": [
+    "フローチャート"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "aki",
+   "cat": "jin",
+   "name": "AKI・薬剤性腎障害",
+   "sub": "",
+   "theme": "AKI・薬剤性腎障害",
+   "match": [
+    "AKI"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "hu",
+   "cat": "jin",
+   "name": "血尿・腎生検・頻尿",
+   "sub": "",
+   "theme": "血尿・腎生検・頻尿",
+   "match": [
+    "血尿"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "hd",
+   "cat": "jin",
+   "name": "透析患者の入院・緊急透析",
+   "sub": "",
+   "theme": "透析患者の入院・緊急透析",
+   "match": [
+    "透析"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "cvc",
+   "cat": "jin",
+   "name": "CVC留置",
+   "sub": "",
+   "theme": "CVC留置",
+   "match": [
+    "CVC"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "na",
+   "cat": "el",
+   "name": "Na異常",
+   "sub": "",
+   "theme": "Na異常",
+   "match": [
+    "Na異常"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "kca",
+   "cat": "el",
+   "name": "K・Ca異常",
+   "sub": "",
+   "theme": "K・Ca異常",
+   "match": [
+    "K・Ca"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "vol",
+   "cat": "el",
+   "name": "体液量・浮腫・利尿薬",
+   "sub": "",
+   "theme": "体液量・浮腫・利尿薬",
+   "match": [
+    "体液量"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "abg",
+   "cat": "el",
+   "name": "血液ガス・酸塩基",
+   "sub": "",
+   "theme": "血液ガス・酸塩基",
+   "match": [
+    "血液ガス"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "abx",
+   "cat": "kan",
+   "name": "感染症診療の原則",
+   "sub": "研修医レクチャー",
+   "theme": "感染症診療の原則",
+   "match": [
+    "感染症診療の原則"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "pna",
+   "cat": "kan",
+   "name": "肺炎",
+   "sub": "研修医レクチャー",
+   "theme": "肺炎",
+   "match": [
+    "肺炎"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "pleura",
+   "cat": "kan",
+   "name": "胸膜・肺の感染症",
+   "sub": "研修医レクチャー",
+   "theme": "胸膜・肺の感染症",
+   "match": [
+    "胸膜"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "ie",
+   "cat": "kan",
+   "name": "感染性心内膜炎",
+   "sub": "研修医レクチャー",
+   "theme": "感染性心内膜炎",
+   "match": [
+    "感染性心内膜炎"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "uti",
+   "cat": "kan",
+   "name": "尿路感染症",
+   "sub": "研修医レクチャー",
+   "theme": "尿路感染症",
+   "match": [
+    "尿路感染症"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "cns",
+   "cat": "kan",
+   "name": "中枢神経感染症",
+   "sub": "研修医レクチャー",
+   "theme": "中枢神経感染症",
+   "match": [
+    "中枢神経感染症"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "hn",
+   "cat": "kan",
+   "name": "頭頸部感染症",
+   "sub": "研修医レクチャー",
+   "theme": "頭頸部感染症",
+   "match": [
+    "頭頸部感染症"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "crbsi",
+   "cat": "kan",
+   "name": "カテーテル関連血流感染症",
+   "sub": "研修医レクチャー",
+   "theme": "カテーテル関連血流感染症",
+   "match": [
+    "カテーテル関連"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "ha",
+   "cat": "shin",
+   "name": "頭痛",
+   "sub": "",
+   "theme": "頭痛",
+   "match": [
+    "頭痛"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "dem",
+   "cat": "shin",
+   "name": "認知症",
+   "sub": "研修医レクチャー",
+   "theme": "認知症",
+   "match": [
+    "認知症"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "b12",
+   "cat": "gi",
+   "name": "胃切除後のB12欠乏と分割食",
+   "sub": "",
+   "theme": "胃切除後のB12欠乏と分割食",
+   "match": [
+    "胃切除"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "an",
+   "cat": "ed",
+   "name": "拒食症",
+   "sub": "身体治療",
+   "theme": "拒食症 身体治療（研修医版）",
+   "match": [
+    "拒食症"
+   ],
+   "exclude": [
+    "内科医向け"
+   ]
+  },
+  {
+   "id": "an-im",
+   "cat": "ed",
+   "name": "拒食症（内科医向け）",
+   "sub": "身体治療",
+   "theme": "拒食症 身体治療（内科医向け）",
+   "match": [
+    "拒食症",
+    "内科医向け"
+   ],
+   "exclude": [
+    "PN"
+   ]
+  },
+  {
+   "id": "an-pn",
+   "cat": "ed",
+   "name": "拒食症（内科医向け・PN版）",
+   "sub": "身体治療",
+   "theme": "拒食症 身体治療（内科医向け・PN版）",
+   "match": [
+    "拒食症",
+    "内科医向けPN"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "cp",
+   "cat": "sx",
+   "name": "胸痛",
+   "sub": "研修医レクチャー",
+   "theme": "胸痛",
+   "match": [
+    "胸痛"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "dysp",
+   "cat": "sx",
+   "name": "呼吸困難",
+   "sub": "研修医レクチャー",
+   "theme": "呼吸困難",
+   "match": [
+    "呼吸困難"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "nv",
+   "cat": "sx",
+   "name": "嘔気・嘔吐",
+   "sub": "研修医レクチャー",
+   "theme": "嘔気・嘔吐",
+   "match": [
+    "嘔気"
+   ],
+   "exclude": []
+  },
+  {
+   "id": "meds",
+   "cat": "etc",
+   "name": "持参薬",
+   "sub": "研修医レクチャー",
+   "theme": "持参薬",
+   "match": [
+    "持参薬"
+   ],
+   "exclude": []
+  }
+ ],
+ "links": [
+  {
+   "name": "抗菌薬MAP 拡大ビューア",
+   "sub": "手元の「抗菌薬MAP」のPDFを選んで使う（PDFは各自で用意）",
+   "url": "https://appkobo.github.io/am-k7q2x9d4tp/"
+  }
+ ],
+ "feedback": {
+  "action": "https://docs.google.com/forms/d/e/1FAIpQLSf1m66RTbPxpr1VwMzf6le8T_BDJC3-h_S2MKXtV_8Ng2IOBw/formResponse",
+  "page": "entry.8212747",
+  "text": "entry.1192003380"
+ }
+}

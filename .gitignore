@@ -1,0 +1,7 @@
+node_modules/
+work/
+__pycache__/
+plan.json
+rows.json
+drive.json
+pdfs/
