@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta name="robots" content="noindex, nofollow"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>腎臓診療フローチャート チェックシート</title>
+
+
+<style>
+body{margin:0}
+a{color:#1F3A5F}a:hover{color:#0F2440}
+.page{width:794px;height:1120px;box-sizing:border-box;padding:12px 12px 8px;overflow:hidden;background:#ffffff;display:flex;flex-direction:column;gap:5px;font-family:'Noto Sans JP',sans-serif;font-size:8.6px;line-height:1.42;color:#1d2433}
+.hd{display:flex;align-items:baseline;gap:8px;border-bottom:3px solid #1F4E79;padding-bottom:3px}
+.hd h1{margin:0;font-size:17px;font-weight:900;color:#1F4E79;white-space:nowrap}
+.hd .sub{font-size:8.4px;color:#4a5568}
+.hd .ver{margin-left:auto;font-size:8px;color:#4a5568;white-space:nowrap}
+.lg{display:flex;gap:6px;font-size:7.6px;align-items:center;color:#4a5568}
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.rule{background:#e8eef6;border-radius:3px;padding:3px 6px;font-weight:700;font-size:8.4px;color:#1d2433}
+.rule b{color:#1F4E79;margin-right:3px}
+.cols{column-count:2;column-gap:8px}
+.row{display:grid;gap:8px}
+.sec{border:1px solid #b9c7d8;border-radius:3px;margin:0 0 6px;break-inside:avoid;background:#ffffff}
+.row .sec{margin:0}
+.h{background:#1F4E79;color:#ffffff;font-weight:700;font-size:9.2px;padding:2px 6px}
+.b{padding:3px 6px 4px}
+.b ul{margin:1px 0 2px;padding-left:12px}
+.b li{margin:0 0 1px}
+.b p{margin:1px 0}
+.st{font-weight:700;color:#1F4E79;margin:3px 0 1px}
+.d{background:#e1efe3;padding:0 2px;border-radius:2px}
+.n{background:#fff1bf;padding:0 2px;border-radius:2px}
+.w{color:#9b1c1c;font-weight:700}
+.src{color:#6b7280;font-size:7px;margin-top:2px}
+.t{width:100%;border-collapse:collapse;font-size:8px;margin:2px 0}
+.t th,.t td{border:1px solid #c3cfdd;padding:1px 4px;vertical-align:top;text-align:left}
+.t thead th{background:#dbe5f1;font-weight:700;text-align:center}
+.t tbody th{background:#f1f5fa;font-weight:700}
+.key{background:#fff1bf;border:1px solid #e9cf6a;border-radius:3px;padding:3px 6px;font-weight:700;font-size:8.4px}
+.ft{margin-top:auto;font-size:6.8px;color:#6b7280;border-top:1px solid #c3cfdd;padding-top:2px}
+svg text{font-family:'Noto Sans JP',sans-serif}
+</style>
+<style>
+html,body{margin:0;background:#fff}
+#mw .page,#mw section.page{width:auto!important;height:auto!important;min-height:0!important;overflow:visible!important;padding:0!important;margin:0!important;box-shadow:none!important;break-after:auto!important;page-break-after:auto!important;background:transparent!important}
+
+/* VOICE 臨床の手引き。落ち着いて、早く引ける
+   IDEA 白衣のポケットに入れる診療カード：紙のチェックシートと同じ配色・色分け
+   PICTURE 色分けされた本文そのものが主役。図は元のまま
+   COLOUR 白地、シートごとの主色、薬剤＝緑、目標値＝黄、警告＝赤
+   TYPE Noto Sans JP 700 + 400
+   LAYOUT 広い画面は2段、狭い画面は1段。項目ごとに開閉、検索で絞り込み */
+:root{color-scheme:light;--c:rgb(31, 78, 121);--line:#c9cfe6;--sub:#5a6178;--tint:#f4f5f9}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:128px}
+body{margin:0;background:#fff;color:#1d2230;font:16px/1.6 'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;overflow-x:clip}
+#mw *{font-family:'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif}
+.wtop{background:var(--c);color:#fff;padding:22px max(4vw,16px) 14px}
+.wtop .wrow{max-width:1360px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 24px}
+h1{margin:0;font-size:clamp(24px,4vw,34px);line-height:1.2;font-weight:700}
+.wupd{font-size:13px;opacity:.9;white-space:nowrap}
+.wlg{max-width:1360px;margin:10px auto 0;font-size:14px;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
+.wlg *{white-space:normal!important;font-size:inherit!important}.wlg :is(.d,.n,.y){color:#1d2230}.wlg :is(.w,.r){color:#ffc2c2!important}
+.wtools{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);padding:10px max(4vw,16px)}
+.wtools .win{max-width:1360px;margin:0 auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#q{flex:1 1 220px;font:inherit;font-size:16px;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:inherit;min-height:44px}
+#q:focus{outline:2px solid var(--c);outline-offset:1px}
+.wtools button{font:inherit;font-size:14px;min-height:44px;padding:0 14px;border-radius:8px;border:1px solid var(--line);background:var(--tint);color:inherit;cursor:pointer}
+#hits{font-size:13px;color:var(--sub);white-space:nowrap}
+.wnav{display:flex;gap:6px;overflow-x:auto;max-width:1360px;margin:8px auto 0;padding-bottom:2px;scrollbar-width:thin}
+.wnav a{flex:none;font-size:13px;color:var(--c);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:5px 11px;white-space:nowrap}
+.wnav .wnp{background:var(--c);color:#fff;border-color:var(--c)}
+:is(.wnav a,.wtools button,.wh):focus-visible{outline:2px solid var(--c);outline-offset:2px}
+main{max-width:1360px;margin:0 auto;padding:6px max(4vw,16px) 40px}
+#mw h2.wpt{background:none;border-radius:0;font-weight:700;display:flex;align-items:center;gap:10px;font-size:21px;color:var(--c);margin:26px 0 12px;padding:0 0 6px;border-bottom:3px solid var(--c);line-height:1.35}
+.wpn{flex:none;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--c);color:#fff;font-size:15px}
+#mw img{max-width:100%;height:auto}
+#mw .wcols{columns:1!important;column-gap:14px;height:auto!important;max-height:none!important;min-height:0!important;flex:none!important;column-fill:balance!important}
+@media(min-width:1100px){#mw .wcols{columns:2!important}}
+@media(max-width:1099px){#mw .wcols *{break-before:auto!important;break-after:auto!important}}
+#mw .tw{overflow-x:auto;max-width:100%}
+.wh{cursor:pointer;position:relative;padding-right:1.6em!important}
+.wh::after{content:'－';position:absolute;right:.4em;top:50%;transform:translateY(-50%);font-weight:400}
+.wclosed>.wh::after{content:'＋'}
+.wclosed>:not(.wh){display:none!important}
+.wh+*{margin-top:0}
+mark{background:#ffd84a;color:inherit;border-radius:2px}
+.hide{display:none!important}
+.wempty{display:none;padding:24px 0;color:var(--sub)}
+@media(max-width:900px){#mw .wst9{display:block!important}#mw .wst9>*{width:auto!important;max-width:none!important;margin-bottom:6px}}
+@media(max-width:640px){#mw .svgw svg{min-width:620px}#mw .svgw img{min-width:560px;max-height:none!important}#mw .wst6{display:block!important}#mw .wst6>*{width:auto!important;max-width:none!important;margin-bottom:6px}.wpt{font-size:18px}}
+@media print{.wtools{display:none}.wtop{background:#fff;color:var(--c);padding:0 0 4px;border-bottom:2px solid var(--c)}.wlg :is(.w,.r){color:#9b1c1c!important}.part+.part{break-before:page}main{padding:0}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}.wh::after{content:''}}
+</style></head><body>
+<header class="wtop"><div class="wrow"><h1>腎臓診療フローチャート チェックシート</h1><div class="wupd">最終更新：2026年11月9日</div></div>
+<div class="wlg"></div></header>
+<div class="wtools"><div class="win"><input id="q" type="search" placeholder="キーワードで探す" aria-label="キーワードで探す"><span id="hits"></span><button id="tg" type="button">すべて閉じる</button></div>
+<nav class="wnav" aria-label="項目"><a class="wnp" href="#p1">1</a><a href="#s1">一般外来・健診で活用する腎臓診療フローチャート</a><a href="#s2">0 CKDとは／非専門医に期待されること</a><a href="#s3">1 ポイント① 尿検査異常の再現性</a><a href="#s4">2 ポイント② eGFR slope</a><a href="#s5">3 2次検査（①=②＞③）</a><a href="#s6">4 専門外来へ紹介すべき理由</a><a class="wnp" href="#p2">2</a><a href="#s7">紹介先の選び方（重症度・腎生検の要否・eGFR 30）</a><a href="#s8">外来で初診患者のCre高値：今すぐ介入すべき？</a><a href="#s9">健診の落とし穴</a><a href="#s10">検査項目の落とし穴</a><a href="#s11">一般外来：腎臓から全身を診る</a><a href="#s12">患者さんへの説明（行動変容を促す）</a></nav></div>
+<main><div id="mw">
+
+<div style="width: auto; height: auto; background: transparent; display: flex; flex-direction: column; gap: 0px; padding: 0px; border: 0px; box-shadow: none;">
+
+<!-- ============ 1枚目（表） ============ -->
+<section class="part" id="p1"><h2 class="wpt"><span class="wpn">1</span>プライマリケアの腎臓診療フローチャート</h2><div class="page" data-z="1.802" style="font-size: 8.6px; line-height: 1.42; zoom: 1.802;">
+  
+  <div class="lg"><span>凡例：</span><span class="d">薬剤</span><span class="n">目標値・カットオフ</span><span class="w">警告</span></div>
+  <div class="rules wst9">
+    <div class="rule wunit wsolo"><b>STEP1</b>尿検査異常 → 過去データで再現性をチェック</div>
+    <div class="rule wunit wsolo"><b>STEP2</b>5年間以上のeGFR slope → 急峻な低下がないかチェック</div>
+    <div class="rule wunit wsolo"><b>STEP3</b>該当すれば2次検査（①シスタチンC含む腎機能 ②早朝尿 ③腎血管エコー）→ 異常で専門外来へ</div>
+  </div>
+
+  <div class="sec wunit" id="s1">
+    <div class="h wh" role="button" tabindex="0" aria-expanded="true">一般外来・健診で活用する腎臓診療フローチャート</div>
+    <div class="b">
+      <div class="tw svgw"><svg viewBox="0 0 760 218" role="img" aria-label="一般外来・健診で活用する腎臓診療フローチャート" style="max-width: 756px; width: 100%; height: auto;">
+        <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#1F4E79"></path></marker>
+        <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#b4232a"></path></marker></defs>
+        <text x="14" y="12" font-size="9" fill="#b4232a" font-weight="700">（例外）初回指摘だが</text>
+        <text x="24" y="24" font-size="9" fill="#b4232a">・蛋白が高度陽性</text>
+        <text x="24" y="36" font-size="9" fill="#b4232a">・尿潜血・蛋白がともに陽性</text>
+        <path d="M190,55 Q270,8 352,56" fill="none" stroke="#b4232a" stroke-width="2.4" marker-end="url(#arr)"></path>
+        <rect x="10" y="55" width="210" height="38" rx="3" fill="#f1f5fa" stroke="#1F4E79"></rect>
+        <text x="20" y="70" font-size="9.4">尿検査異常（潜血、蛋白）</text>
+        <text x="20" y="85" font-size="9.4">過去〜現在までの再現性は？</text>
+        <rect x="320" y="58" width="140" height="30" rx="3" fill="#fff1bf" stroke="#1F4E79"></rect>
+        <text x="390" y="77" font-size="10" text-anchor="middle" font-weight="700">腎疾患かも？</text>
+        <line x1="220" y1="73" x2="318" y2="73" stroke="#1F4E79" stroke-width="1.4" marker-end="url(#ar)"></line>
+        <text x="262" y="68" font-size="9">あり</text>
+        <line x1="115" y1="93" x2="115" y2="123" stroke="#1F4E79" stroke-width="1.4" marker-end="url(#ar)"></line>
+        <text x="122" y="112" font-size="9">なし</text>
+        <rect x="10" y="125" width="210" height="38" rx="3" fill="#f1f5fa" stroke="#1F4E79"></rect>
+        <text x="20" y="140" font-size="9.4">5年間以上のeGFR slopeは、</text>
+        <text x="20" y="155" font-size="9.4">加齢性変化の範疇で説明可能？</text>
+        <line x1="220" y1="136" x2="336" y2="90" stroke="#1F4E79" stroke-width="1.4" marker-end="url(#ar)"></line>
+        <text x="226" y="114" font-size="9">eGFR低下が速い</text>
+        <line x1="420" y1="88" x2="420" y2="113" stroke="#1F4E79" stroke-width="1.4" marker-end="url(#ar)"></line>
+        <text x="426" y="104" font-size="9">2次検査</text>
+        <rect x="300" y="115" width="262" height="50" rx="3" fill="#ffffff" stroke="#1F4E79"></rect>
+        <text x="308" y="129" font-size="9">①：腎機能評価（シスタチンC含む）</text>
+        <text x="308" y="143" font-size="9">②：早朝尿：尿定性、沈渣、蛋白・Cre定量検査</text>
+        <text x="308" y="157" font-size="9">③：腎血管エコー（①、②より優先度は低い）</text>
+        <line x1="115" y1="163" x2="246" y2="196" stroke="#1F4E79" stroke-width="1.4" marker-end="url(#ar)"></line>
+        <text x="20" y="190" font-size="9">eGFR低下速度は</text>
+        <text x="20" y="202" font-size="9">加齢性変化の範疇である</text>
+        <rect x="250" y="187" width="110" height="24" rx="3" fill="#f1f5fa" stroke="#1F4E79"></rect>
+        <text x="305" y="203" font-size="9.6" text-anchor="middle">経過観察</text>
+        <line x1="360" y1="165" x2="326" y2="185" stroke="#1F4E79" stroke-width="1.4" marker-end="url(#ar)"></line>
+        <text x="352" y="182" font-size="9">問題なし</text>
+        <line x1="500" y1="165" x2="610" y2="185" stroke="#1F4E79" stroke-width="1.4" marker-end="url(#ar)"></line>
+        <text x="540" y="182" font-size="9">異常あり</text>
+        <rect x="560" y="187" width="180" height="24" rx="3" fill="#fde2cf" stroke="#b4232a"></rect>
+        <text x="650" y="203" font-size="9.6" text-anchor="middle" font-weight="700">腎臓専門外来へ紹介</text>
+        <path d="M460,70 Q735,70 700,185" fill="none" stroke="#b4232a" stroke-width="2.4" marker-end="url(#arr)"></path>
+        <text x="600" y="62" font-size="9" fill="#b4232a">2次検査が困難な場合は…</text>
+      </svg></div>
+      <div class="src">本書 p.5 図3（著者作成）をHTMLで再構成</div>
+    </div>
+  </div>
+
+  <div class="cols wcols">
+    <div class="sec wunit" id="s2"><div class="h wh" role="button" tabindex="0" aria-expanded="true">0　CKDとは／非専門医に期待されること</div><div class="b">
+      <ul>
+        <li>①尿異常・画像・血液・病理で腎障害が明らか（特に<span class="n">0.15 g/gCr以上の蛋白尿</span>〔<span class="n">30 mg/gCr以上のアルブミン尿</span>〕）、②<span class="n">eGFR＜60</span>。①②のいずれか、または両方が<span class="n">3カ月以上持続</span>。</li>
+        <li>成人の<span class="n">5人に1人</span>（CKD診療ガイド2024。2012年版では8人に1人）。</li>
+        <li>役割は<span class="w">進行性CKD（腎機能がどんどん悪くなる人）を見つけ、放置せずに専門医へ紹介</span>すること。</li>
+        <li>同じ「50歳・eGFR 50」でも、10年前が55か70かで予後は違う。<span class="n">1時点の値ではなく推移</span>をみる。</li>
+      </ul>
+      <div class="src">本書 Ch1-1（p.2〜5）</div>
+    </div></div>
+
+    <div class="sec wunit" id="s3"><div class="h wh" role="button" tabindex="0" aria-expanded="true">1　ポイント①　尿検査異常の再現性</div><div class="b">
+      <ul>
+        <li>放置してはいけない（進行している）腎疾患なら、<span class="n">過去も現在も未来も引っかかる</span>。尿異常をみたら過去データをさかのぼる → 再現性があれば2次検査。</li>
+        <li>初回指摘なら、eGFR slopeの結果次第で方針を決める。</li>
+      </ul>
+      <p class="st">例外1：初回でもすぐ2次検査</p>
+      <ul>
+        <li><span class="w">蛋白尿が高度陽性（例：潜血−・蛋白3＋）</span>、または<span class="w">血尿・蛋白尿がともに陽性（例：潜血2＋・蛋白＋）</span>。活動性の糸球体腎炎・腎症の超初期の可能性がある（急速進行性糸球体腎炎は治療が遅れると透析）。</li>
+        <li>膀胱炎などと間違われやすい。終診にせず<span class="n">3〜6カ月ごと</span>に尿所見をフォローする（著者）。</li>
+      </ul>
+      <p class="st">例外2：閉経前の女性</p>
+      <ul><li>月経による血尿・蛋白尿の<span class="w">偽陽性</span>。月経中かを確認し、該当すれば非月経時に再検する。</li></ul>
+      <div class="src">本書 Ch1-2（p.7〜9）、Ch2 Case2（p.58）</div>
+    </div></div>
+
+    <div class="sec wunit" id="s4"><div class="h wh" role="button" tabindex="0" aria-expanded="true">2　ポイント②　eGFR slope</div><div class="b">
+      <ul>
+        <li>横軸に年数、縦軸にeGFRをとった近似直線の傾き＝<span class="n">1年間のeGFR変化量</span>。</li>
+        <li>加齢による低下は<span class="n">年0.5〜1.0 mL/min/1.73 m²</span>（日本人健診データ）→「<span class="n">1歳年をとるとeGFRも1点下がる</span>」。これを超えたら異常。</li>
+        <li class="src" style="list-style:none;margin-left:-12px;color:#1F4E79">📘 最新情報：日本人一般住民約12万人の10年追跡（Imai E, et al. Hypertens Res 2008）では、平均低下は年0.36 mL/min/1.73 m²。</li>
+        <li><span class="w">急速な低下（rapid progression）は年5.0以上</span>。</li>
+        <li>安定した患者でもeGFRは変動する（Creで0.1〜0.2 mg/dLの幅、短期では±5〜6程度）→ 短期では判断できないため<span class="n">5年以上のデータ</span>でみる（エキスパートオピニオン、LTEP）。5年で判断しにくければ、さらに長期でみる。</li>
+      </ul>
+      <p class="st">目分量の4段階評価（計算ソフトは不要）</p>
+      <div class="tw"><table class="t"><thead><tr><th>年間低下量</th><th>1未満</th><th>1〜3</th><th>3〜5</th><th>5以上</th></tr></thead>
+      <tbody><tr><th>評価</th><td>加齢の範囲</td><td>異常</td><td class="w">危ない</td><td class="w">危ない</td></tr></tbody></table></div>
+      <ul>
+        <li>時系列グラフの傾きを目分量で見積もる（5年間の差÷5でもよい）。低下量が多いほど将来の腎イベントのリスクが高い。</li>
+        <li>やせ型の高齢者やステロイド使用者は筋肉量の変化が大きく、評価しにくい。</li>
+      </ul>
+      <p class="st">年1点を超えたら、腎臓を悪くする因子を確認</p>
+      <ul><li>①生活習慣病（糖尿病、高血圧、脂質異常症など）②喫煙 ③<span class="d">NSAIDs</span>など腎毒性物質 ④暑い環境への日常的な曝露（農業、建設業など）。slopeがある時点から急峻になったら、その期間の曝露を疑う。</li></ul>
+      <p class="st">年齢相応のeGFR：「80−(年齢÷2)」</p>
+      <ul>
+        <li><span class="n">eGFR ≦ 80−(年齢÷2)</span>は、基礎疾患のない健診受診者（39〜74歳）の下位2%に相当 → 下回れば明らかに異常（例：40歳でeGFR 50.8＜60）。</li>
+        <li>スウェーデン118万例（観察期間中央値10年）：年齢・性別eGFRが基準群（47.5〜52.5パーセンタイル）に比べ、25パーセンタイルで約1.4倍、10パーセンタイルで約3倍、5パーセンタイルで約10倍、腎代替療法を要する腎不全（KFRT）が多い。<span class="w">eGFR 60以上でも安心できない</span>。</li>
+      </ul>
+      <div class="src">本書 Ch1-3（p.11〜17）、Case1（p.35〜41）、Case2（p.61〜64）、Case3（p.72〜74）、Case4（p.84〜86）</div>
+    </div></div>
+
+    <div class="sec wunit" id="s5"><div class="h wh" role="button" tabindex="0" aria-expanded="true">3　2次検査（①=②＞③）</div><div class="b">
+      <div class="tw"><table class="t"><thead><tr><th>検査</th><th>目的</th></tr></thead><tbody>
+        <tr><th>血液検査</th><td>Cre・シスタチンCを組み合わせて腎機能を評価する。<span class="n">eGFR slopeの再現性</span>を確認する。</td></tr>
+        <tr><th>早朝尿</th><td>運動性・体位性の尿検査異常を除外する。</td></tr>
+        <tr><th>腎血管エコー</th><td>腎形態異常（水腎症、嚢胞性腎疾患など）と腎動脈狭窄症を除外する。<span class="w">「腹部エコー」ではなく「血管エコー」枠</span>でオーダーする施設が多い。</td></tr>
+      </tbody></table></div>
+      <p class="st">シスタチンC</p>
+      <ul>
+        <li>筋肉量の影響を受けにくい。CreはGFR 30〜40まで上がりにくい（Crのブラインド領域）が、シスタチンCはGFR 60〜70の早期の障害を検出できる。</li>
+        <li>eGFRcreとeGFRcysに<span class="w">大幅な乖離（20〜30）</span>がないかを確認する。体格が極端ならeGFRcysを採用する。</li>
+        <li>注意点：<span class="w">偽陽性（甲状腺機能亢進症、副腎皮質ステロイド）</span>、偽陰性（甲状腺機能低下症）。保険では、BUNまたはCreで腎機能低下が疑われる場合に<span class="n">3カ月に1回</span>（頻回は査定対象、末期腎不全・維持透析例は原則算定不可）。実施料はCreの約10倍（令和8年度改定でCre 11点、シスタチンC 109点）。</li>
+      </ul>
+      <p class="st">早朝尿</p>
+      <ul>
+        <li>早朝第一尿では、運動性・体位性の蛋白尿（治療不要）を除外できる。随時尿で尿蛋白0.5〜1.0 g/gCr（2＋程度）でも、運動性・体位性のことがある。</li>
+        <li><span class="n">定性・沈渣・生化学（尿蛋白・尿中Cre定量）をセット</span>で評価し、整合性を確認する。</li>
+        <li>尿カップをあらかじめ渡す。受診の数日前に採血と一緒に提出してもらうと、当日の待ち時間が減る。</li>
+      </ul>
+      <div class="tw"><table class="t"><thead><tr><th></th><th>沈渣・生化学で異常なし</th><th>沈渣・生化学で異常あり</th></tr></thead><tbody>
+        <tr><th>定性陰性・軽度</th><td>問題なし</td><td class="w">M蛋白関連の腎疾患、尿細管間質病変（シェーグレン症候群に伴う腎炎、Dent病、常染色体顕性尿細管間質性腎疾患など）</td></tr>
+        <tr><th>定性で異常</th><td>濃縮尿、ミオグロビン尿</td><td>腎疾患・泌尿器疾患</td></tr>
+      </tbody></table></div>
+      <p class="st">腎血管エコーで技師に伝えること</p>
+      <ul><li>尿検査異常が主体なら<span class="n">ナットクラッカー症候群・腎腫瘍</span>、急峻なeGFR slopeなら<span class="n">腎動脈狭窄症</span>の除外を依頼する。</li></ul>
+      <div class="src">本書 Ch1-5（p.22〜28）表2・表3・表4、Case1（p.42〜44）表8、Ch5-2（p.134）</div>
+    </div></div>
+
+    <div class="sec wunit" id="s6"><div class="h wh" role="button" tabindex="0" aria-expanded="true">4　専門外来へ紹介すべき理由</div><div class="b">
+      <p class="st">理由1　紹介基準（CKD診療ガイド2024）</p>
+      <ul>
+        <li><span class="w">3カ月以内に30%以上の腎機能悪化</span> → 速やかに紹介する。</li>
+        <li>年齢：<span class="n">40歳未満でeGFR＜60</span>、<span class="n">全年齢でeGFR＜45</span>。</li>
+        <li>蛋白尿：<span class="n">±以上</span>なら、血尿ありまたはeGFR＜60で紹介。<span class="n">＋以上</span>は全例紹介。</li>
+      </ul>
+      <p class="st">理由2　介入は早いほど良い（山火事モデル）</p>
+      <ul><li>進行してからでは、不可逆的に障害された糸球体・尿細管は戻らない。年2.24の低下を20年放置すると末期腎不全（eGFR＜15）に至る計算になる。</li></ul>
+      <p class="st">理由3　長期間無症状</p>
+      <ul>
+        <li>症状（浮腫、腎性貧血）が出るのはeGFR 30〜40になってから。<span class="w">無症候は紹介を遅らせる理由にならない</span>。</li>
+        <li>若年からの顕微鏡的血尿・蛋白尿を放置している人に、未診断の慢性糸球体腎炎（≒IgA腎症）がいる。IgA腎症の典型：①以前から健診で尿異常 ②扁桃炎の既往 ③感冒様症状に伴う肉眼的血尿 ④若年〜中年での発症。</li>
+        <li>「朝起きた時の尿を家で採取して検査したことはありますか？」と聞く。早朝尿の評価がなければ、適切な精査を受けたとは言い難い。</li>
+      </ul>
+      <div class="src">本書 Case1（p.46〜52）、Case2（p.60）</div>
+    </div></div>
+  </div>
+</div></section>
+
+<!-- ============ 2枚目（裏） ============ -->
+<section class="part" id="p2"><h2 class="wpt"><span class="wpn">2</span>紹介先の選び方・初診の腎不全・落とし穴</h2><div class="page" data-z="1.802" style="font-size: 8.6px; line-height: 1.42; zoom: 1.802;">
+  
+
+  <div class="row wst6" style="grid-template-columns: 1fr 1fr">
+    <div class="sec wunit" id="s7"><div class="h wh" role="button" tabindex="0" aria-expanded="true">紹介先の選び方（重症度・腎生検の要否・eGFR 30）</div><div class="b">
+      <div class="tw svgw"><svg viewBox="0 0 370 200" role="img" aria-label="腎疾患疑い症例の紹介：専門施設の選定基準" style="max-width: 366px; width: 100%; height: auto;">
+        <defs><marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#1F4E79"></path></marker></defs>
+        <rect x="8" y="4" width="160" height="30" rx="3" fill="#fff1bf" stroke="#1F4E79"></rect>
+        <text x="16" y="16" font-size="9">腎疾患かも？</text><text x="16" y="29" font-size="9">専門外来へ紹介しよう！</text>
+        <line x1="70" y1="34" x2="70" y2="49" stroke="#1F4E79" stroke-width="1.4" marker-end="url(#a2)"></line>
+        <rect x="15" y="50" width="110" height="22" rx="3" fill="#f1f5fa" stroke="#1F4E79"></rect>
+        <text x="70" y="65" font-size="9.4" text-anchor="middle">全身状態は？</text>
+        <line x1="125" y1="61" x2="208" y2="58" stroke="#1F4E79" stroke-width="1.4" marker-end="url(#a2)"></line>
+        <text x="150" y="55" font-size="9">不良</text>
+        <rect x="210" y="42" width="155" height="32" rx="3" fill="#fde2cf" stroke="#b4232a"></rect>
+        <text x="287" y="55" font-size="9" text-anchor="middle" font-weight="700">腎生検、ICU対応も</text><text x="287" y="68" font-size="9" text-anchor="middle" font-weight="700">対応可能な施設</text>
+        <line x1="70" y1="72" x2="70" y2="99" stroke="#1F4E79" stroke-width="1.4" marker-end="url(#a2)"></line>
+        <text x="76" y="89" font-size="9">良好</text>
+        <rect x="15" y="100" width="110" height="32" rx="3" fill="#f1f5fa" stroke="#1F4E79"></rect>
+        <text x="70" y="113" font-size="9.4" text-anchor="middle">主病態は</text><text x="70" y="126" font-size="9.4" text-anchor="middle">生活習慣病？</text>
+        <line x1="125" y1="110" x2="214" y2="75" stroke="#1F4E79" stroke-width="1.4" marker-end="url(#a2)"></line>
+        <text x="150" y="114" font-size="9">いいえ／</text><text x="150" y="125" font-size="9">判断困難</text>
+        <line x1="70" y1="132" x2="70" y2="155" stroke="#1F4E79" stroke-width="1.4" marker-end="url(#a2)"></line>
+        <text x="76" y="147" font-size="9">はい</text>
+        <rect x="15" y="156" width="110" height="22" rx="3" fill="#f1f5fa" stroke="#1F4E79"></rect>
+        <text x="70" y="171" font-size="9.4" text-anchor="middle">eGFRは？</text>
+        <line x1="125" y1="162" x2="208" y2="134" stroke="#1F4E79" stroke-width="1.4" marker-end="url(#a2)"></line>
+        <text x="150" y="141" font-size="9">30未満</text>
+        <rect x="210" y="118" width="155" height="30" rx="3" fill="#fff1bf" stroke="#1F4E79"></rect>
+        <text x="287" y="130" font-size="9" text-anchor="middle">透析導入に</text><text x="287" y="143" font-size="9" text-anchor="middle">対応可能な施設</text>
+        <line x1="125" y1="171" x2="208" y2="183" stroke="#1F4E79" stroke-width="1.4" marker-end="url(#a2)"></line>
+        <text x="150" y="190" font-size="9">30以上</text>
+        <rect x="210" y="172" width="155" height="22" rx="3" fill="#f1f5fa" stroke="#1F4E79"></rect>
+        <text x="287" y="187" font-size="9" text-anchor="middle">外来のみの施設</text>
+      </svg></div>
+      <div class="src">本書 p.122 図28「腎疾患疑い症例の紹介：専門施設の選定基準（私案）」を再構成</div>
+      <div class="tw"><table class="t"><thead><tr><th>腎疾患への専門的治療</th><th>紹介すべき施設、腎臓専門外来</th></tr></thead><tbody>
+        <tr><th>腎炎・腎症に対する治療導入（例：ステロイド、免疫抑制剤など）</th><td>・腎生検が可能<br>・腎炎、腎症の治療実績がある</td></tr>
+        <tr><th>一般的なCKDへの対策（例：生活指導、腎保護療法の導入など）</th><td>どこでもOK</td></tr>
+        <tr><th>末期腎不全への介入（腎代替療法、症状緩和療法）</th><td>透析導入に対応可能な施設</td></tr>
+        <tr><th>AKI、肺水腫などの急性病態</th><td class="w">緊急透析、ICU対応が可能な施設</td></tr>
+      </tbody></table></div>
+      <div class="src">本書 p.122 表28「腎疾患への専門的治療に応じた紹介先」</div>
+      <ul style="margin:2px 0 0;padding-left:12px">
+        <li>腎生検の要否は「<span class="n">生活習慣病が主体か</span>」に置き換えて判断する（HbA1c不良の糖尿病関連CKDは糖尿病が主体。生活習慣病のない若年の尿異常・腎機能低下は、生活習慣病の関与が少ない）。</li>
+        <li>腎生検ができる施設は緊急透析にもおおむね対応でき、透析導入も可能なことが多い。逆に、<span class="w">透析導入はできても腎生検・緊急透析はできない施設</span>がある。病院HPの診療実績で、①透析導入 ②腎生検 ③緊急透析・ICU を確認する。予約の取りやすさで選ばない。</li>
+      </ul>
+      <div class="src">本書 Ch4-4（p.120〜125）表27・図29</div>
+    </div></div>
+
+    <div class="sec wunit" id="s8"><div class="h wh" role="button" tabindex="0" aria-expanded="true">外来で初診患者のCre高値：今すぐ介入すべき？</div><div class="b">
+      <div class="tw svgw"><svg viewBox="0 0 370 205" role="img" aria-label="経過不明の腎不全患者：いま介入すべき？待機的に介入すべき？" style="max-width: 366px; width: 100%; height: auto;">
+        <defs><marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#1F4E79"></path></marker></defs>
+        <text x="185" y="10" font-size="9.4" text-anchor="middle" font-weight="700">目の前の腎障害は、いま介入すべき病態なのか？</text><text x="6" y="22" font-size="8.2" fill="#4a5568">初診の腎機能障害</text><text x="366" y="22" font-size="8.2" text-anchor="end" fill="#b4232a" font-weight="700">Day 0より介入</text><text x="366" y="94" font-size="8.2" text-anchor="end" fill="#1F4E79" font-weight="700">Day 1〜3で介入</text>
+        <rect x="4" y="25" width="168" height="44" rx="3" fill="#f1f5fa" stroke="#1F4E79"></rect>
+        <text x="10" y="37" font-size="8.8">進行性の病態（AKI）かどうか？</text>
+        <text x="10" y="49" font-size="8.8">・全身状態不良</text>
+        <text x="10" y="61" font-size="8.8">・腎／泌尿器系に関連する主訴</text>
+        <line x1="172" y1="42" x2="218" y2="42" stroke="#1F4E79" stroke-width="1.4" marker-end="url(#a3)"></line>
+        <text x="176" y="36" font-size="8.4">いずれかを</text><text x="180" y="56" font-size="8.4">満たす</text>
+        <rect x="220" y="26" width="146" height="36" rx="3" fill="#fde2cf" stroke="#b4232a"></rect>
+        <text x="293" y="41" font-size="9" text-anchor="middle" font-weight="700">早急に介入すべき</text>
+        <text x="293" y="54" font-size="8.6" text-anchor="middle">（AKIとして扱う）</text>
+        <line x1="60" y1="68" x2="60" y2="98" stroke="#1F4E79" stroke-width="1.4" marker-end="url(#a3)"></line>
+        <text x="66" y="83" font-size="8.4">いずれも</text><text x="66" y="94" font-size="8.4">満たさない</text>
+        <rect x="4" y="100" width="122" height="44" rx="3" fill="#f1f5fa" stroke="#1F4E79"></rect>
+        <text x="10" y="114" font-size="8.8">主訴への介入を優先</text>
+        <text x="10" y="127" font-size="8.4">（腎障害への介入は</text>
+        <text x="10" y="139" font-size="8.4">いったん保留可）</text>
+        <line x1="126" y1="120" x2="146" y2="120" stroke="#1F4E79" stroke-width="1.4" marker-end="url(#a3)"></line>
+        <rect x="148" y="106" width="84" height="30" rx="3" fill="#ffffff" stroke="#1F4E79"></rect>
+        <text x="190" y="119" font-size="8.8" text-anchor="middle">他院での</text><text x="190" y="131" font-size="8.8" text-anchor="middle">過去データは？</text>
+        <line x1="232" y1="118" x2="270" y2="118" stroke="#1F4E79" stroke-width="1.4" marker-end="url(#a3)"></line>
+        <text x="234" y="112" font-size="7.6">悪化して</text><text x="240" y="129" font-size="7.6">いる</text>
+        <rect x="272" y="100" width="94" height="36" rx="3" fill="#fff1bf" stroke="#1F4E79"></rect>
+        <text x="319" y="114" font-size="9" text-anchor="middle" font-weight="700">待機的に介入</text>
+        <text x="319" y="128" font-size="8.4" text-anchor="middle">（AKIとして扱う）</text>
+        <line x1="190" y1="136" x2="190" y2="170" stroke="#1F4E79" stroke-width="1.4" marker-end="url(#a3)"></line>
+        <text x="183" y="152" font-size="8" text-anchor="end">悪化なし／過去データ</text><text x="183" y="163" font-size="8" text-anchor="end">なし・詳細不明</text>
+        <rect x="150" y="172" width="80" height="22" rx="3" fill="#f1f5fa" stroke="#1F4E79"></rect>
+        <text x="190" y="187" font-size="9" text-anchor="middle">要フォロー</text>
+        <line x1="230" y1="180" x2="300" y2="142" stroke="#1F4E79" stroke-width="1.4" marker-end="url(#a3)"></line>
+        <text x="270" y="175" font-size="8.2">経過中に</text><text x="270" y="186" font-size="8.2">悪化したら…</text>
+      </svg></div>
+      <div class="src">本書 p.166 図39「経過不明の腎不全患者：いま介入すべき？待機的に介入すべき？」を再構成</div>
+      <ul style="margin:2px 0 0;padding-left:12px">
+        <li>AKI：<span class="n">48時間以内にCre 0.3 mg/dL以上上昇</span>、<span class="n">7日以内にベースラインの1.5倍以上</span>、<span class="n">尿量が6時間以上0.5 mL/kg/時未満</span>のいずれか。過去データがないと当てはめにくいため、「進行性か」で判断する。</li>
+        <li>全身状態不良では、体液量異常（脱水・溢水）を伴いやすい。外来AKIの大半は腎前性（血管内脱水）。尿回数の低下、浮腫など尿量減少に関連する症状に注意する。</li>
+        <li>該当しなければ、主病態の治療に専念してよい。ただし放置はしない。①他院から診療情報提供を受け、過去データと比較する ②過去データ不明なら、<span class="n">初診から3日後までに腎機能を再検</span>する → 悪化していれば専門外来へ。</li>
+        <li>Creは腎へのダメージから<span class="n">数日遅れて上昇</span>する → 3日で上昇がなければAKIの可能性は低い。</li>
+      </ul>
+      <div class="tw svgw"><svg viewBox="0 0 370 150" role="img" aria-label="初診患者の腎不全をみた場合の考え方" style="margin-top: 3px; max-width: 366px; width: 100%; height: auto;">
+        <defs><marker id="a4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#1F4E79"></path></marker></defs>
+        <circle cx="90" cy="82" r="64" fill="#fde2cf" stroke="#b4232a"></circle>
+        <text x="72" y="52" font-size="9" text-anchor="middle">患者の主訴</text><text x="72" y="64" font-size="9" text-anchor="middle">（主病態）</text>
+        <circle cx="72" cy="110" r="22" fill="#ffffff" stroke="#1F4E79"></circle><text x="72" y="113" font-size="8.6" text-anchor="middle">腎障害</text>
+        <circle cx="160" cy="118" r="22" fill="#ffffff" stroke="#1F4E79"></circle><text x="160" y="121" font-size="8.6" text-anchor="middle">腎障害</text>
+        <circle cx="225" cy="124" r="22" fill="#ffffff" stroke="#1F4E79"></circle><text x="225" y="127" font-size="8.6" text-anchor="middle">腎障害</text>
+        <rect x="176" y="4" width="190" height="78" rx="3" fill="#f1f5fa" stroke="#1F4E79"></rect>
+        <text x="182" y="17" font-size="8.8" font-weight="700">経過不明の腎障害</text>
+        <text x="182" y="30" font-size="8.6">・主訴にガッツリ関与</text>
+        <text x="186" y="42" font-size="8.6" fill="#b4232a" font-weight="700">→AKIとして扱う（早急に介入）</text>
+        <text x="182" y="56" font-size="8.6">・主訴に部分的に関与 or 無関係</text>
+        <text x="186" y="68" font-size="8.6">→介入はいったん保留、要フォロー</text>
+        <text x="186" y="79" font-size="8.2">（フォロー中に進行あれば介入）</text>
+        <line x1="176" y1="36" x2="88" y2="96" stroke="#1F4E79" stroke-width="1.3" marker-end="url(#a4)"></line>
+        <line x1="200" y1="82" x2="168" y2="96" stroke="#1F4E79" stroke-width="1.3" stroke-dasharray="3 2" marker-end="url(#a4)"></line>
+        <line x1="228" y1="82" x2="226" y2="100" stroke="#1F4E79" stroke-width="1.3" stroke-dasharray="3 2" marker-end="url(#a4)"></line>
+      </svg></div>
+      <div class="src">本書 p.172 図42「初診患者の腎不全をみた場合の考え方」を再構成</div>
+      <div class="key">同じ腎機能低下でも、主病態との関連で意味が違う。全身状態不良の感染症・脱水に伴うなら早急に介入、骨折など関連が乏しければ保留してフォローする。</div>
+    </div></div>
+  </div>
+
+  <div class="cols wcols">
+    <div class="sec wunit" id="s9"><div class="h wh" role="button" tabindex="0" aria-expanded="true">健診の落とし穴</div><div class="b">
+      <ul>
+        <li><span class="w">74歳以下の健診では血清Creが必須項目でない</span>。尿所見に乏しいCKD（糖尿病性腎臓病、腎硬化症、原疾患不明）を見逃す。腎硬化症と原疾患不明は、透析導入の原疾患の第2位・第3位。</li>
+        <li>労働安全衛生規則の改正省令（令和8年厚生労働省令第89号、2026年4月28日公布）により、<span class="n">2027年4月1日から一般健康診断に血清Cre検査が追加</span>される（定期健診・特定業務従事者健診では、40歳未満は医師が必要でないと認めれば省略可）。2026年度中はまだ対象外。</li>
+        <li>現行制度では、①再現性のある尿異常は2次検査へ回す ②Creの測定歴があれば必ずeGFR slopeを確認する。</li>
+        <li><span class="w">Creの推移でフォローしない</span>。同じCreでも年齢・性別でeGFRは大きく異なり（50歳男性は正常、80歳女性はCKD）、Creの変動幅が小さいため急峻なslopeに気付かない。</li>
+        <li>他院で健診を受けると、画像（胸部X線・心電図）の生データと時系列の比較ができない。<span class="n">健診と投薬は同じ医療機関で一元化</span>するよう勧める。</li>
+      </ul>
+      <div class="src">本書 Ch4-1〜3（p.104〜119）表22・表23・図25</div>
+    </div></div>
+
+    <div class="sec wunit" id="s10"><div class="h wh" role="button" tabindex="0" aria-expanded="true">検査項目の落とし穴</div><div class="b">
+      <ul>
+        <li>試験紙法は、尿中アルブミン濃度が<span class="n">30 mg/dL以上</span>で陽性 → <span class="w">濃縮尿（尿比重≧1.030）で偽陽性</span>になる。1日のCre排泄量を約1 gとみなし、<span class="n">Cre補正（尿蛋白÷尿中Cre）</span>で判別する。例：尿中Cre 150 mg/dL・尿蛋白15 mg/dL → 0.1 g/gCr。</li>
+        <li>尿中アルブミン定量は、保険上<span class="w">糖尿病（腎症第1・2期）に限り3カ月に1回</span>。非糖尿病CKDでは尿蛋白/Cre比を使う。</li>
+        <li>eGFR（男性 194×Cre<sup>−1.094</sup>×年齢<sup>−0.287</sup>、女性×0.739）の3つの罠。
+          <ul>
+            <li>体表面積1.73 m²換算のため、小柄な人は過大評価、大柄な人は過小評価になる。</li>
+            <li>eGFR∝1/Cre。<span class="n">Cre 0.8→1.2でeGFRは約40%減る</span>。Cre 1.5に達した時点では30台で、そこで介入しては遅い。「Cre 2.0以上でやばい」は誤り。</li>
+            <li>女性は男性の<span class="n">約0.7掛け</span>。筋肉量の少ない高齢女性は「Creは正常範囲だがeGFRは低値」になる。</li>
+          </ul></li>
+        <li>筋肉量で説明できるCreは<span class="n">高々1.3〜1.4 mg/dL</span>まで。それ以上は腎機能低下を疑う。体格の極端な例ではeGFRcysと個別化eGFR（標準化eGFR×体表面積÷1.73）で評価する。</li>
+      </ul>
+      <div class="src">本書 Ch5-1〜5（p.128〜152）図30・表30・表31・表32・表34</div>
+    </div></div>
+
+    <div class="sec wunit" id="s11"><div class="h wh" role="button" tabindex="0" aria-expanded="true">一般外来：腎臓から全身を診る</div><div class="b">
+      <ul>
+        <li>腎臓は心拍出量の2割以上が流れる「毛細血管の塊」で、生活習慣病の主なターゲットの1つ。血圧・HbA1cの目標達成に加えて、<span class="n">①尿蛋白 ②急峻なeGFR slope</span>を確認する。どちらかに問題があれば治療を見直す。</li>
+        <li>STEP1：目の前の患者がCKDであると<span class="w">医師自身が認識する</span>（中高年の女性が見逃されやすい）。STEP2：フローチャートを使う（慣れれば2〜3分）。</li>
+        <li><span class="w">Do処方の危険性</span>：診察室血圧が110〜120台でも、夜間の著明な低血圧（隠れ低血圧）で<span class="d">ARB</span>が腎障害の原因となり、中止で回復した例がある。診察室血圧と家庭血圧の差は通常5〜10 mmHgだが、20〜30 mmHgのこともある。動脈硬化の強い例では過降圧に注意する。安定例でも最低年1回は検査する。</li>
+      </ul>
+      <p class="st">NSAIDs定期内服で急峻なeGFR低下をきたす3パターン</p>
+      <div class="tw"><table class="t"><thead><tr><th>患者像</th><th>腎障害の誘因</th></tr></thead><tbody>
+        <tr><td>片頭痛既往の喫煙女性</td><td><span class="d">NSAIDs</span>、喫煙による輸入細動脈の硬化</td></tr>
+        <tr><td>腰痛症で、生活習慣病により通院中の中年男性</td><td><span class="d">NSAIDs</span>＋動脈硬化＋<span class="d">RAS阻害薬</span>（<span class="w">併用注意</span>）</td></tr>
+        <tr><td>圧迫骨折による腰痛症、骨粗鬆症で通院中の高齢女性</td><td><span class="d">NSAIDs</span>、<span class="d">Ca製剤やビタミンD製剤</span>による高Ca血症</td></tr>
+      </tbody></table></div>
+      <ul><li>片頭痛の症例では<span class="d">トリプタン製剤</span>へ変更し、禁煙を指導したところslopeの低下が止まった。</li><li>機序は、PGE2産生阻害による輸入細動脈の収縮。脱水が重なると悪化する（<span class="w">ACE阻害薬＋NSAIDs＋脱水</span>は最悪の組み合わせ）。</li></ul>
+      <div class="src">本書 Ch6-1〜3（p.154〜163）図37、Case3（p.74）表16、Case4（p.82）</div>
+    </div></div>
+
+    <div class="sec wunit" id="s12"><div class="h wh" role="button" tabindex="0" aria-expanded="true">患者さんへの説明（行動変容を促す）</div><div class="b">
+      <ul>
+        <li><span class="n">腎疾患＝山火事</span>：放置すると、消火を始めた時には8割が焼けている。早期なら3割で留められる。</li>
+        <li><span class="n">eGFR＝100点満点の腎臓の点数</span>（60点以上が合格点）。Creの値ではなく、<span class="n">eGFR slopeのグラフを見せる</span>。</li>
+        <li><span class="n">尿検査異常＝借金の複利</span>：毎年の影響はわずかでも、10〜20年蓄積すると大きく効いてくる。「尿異常はあるが腎機能は正常だから大丈夫」は誤り。</li>
+        <li><span class="n">蛋白尿はザルと素麺</span>：蛋白尿は腎障害の結果であり、原因でもある（負のループ）。治療は蛋白尿を減らすこと。</li>
+        <li><span class="n">血圧の治療＝庭の花への水やり</span>：強すぎても（脳出血、腎障害、心不全）、弱すぎても（脳虚血、腎前性腎不全、腸管虚血）臓器を傷める。</li>
+      </ul>
+      <div class="src">本書 Ch3（p.88〜101）</div>
+    </div></div>
+  </div>
+
+  <div class="ft">出典：谷口智基『プライマリケア医のための 腎臓診療フローチャート』中外医学社、2026年4月15日 第1版第1刷。図3・図28・表28・図39・図42は同書をもとにHTMLで再構成。本書の引用：日本腎臓学会 CKD診療ガイド2024、エビデンスに基づくCKD診療ガイドライン2023、日本腎臓学会・日本医師会 かかりつけ医から腎臓専門医・専門医療機関への紹介基準、KDIGO AKI 2012、高血圧管理・治療ガイドライン2025、Yang Y, et al. Kidney Int 2026;109:559-68 ほか。最新情報で更新：労働安全衛生規則等の一部を改正する省令（令和8年厚生労働省令第89号）、令和8年度診療報酬点数表（シスタチンC）、紹介基準はCKD診療ガイド2024収載版、Imai E, et al. Hypertens Res 2008;31:433-41。</div>
+</div></section>
+
+</div>
+</div><p class="wempty" id="none">該当する項目はありません。</p></main>
+<script>
+{
+const q=document.getElementById('q'),hits=document.getElementById('hits'),tg=document.getElementById('tg'),none=document.getElementById('none');
+const units=[...document.querySelectorAll('#mw .wunit')].filter(u=>!u.parentElement.closest('.wunit'));
+const parts=[...document.querySelectorAll('#mw .part')];
+const orig=new Map(units.map(u=>[u,u.innerHTML]));
+const setOpen=(u,o)=>{u.classList.toggle('wclosed',!o);const h=u.querySelector(':scope>.wh');if(h)h.setAttribute('aria-expanded',o?'true':'false');};
+document.addEventListener('click',e=>{const h=e.target.closest('.wh');if(!h)return;const u=h.parentElement;setOpen(u,u.classList.contains('wclosed'));});
+document.addEventListener('keydown',e=>{const h=e.target.closest&&e.target.closest('.wh');if(h&&(e.key==='Enter'||e.key===' ')){e.preventDefault();h.click();}});
+document.querySelectorAll('.wnav a').forEach(a=>a.addEventListener('click',()=>{const u=document.querySelector(a.getAttribute('href'));if(u&&u.classList.contains('wunit'))setOpen(u,true);}));
+const esc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+const mark=(el,re)=>{const w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);const ns=[];while(w.nextNode())ns.push(w.currentNode);
+  ns.forEach(t=>{re.lastIndex=0;if(!re.test(t.data))return;re.lastIndex=0;const f=document.createDocumentFragment();let i=0,m;while((m=re.exec(t.data))){f.append(t.data.slice(i,m.index));const k=document.createElement('mark');k.textContent=m[0];f.append(k);i=m.index+m[0].length;}f.append(t.data.slice(i));t.replaceWith(f);});};
+const others=parts.map(p=>[...p.querySelectorAll('.page *')].filter(e=>!e.closest('.wunit')&&!e.querySelector('.wunit')&&e.parentElement.querySelector(':scope>.wunit')));
+const run=()=>{const v=q.value.trim();units.forEach(u=>{u.innerHTML=orig.get(u);});
+  if(!v){[...units,...parts,...others.flat()].forEach(e=>e.classList.remove('hide'));hits.textContent='';none.style.display='none';return;}
+  const re=new RegExp(esc(v),'gi');let c=0;
+  units.forEach(u=>{const ok=u.textContent.toLowerCase().includes(v.toLowerCase());u.classList.toggle('hide',!ok);if(ok){c++;setOpen(u,true);mark(u,re);}});
+  others.flat().forEach(e=>e.classList.add('hide'));
+  parts.forEach(p=>p.classList.toggle('hide',!p.querySelector('.wunit:not(.hide)')));
+  hits.textContent=c+'件';none.style.display=c?'none':'block';};
+q.addEventListener('input',run);
+tg.addEventListener('click',()=>{const open=tg.textContent==='すべて開く';units.forEach(u=>{if(u.querySelector(':scope>.wh'))setOpen(u,open);});tg.textContent=open?'すべて閉じる':'すべて開く';});
+window.addEventListener('beforeprint',()=>units.forEach(u=>setOpen(u,true)));
+}
+</script>
+</body></html>

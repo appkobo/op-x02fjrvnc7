@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta name="robots" content="noindex, nofollow"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>認知症</title>
+
+
+<style>
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Noto Sans CJK JP", sans-serif; color: #1F3A5F; font-size: 7.1pt; line-height: 1.33; }
+.page { width: 210mm; height: 297mm; padding: 6.5mm 8mm 5.5mm; page-break-after: always; display: flex; flex-direction: column; gap: 1.5mm; overflow: hidden; }
+.head { display: flex; align-items: flex-end; gap: 3mm; border-bottom: 1.4mm solid var(--c); padding-bottom: 1.2mm; }
+.head h1 { white-space: nowrap; font-size: 14pt; font-weight: 900; color: var(--c); }
+.head .sub { font-size: 7.4pt; white-space: nowrap; overflow: hidden; color: #6B7B8C; }
+.head .tag { white-space: nowrap; margin-left: auto; font-size: 7pt; color: #fff; background: var(--c); border-radius: 3mm; padding: .4mm 2.5mm; }
+.rules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6mm; }
+.rule { background: var(--t); border-left: 1.2mm solid var(--c); border-radius: 1mm; padding: 1mm 1.6mm; font-weight: 700; font-size: 6.9pt; }
+.rule b { color: var(--c); margin-right: 1mm; }
+.grid { display: grid; gap: 2mm; }
+.g2 { grid-template-columns: 1fr 1fr; }
+.g3 { grid-template-columns: 1fr 1fr 1fr; }
+.box { border: .3mm solid #D5E3EC; border-radius: 1.2mm; padding: 1.2mm 1.8mm; }
+h2 { font-size: 8.4pt; font-weight: 800; color: #fff; background: var(--c); border-radius: .8mm; padding: .4mm 1.8mm; margin-bottom: 1mm; display: inline-block; }
+h3 { font-size: 7.7pt; font-weight: 800; color: var(--c); margin: .9mm 0 .4mm; }
+ul { padding-left: 3.2mm; }
+li { margin-bottom: .15mm; }
+table { width: 100%; border-collapse: collapse; font-size: 6.7pt; margin: .5mm 0; }
+th, td { border: .25mm solid #C9D6E0; padding: .4mm .9mm; vertical-align: top; text-align: left; }
+thead th { background: var(--c); color: #fff; font-weight: 700; text-align: center; }
+tbody th { background: var(--t); font-weight: 700; white-space: nowrap; }
+.cap { font-size: 6.8pt; font-weight: 700; color: var(--c); margin-top: .6mm; }
+.src { font-size: 5.8pt; color: #6B7B8C; }
+.y { background: #FFF1B8; padding: 0 .3mm; }
+.r { color: #C0392B; font-weight: 700; }
+.key { background: #FFF1B8; border: .3mm solid #F2D675; border-radius: 1mm; padding: 1.1mm 2mm; font-weight: 700; font-size: 7.3pt; }
+.key::before { content: "▶ "; color: #B8860B; }
+.upd { background: #EEF3FA; border: .3mm solid #9FB7D9; border-radius: 1mm; padding: 1.1mm 1.8mm; font-size: 6.9pt; }
+.upd .t { font-weight: 800; color: #2F5C9A; }
+.fig { text-align: center; }
+.fig img { max-width: 100%; }
+.foot { margin-top: auto; font-size: 5.8pt; color: #6B7B8C; border-top: .25mm solid #D5E3EC; padding-top: .7mm; }
+.p1 { --c: #5B5BA8; --t: #EEEEF8; }
+.p2 { --c: #1B7FB3; --t: #E6F2F9; }
+.p3 { --c: #2E8B6E; --t: #E8F5F0; font-size: 7.6pt; line-height: 1.4; }
+.p3 table { font-size: 7.1pt; }
+.flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: stretch; gap: 1mm; font-size: 7pt; }
+.flow .s { background: var(--t); border: .3mm solid var(--c); border-radius: 1mm; padding: 1mm 1.5mm; }
+.flow .s b { color: var(--c); display: block; }
+.flow .ar { align-self: center; color: var(--c); font-weight: 900; font-size: 10pt; }
+.tl { display: grid; grid-template-columns: repeat(8, 1fr); font-size: 6.6pt; text-align: center; margin-top: .6mm; }
+.tl div { border: .25mm solid #C9D6E0; padding: .4mm .3mm; }
+.tl .h { background: var(--c); color: #fff; font-weight: 700; }
+.tl .pd { background: var(--t); }
+.tl .on { background: #FFF1B8; font-weight: 700; }
+</style>
+<style>
+html,body{margin:0;background:#fff}
+#mw .page,#mw section.page{width:auto!important;height:auto!important;min-height:0!important;overflow:visible!important;padding:0!important;margin:0!important;box-shadow:none!important;break-after:auto!important;page-break-after:auto!important;background:transparent!important}
+
+/* VOICE 臨床の手引き。落ち着いて、早く引ける
+   IDEA 白衣のポケットに入れる診療カード：紙のチェックシートと同じ配色・色分け
+   PICTURE 色分けされた本文そのものが主役。図は元のまま
+   COLOUR 白地、シートごとの主色、薬剤＝緑、目標値＝黄、警告＝赤
+   TYPE Noto Sans JP 700 + 400
+   LAYOUT 広い画面は2段、狭い画面は1段。項目ごとに開閉、検索で絞り込み */
+:root{color-scheme:light;--c:rgb(91, 91, 168);--line:#c9cfe6;--sub:#5a6178;--tint:#f4f5f9}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:128px}
+body{margin:0;background:#fff;color:#1d2230;font:16px/1.6 'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;overflow-x:clip}
+#mw *{font-family:'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif}
+.wtop{background:var(--c);color:#fff;padding:22px max(4vw,16px) 14px}
+.wtop .wrow{max-width:1360px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 24px}
+h1{margin:0;font-size:clamp(24px,4vw,34px);line-height:1.2;font-weight:700}
+.wupd{font-size:13px;opacity:.9;white-space:nowrap}
+.wlg{max-width:1360px;margin:10px auto 0;font-size:14px;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
+.wlg *{white-space:normal!important;font-size:inherit!important}.wlg :is(.d,.n,.y){color:#1d2230}.wlg :is(.w,.r){color:#ffc2c2!important}
+.wtools{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);padding:10px max(4vw,16px)}
+.wtools .win{max-width:1360px;margin:0 auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#q{flex:1 1 220px;font:inherit;font-size:16px;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:inherit;min-height:44px}
+#q:focus{outline:2px solid var(--c);outline-offset:1px}
+.wtools button{font:inherit;font-size:14px;min-height:44px;padding:0 14px;border-radius:8px;border:1px solid var(--line);background:var(--tint);color:inherit;cursor:pointer}
+#hits{font-size:13px;color:var(--sub);white-space:nowrap}
+.wnav{display:flex;gap:6px;overflow-x:auto;max-width:1360px;margin:8px auto 0;padding-bottom:2px;scrollbar-width:thin}
+.wnav a{flex:none;font-size:13px;color:var(--c);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:5px 11px;white-space:nowrap}
+.wnav .wnp{background:var(--c);color:#fff;border-color:var(--c)}
+:is(.wnav a,.wtools button,.wh):focus-visible{outline:2px solid var(--c);outline-offset:2px}
+main{max-width:1360px;margin:0 auto;padding:6px max(4vw,16px) 40px}
+#mw h2.wpt{background:none;border-radius:0;font-weight:700;display:flex;align-items:center;gap:10px;font-size:21px;color:var(--c);margin:26px 0 12px;padding:0 0 6px;border-bottom:3px solid var(--c);line-height:1.35}
+.wpn{flex:none;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--c);color:#fff;font-size:15px}
+#mw img{max-width:100%;height:auto}
+#mw .wcols{columns:1!important;column-gap:14px;height:auto!important;max-height:none!important;min-height:0!important;flex:none!important;column-fill:balance!important}
+@media(min-width:1100px){#mw .wcols{columns:2!important}}
+@media(max-width:1099px){#mw .wcols *{break-before:auto!important;break-after:auto!important}}
+#mw .tw{overflow-x:auto;max-width:100%}
+.wh{cursor:pointer;position:relative;padding-right:1.6em!important}
+.wh::after{content:'－';position:absolute;right:.4em;top:50%;transform:translateY(-50%);font-weight:400}
+.wclosed>.wh::after{content:'＋'}
+.wclosed>:not(.wh){display:none!important}
+.wh+*{margin-top:0}
+mark{background:#ffd84a;color:inherit;border-radius:2px}
+.hide{display:none!important}
+.wempty{display:none;padding:24px 0;color:var(--sub)}
+@media(max-width:900px){#mw .wst9{display:block!important}#mw .wst9>*{width:auto!important;max-width:none!important;margin-bottom:6px}}
+@media(max-width:640px){#mw .svgw svg{min-width:620px}#mw .svgw img{min-width:560px;max-height:none!important}#mw .wst6{display:block!important}#mw .wst6>*{width:auto!important;max-width:none!important;margin-bottom:6px}.wpt{font-size:18px}}
+@media print{.wtools{display:none}.wtop{background:#fff;color:var(--c);padding:0 0 4px;border-bottom:2px solid var(--c)}.wlg :is(.w,.r){color:#9b1c1c!important}.part+.part{break-before:page}main{padding:0}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}.wh::after{content:''}}
+</style></head><body>
+<header class="wtop"><div class="wrow"><h1>認知症</h1><div class="wupd">最終更新：2026年11月21日</div></div>
+<div class="wlg"></div></header>
+<div class="wtools"><div class="win"><input id="q" type="search" placeholder="キーワードで探す" aria-label="キーワードで探す"><span id="hits"></span><button id="tg" type="button">すべて閉じる</button></div>
+<nav class="wnav" aria-label="項目"><a class="wnp" href="#p1">1</a><a href="#s1">定義と評価</a><a href="#s2">MCIと認知症の違い</a><a href="#s3">病型の鑑別</a><a class="wnp" href="#p2">2</a><a href="#s4">病型・重症度と治療</a><a href="#s5">BPSDへの対応</a><a href="#s6">処方（用法・用量は維持量。開始量・増量は電子添文で確認）</a><a href="#s7">レカネマブ（抗アミロイドβ抗体）と新薬の考え方</a><a href="#s8">治療の基本と薬の使い方</a><a class="wnp" href="#p3">3</a><a href="#s9">治療可能な原因を探す</a><a href="#s10">経過から考える</a><a href="#s11">治療で改善する主な原因</a><a href="#s12">評価の補足</a><a href="#s13">CJDを疑ったら</a></nav></div>
+<main><div id="mw">
+
+<!-- ===================== 表：診断 ===================== -->
+<section class="part" id="p1"><h2 class="wpt"><span class="wpn">1</span>評価・診断・鑑別</h2><section class="page p1" data-z="1.637" style="font-size: 9.46667px; line-height: 1.33; zoom: 1.637;">
+  
+  <div class="rules wst9">
+    <div class="rule wunit wsolo"><b>要点1</b>本人は症状を正確に伝えられないことが多い。家族・介護者から病歴を集め、標準化されたスクリーニング法で評価する</div>
+    <div class="rule wunit wsolo"><b>要点2</b>定義を満たしたら、甲状腺機能低下症・ビタミンB12欠乏症・うつ病を除外し、頭部CTで慢性硬膜下血腫・正常圧水頭症を除外する</div>
+    <div class="rule wunit wsolo"><b>要点3</b>ADは記憶障害で始まる。DLBは前駆症状・幻視・変動・パーキンソニズム、VaDは神経局在症状、FTDは65歳以前の行動障害が手がかり</div>
+  </div>
+
+  <div class="grid g2 wst6">
+    <div class="box wunit" id="s1">
+      <h2 class="wh" role="button" tabindex="0" aria-expanded="true">定義と評価</h2>
+      <ul>
+        <li>定義：記憶障害＋見当識・遂行機能・視空間認知・言語・判断・注意・意欲など大脳皮質機能の後天的低下で、日常生活・社会生活に支障。<span class="y">意識障害のないとき</span>にみられる（せん妄・精神病ではない）</li>
+        <li>最も重要なのは<span class="y">身体機能でなく認知機能の障害でADL・IADLが障害</span>されていること。ADL"DEATH"（着替え・食事・移動・排泄・入浴整容）、IADL"SHAFT"（買い物・掃除・金銭管理・料理・交通機関）</li>
+      </ul>
+      <div class="cap">表1　スクリーニング法</div>
+      <div class="tw"><table>
+        <thead><tr><th style="width:24%">検査</th><th>特徴</th><th style="width:22%">時間・判定</th></tr></thead>
+        <tbody>
+          <tr><th>改訂長谷川式</th><td>日本で一般的。点数化でき説明・経過観察に便利</td><td>約10分</td></tr>
+          <tr><th>MMSE</th><td>国際的。図形模写（double pentagon）で視空間認知を評価</td><td>約10分。23点以下で感度81％・特異度89％</td></tr>
+          <tr><th>MoCA-J</th><td>MCIのスクリーニング</td><td>25点以下で感度93％・特異度87％</td></tr>
+          <tr><th>Mini-Cog</th><td>感度91％、特異度86％（メタ解析）</td><td><span class="y">約3分、5点中3点以下で異常</span></td></tr>
+        </tbody>
+      </table></div>
+      <div class="grid wst6" style="grid-template-columns: 1fr 22mm; gap:2mm; align-items:start">
+        <div>
+          <h3>Mini-Cogのやり方</h3>
+          <ul>
+            <li>Step 1：「桜」「猫」「電車」を復唱（3回まで）。後で聞くと伝える</li>
+            <li>Step 2：<span class="y">10時10分</span>の時計を描く（3分以内）</li>
+            <li>Step 3：三語を遅延再生</li>
+            <li>配点：時計2点＋遅延再生3点＝5点</li>
+          </ul>
+          <h3>総得点だけで判断しない</h3>
+          <ul>
+            <li>ADは長谷川式で①三単語遅延再生→②日時→③野菜の列挙→④5物品の順に障害</li>
+            <li><span class="y">21点以上でもこの4項目がひっかかれば認知症を否定しない</span></li>
+          </ul>
+        </div>
+        <div class="fig"><img src="data:image/png;base64,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" style="max-height:40mm"><div class="cap">図1　認知症患者の時計描画</div></div>
+      </div>
+    </div>
+    <div class="box wunit" id="s2">
+      <h2 class="wh" role="button" tabindex="0" aria-expanded="true">MCIと認知症の違い</h2>
+      <ul>
+        <li>MCI：正常ではないが認知症でもない。日常生活機能は正常。<span class="y">有病率は65歳以上の15〜25％、認知症へ年5〜15％</span></li>
+        <li>認知症では病識がなく、指摘されると取り繕う → <span class="y">取り繕いに気づく</span>。2〜3年で進行すれば認知症の可能性が高い</li>
+      </ul>
+      <div class="cap">表2　軽度認知障害と認知症の違い</div>
+      <div class="tw"><table>
+        <thead><tr><th></th><th>MCI</th><th>認知症</th></tr></thead>
+        <tbody>
+          <tr><th>物忘れの申告者</th><td>本人または家族</td><td>家族</td></tr>
+          <tr><th>病識</th><td>あり</td><td>なし</td></tr>
+          <tr><th>家族の気づき</th><td>なし</td><td>あり</td></tr>
+          <tr><th>生活の支障</th><td>なし</td><td>あり</td></tr>
+          <tr><th>数年で進行</th><td>なし</td><td>あり</td></tr>
+        </tbody>
+      </table></div>
+      <h3>診断の流れ</h3>
+      <div class="flow wst9">
+        <div class="s"><b>①定義を満たすか</b>生活の障害、能力の低下、せん妄・精神病でない、2項目以上の障害</div>
+        <div class="ar">→</div>
+        <div class="s"><b>②treatable dementia除外</b>甲状腺機能低下症、B12欠乏症、うつ病、<span class="y">頭部CT</span>で硬膜下血腫・NPH。感染・自己免疫・腫瘍・てんかん・薬剤も。<span class="y">採血・画像は省略しない</span>。B12欠乏は大球性貧血がなくても否定しない</div>
+        <div class="ar">→</div>
+        <div class="s"><b>③病型</b>Probable AD、VaD、DLB、FTD</div>
+      </div>
+      <h3>病型の目安</h3>
+      <ul>
+        <li>Probable AD：潜行性の発症、進行性、健忘または言語・視空間認知の障害が顕著（同時期の脳血管障害、DLB・FTDの特徴などを除外）</li>
+        <li>VaD：<span class="y">認知症、脳血管障害、両者の時間的関連性の3点が必須</span></li>
+      </ul>
+      <div class="upd"><span class="t">📘 DLBの診断基準（2017年第4版）</span>　中核的特徴＝認知の変動・幻視・RBD・パーキンソニズム。指標的バイオマーカー＝DAT取り込み低下、MIBG心筋シンチ低下、PSGで筋緊張低下を伴わないレム睡眠。Probable＝中核2つ以上、または中核1つ＋バイオマーカー1つ以上</div>
+    </div>
+  </div>
+
+  <div class="box wunit" id="s3">
+    <h2 class="wh" role="button" tabindex="0" aria-expanded="true">病型の鑑別</h2>
+    <div class="grid wst6" style="grid-template-columns: 1.55fr 1fr; gap:2.2mm">
+      <div>
+        <div class="cap" style="margin-top:0">表3　AD・DLB・VaDの鑑別</div>
+        <div class="tw"><table>
+          <thead><tr><th style="width:17%"></th><th>AD</th><th>DLB</th><th>VaD</th></tr></thead>
+          <tbody>
+            <tr><th>発症</th><td>記憶障害で発症</td><td>前駆症状で発症</td><td>神経局在症状で発症が典型的</td></tr>
+            <tr><th>記憶障害</th><td>必発</td><td>初期は目立たないことも。注意・視空間認知障害が目立つ</td><td>実行・遂行機能障害が主</td></tr>
+            <tr><th>幻視</th><td>目立たない</td><td><span class="y">よくある（約44％）</span></td><td>目立たない</td></tr>
+            <tr><th>症状の変動</th><td>通常はない</td><td>目立つ</td><td>みられることがある</td></tr>
+            <tr><th>身体症状</th><td>進行期になってから</td><td>パーキンソニズム</td><td>初期からある</td></tr>
+            <tr><th>RBD</th><td>ない</td><td>目立つ</td><td>ない</td></tr>
+            <tr><th>経過</th><td>緩徐進行</td><td>緩徐進行</td><td>段階的（緩徐進行も）</td></tr>
+            <tr><th>画像</th><td>CTで側頭葉内側の萎縮、SPECTで後部帯状回の血流低下</td><td>DATスキャンで線条体（特に尾状核）の集積低下</td><td>脳血管障害（CTだけでは評価が難しいことも）</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div>
+        <h3 style="margin-top:0">ADの症状の出現経過（初期→中期→末期）</h3>
+        <ul>
+          <li>記憶：近時→即時→遠隔　見当識：<span class="y">日付→場所→人</span></li>
+          <li>言語：喚語困難「あれ」「それ」→錯語→反響言語</li>
+          <li>失行：構成失行→観念運動失行→観念失行・着衣失行</li>
+          <li>BPSD：易怒性・不安・意欲低下・物とられ妄想→徘徊・攻撃性→失禁の隠蔽・不潔行為</li>
+          <li>易怒性・幻視はclosed questionで聞く</li>
+        </ul>
+        <div class="grid wst6" style="grid-template-columns: 1fr 1fr; gap:1.5mm; align-items:center">
+          <div class="fig"><img src="data:image/png;base64,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" style="max-height:15mm"><div class="cap">図2　鳩の模倣</div></div>
+          <div style="font-size:6.8pt">ADでは視空間認知の低下で早期から鳩の影絵がつくれない（構成失行）</div>
+        </div>
+      </div>
+    </div>
+    <div class="grid g2 wst6" style="margin-top:1mm">
+      <div>
+        <h3>DLB：記憶障害の前に何が起きたかを聞く</h3>
+        <div class="tl">
+          <div class="h">9.3年前</div><div class="h">8.7年前</div><div class="h">4.8年前</div><div class="h">4.5年前</div><div class="h">1.2年前</div><div class="h">発症</div><div class="h">1.4年後</div><div class="h">1.5年後</div>
+          <div class="pd">便秘</div><div class="pd">嗅覚低下</div><div class="pd">うつ</div><div class="pd">RBD</div><div class="pd">起立性めまい</div><div class="on">記憶障害</div><div>失神</div><div>幻視・パーキンソニズム</div>
+        </div>
+        <div class="cap">図3　DLBの経過（網掛け＝prodromal DLB）</div>
+        <ul>
+          <li>幻視は人・動物など具体的。パレイドリア（感度100％・特異度88％）。認知の変動は「寝てばかりの日と起きている日があるか」など具体的に聞く</li>
+          <li><span class="r">抗精神病薬で過敏反応をきたしやすい</span>。パーキンソニズムは左右差・安静時振戦が目立たない</li>
+        </ul>
+      </div>
+      <div>
+        <h3>VaD・FTD・CJD・CAA</h3>
+        <ul>
+          <li>VaD：置き忘れより遂行機能障害（電気製品・歯磨きの仕方がわからない）、感情障害。<span class="y">片麻痺・感覚障害・半盲・構音障害・嚥下障害、歩行障害</span>を探す。パーキンソニズムがあっても幻視・変動・RBDはない</li>
+          <li>FTD：前頭側頭型認知症・進行性非流暢性失語・意味性認知症。<span class="y">65歳以前に発症</span>、病初期から対人関係が破綻、脱抑制、共感の欠如、病識なし、常同行為、地誌的見当識は保たれる → <span class="y">早期に専門医へ</span></li>
+          <li>CJD：<span class="y">急速進行性認知症では必ず鑑別</span>。初期に運動症状がなくても否定できない。DWIで皮質・基底核の高信号（感度92％・特異度97％）、髄液RT-QuIC（特異度99〜100％）。<span class="r">治療可能な病態を見逃さないよう専門医と相談</span></li>
+          <li>CAA：高齢者で<span class="y">繰り返す非高血圧性の皮質〜皮質下出血</span>＋認知症。T2*で多発微小出血。<span class="r">抗血栓薬は慎重に</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="key wunit wsolo">病歴は家族から、Mini-Cogは3分。定義 → treatable dementiaの除外（甲状腺・B12・うつ・CT）→ 病型。DLBは便秘・嗅覚低下・うつ・RBDが何年も先行し、抗精神病薬に注意。数週で進むなら"VITAMIN C"、間欠的な健忘は一過性てんかん性健忘・一過性全健忘を考える。</div>
+  <div class="foot">出典：板金 広、上田剛士、矢吹 拓（編）『Common Diseases Up to date 改訂2版』南山堂 第2章 認知症（塩尻俊明）。Mini-Cog：Borson S 2000、Tsoi KKF 2015。図3：Fujishiro H 2013。『レジデントのための神経診療』医学書院 第37章 認知症。井口正寛『ジェネラリストのための神経疾患の診かた』中外医学社 各論1 物忘れ。📘McKeith IG, et al. Neurology 2017;89:88-100。</div>
+</section></section>
+
+<!-- ===================== 裏：治療 ===================== -->
+<section class="part" id="p2"><h2 class="wpt"><span class="wpn">2</span>治療と処方</h2><section class="page p2" data-z="1.637" style="font-size: 9.46667px; line-height: 1.33; zoom: 1.637;">
+  
+  <div class="rules wst9">
+    <div class="rule wunit wsolo"><b>要点1</b>どの病型でも非薬物的介入（家族を含めた環境整備・多職種連携、認知機能訓練・認知刺激・音楽療法など）から始める</div>
+    <div class="rule wunit wsolo"><b>要点2</b>ADは軽度〜中等度でChEI、中等度〜重度でメマンチン（併用可）。MCI・軽度はレカネマブの対象 → 認知症疾患医療センターへ</div>
+    <div class="rule wunit wsolo"><b>要点3</b>BPSDはまず誘因を探す。DLBは専門医と（保険適用はドネペジルのみ）。VaDは脳卒中リスク管理が優先</div>
+  </div>
+
+  <div class="grid g2 wst6">
+    <div class="box wunit" id="s4">
+      <h2 class="wh" role="button" tabindex="0" aria-expanded="true">病型・重症度と治療</h2>
+      <div class="cap" style="margin-top:0">表4　ADの重症度と薬物療法</div>
+      <div class="tw"><table>
+        <thead><tr><th style="width:24%">重症度</th><th>薬物療法</th></tr></thead>
+        <tbody>
+          <tr><th>MCI・軽度</th><td>レカネマブの投与対象。<span class="r">MCIにChEIは勧めない</span>（定期的な運動を勧める）</td></tr>
+          <tr><th>軽度〜中等度</th><td>ChEI。BPSDの改善につながることも。1剤で効果・忍容性に問題があれば他のChEIへ</td></tr>
+          <tr><th>中等度〜重度</th><td>①ChEI ②メマンチン ③①＋②。長期投与は機能・療養先・家族と相談</td></tr>
+        </tbody>
+      </table></div>
+      <div class="grid g2 wst6" style="gap:1.6mm">
+        <div><h3>DLB</h3><ul>
+          <li>専門医の介入が必要。非薬物的介入が優先</li>
+          <li>ChEIが有効。<span class="y">保険適用はドネペジルのみ</span></li>
+          <li>L-ドパは<span class="r">高用量で精神症状が増悪</span>しやすい</li></ul></div>
+        <div><h3>VaD</h3><ul>
+          <li><span class="y">脳卒中リスクの管理が優先</span></li>
+          <li>ChEI・メマンチンは<span class="r">適用外</span>。AD合併例のみ考慮</li></ul></div>
+      </div>
+    </div>
+    <div class="box wunit" id="s5">
+      <h2 class="wh" role="button" tabindex="0" aria-expanded="true">BPSDへの対応</h2>
+      <ul>
+        <li>非薬物的介入が最初：出現時間、誘因（<span class="y">感染症、脱水、痛み、聴力・視力障害</span>）、環境、服薬中の薬の影響を家族・介護スタッフと探って改善する</li>
+        <li>薬物療法：『かかりつけ医・認知症サポート医のためのBPSDに対応する向精神薬使用ガイドライン（第3版）』を参照</li>
+        <li><span class="r">BPSDが活発で対応困難なら専門医へ</span></li>
+      </ul>
+      <div class="upd" style="margin-top:1mm"><span class="t">📘 BPSDガイドライン第3版（2025年6月）</span>　第2版（2016）から9年ぶりの改訂で、治療アルゴリズムを見直し。非薬物療法が第一選択。重度のうつ、他者に危害を加えるおそれの強い妄想、自他を危険にさらす攻撃性など緊急性の高い症状は専門医のいる医療機関へ紹介</div>
+      <h3>専門医へ紹介する場面</h3>
+      <ul>
+        <li>亜急性〜急性の増悪、DLB・FTD・VaDの疑い、診断に自信がもてない、家族が専門的診療を希望</li>
+        <li>ADの可能性が高くBPSDが目立たなければプライマリ・ケアで加療できる</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box wunit" id="s6">
+    <h2 class="wh" role="button" tabindex="0" aria-expanded="true">処方（用法・用量は維持量。開始量・増量は電子添文で確認）</h2>
+    <div class="cap" style="margin-top:0">表5　コリンエステラーゼ阻害薬（ChEI）とメマンチン</div>
+    <div class="tw"><table>
+      <thead><tr><th style="width:15%">薬剤</th><th style="width:22%">特徴</th><th style="width:11%">重症度</th><th style="width:27%">処方例（維持量）</th><th>留意点</th></tr></thead>
+      <tbody>
+        <tr><th>ドネペジル</th><td>中枢AChEに選択性が高い</td><td>軽度〜中等度<br>重度</td><td>アリセプトD錠5 mg 1日1回 朝食後<br>アリセプトD錠10 mg 1日1回 朝食後</td><td>肝・腎機能で調整不要。夜投与で悪夢 → 朝。日中の悪心なら夜へ。ゼリー剤あり</td></tr>
+        <tr><th>ガランタミン</th><td>ニコチン性ACh受容体のアロステリックモジュレーター作用も</td><td>軽度〜中等度</td><td>レミニールOD錠8 mg 1回1錠 1日2回 食後</td><td>肝・腎機能障害では慎重投与</td></tr>
+        <tr><th>リバスチグミン</th><td>AChEとブチリルコリンエステラーゼを阻害</td><td>軽度〜中等度</td><td>イクセロン／リバスタッチパッチ18 mg 1日1回 24時間ごとに貼り替え</td><td>肝障害・低体重で用量調節。貼付薬で内服が増えない</td></tr>
+        <tr><th>メマンチン</th><td>NMDA受容体拮抗薬</td><td>中等度〜重度</td><td>メマリー錠20 mg 1日1回 朝食後</td><td>腎排泄。副作用はChEIより少ない。浮遊感が最多、昏迷・幻覚・興奮</td></tr>
+      </tbody>
+    </table></div>
+    <div class="grid g2 wst6" style="margin-top:1mm">
+      <div>
+        <h3>ChEIの使い方</h3>
+        <ul>
+          <li>3剤とも効果は同じ（6〜12か月でMMSE改善）、副作用にも違いはない。本人のニーズ・生活状況・コストで選ぶ</li>
+          <li>18週の中断率：ドネペジル39％、ガランタミン53％、リバスチグミン59％（主な理由は副作用）</li>
+          <li><span class="y">高齢者は少量から開始</span></li>
+          <li><span class="r">徐脈・心ブロック・洞不全症候群などの心疾患は慎重に</span>（迷走神経刺激で徐脈・不整脈）。<span class="r">β遮断薬・Ca拮抗薬など徐脈をきたす薬との併用に注意</span>。禁忌は成分への過敏症のみ（電子添文）</li>
+        </ul>
+      </div>
+      <div>
+        <div class="cap" style="margin-top:.3mm">表6　ChEIの副作用への対応</div>
+        <div class="tw"><table>
+          <tbody>
+            <tr><th>悪心・下痢</th><td>最多。減量、貼付薬へ切り替え、消化器症状の少ないドネペジルへ変更</td></tr>
+            <tr><th>体重減少</th><td>すぐ中止せず、栄養指導・味の工夫</td></tr>
+            <tr><th>徐脈・低血圧</th><td><span class="r">症候性なら中止</span>。転倒・失神リスク1.5倍</td></tr>
+            <tr><th>睡眠障害</th><td>不眠・悪夢はドネペジルに多い → 朝投与・他剤へ</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box wunit" id="s7">
+    <h2 class="wh" role="button" tabindex="0" aria-expanded="true">レカネマブ（抗アミロイドβ抗体）と新薬の考え方</h2>
+    <div class="grid wst6" style="grid-template-columns: 1fr 1fr; gap:2.2mm">
+      <div>
+        <ul>
+          <li>可溶性Aβプロトフィブリルを除去し、ADによるMCI・軽度認知症の進行抑制を狙う</li>
+          <li>対象：<span class="y">MMSE 22〜30点かつCDR 0.5または1</span>、アミロイドPETなどで<span class="y">Aβの沈着を確認</span></li>
+          <li>レケンビ点滴静注 <span class="y">10 mg/kgを約1時間かけて2週に1回</span>。6か月ごとを目安に臨床評価</li>
+          <li><span class="r">禁忌：重篤な過敏症の既往、投与前の血管原性脳浮腫・5個以上の脳微小出血・脳表ヘモジデリン沈着症・1 cmを超える脳出血</span></li>
+          <li>点滴反応（頭痛・悪寒・発熱・悪心）、ARIA（浮腫・微小出血・脳出血）→ <span class="y">定期的なMRI</span></li>
+          <li>コラム：「進行を約27％抑制」でもCDR-SBの差は0.45ポイント。進行を止めず、症状も改善しない。<span class="r">抗凝固薬使用例・APOEε4保有者でARIAが多い</span>。期待を整え、対象となりうる人を専門医へつなぐ</li>
+        </ul>
+      </div>
+      <div class="upd"><span class="t">📘 抗Aβ抗体薬の最新情報（2026年11月時点）</span>
+        <ul style="margin-top:.5mm">
+          <li>レケンビ皮下注250 mgペン：2026年9月承認。500 mgを週1回皮下投与（在宅自己投与は注射薬リスト掲載後）</li>
+          <li>レカネマブは最適使用推進GLで原則18か月まで。延長は有効性・安全性で判断、中等度以降で中止</li>
+          <li>ARIAを疑う症状があれば投与期間を問わず受診・MRI（2026年6月改訂）</li>
+          <li>APOE遺伝子検査：2026年7月保険収載、8月改訂で投与前に実施を考慮（ε4ホモでARIAが多い）</li>
+          <li>ドナネマブ（ケサンラ）：初回350→700→1,050 mg、以後1,400 mgを4週間隔（2025年8月に漸増法を変更）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="box wunit" id="s8">
+    <h2 class="wh" role="button" tabindex="0" aria-expanded="true">治療の基本と薬の使い方</h2>
+    <div class="grid g2 wst6" style="gap:2mm">
+      <ul>
+        <li>原因疾患があればその治療が先。変性疾患では<span class="y">生活指導・環境調整（介護保険など）が最も重要</span></li>
+        <li>残された能力を活かして生活に対応する。自尊心は保たれている → 尊厳を持って接する。家族の負担も共有し、ケアマネジャーと協力</li>
+      </ul>
+      <ul>
+        <li>治療薬は根本治療ではなく、有用性は限定的。ChEIで<span class="r">かえって興奮・不穏</span>になることも</li>
+        <li>始めるなら効果判定の目安を決める。<span class="r">「病型も分からず、生活指導もせずにとりあえずドネペジル」はご法度</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="key wunit wsolo">非薬物療法から。ChEIは3剤同等で、徐脈・心ブロックなど心疾患では慎重に。中等度〜重度はメマンチン。BPSDはまず感染症・脱水・痛み・聴力視力・薬を探す。MCI・軽度でレカネマブを希望すれば認知症疾患医療センターへ。</div>
+  <div class="foot">出典：『Common Diseases Up to date 改訂2版』南山堂 第2章 認知症（塩尻俊明）、コラム（板金 広）。『レジデントのための神経診療』医学書院 第37章。『ジェネラリストのための神経疾患の診かた』中外医学社 各論1。📘BPSDガイドライン第3版（2025）、厚労省 レカネマブ最適使用推進GL、PMDA 使用上の注意の改訂（2026年6月5日・8月17日）、日本医事新報 2026年10月5日、日本イーライリリー医療関係者向け情報（ケサンラ）。</div>
+</section></section>
+
+<!-- ===================== 3枚目：治療可能な原因・経過 ===================== -->
+<section class="part" id="p3"><h2 class="wpt"><span class="wpn">3</span>治療可能な原因・経過から考える</h2><section class="page p3" data-z="1.53" style="font-size: 10.1333px; line-height: 1.4; zoom: 1.53;">
+  
+  <div class="rules wst9">
+    <div class="rule wunit wsolo"><b>要点1</b>診断で重要なのは治療可能な原因を見逃さないこと。採血・画像のスクリーニングは可能なかぎり省略しない</div>
+    <div class="rule wunit wsolo"><b>要点2</b>変性疾患は数年かけてゆっくり進む。数週間単位で進むなら"VITAMIN C"、間欠的な健忘なら一過性てんかん性健忘を考える</div>
+    <div class="rule wunit wsolo"><b>要点3</b>B12欠乏は大球性貧血がなくても否定しない。Wernicke脳症は三徴が揃うことは稀で、B1補充前の採血検体を保存する</div>
+  </div>
+
+  <div class="grid g2 wst6">
+    <div class="box wunit" id="s9">
+      <h2 class="wh" role="button" tabindex="0" aria-expanded="true">治療可能な原因を探す</h2>
+      <ul>
+        <li>「高齢だから認知症」と安易に変換しない。カルテに「認知症」とだけあれば「原因は何か？」と問い直す</li>
+        <li><span class="y">頻度が多く重要</span>：正常圧水頭症、慢性硬膜下血腫、神経梅毒、HIV感染症、腫瘍、てんかん、内分泌代謝（甲状腺機能低下症、低血糖症、高アンモニア血症、高Ca血症、ビタミンB1・B12欠乏、葉酸欠乏）、薬剤性、うつ病</li>
+        <li>薬剤性：抗ヒスタミン薬、抗コリン薬、抗精神病薬、ベンゾジアゼピン系、睡眠薬の効果遷延</li>
+      </ul>
+      <div class="cap">表7　物忘れ患者の採血セットの例</div>
+      <div class="tw"><table>
+        <tbody>
+          <tr><th>ルーチン</th><td>血算、生化学（AST、ALT、γ-GTP、BUN、Cr、Na、Ca、血糖値、ビタミンB12・葉酸）、内分泌（TSH、fT3、fT4）</td></tr>
+          <tr><th>リスクに応じて</th><td>NH3、ビタミンB1、TPHA、抗HIV抗体。<span class="y">梅毒は増加傾向で、閾値は低く</span></td></tr>
+        </tbody>
+      </table></div>
+      <ul>
+        <li>頭部画像は<span class="y">一度は行う</span>（MRIが望ましく、困難ならCT）。海馬萎縮・高位円蓋部の脳溝狭小化は冠状断、CJDはDWI、微小出血はT2*</li>
+        <li>必要に応じて：髄液（髄膜炎・脳炎、プリオン病なら14-3-3蛋白・RT-QuIC）、脳波（認知機能が変動するときは非けいれん性てんかん重積を考え閾値を低く）、脳血流SPECT</li>
+      </ul>
+    </div>
+    <div class="box wunit" id="s10">
+      <h2 class="wh" role="button" tabindex="0" aria-expanded="true">経過から考える</h2>
+      <ul>
+        <li><span class="r">急性〜亜急性、数週間単位で進む</span>：VaD、CJD、PMLなど中枢神経感染症、ビタミン欠乏、電解質異常、肝性脳症、内分泌疾患、自己免疫性疾患、薬剤性をまず考える</li>
+        <li><span class="y">"VITAMIN C"</span>：Vascular、Infectious、Traumatic、Autoimmune、Metabolic、Idiopathic/Iatrogenic、Neoplasm、Congenital</li>
+        <li><span class="y">間欠的な健忘</span> → 一過性てんかん性健忘：通常1時間以内の健忘発作を繰り返す。発作の間、記憶以外の認知機能は正常。脳波異常、唇鳴らし・嗅覚幻覚、抗てんかん薬への反応が根拠</li>
+        <li>一過性全健忘：突然の前向性＋逆行性健忘、<span class="y">24時間以内に消失</span>。「何で私はここにいるんですか」と繰り返す。自己同一性は保たれ、局所神経症状はない。反復は1割以下</li>
+        <li><span class="r">虚血性脳卒中の0.2％は記憶障害が主症状</span>（一過性全健忘と誤診されうる）。「ここはどこ？私は誰？」は基本的に心因性</li>
+      </ul>
+      <h3>うつ病のスクリーニング（特に高齢者）</h3>
+      <div class="tw"><table>
+        <tbody>
+          <tr><th>PHQ-2</th><td>①何かやろうとしてもほとんど興味がもてなかったり楽しくない　②気分が重かったり、憂うつだったり、絶望的に感じる。最近2週間で各0〜3点（全くない・数日・半分以上・ほぼ毎日）、<span class="y">計3点以上</span>で疑い</td></tr>
+          <tr><th>GDS短縮版</th><td>①毎日の生活に満足していますか　②毎日が退屈だと思うことが多いですか　③自分が無力だなあと思うことが多いですか　④外出や新しいことより家にいたいと思いますか　⑤生きていてもしかたがないと思うことがありますか。①は「いいえ」、②〜⑤は「はい」で1点、<span class="y">2点以上</span>で疑い</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <div class="box wunit" id="s11">
+    <h2 class="wh" role="button" tabindex="0" aria-expanded="true">治療で改善する主な原因</h2>
+    <div class="grid g2 wst6">
+      <div>
+        <h3 style="margin-top:0">特発性正常圧水頭症（iNPH）</h3>
+        <ul>
+          <li>歩行障害（94〜100％で<span class="y">必発に近い</span>）、認知機能障害（78〜98％）、尿症状（76〜83％）。三徴が揃うとは限らない</li>
+          <li>歩行：開脚、歩幅が狭い、足が地面に吸い付くよう。前傾は目立たない</li>
+          <li>画像：<span class="y">Evans index＞0.3</span>、高位円蓋部の脳溝狭小化。髄液圧は200 mmH2O以下</li>
+          <li>髄液排出テスト（30〜50 mL）→ シャント術：主観的改善96％、6か月後の歩行の客観的改善83％、重篤な合併症11％</li>
+        </ul>
+        <h3>ビタミンB1欠乏（Wernicke脳症・コルサコフ症候群）</h3>
+        <ul>
+          <li>アルコール依存症のほか、悪性腫瘍、消化器の疾患・手術、妊娠悪阻でも</li>
+          <li>Caine基準：栄養欠乏、眼症状、小脳失調、軽度の記憶障害または精神症状のうち2つ以上（感度85％）。<span class="r">古典的三徴が揃う感度は23％</span></li>
+          <li>MRI：第三脳室・中脳水道周囲、乳頭体の異常信号</li>
+          <li><span class="y">速やかにB1補充。補充前の採血検体を提出・保存</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="margin-top:0">ビタミンB12欠乏</h3>
+        <ul>
+          <li>認知機能障害、亜急性連合性脊髄変性症、末梢神経障害、舌炎など。<span class="r">神経障害がある患者の25％はMCVが正常</span></li>
+          <li>原因：胃切除、悪性貧血、回腸疾患、摂取不足、<span class="y">薬剤（PPI、H2受容体拮抗薬、メトホルミン、コルヒチン、笑気、アルコール）</span></li>
+          <li>カットオフに議論あり（200 pg/mLで感度65〜95％）。正常下限ならホモシステインを提出</li>
+          <li>B12 1,000〜2,000 μgの内服でも筋注と同等の効果（本邦の製剤は500 μg）</li>
+          <li><span class="r">葉酸を先に投与すると神経症状が悪化 → B12を先に</span></li>
+          <li>完全な回復に6週間〜3か月、約6％に後遺症。<span class="r">治療が6か月遅れると不可逆的になりやすい</span></li>
+        </ul>
+        <h3>葉酸欠乏</h3>
+        <ul>
+          <li>B12欠乏と似るが抑うつをきたしやすい。3 ng/mLが便宜上のカットオフ。葉酸内服を6か月以上</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid g2 wst6">
+    <div class="box wunit" id="s12">
+      <h2 class="wh" role="button" tabindex="0" aria-expanded="true">評価の補足</h2>
+      <div class="cap" style="margin-top:0">表8　高次脳機能障害と対応する部位</div>
+      <div class="tw"><table>
+        <tbody>
+          <tr><th>前頭葉</th><td>自発性低下、常同行動、脱抑制、運動性失語</td></tr>
+          <tr><th>側頭葉</th><td>記憶障害、感覚性失語</td></tr>
+          <tr><th>頭頂葉</th><td>半側空間無視、失行</td></tr>
+          <tr><th>頭頂葉〜後頭葉</th><td>視空間認知障害</td></tr>
+        </tbody>
+      </table></div>
+      <ul>
+        <li>「認知が悪い」と漠然ととらえず、<span class="y">具体的に何が悪いか</span>を特定する</li>
+        <li>改訂長谷川式は視空間認知・遂行機能の項目に乏しい → <span class="y">時計描画（CDT）を組み合わせる</span>。難聴で点数が下がることに注意。MMSEは教育年数の影響を受けやすい</li>
+        <li>意識障害・せん妄・発熱があるときは認知症と診断しない</li>
+        <li>MCI：健忘型はAD、非健忘型はDLB・FTDと関係。<span class="r">ChEIは勧めない</span>。定期的な運動（週2回）を勧める</li>
+        <li>修正できる可能性のある危険因子は計35％（難聴9.1％、低学歴7.5％、喫煙5.5％、抑うつ4.0％など）</li>
+      </ul>
+    </div>
+    <div class="box wunit" id="s13">
+      <h2 class="wh" role="button" tabindex="0" aria-expanded="true">CJDを疑ったら</h2>
+      <ul>
+        <li>強く疑う：<span class="y">急性〜亜急性の進行、ミオクローヌス、DWIで皮質・基底核の高信号</span>。本邦の孤発性の85.3％はMM1型で、ミオクローヌスが97％</li>
+        <li>ほぼ確実例：①急速進行性認知症　②ミオクローヌス、視覚または小脳症状、錐体路または錐体外路症状、無動性無言のうち2項目以上　③脳波でPSD。PSDがなくても髄液14-3-3蛋白陽性で経過2年未満ならほぼ確実例</li>
+        <li>髄液RT-QuIC法は本邦でも検査できる（サーベイランスに登録）</li>
+        <li>感染予防：非侵襲的な医療は標準予防策で十分、隔離は不要。<span class="r">手術は可能な限りディスポーザブルの機器</span></li>
+        <li>DWIの皮質高信号はてんかん重積、脳梗塞のごく初期でもみられる</li>
+      </ul>
+      <div class="upd" style="background:#FDECEA;border-color:#E6A5A0"><span class="t" style="color:#C0392B">ご法度</span>　治療可能な認知症を見逃すこと。CJDを見逃して、無防備な髄液検査や感染対策が不十分な手術を行うこと。急速に進む認知機能低下、CJDの疑いは専門医へ</div>
+    </div>
+  </div>
+
+  <div class="key wunit wsolo">採血・画像は省略しない。数週で進むなら"VITAMIN C"、間欠的なら一過性てんかん性健忘。B12は大球性貧血がなくても否定せず、葉酸より先に補充。Wernicke脳症はB1補充前に検体を保存。歩行障害＋脳室拡大はiNPHを考える。</div>
+  <div class="foot">出典：井口正寛『ジェネラリストのための神経疾患の診かた』中外医学社 各論1 物忘れ。『レジデントのための神経診療』医学書院 第37章。杉田陽一郎『研修医のための内科診療ことはじめ』羊土社 第5章 認知症。表7：Feldman HH 2008、Frank C 1998。危険因子：Livingston G 2017。うつ病：Whooley MA 1997、Hoyl MT 1999。CJD診断基準：プリオン病診療ガイドライン2017。</div>
+</section></section>
+</div><p class="wempty" id="none">該当する項目はありません。</p></main>
+<script>
+{
+const q=document.getElementById('q'),hits=document.getElementById('hits'),tg=document.getElementById('tg'),none=document.getElementById('none');
+const units=[...document.querySelectorAll('#mw .wunit')].filter(u=>!u.parentElement.closest('.wunit'));
+const parts=[...document.querySelectorAll('#mw .part')];
+const orig=new Map(units.map(u=>[u,u.innerHTML]));
+const setOpen=(u,o)=>{u.classList.toggle('wclosed',!o);const h=u.querySelector(':scope>.wh');if(h)h.setAttribute('aria-expanded',o?'true':'false');};
+document.addEventListener('click',e=>{const h=e.target.closest('.wh');if(!h)return;const u=h.parentElement;setOpen(u,u.classList.contains('wclosed'));});
+document.addEventListener('keydown',e=>{const h=e.target.closest&&e.target.closest('.wh');if(h&&(e.key==='Enter'||e.key===' ')){e.preventDefault();h.click();}});
+document.querySelectorAll('.wnav a').forEach(a=>a.addEventListener('click',()=>{const u=document.querySelector(a.getAttribute('href'));if(u&&u.classList.contains('wunit'))setOpen(u,true);}));
+const esc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+const mark=(el,re)=>{const w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);const ns=[];while(w.nextNode())ns.push(w.currentNode);
+  ns.forEach(t=>{re.lastIndex=0;if(!re.test(t.data))return;re.lastIndex=0;const f=document.createDocumentFragment();let i=0,m;while((m=re.exec(t.data))){f.append(t.data.slice(i,m.index));const k=document.createElement('mark');k.textContent=m[0];f.append(k);i=m.index+m[0].length;}f.append(t.data.slice(i));t.replaceWith(f);});};
+const others=parts.map(p=>[...p.querySelectorAll('.page *')].filter(e=>!e.closest('.wunit')&&!e.querySelector('.wunit')&&e.parentElement.querySelector(':scope>.wunit')));
+const run=()=>{const v=q.value.trim();units.forEach(u=>{u.innerHTML=orig.get(u);});
+  if(!v){[...units,...parts,...others.flat()].forEach(e=>e.classList.remove('hide'));hits.textContent='';none.style.display='none';return;}
+  const re=new RegExp(esc(v),'gi');let c=0;
+  units.forEach(u=>{const ok=u.textContent.toLowerCase().includes(v.toLowerCase());u.classList.toggle('hide',!ok);if(ok){c++;setOpen(u,true);mark(u,re);}});
+  others.flat().forEach(e=>e.classList.add('hide'));
+  parts.forEach(p=>p.classList.toggle('hide',!p.querySelector('.wunit:not(.hide)')));
+  hits.textContent=c+'件';none.style.display=c?'none':'block';};
+q.addEventListener('input',run);
+tg.addEventListener('click',()=>{const open=tg.textContent==='すべて開く';units.forEach(u=>{if(u.querySelector(':scope>.wh'))setOpen(u,open);});tg.textContent=open?'すべて閉じる':'すべて開く';});
+window.addEventListener('beforeprint',()=>units.forEach(u=>setOpen(u,true)));
+}
+</script>
+</body></html>
