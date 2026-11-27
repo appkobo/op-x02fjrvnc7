@@ -231,6 +231,16 @@
         if (!d || !d.body || d.location.href === "about:blank") return;
         setLoading(null);
         d.documentElement.style.zoom = fsHtmlZoom();
+        // 図は画面の幅に収めて出し、タップで拡大（図の中だけ横に動かす）
+        var stl = d.createElement("style");
+        stl.textContent = "#mw .svgw img{min-width:0!important;max-width:100%!important;height:auto!important;max-height:none!important;cursor:zoom-in}" +
+          "#mw .svgw.opz{overflow-x:auto!important}#mw .svgw.opz img{width:230%!important;max-width:none!important;cursor:zoom-out}" +
+          "#mw .fig .svgw:not(.opz)::after{content:'図をタップで拡大';display:block;font-size:11px;color:#6b7186;text-align:right;line-height:1.4}";
+        d.head.appendChild(stl);
+        d.addEventListener("click", function (e) {
+          var im = e.target.closest && e.target.closest("#mw .svgw img"); if (!im) return;
+          im.closest(".svgw").classList.toggle("opz");
+        });
         var pad = function () { var t = d.querySelector(".wtools"); if (t) d.documentElement.style.scrollPaddingTop = (t.offsetHeight + 8) + "px"; };   // 上に固定された検索欄に見出しが隠れないようにする
         pad(); my.pad = pad;
         var h1 = d.querySelector(".wtop h1"); if (h1) h1.textContent = s.name + (s.sub ? "　" + s.sub : "");
