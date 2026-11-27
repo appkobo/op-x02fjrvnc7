@@ -27,9 +27,9 @@ svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke
 #btnStar.on svg{fill:var(--acc);stroke:var(--acc)}
 
 /* 一覧 */
-#homeMain{flex:1;overflow-y:auto;padding:8px 12px 20px;-webkit-overflow-scrolling:touch}
+#homeMain{flex:1;overflow-y:auto;overflow-x:hidden;padding:8px 12px 20px;-webkit-overflow-scrolling:touch}
 .grp{margin:14px 4px 6px;font-size:13px;font-weight:700;color:var(--mut);letter-spacing:.06em}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr));gap:8px}
 .card{display:flex;align-items:center;gap:10px;width:100%;min-height:64px;padding:10px 6px 10px 14px;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:14px}
 .card:active{border-color:var(--acc)}
 .card .t{flex:1;min-width:0}
@@ -112,3 +112,10 @@ a.card{color:inherit;text-decoration:none}
 .fl select,.fl textarea{display:block;width:100%;margin-top:6px;padding:11px 12px;font:inherit;font-size:16px;color:var(--tx);background:var(--bg);border:1px solid var(--line);border-radius:12px}
 .fl textarea{resize:vertical;line-height:1.6}
 .fnote{font-size:12.5px!important;color:var(--mut)}
+
+/* 文字サイズ */
+#homeMain,#sheetBody{zoom:var(--fz,1)}
+.ic.txt{font-size:19px;font-weight:700;line-height:1}
+.seg{display:flex;gap:8px;margin:8px 2px}
+.seg button{flex:1;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:1px solid var(--line);border-radius:12px;font-size:13px;color:var(--tx)}
+.seg button.on{border-color:var(--acc);background:rgba(232,131,58,.16);font-weight:700}

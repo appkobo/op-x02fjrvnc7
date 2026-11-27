@@ -9,8 +9,8 @@
   var STAR = '<svg viewBox="0 0 24 24"><path d="M12 3.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.7l5.8-.8z"/></svg>';
 
   /* ---------- 端末内の記録（お気に入り・最近・読んでいた位置） ---------- */
-  var st = { fav: [], recent: [], pos: {} };
-  try { var raw = JSON.parse(localStorage.getItem("op1") || "{}"); st.fav = raw.fav || []; st.recent = raw.recent || []; st.pos = raw.pos || {}; } catch (e) {}
+  var st = { fav: [], recent: [], pos: {}, fs: 0 };
+  try { var raw = JSON.parse(localStorage.getItem("op1") || "{}"); st.fav = raw.fav || []; st.recent = raw.recent || []; st.pos = raw.pos || {}; st.fs = [0, 1, 2].indexOf(raw.fs) >= 0 ? raw.fs : 0; } catch (e) {}
   st.fav = st.fav.filter(function (i) { return BY[i]; });
   st.recent = st.recent.filter(function (i) { return BY[i]; });
   function save() { try { localStorage.setItem("op1", JSON.stringify(st)); } catch (e) {} }
@@ -167,6 +167,21 @@
   var scroller = $("scroller"), pagesEl = $("pages");
   var cur = null;            // 開いているシートの状態
   var zoom = 1, ZMIN = 1, ZMAX = 3;
+  /* 文字サイズ：0 標準／1 大／2 特大。一覧や説明の文字と、シートを開いたときの大きさに効く */
+  var FS_UI = [1, 1.15, 1.3], FS_SHEET = [1, 1.25, 1.5], FS_NAME = ["標準", "大", "特大"];
+  function sheetScale() { return FS_SHEET[st.fs] || 1; }
+  function startZoom() { return scroller.clientWidth >= 640 ? 1 : sheetScale(); }   // 広い画面は並べる枚数を減らして大きくする。狭い画面は拡大して開く
+  function applyFs() { document.documentElement.style.setProperty("--fz", FS_UI[st.fs] || 1); }
+  function fsHtml() {
+    return '<div class="seg" role="group" aria-label="文字サイズ">' + FS_NAME.map(function (n, i) {
+      return '<button data-fs="' + i + '"' + (st.fs === i ? ' class="on" aria-pressed="true"' : ' aria-pressed="false"') + '><span style="font-size:' + (14 + i * 3) + 'px">あ</span>' + n + "</button>";
+    }).join("") + "</div>";
+  }
+  function setFs(i) {
+    st.fs = i; save(); applyFs();
+    Array.prototype.forEach.call(document.querySelectorAll("[data-fs]"), function (b) { var on = +b.dataset.fs === i; b.classList.toggle("on", on); b.setAttribute("aria-pressed", on); });
+    if (cur && cur.pgs.length) { var p = cur.page; zoom = startZoom(); layout(); updateZoomLabel(); scroller.scrollLeft = 0; scrollToPage(p - 1, 0, false); cur.gen++; pump(); }
+  }
   var DPR = Math.min(window.devicePixelRatio || 1, 3);
   var ONE_MAX = 10e6, ALL_MAX = 36e6;   // 1ページ・全体で持つ画素数の上限
 
@@ -188,8 +203,8 @@
     var s = BY[id]; if (!s) return;
     closeSheetDoc();
     var my = cur = { s: s, pdf: null, pgs: [], vis: {}, gen: 0, page: 1, busy: false, links: {} };
-    zoom = 1;
     showView("viewer");
+    zoom = startZoom();
     $("vName").textContent = s.name; $("vSub").textContent = s.sub;
     updateStar(); updateZoomLabel();
     if (push) history.pushState({ s: id }, "", "#" + id);
@@ -239,9 +254,9 @@
     refreshSaved().then(renderHome); renderHome();
   }
 
-  function cols() { var w = scroller.clientWidth; return w >= 1000 ? 3 : w >= 640 ? 2 : 1; }
+  function cols() { var w = scroller.clientWidth / sheetScale(); return w >= 1000 ? 3 : w >= 640 ? 2 : 1; }
   function layout() {
-    var n = cols(), base = Math.min(scroller.clientWidth, n * 470);
+    var n = cols(), base = Math.min(scroller.clientWidth, n * 470 * sheetScale());
     pagesEl.style.gridTemplateColumns = "repeat(" + n + ",1fr)";
     pagesEl.style.width = Math.round(base * zoom) + "px";
   }
@@ -388,7 +403,7 @@
   }
   $("btnIn").addEventListener("click", function () { setZoom(zoom < 1.5 ? 1.5 : zoom < 2 ? 2 : zoom + 0.5); });
   $("btnOut").addEventListener("click", function () { setZoom(zoom > 2 ? zoom - 0.5 : zoom > 1.5 ? 1.5 : 1); });
-  $("btnZoom").addEventListener("click", function () { setZoom(1); });
+  $("btnZoom").addEventListener("click", function () { setZoom(Math.abs(zoom - startZoom()) < 0.03 ? 1 : startZoom()); });
 
   var pinch = null, lastTap = null;
   function dist(t) { return Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY); }
@@ -406,11 +421,11 @@
     var t = e.changedTouches[0], now = Date.now();
     if (lastTap && now - lastTap.t < 320 && Math.hypot(t.clientX - lastTap.x, t.clientY - lastTap.y) < 32) {
       e.preventDefault(); lastTap = null;
-      setZoom(zoom > 1.05 ? 1 : 2, t.clientX, t.clientY);
+      setZoom(zoom > startZoom() + 0.05 ? startZoom() : 2, t.clientX, t.clientY);
     } else lastTap = { t: now, x: t.clientX, y: t.clientY };
   }, { passive: false });
   scroller.addEventListener("touchmove", function () { lastTap = null; }, { passive: true });
-  scroller.addEventListener("dblclick", function (e) { setZoom(zoom > 1.05 ? 1 : 2, e.clientX, e.clientY); });
+  scroller.addEventListener("dblclick", function (e) { setZoom(zoom > startZoom() + 0.05 ? startZoom() : 2, e.clientX, e.clientY); });
   scroller.addEventListener("wheel", function (e) {
     if (!e.ctrlKey) return; e.preventDefault();
     setZoom(zoom * (e.deltaY < 0 ? 1.12 : 1 / 1.12), e.clientX, e.clientY);
@@ -453,7 +468,13 @@
     }).join(""));
     var c = $("sheetBody").querySelector(".cur"); if (c) c.scrollIntoView({ block: "center" });
   });
+  $("btnFs").addEventListener("click", function () {
+    openPanel("<h2>文字サイズ</h2>" + fsHtml() + "<p>一覧や説明の文字と、シートを開いたときの大きさが変わる。画面の幅に収まらないときは、横にも動かして読む。</p>");
+  });
+  $("btnFs2").addEventListener("click", function () { $("btnFs").click(); });
   $("sheetBody").addEventListener("click", function (e) {
+    var fsb = e.target.closest("[data-fs]");
+    if (fsb) { setFs(+fsb.dataset.fs); return; }
     var g = e.target.closest("[data-go]");
     if (g) { var pg = +g.dataset.go, fr = +g.dataset.f || 0; closePanel(); setTimeout(function () { scrollToPage(pg - 1, fr, false); flash(pg - 1); }, 60); return; }
     if (e.target.id === "saveAll") saveAll(e.target);
@@ -472,7 +493,8 @@
       "<h3>圏外で使う</h3><p>一度開いたシートは端末に保存され、次からは通信なしで開ける。先に全部保存しておくこともできる。<br>端末に保存済み：<b id=\"savedN\">" + n + " / " + SHEETS.length + "</b></p>" +
       (hasCaches() ? '<button class="big" id="saveAll"' + (n === SHEETS.length ? " disabled" : "") + ">" + (n === SHEETS.length ? "すべて保存済み" : "すべて端末に保存（約" + mb + "MB）") + "</button>" : "<p>このブラウザでは端末への保存が使えない。</p>") +
       "<h3>ホーム画面に置く</h3><p>ブラウザのメニューから「ホーム画面に追加」を選ぶと、アプリのように起動できる。</p>" +
-      "<h3>操作</h3><p>拡大はピンチ、ダブルタップ、右下の＋−。倍率の数字を押すと元に戻る。目次の行をタップするとその項目へ移動する。前回読んでいたページから再開する。</p>" +
+      "<h3>文字サイズ</h3>" + fsHtml() +
+      "<h3>操作</h3><p>拡大はピンチ、ダブルタップ、右下の＋−。倍率の数字を押すと元に戻る。文字サイズは右上の「あ」からも変えられる。目次の行をタップするとその項目へ移動する。前回読んでいたページから再開する。</p>" +
       "<h3>注意</h3><p>個人で作成した学習用のまとめで、内容の正確さを保証するものではない。診療に使うときは、各シートに記載の原典・最新のガイドライン・添付文書を確認すること。患者情報は入力・保存しない。</p>" +
       (C.feedback ? '<h3>ご意見・お問い合わせ</h3><p>内容の誤りや使いにくい点があれば知らせてください。</p><button class="big ghost" id="fbOpen">ご意見・お問い合わせを書く</button>' : "") +
       '<button class="big ghost" id="reload">最新版を確認して読み込み直す</button>' +
@@ -554,6 +576,7 @@
   }
   setTimeout(checkFresh, 1200);
   document.addEventListener("visibilitychange", function () { if (!document.hidden) checkFresh(); });
+  applyFs();
   var m = location.hash.match(/^#([a-z0-9-]+)(?:\/(\d+))?$/);
   history.replaceState({}, "", location.pathname + location.search);
   renderHome();

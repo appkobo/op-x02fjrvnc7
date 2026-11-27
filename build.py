@@ -6,7 +6,7 @@ PDFのフォルダには <id>.pdf を置く。載せるシートは plan.json �
 import sys, os, re, json, shutil, hashlib, subprocess, unicodedata
 from PIL import Image, ImageDraw
 
-VERSION = "1.2"
+VERSION = "1.3"
 HERE = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(HERE, "src")
 PDFJS = os.path.join(HERE, "node_modules", "pdfjs-dist", "build")
