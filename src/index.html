@@ -41,10 +41,12 @@
   <header class="bar">
     <button id="btnBack" class="ic" aria-label="一覧に戻る"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
     <div class="ttl"><b id="vName"></b><span id="vSub"></span></div>
+    <button id="btnMode" class="ic mode" hidden></button>
     <button id="btnFs2" class="ic txt" aria-label="文字サイズ">あ</button>
     <button id="btnStar" class="ic" aria-label="お気に入り"><svg viewBox="0 0 24 24"><path d="M12 3.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.7l5.8-.8z"/></svg></button>
   </header>
   <div id="scroller"><div id="pages"></div></div>
+  <iframe id="hframe" title="シート本文" hidden></iframe>
   <div id="loading" class="loading" hidden><span></span><p id="loadMsg">読み込み中</p></div>
   <div class="dock vdock">
     <button id="btnToc" class="tb"><svg viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h9"/></svg><span>目次</span></button>

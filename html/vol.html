@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>体液量・浮腫・利尿薬チェックシート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.p1 .t{font-size:9px}.p2 .t{font-size:7.6px}.p2 .rule{font-size:8px}.p2 .h{font-size:9.4px}.p1 .rule{font-size:9.2px}
+.sec{break-inside:avoid;margin:0 0 4px 0;border:1px solid #c9cfe6}
+.h{display:flex;align-items:center;gap:5px;background:#e7eaf6;color:#1e2a66;font-weight:700;font-size:10px;padding:2px 6px;border-bottom:1px solid #c9cfe6}
+.b{padding:2px 6px 2px 6px}
+.b p{margin:0 0 1.5px 0;padding-left:7px;text-indent:-7px}
+.sub{font-weight:700;color:#1e2a66;margin:2px 0 1px 0}
+.src{font-size:6.8px;color:#6b7186;text-align:right;margin-top:1px;padding:0;text-indent:0}
+.d{background:#e1efe3;padding:0 1px}
+.n{background:#fff1bf;padding:0 1px}
+.w{color:#9b1c1c}
+.t{width:100%;border-collapse:collapse;margin:2px 0 1px 0;font-size:8.2px;line-height:1.3}
+.t th,.t td{border:1px solid #b9c1de;padding:1px 3px;text-align:left;vertical-align:top}
+.t th{background:#f1f3fa;font-weight:500;color:#1e2a66;text-align:center;vertical-align:middle}
+.t td.rh{background:#f1f3fa;font-weight:700;color:#1e2a66}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.rule{background:#eef1f8;border-left:3px solid #26326e;padding:2px 5px;font-size:8.6px;line-height:1.35}
+.rule b{color:#26326e;margin-right:3px}
+.flow{display:flex;gap:2px;align-items:stretch;margin:2px 0}
+.flow div{flex:1;border:1px solid #b9c1de;background:#f7f8fc;padding:1px 3px;font-size:8px;line-height:1.3}
+.flow span{align-self:center;color:#4a5a9a;font-weight:700}
+</style>
+<style>
+html,body{margin:0;background:#fff}
+#mw .page,#mw section.page{width:auto!important;height:auto!important;min-height:0!important;overflow:visible!important;padding:0!important;margin:0!important;box-shadow:none!important;break-after:auto!important;page-break-after:auto!important;background:transparent!important}
+
+/* VOICE 臨床の手引き。落ち着いて、早く引ける
+   IDEA 白衣のポケットに入れる診療カード：紙のチェックシートと同じ配色・色分け
+   PICTURE 色分けされた本文そのものが主役。図は元のまま
+   COLOUR 白地、シートごとの主色、薬剤＝緑、目標値＝黄、警告＝赤
+   TYPE Noto Sans JP 700 + 400
+   LAYOUT 広い画面は2段、狭い画面は1段。項目ごとに開閉、検索で絞り込み */
+:root{color-scheme:light;--c:rgb(30, 42, 102);--line:#c9cfe6;--sub:#5a6178;--tint:#f4f5f9}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:128px}
+body{margin:0;background:#fff;color:#1d2230;font:16px/1.6 'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;overflow-x:clip}
+#mw *{font-family:'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif}
+.wtop{background:var(--c);color:#fff;padding:22px max(4vw,16px) 14px}
+.wtop .wrow{max-width:1360px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 24px}
+h1{margin:0;font-size:clamp(24px,4vw,34px);line-height:1.2;font-weight:700}
+.wupd{font-size:13px;opacity:.9;white-space:nowrap}
+.wlg{max-width:1360px;margin:10px auto 0;font-size:14px;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
+.wlg *{white-space:normal!important;font-size:inherit!important}.wlg :is(.d,.n,.y){color:#1d2230}.wlg :is(.w,.r){color:#ffc2c2!important}
+.wtools{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);padding:10px max(4vw,16px)}
+.wtools .win{max-width:1360px;margin:0 auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#q{flex:1 1 220px;font:inherit;font-size:16px;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:inherit;min-height:44px}
+#q:focus{outline:2px solid var(--c);outline-offset:1px}
+.wtools button{font:inherit;font-size:14px;min-height:44px;padding:0 14px;border-radius:8px;border:1px solid var(--line);background:var(--tint);color:inherit;cursor:pointer}
+#hits{font-size:13px;color:var(--sub);white-space:nowrap}
+.wnav{display:flex;gap:6px;overflow-x:auto;max-width:1360px;margin:8px auto 0;padding-bottom:2px;scrollbar-width:thin}
+.wnav a{flex:none;font-size:13px;color:var(--c);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:5px 11px;white-space:nowrap}
+.wnav .wnp{background:var(--c);color:#fff;border-color:var(--c)}
+:is(.wnav a,.wtools button,.wh):focus-visible{outline:2px solid var(--c);outline-offset:2px}
+main{max-width:1360px;margin:0 auto;padding:6px max(4vw,16px) 40px}
+#mw h2.wpt{background:none;border-radius:0;font-weight:700;display:flex;align-items:center;gap:10px;font-size:21px;color:var(--c);margin:26px 0 12px;padding:0 0 6px;border-bottom:3px solid var(--c);line-height:1.35}
+.wpn{flex:none;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--c);color:#fff;font-size:15px}
+#mw img{max-width:100%;height:auto}
+#mw .wcols{columns:1!important;column-gap:14px;height:auto!important;max-height:none!important;min-height:0!important;flex:none!important;column-fill:balance!important}
+@media(min-width:1100px){#mw .wcols{columns:2!important}}
+@media(max-width:1099px){#mw .wcols *{break-before:auto!important;break-after:auto!important}}
+#mw .tw{overflow-x:auto;max-width:100%}
+.wh{cursor:pointer;position:relative;padding-right:1.6em!important}
+.wh::after{content:'－';position:absolute;right:.4em;top:50%;transform:translateY(-50%);font-weight:400}
+.wclosed>.wh::after{content:'＋'}
+.wclosed>:not(.wh){display:none!important}
+.wh+*{margin-top:0}
+mark{background:#ffd84a;color:inherit;border-radius:2px}
+.hide{display:none!important}
+.wempty{display:none;padding:24px 0;color:var(--sub)}
+@media(max-width:900px){#mw .wst9{display:block!important}#mw .wst9>*{width:auto!important;max-width:none!important;margin-bottom:6px}}
+@media(max-width:640px){#mw .svgw svg{min-width:620px}#mw .svgw img{min-width:560px;max-height:none!important}#mw .wst6{display:block!important}#mw .wst6>*{width:auto!important;max-width:none!important;margin-bottom:6px}.wpt{font-size:18px}}
+@media print{.wtools{display:none}.wtop{background:#fff;color:var(--c);padding:0 0 4px;border-bottom:2px solid var(--c)}.wlg :is(.w,.r){color:#9b1c1c!important}.part+.part{break-before:page}main{padding:0}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}.wh::after{content:''}}
+</style></head><body>
+<header class="wtop"><div class="wrow"><h1>体液量・浮腫・利尿薬チェックシート</h1><div class="wupd">最終更新：2026年11月13日</div></div>
+<div class="wlg"><span class="d">薬剤</span>　<span class="n">目標値・基準</span>　<span class="w">警告</span></div></header>
+<div class="wtools"><div class="win"><input id="q" type="search" placeholder="キーワードで探す" aria-label="キーワードで探す"><span id="hits"></span><button id="tg" type="button">すべて閉じる</button></div>
+<nav class="wnav" aria-label="項目"><a class="wnp" href="#p1">1</a><a href="#s1">1. 浮腫の成因（5つ）</a><a href="#s2">2. 浮腫の鑑別：部位 × 性状</a><a href="#s3">3. 見逃さない：ビタミンB1欠乏</a><a href="#s4">4. 溢水・脱水を示唆する臨床所見</a><a href="#s5">5. 身体所見のポイント</a><a href="#s6">6. 溢水・浮腫のピットフォール</a><a class="wnp" href="#p2">2</a><a href="#s7">1. 作用機序と作用部位</a><a href="#s8">2. 具体的な使い分け</a><a href="#s9">3. 使用上の注意点</a><a href="#s10">4. 利尿薬抵抗性の病態への対応</a></nav></div>
+<main><div id="mw">
+
+<div style="width: auto; display: flex; flex-direction: column; gap: 0px; background: transparent; padding: 0px; border: 0px; box-shadow: none;">
+<section class="part" id="p1"><h2 class="wpt"><span class="wpn">1</span>浮腫と体液量の評価</h2><div class="page p1" style="width: auto; height: auto; box-sizing: border-box; padding: 18px 22px 14px; font-family: &quot;Noto Sans JP&quot;, &quot;Noto Sans CJK JP&quot;, sans-serif; font-size: 10.6px; line-height: 1.5; color: rgb(29, 34, 48); background: rgb(255, 255, 255); display: flex; flex-direction: column; gap: 6px; overflow: visible; break-after: page; zoom: 1.462;" data-z="1.462">
+
+
+<div class="rules wst6">
+<div class="rule wunit wsolo"><b>浮腫は2軸で分ける</b>「両側か片側か」「圧痕性か非圧痕性か」で分け、成因5つ（静脈圧上昇／血管透過性亢進／膠質浸透圧低下／リンパ管閉塞／間質への物質沈着）に当てはめる</div>
+<div class="rule wunit wsolo"><b>常に薬剤性を考える</b>何らかの身体異常をきたした場合、「常に医原性（≒薬剤性）の可能性は頭の片隅に置いておく」のが鉄則</div>
+<div class="rule wunit wsolo"><b>体液量は総合判断</b>体液量を1つの指標単独で評価することはできない。「溢水らしさ」「脱水らしさ」を集め、<span class="n">普段の値との比較</span>で判断する。最も鋭敏な指標は<span class="n">体重</span></div>
+<div class="rule wunit wsolo"><b>血管内脱水 ≠ 体液量減少</b>血管内脱水はあるが体全体の体液量は溢水、という場合がある（例：微小変化型ネフローゼ症候群）。CS1心不全は「体液分布の異常」</div>
+</div>
+
+<div class="cols wcols" style="column-gap: 12px;">
+
+<div class="sec wunit" id="s1"><div class="h wh" role="button" tabindex="0" aria-expanded="true">1. 浮腫の成因（5つ）</div><div class="b">
+<p>・毛細血管網で組織と物質をやり取りした血漿成分は、静脈系へ戻るほか、一部は細胞内・間質に分布し、一部はリンパ管へ移動する。リンパ管は合流して胸管となり、最終的に鎖骨下静脈へ流入する</p>
+<div class="tw"><table class="t">
+<tbody><tr><th style="width:38%">病態</th><th>原疾患の例</th></tr>
+<tr><td class="rh">① 静脈圧の上昇<br>→血管内から間質への水分漏出</td><td>溢水・Na貯留、血管閉塞（DVT、うっ滞性皮膚炎など）、薬剤性浮腫（<span class="d">Ca拮抗薬</span>、<span class="d">甘草</span>、<span class="d">NSAIDs</span>など）、ビタミンB1欠乏</td></tr>
+<tr><td class="rh">② 血管抵抗減少・血管透過性亢進<br>→血管外への水分漏出</td><td>熱傷、蜂窩織炎、RS3PE症候群／血管炎などの免疫異常</td></tr>
+<tr><td class="rh">③ 血管内の膠質浸透圧低下<br>→血管内から間質への水分漏出</td><td>低アルブミン血症をきたす疾患（ネフローゼ症候群、肝硬変）</td></tr>
+<tr><td class="rh">④ リンパ管閉塞<br>→間質内に液貯留</td><td>リンパ節郭清後、癌性リンパ管症、フィラリア症、放射線照射</td></tr>
+<tr><td class="rh">⑤ 間質への物質沈着</td><td>甲状腺機能低下症・粘液水腫（ムコ多糖の沈着）</td></tr>
+</tbody></table></div>
+<p>・ビタミンB1欠乏は「組織内のATP産生障害に伴う高拍出性心不全」「細動脈の拡張と細静脈の収縮による毛細血管圧上昇」など複合的な成因が考えられている</p>
+<div class="src">p.175–177 図2・図3・表1（深川雅史ほか レジデントのための腎臓病診療マニュアル第3版 p.35 をもとに作成）</div>
+</div></div>
+
+<div class="sec wunit" id="s2"><div class="h wh" role="button" tabindex="0" aria-expanded="true">2. 浮腫の鑑別：部位 × 性状</div><div class="b">
+<div class="tw"><table class="t">
+<tbody><tr><th style="width:36%">浮腫の部位</th><th colspan="2">浮腫の性状</th></tr>
+<tr><td rowspan="2">両側：全身性疾患、IVC閉塞<br>片側：鼠径部より末梢局所の問題</td><td class="rh" style="width:14%">圧痕性</td><td>① 静脈圧の上昇<br>② 血管抵抗減少・血管透過性亢進<br>③ 血管内の膠質浸透圧低下</td></tr>
+<tr><td class="rh">非圧痕性</td><td>④ リンパ浮腫<br>⑤ 間質への物質沈着<br>⑥ Quincke浮腫（顔面・後頭部に限局）</td></tr>
+</tbody></table></div>
+<p>・全ての疾患を暗記するのは難しいので、まず上の2軸で絞り込み、成因に当てはめて考える</p>
+<p>・圧痕性浮腫の中で静脈圧上昇の成因として最もcommonなのは「溢水・Na貯留」。その原因でメジャーなのは<span class="n">心不全、腎不全、肝硬変</span></p>
+<p>・<span class="w">2つ以上の疾患が併発した場合は要注意</span>：単一の疾患で説明困難な経過であれば、浮腫の性状に囚われず鑑別を広げる。例えば粘液水腫は教科書的には非圧痕性だが、圧痕性浮腫をきたす他疾患（腎性浮腫など）と併発すると非典型的な経過を示しうる</p>
+<p>・溢水・Na貯留は腎機能が正常な若年者では考えにくく、その年齢なら原発性／偽性アルドステロン症などの内分泌疾患を検索する</p>
+<div class="src">p.177–180 表2（日本臨床検査医学会 資料をもとに作成）</div>
+</div></div>
+
+<div class="sec wunit" id="s3"><div class="h wh" role="button" tabindex="0" aria-expanded="true">3. 見逃さない：ビタミンB1欠乏</div><div class="b">
+<p>・「現代社会では脚気は非常に少ない」という思い込みは捨てる</p>
+<p>・<span class="w">低栄養、Refeeding症候群、アルコール多飲、胃全摘／十二指腸切除後、下痢／嘔吐、透析、甲状腺機能亢進症</span>などの危険因子がある症例で、<span class="w">利尿薬抵抗性の両下腿圧痕性浮腫</span>をみたら、必ずビタミンB1欠乏症を頭に置く</p>
+<p>・<span class="d">利尿薬</span>は尿中へのビタミンB1排泄を亢進させ、ビタミンB1欠乏症を増悪させうる。「両側下腿浮腫＝利尿薬」と安易に考えず、原因不明の下腿浮腫は丁寧に鑑別する</p>
+<p>・心収縮が良好なのに推定肺動脈圧の亢進・下大静脈の拡張がある場合は、高拍出性心不全の可能性を疑う</p>
+<div class="src">p.180–181（Suter PM, et al. Nutr Rev 2000、Attaluri P, et al. Am J Med Sci 2018）</div>
+</div></div>
+
+<div class="sec wunit" id="s4"><div class="h wh" role="button" tabindex="0" aria-expanded="true">4. 溢水・脱水を示唆する臨床所見</div><div class="b">
+<div class="tw"><table class="t">
+<tbody><tr><th style="width:15%"></th><th>溢水らしさ</th><th>脱水らしさ</th></tr>
+<tr><td class="rh">身体所見</td><td>体重・血圧↑（普段との比較が重要）、浮腫（特に下腿）</td><td>体重・血圧↓（普段との比較が重要）、皮膚ツルゴール低下、口腔粘膜の乾燥</td></tr>
+<tr><td class="rh">画像検査</td><td>胸部X線：CTR↑、胸水貯留<br>エコー：中心静脈の怒張（下大静脈、内頸静脈、大腿静脈）</td><td>胸部X線：CTR↓<br>エコー：中心静脈の虚脱（同）</td></tr>
+<tr><td class="rh">血液検査</td><td>希釈所見（Hb↓、Ht↓、UA↓）、BNP↑（ベース値との比較）</td><td>濃縮所見（Hb↑、Ht↑、UA↑）、BNP↓（ベース値との比較）、BUN/Cre比↑</td></tr>
+<tr><td class="rh">尿検査</td><td></td><td>尿比重↑、FENa・FEUN↓、尿中Cl↓</td></tr>
+</tbody></table></div>
+<p>・いずれの指標も「目安の基準値は存在するが、絶対的な基準値は存在しない」。例えば体重はBMI 18.5〜25.0が目安になるものの、「一番体調がよいときの体重」には個体差がある</p>
+<p>・「体調が問題なかった時点での数値との比較」が必要な指標：<span class="n">体重・血圧（身体所見）、胸部X線のCTR（画像）、BNP（血液）、FENa・FEUN（尿）</span></p>
+<div class="src">p.183 表1</div>
+</div></div>
+
+<div class="sec wunit" id="s5"><div class="h wh" role="button" tabindex="0" aria-expanded="true">5. 身体所見のポイント</div><div class="b">
+<p>・<b>最も鋭敏な指標は体重</b>：人体の5〜6割は水分。体重が10 kg増えれば、理論的にはその5〜6割（5〜6 kg）は体液増加と推定できる。厳密な体液管理が必要な血液透析では、体重（ドライウエイト）を用いて除水量設定・水分管理を行っている</p>
+<p>・<b>血圧は正常範囲でも要注意</b>：「血圧が正常範囲であっても、<span class="w">普段の収縮期血圧より30〜40 mmHg程度低いのは、脱水症が隠れているかもしれない</span>」と考える。普段の血圧との比較が重要な点は溢水・脱水いずれにも当てはまり、血圧手帳などで必ず比較する</p>
+<p>・<b>浮腫が最も現れやすいのは下腿</b>：水分は重力に従って分布する。体液貯留が高度になると、体の高い位置／血流量の多い部位にも貯留し、胸水貯留・肺水腫となる（「浮腫が早期に現れるのは下腿で、体液貯留が進行すると胸水貯留・肺水腫に至る」）</p>
+<div class="src">p.184</div>
+</div></div>
+
+<div class="sec wunit" id="s6"><div class="h wh" role="button" tabindex="0" aria-expanded="true">6. 溢水・浮腫のピットフォール</div><div class="b">
+<p>・<span class="w">ベッド上で臥床傾向の患者では下腿浮腫は生じにくい</span>：水分は重力に従って背部・臀部に生じる。「下腿浮腫なし＝体液貯留なし」と判断してはいけない</p>
+<p>・<b>CS1心不全は「体液分布の異常」</b>：Mebazaaらは急性心不全を収縮期血圧に注目したクリニカルシナリオ（CS）で分類した。<span class="n">収縮期血圧140 mmHg以上</span>の群をCS1と呼ぶ。交感神経系の過剰興奮による体液のcentral shift（末梢静脈の収縮→末梢にpoolされていた体液がvenous returnとして右心房・肺動脈に集中→肺水腫）が生じる病態で、結果的には溢水に至っているものの、<span class="w">肺水腫の状態に比して下腿浮腫は軽度</span>となる</p>
+<p>・<b>血管内脱水＝体全体の体液量減少とは限らない</b>：微小変化型ネフローゼ症候群の重症例では、低アルブミン血症による高度血管内脱水に伴う腎前性腎不全、血液濃縮による血栓塞栓症が生じるが、Na貯留・3rd spaceへの体液貯留が進行し、胸水貯留・全身浮腫・体重増加をきたす</p>
+<div class="src">p.184–186 表2（Mebazaa A, et al. Crit Care Med 2008、山川聡 日児腎誌 2016）</div>
+</div></div>
+
+</div>
+<div style="border-top: 1px solid #c9cfe6; padding-top: 3px; font-size: 6.6px; line-height: 1.4; color: #4a5068">
+出典：谷口智基『無敵の腎臓内科』中外医学社、2024年 第1版、第2章 症候 3「浮腫の診かたを教えてください．」（p.173–181）、4「溢水・脱水をどうやって判断する？」（p.182–187）。各項目の出典はページ番号で示した。
+</div>
+</div></section>
+
+<section class="part" id="p2"><h2 class="wpt"><span class="wpn">2</span>利尿薬の使い分けと利尿薬抵抗性</h2><div class="page p2" style="width: auto; height: auto; box-sizing: border-box; padding: 18px 22px 14px; font-family: &quot;Noto Sans JP&quot;, &quot;Noto Sans CJK JP&quot;, sans-serif; font-size: 8.8px; line-height: 1.4; color: rgb(29, 34, 48); background: rgb(255, 255, 255); display: flex; flex-direction: column; gap: 5px; overflow: visible; zoom: 1.761;" data-z="1.761">
+
+
+<div class="rules wst6">
+<div class="rule wunit wsolo"><b>2軸で考える</b>利尿薬は①作用機序（作用部位）と②降圧／利尿作用の強さ、の2点で使い分ける（2軸の位置づけは著者私見）</div>
+<div class="rule wunit wsolo"><b>組み合わせる</b>ループ利尿薬はある量以上でRASによるNa・自由水の再吸収が働き頭打ちになる→<span class="n">作用機序の異なる薬剤どうしを組み合わせて</span>利尿効果を保つ</div>
+<div class="rule wunit wsolo"><b>共通の注意点</b><span class="w">脱水・シックデイ時に使用継続すると、糸球体虚血によるAKIを惹起しうる</span></div>
+<div class="rule wunit wsolo"><b>抵抗性の前に除外</b>「利尿薬抵抗性」と断言する前に、<span class="w">循環不全による腎血流低下・尿路閉塞・薬剤性腎障害</span>を除外する。狭義の抵抗性の主座は<span class="n">RAS亢進</span></div>
+</div>
+
+<div class="cols wcols" style="column-gap: 12px;">
+
+<div class="sec wunit" id="s7"><div class="h wh" role="button" tabindex="0" aria-expanded="true">1. 作用機序と作用部位</div><div class="b">
+<div class="tw"><table class="t">
+<tbody><tr><th style="width:27%">利尿薬</th><th style="width:22%">作用するネフロンのセグメント</th><th>作用する酵素・イオンチャネル</th></tr>
+<tr><td><span class="d">アセタゾラミド</span></td><td>近位尿細管</td><td>炭酸脱水素酵素を阻害→HCO₃⁻再吸収↓</td></tr>
+<tr><td><span class="d">ループ利尿薬</span></td><td>Henleループ太い上行脚</td><td>Na-K-Cl共輸送体を阻害</td></tr>
+<tr><td><span class="d">サイアザイド系利尿薬</span></td><td>遠位尿細管</td><td>Na-Cl共輸送体を阻害</td></tr>
+<tr><td><span class="d">ミネラルコルチコイド受容体拮抗薬（MRA）</span></td><td>遠位尿細管・皮質集合管</td><td>ミネラルコルチコイド受容体を阻害→Na排泄↑、K排泄↓</td></tr>
+<tr><td><span class="d">トルバプタン</span></td><td>集合管</td><td>V2受容体を阻害→水の再吸収↓</td></tr>
+<tr><td><span class="d">五苓散</span></td><td>皮質集合管？（未知の部分が多い）</td><td>アクアポリン（AQP）を阻害→水の再吸収↓</td></tr>
+</tbody></table></div>
+<p>・五苓散：動物実験では「AQP4阻害が水利尿に強く寄与」するとされるが、ヒト腎に存在する主なAQPは「皮質集合管のAQP2」であり、ヒトにおける水利尿作用は未知の部分も多い</p>
+<div class="sub">降圧／利尿作用の2軸での位置づけ（著者私見）</div>
+<div class="tw"><table class="t">
+<tbody><tr><th style="width:27%">位置づけ</th><th>薬剤</th></tr>
+<tr><td class="rh">利尿作用が強い</td><td><span class="d">ループ利尿薬</span>、<span class="d">V2受容体拮抗薬</span></td></tr>
+<tr><td class="rh">降圧作用あり（mild）</td><td><span class="d">サイアザイド系</span>、<span class="d">MRA</span>：単剤では利尿効果が弱いが、ループ利尿薬との併用で利尿効果の上乗せが期待できる</td></tr>
+<tr><td class="rh">利尿・降圧ともに弱い</td><td><span class="d">アセタゾラミド</span></td></tr>
+<tr><td class="rh">不明な点が多い</td><td><span class="d">五苓散</span>：利尿薬抵抗性心不全への有効性を示す報告あり</td></tr>
+</tbody></table></div>
+<div class="src">p.464–466 表1・図1・図2（深川雅史ほか 同マニュアル p.98 をもとに作成）</div>
+</div></div>
+
+<div class="sec wunit" id="s8"><div class="h wh" role="button" tabindex="0" aria-expanded="true">2. 具体的な使い分け</div><div class="b">
+<div class="sub">利尿作用がメイン：ループ利尿薬、V2受容体拮抗薬</div>
+<p>・体液貯留を伴う病態（慢性心不全、慢性腎不全、肝硬変）で用いる。一定量以上でRASによるNa・自由水の再吸収が働き頭打ちになる→作用機序の異なる薬剤を組み合わせる</p>
+<p>・<span class="w">V2受容体拮抗薬は利尿薬としての単独使用は認められておらず</span>、「ループ利尿薬等の他の利尿薬で効果不十分な体液貯留」でのみ使用できる（他の利尿薬と併用する。導入・再開は入院下）</p>
+<p>　使用例：利尿薬抵抗性の慢性心不全 → <span class="d">ループ利尿薬＋V2受容体拮抗薬</span></p>
+<div class="sub">mildな降圧＋利尿作用：サイアザイド系、MRA</div>
+<p>・主軸で使う薬ではないが、主軸の薬剤に上乗せして使うと効果を発揮する</p>
+<p>・<span class="d">サイアザイド系</span>：Na利尿による降圧・除水効果のため「塩分過多・浮腫を伴う高血圧、慢性心不全」で有効。「半減期が半日程度と長い薬が多い」「利尿薬として使用する場合、単剤では効果を発揮しにくくループ利尿薬の上乗せとして使用する」のが特徴。<span class="w">高用量使用で高尿酸血症・耐糖能障害・電解質異常などの副作用が懸念されるため、基本的には少量での使用に留める</span></p>
+<p>・📘 高血圧管理・治療ガイドライン2025（JSH2025）では、サイアザイド系利尿薬は主要降圧薬（G1）の1つに位置づけられている</p>
+<p>　使用例：1日塩分摂取量10 gの高血圧で塩分制限指導で降圧できなければ降圧薬としてサイアザイド系を選択／ループ利尿薬に抵抗性の腎性浮腫 → 少量サイアザイド系を追加</p>
+<p>・<span class="d">MRA</span>：アルドステロンの作用を減弱させるため、RASが亢進している病態（慢性心不全、肝硬変、腎性蛋白尿）でよい適応。単剤では劇的な効果は得られにくく、ループ利尿薬との併用で効果を発揮するケースが多い</p>
+<p>　使用例：HFrEF（LVEF≦40%）の慢性心不全でFantastic fourの1つとしてMRA導入／肝硬変による腹水 → <span class="d">ループ利尿薬＋MRA</span>（「肝硬変における腹水治療の主軸はMRAにすべき」とされている）</p>
+<p>・📘 本書の例はLVEF 45%だが、2025年改訂版 心不全診療ガイドラインではHFmrEF（41〜49%）にあたり、Fantastic fourはHFrEFの概念。HFmrEFでのMRAは<span class="d">フィネレノン</span>がIIa、<span class="d">スピロノラクトン</span>・<span class="d">エプレレノン</span>がIIb（ケレンディアは2025年12月に慢性心不全の効能追加）</p>
+<p>・📘 肝硬変診療ガイドラインは2026年10月に改訂第4版が発行された（本書は2020年版）。2020年版追補では、既存の利尿薬に反応しない腹水は利尿薬を増量せず、腎機能が保たれた早期に<span class="d">トルバプタン</span>を開始し、フロセミドは少量にとどめるとしている</p>
+<div class="sub">利尿／降圧作用ともに弱い：アセタゾラミド</div>
+<p>・利尿薬としては「ループ利尿薬による代謝性アルカローシス是正目的」で使用されることがあった。2022年のNEJM（ADVOR）で「急性非代償性心不全において、ループ利尿薬との併用により3日以内のうっ血解除成功率が改善され、尿量やNa利尿が増加して利尿効率が高くなり、有害事象の増加は認められない」と報告された</p>
+<p>・📘 国内の保険適用（電子添文）：錠は緑内障、てんかん（他の抗てんかん薬で効果不十分な場合に付加）、肺気腫における呼吸性アシドーシスの改善、<span class="n">心性浮腫、肝性浮腫</span>、月経前緊張症、メニエル病及びメニエル症候群、睡眠時無呼吸症候群。<span class="w">注射用には浮腫の適応がなく、ADVORのような静注での利尿は国内では適応外</span></p>
+<div class="sub">五苓散</div>
+<p>・AQPを阻害し水利尿を促す。「V2受容体拮抗薬の弱い版」というイメージ。従来は慢性硬膜下血腫の脳圧亢進抑制で使われていたが、利尿薬抵抗性心不全への有効性を示す報告がある。京都大学医学部附属病院を中心とした多施設共同RCT（GOREISAN-HF）が2021年に開始された（デザイン論文は2023年）。📘 2026年11月時点で募集は終了、2027年に終了予定で、結果は未公表。作用機序含め不明な点も多い薬剤だが、浮腫治療の1つのオプションに今後位置づけられるかもしれない</p>
+<div class="src">p.466–468（日本高血圧学会 高血圧治療ガイドライン2019、肝硬変診療ガイドライン2020改訂第3版、Mullens W, et al. N Engl J Med 2022、Yaku H, et al. Am Heart J 2023）。📘 日本循環器学会/日本心不全学会 2025年改訂版 心不全診療ガイドライン、JSH2025、肝硬変診療ガイドライン2020追補、jRCTs051200101、サムスカ・ダイアモックス電子添文（2025年）</div>
+</div></div>
+
+<div class="sec wunit" id="s9"><div class="h wh" role="button" tabindex="0" aria-expanded="true">3. 使用上の注意点</div><div class="b">
+<div class="tw"><table class="t">
+<tbody><tr><th>ループ利尿薬</th><th>V2受容体拮抗薬</th><th>サイアザイド</th><th>MRA</th></tr>
+<tr><td colspan="4">（共通）<span class="w">脱水・シックデイ時に使用継続すると、糸球体虚血によるAKIを惹起しうる</span></td></tr>
+<tr><td>高尿酸血症／電解質異常（低Na・低K・低Ca血症）／代謝性アルカローシス／血栓症／光線過敏症</td><td>高Na血症／肝障害／血栓症</td><td>高尿酸血症／電解質異常（低Na・低K・<b>高</b>Ca血症）／代謝性アルカローシス／血栓症／光線過敏症</td><td>電解質異常（低Na・高K血症）／（スピロノラクトン）女性化乳房</td></tr>
+</tbody></table></div>
+<p>・<b>光線過敏症</b>：代表的な被疑薬の1つにループ利尿薬・サイアザイド系利尿薬がある。添付文書上は頻度不明で比較的稀だが、処方医は知っておく。サイアザイド系は薬剤誘発性ループスの被疑薬としても知られる</p>
+<p>・<b>スルホンアミド類似構造</b>：ループ利尿薬・サイアザイド系に含まれ、光線過敏症に関連する。同じ構造をもつ薬剤：スルファメトキサゾール（バクタ®など）、サラゾスルファピリジン、ロスバスタチン、セレコキシブ。有名な副作用は皮疹</p>
+<p>・<span class="n">「抗菌活性のある」スルホンアミドと「抗菌活性のない」スルホンアミドの間には交差性がない</span>。例：スルファメトキサゾール（抗菌活性あり）でアレルギーが生じた場合、サラゾスルファピリジン（抗菌活性あり）はアレルギーを生じる可能性あり、利尿薬・セレコキシブ（抗菌活性なし）は安全に使用可能</p>
+<p>・📘 交差反応は現在も否定的とされるが、抗菌スルホンアミドにアレルギーのある患者はアレルギー素因のため他の薬剤でも反応する割合がやや高い（Strom 2003）。使用可だが経過を観察する</p>
+<p>・アセタゾラミド、五苓散は未知の部分も多いため表から省いている</p>
+<div class="src">p.468–469 表2・図3（Blakely KM, et al. Drug Saf 2019、Dalle Vedove C, et al. Arch Dermatol Res 2009、田中博之ほか 医薬品情報学 2016、Strom BL, et al. N Engl J Med 2003）</div>
+</div></div>
+
+<div class="sec wunit" id="s10"><div class="h wh" role="button" tabindex="0" aria-expanded="true">4. 利尿薬抵抗性の病態への対応</div><div class="b">
+<p>・体液過剰時に利尿薬を投与しても尿が出ない病態を利尿薬抵抗性と呼ぶ。「とりあえず利尿薬を増量する」前に、次の順で考える</p>
+<div class="flow wst9" style="flex-wrap: wrap;"><div><b>STEP 1</b> 循環不全による腎血流低下・尿路閉塞を除外</div><span>→</span><div><b>STEP 2</b> 薬剤性腎障害を除外（被疑薬は中止・変更）</div><span>→</span><div><b>STEP 3</b> 残ったものが狭義の利尿薬抵抗性（主座はRAS亢進）</div><span>→</span><div><b>STEP 4</b> RAS亢進の原因（低Alb血症の有無）に応じて対応</div></div>
+<p>・STEP 1：利尿薬は血中を漂って尿細管に辿り着いて初めて効果を発揮する。循環不全で腎血流が低下していれば増量しても効果は得られない。尿が産生されても尿路閉塞があれば尿量は増えない</p>
+<p>・STEP 2：薬剤性腎障害の多くは尿細管間質をターゲットとするため、利尿薬の効果減弱の一因になりうる</p>
+<p>・STEP 3：RASが亢進した病態ではNa貯留により利尿薬抵抗性をきたす。低Alb血症では血管内脱水によるRAS亢進に加え、<span class="w">① 利尿薬が結合するアルブミンが少ないことによる有効血中濃度の低下、② 腸管浮腫によるバイオアベイラビリティの低下</span>が要因となる</p>
+<div class="tw"><table class="t">
+<tbody><tr><th style="width:24%">病態</th><th>対策</th></tr>
+<tr><td class="rh">低Alb血症を伴わない（例：慢性心不全）</td><td><span class="d">フロセミド</span>の作用時間は約6時間で、残り18時間でRASによるNa再吸収が生じる→①投与回数の増加、<span class="d">持続静注</span>への切り替え ②作用時間の長い利尿薬への変更・追加（例：フロセミドから<span class="d">アゾセミド</span>へ変更、<span class="d">サイアザイド系</span>の追加） ③RASを阻害する薬剤の追加（<span class="d">MRA</span>など）</td></tr>
+<tr><td class="rh">低Alb血症を伴う（例：ネフローゼ症候群、肝硬変）</td><td>上記に加えて ①低Alb血症の原疾患治療 ②経口投与→<span class="d">経静脈投与</span>への変更 ③<span class="d">アルブミン製剤</span>の併用</td></tr>
+</tbody></table></div>
+<p>・アルブミン併用の有効性は病態によって異なる可能性が示唆されている。「低Alb血症を伴う利尿薬抵抗性症例全てに有効」とは一概にいえないので、<span class="w">高額なアルブミン製剤の使用閾値を下げることは控えるべきかもしれない</span>（著者私見）</p>
+<p>・📘 持続静注がボーラス投与より優れるとは示されていない（DOSE 2011、Cochrane 2024）。投与回数を増やす方法と同列の選択肢と考える</p>
+<p>・ループ利尿薬の作用時間：フロセミドの商品名ラシックスは「last six（6時間作用が続く）」が語源という話がある。経口で作用時間の長いループ利尿薬は<span class="d">アゾセミド</span>（12時間）、<span class="d">トラセミド</span>（8時間）。RAS亢進の病態ではそれらへの変更を検討してもよいかもしれない</p>
+<div class="src">p.469–472 表3・図4・図5（深川雅史ほか より理解を深める！体液電解質異常と輸液 第3版 p.26–32、Lee TH, et al. PLoS One 2021 をもとに作成）。📘 Cochrane CD014811（2024）</div>
+</div></div>
+
+</div>
+<div style="border-top: 1px solid #c9cfe6; padding-top: 3px; font-size: 6.6px; line-height: 1.4; color: #4a5068">
+出典：谷口智基『無敵の腎臓内科』中外医学社、2024年 第1版、第8章 薬剤 3「利尿薬の使い分け，使用上の注意点が分かりません．」（p.464–473）。各項目の出典はページ番号で示した。
+</div>
+</div></section>
+</div>
+</div><p class="wempty" id="none">該当する項目はありません。</p></main>
+<script>
+{
+const q=document.getElementById('q'),hits=document.getElementById('hits'),tg=document.getElementById('tg'),none=document.getElementById('none');
+const units=[...document.querySelectorAll('#mw .wunit')].filter(u=>!u.parentElement.closest('.wunit'));
+const parts=[...document.querySelectorAll('#mw .part')];
+const orig=new Map(units.map(u=>[u,u.innerHTML]));
+const setOpen=(u,o)=>{u.classList.toggle('wclosed',!o);const h=u.querySelector(':scope>.wh');if(h)h.setAttribute('aria-expanded',o?'true':'false');};
+document.addEventListener('click',e=>{const h=e.target.closest('.wh');if(!h)return;const u=h.parentElement;setOpen(u,u.classList.contains('wclosed'));});
+document.addEventListener('keydown',e=>{const h=e.target.closest&&e.target.closest('.wh');if(h&&(e.key==='Enter'||e.key===' ')){e.preventDefault();h.click();}});
+document.querySelectorAll('.wnav a').forEach(a=>a.addEventListener('click',()=>{const u=document.querySelector(a.getAttribute('href'));if(u&&u.classList.contains('wunit'))setOpen(u,true);}));
+const esc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+const mark=(el,re)=>{const w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);const ns=[];while(w.nextNode())ns.push(w.currentNode);
+  ns.forEach(t=>{re.lastIndex=0;if(!re.test(t.data))return;re.lastIndex=0;const f=document.createDocumentFragment();let i=0,m;while((m=re.exec(t.data))){f.append(t.data.slice(i,m.index));const k=document.createElement('mark');k.textContent=m[0];f.append(k);i=m.index+m[0].length;}f.append(t.data.slice(i));t.replaceWith(f);});};
+const others=parts.map(p=>[...p.querySelectorAll('.page *')].filter(e=>!e.closest('.wunit')&&!e.querySelector('.wunit')&&e.parentElement.querySelector(':scope>.wunit')));
+const run=()=>{const v=q.value.trim();units.forEach(u=>{u.innerHTML=orig.get(u);});
+  if(!v){[...units,...parts,...others.flat()].forEach(e=>e.classList.remove('hide'));hits.textContent='';none.style.display='none';return;}
+  const re=new RegExp(esc(v),'gi');let c=0;
+  units.forEach(u=>{const ok=u.textContent.toLowerCase().includes(v.toLowerCase());u.classList.toggle('hide',!ok);if(ok){c++;setOpen(u,true);mark(u,re);}});
+  others.flat().forEach(e=>e.classList.add('hide'));
+  parts.forEach(p=>p.classList.toggle('hide',!p.querySelector('.wunit:not(.hide)')));
+  hits.textContent=c+'件';none.style.display=c?'none':'block';};
+q.addEventListener('input',run);
+tg.addEventListener('click',()=>{const open=tg.textContent==='すべて開く';units.forEach(u=>{if(u.querySelector(':scope>.wh'))setOpen(u,open);});tg.textContent=open?'すべて閉じる':'すべて開く';});
+window.addEventListener('beforeprint',()=>units.forEach(u=>setOpen(u,true)));
+}
+</script>
+</body></html>

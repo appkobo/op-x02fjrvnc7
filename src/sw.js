@@ -26,7 +26,7 @@ self.addEventListener("fetch", (e) => {
   if (url.origin !== location.origin) return;
 
   // PDFは一度取ったら端末の保存分を使う（版が変わるとアドレスの ?v= が変わる）
-  if (url.pathname.includes("/pdf/")) {
+  if (url.pathname.includes("/pdf/") || url.pathname.includes("/html/")) {
     e.respondWith(
       caches.open(PDF_CACHE).then(async (c) => {
         const hit = await c.match(req);

@@ -6,7 +6,7 @@ PDFのフォルダには <id>.pdf を置く。載せるシートは plan.json �
 import sys, os, re, json, shutil, hashlib, subprocess, unicodedata
 from PIL import Image, ImageDraw
 
-VERSION = "1.3"
+VERSION = "1.4"
 HERE = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(HERE, "src")
 PDFJS = os.path.join(HERE, "node_modules", "pdfjs-dist", "build")
@@ -60,6 +60,8 @@ def main():
         shutil.rmtree(out)
     os.makedirs(os.path.join(out, "pdf"))
     os.makedirs(os.path.join(out, "lib"))
+    os.makedirs(os.path.join(out, "html"))
+    hmap = json.load(open(os.path.join(HERE, "html.json"), encoding="utf-8")) if os.path.exists(os.path.join(HERE, "html.json")) else {}
     plan = json.load(open(sys.argv[3], encoding="utf-8"))
     sheets, index = [], {}
     order = [c["id"] for c in CATS]
@@ -76,8 +78,19 @@ def main():
             toc = json.loads(r.stdout.decode("utf-8").strip().splitlines()[-1])
         except Exception:
             toc = []
+        # HTML版：そのPDFと同じ版から作ったと記録してあるものだけ使う（PDFが新しくなったら使わない）
+        hv = None
+        hp = os.path.join(HERE, "html", sid + ".html")
+        hm = hmap.get(sid)
+        if hm and os.path.exists(hp) and hm.get("driveId") == e.get("driveId") and hm.get("modified") == e.get("modified"):
+            hs = open(hp, encoding="utf-8").read()
+            hs = re.sub(r'<link[^>]*fonts\.(?:googleapis|gstatic)\.com[^>]*>', "", hs)      # 外部の書体は読み込まない（圏外でも待たされない）
+            hs = hs.replace("<head>", '<head><meta name="robots" content="noindex, nofollow">', 1)
+            if not re.search(r'(?:src|href)\s*=\s*["\'](?!#|data:)', hs):                      # 外部ファイル（画像など）を参照するものは使わない
+                open(os.path.join(out, "html", sid + ".html"), "w", encoding="utf-8").write(hs)
+                hv = hashlib.sha1(hs.encode("utf-8")).hexdigest()[:8]
         sheets.append({"id": sid, "cat": cat, "name": name, "sub": sub, "n": len(pages),
-                       "w": w, "h": hgt, "v": h, "kb": round(len(data) / 1024), "toc": toc})
+                       "w": w, "h": hgt, "v": h, "kb": round(len(data) / 1024), "toc": toc, "html": hv})
         index[sid] = [clean(t) for t in pages]
     import datetime, zoneinfo
     updated = datetime.datetime.now(zoneinfo.ZoneInfo("Asia/Tokyo")).strftime("%Y.%m.%d %H:%M")

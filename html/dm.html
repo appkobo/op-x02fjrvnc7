@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>糖尿病 初診・入院時チェックシート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1f3a5f}a:hover{color:#0d2340}
+.page{width:794px;height:1120px;overflow:hidden;box-sizing:border-box;padding:16px 18px 12px;background:#ffffff;font-family:'Noto Sans JP',sans-serif;color:#1d2433;font-size:8.6px;line-height:1.5;position:relative}
+.hd{display:flex;align-items:baseline;gap:8px;border-bottom:2px solid #2f4f8f;padding-bottom:3px;margin-bottom:5px}
+.hd .t{font-size:15px;font-weight:700;color:#2f4f8f;white-space:nowrap}
+.hd .s{font-size:8px;color:#55607a;white-space:nowrap}
+.hd .lg{margin-left:auto;font-size:7.6px;white-space:nowrap}
+.cols{column-count:2;column-gap:10px;column-fill:auto;height:1062px}
+.sec{break-inside:avoid;border:1px solid #c5cde0;border-radius:3px;margin:0 0 5px;overflow:hidden}
+.sec.split{break-inside:auto}
+.h{background:#2f4f8f;color:#ffffff;font-weight:700;font-size:9.2px;padding:1.5px 5px}
+.b{padding:3px 5px 3px}
+.b p{margin:0 0 1.6px;padding-left:7px;text-indent:-7px}
+.b p.m{margin-top:2px;padding:1.5px 4px;text-indent:0;background:#eef1f6;color:#3b4560;border-radius:2px}
+.b p.m::before{content:"測定 ";color:#2f4f8f;font-weight:700}
+.b p.nt{color:#5c6478;font-size:7.8px}
+.b p.ev{background:#f2f6ff;border-left:2px solid #6b86c4;padding:1px 4px;text-indent:0;margin:2px 0}
+.sh{font-weight:700;color:#2f4f8f;margin:2px 0 1px}
+.d{background:#e1efe3;padding:0 1.5px;border-radius:1.5px}
+.n{background:#fff1bf;padding:0 1.5px;border-radius:1.5px}
+.w{color:#9b1c1c}
+table{border-collapse:collapse;width:100%;margin:2px 0 3px;font-size:7.9px;line-height:1.3}
+th,td{border:1px solid #b9c2d6;padding:1px 2.5px;vertical-align:top;text-align:left}
+thead th{background:#dfe5f1;color:#1f3a5f;font-weight:700;text-align:center}
+tbody th{background:#f1f3f8;font-weight:700;white-space:nowrap}
+.t td,.t th{font-size:7.7px}
+.drug{table-layout:fixed}
+.drug td,.drug th{font-size:7.3px;padding:1px 2px;line-height:1.26}
+.c{text-align:center}
+.flow{display:flex;flex-direction:column;gap:2px;margin:2px 0}
+.fb{border:1px solid #8a9cc6;border-radius:2px;padding:2px 4px;background:#f6f8fc}
+.fb.s1{border-color:#2f4f8f;background:#eef2fb}
+.fa{text-align:center;color:#2f4f8f;font-size:8px;line-height:1}
+.two{display:flex;gap:3px}
+.two>div{flex:1}
+.src{font-size:6.6px;color:#5c6478;line-height:1.3;border-top:1px solid #c5cde0;padding-top:2px;position:absolute;left:18px;right:18px;bottom:8px}
+
+.b p.i{padding-left:14px;text-indent:-6px;margin:0 0 1.6px}
+.b p.i::before{content:"‐ ";color:#7a849c}
+.three{display:flex;gap:3px}.three>div{flex:1}
+.res{margin-top:1px;font-weight:700;color:#2f4f8f}
+.step{border:1px solid #8a9cc6;border-radius:2px;padding:2px 4px 1px;background:#ffffff}
+.step .sl{font-weight:700;color:#ffffff;background:#5b74ad;display:inline-block;padding:0 5px;border-radius:2px;margin-bottom:2px}
+.step .fb{background:#f6f8fc}
+.bh{font-weight:700;color:#1f3a5f}
+td.x{color:#9b1c1c;font-weight:700;text-align:center}
+.ren td,.ren th{font-size:7.5px}
+.dasc td{font-size:7.5px}
+.sec.full{column-span:all;margin-bottom:6px}
+.sec.full .drug td,.sec.full .drug th{font-size:7.8px}
+</style>
+<style>
+html,body{margin:0;background:#fff}
+#mw .page,#mw section.page{width:auto!important;height:auto!important;min-height:0!important;overflow:visible!important;padding:0!important;margin:0!important;box-shadow:none!important;break-after:auto!important;page-break-after:auto!important;background:transparent!important}
+
+/* VOICE 臨床の手引き。落ち着いて、早く引ける
+   IDEA 白衣のポケットに入れる診療カード：紙のチェックシートと同じ配色・色分け
+   PICTURE 色分けされた本文そのものが主役。図は元のまま
+   COLOUR 白地、シートごとの主色、薬剤＝緑、目標値＝黄、警告＝赤
+   TYPE Noto Sans JP 700 + 400
+   LAYOUT 広い画面は2段、狭い画面は1段。項目ごとに開閉、検索で絞り込み */
+:root{color-scheme:light;--c:rgb(47, 79, 143);--line:#c9cfe6;--sub:#5a6178;--tint:#f4f5f9}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:128px}
+body{margin:0;background:#fff;color:#1d2230;font:16px/1.6 'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;overflow-x:clip}
+#mw *{font-family:'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif}
+.wtop{background:var(--c);color:#fff;padding:22px max(4vw,16px) 14px}
+.wtop .wrow{max-width:1360px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 24px}
+h1{margin:0;font-size:clamp(24px,4vw,34px);line-height:1.2;font-weight:700}
+.wupd{font-size:13px;opacity:.9;white-space:nowrap}
+.wlg{max-width:1360px;margin:10px auto 0;font-size:14px;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
+.wlg *{white-space:normal!important;font-size:inherit!important}.wlg :is(.d,.n,.y){color:#1d2230}.wlg :is(.w,.r){color:#ffc2c2!important}
+.wtools{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);padding:10px max(4vw,16px)}
+.wtools .win{max-width:1360px;margin:0 auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#q{flex:1 1 220px;font:inherit;font-size:16px;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:inherit;min-height:44px}
+#q:focus{outline:2px solid var(--c);outline-offset:1px}
+.wtools button{font:inherit;font-size:14px;min-height:44px;padding:0 14px;border-radius:8px;border:1px solid var(--line);background:var(--tint);color:inherit;cursor:pointer}
+#hits{font-size:13px;color:var(--sub);white-space:nowrap}
+.wnav{display:flex;gap:6px;overflow-x:auto;max-width:1360px;margin:8px auto 0;padding-bottom:2px;scrollbar-width:thin}
+.wnav a{flex:none;font-size:13px;color:var(--c);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:5px 11px;white-space:nowrap}
+.wnav .wnp{background:var(--c);color:#fff;border-color:var(--c)}
+:is(.wnav a,.wtools button,.wh):focus-visible{outline:2px solid var(--c);outline-offset:2px}
+main{max-width:1360px;margin:0 auto;padding:6px max(4vw,16px) 40px}
+#mw h2.wpt{background:none;border-radius:0;font-weight:700;display:flex;align-items:center;gap:10px;font-size:21px;color:var(--c);margin:26px 0 12px;padding:0 0 6px;border-bottom:3px solid var(--c);line-height:1.35}
+.wpn{flex:none;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--c);color:#fff;font-size:15px}
+#mw img{max-width:100%;height:auto}
+#mw .wcols{columns:1!important;column-gap:14px;height:auto!important;max-height:none!important;min-height:0!important;flex:none!important;column-fill:balance!important}
+@media(min-width:1100px){#mw .wcols{columns:2!important}}
+@media(max-width:1099px){#mw .wcols *{break-before:auto!important;break-after:auto!important}}
+#mw .tw{overflow-x:auto;max-width:100%}
+.wh{cursor:pointer;position:relative;padding-right:1.6em!important}
+.wh::after{content:'－';position:absolute;right:.4em;top:50%;transform:translateY(-50%);font-weight:400}
+.wclosed>.wh::after{content:'＋'}
+.wclosed>:not(.wh){display:none!important}
+.wh+*{margin-top:0}
+mark{background:#ffd84a;color:inherit;border-radius:2px}
+.hide{display:none!important}
+.wempty{display:none;padding:24px 0;color:var(--sub)}
+@media(max-width:900px){#mw .wst9{display:block!important}#mw .wst9>*{width:auto!important;max-width:none!important;margin-bottom:6px}}
+@media(max-width:640px){#mw .svgw svg{min-width:620px}#mw .svgw img{min-width:560px;max-height:none!important}#mw .wst6{display:block!important}#mw .wst6>*{width:auto!important;max-width:none!important;margin-bottom:6px}.wpt{font-size:18px}}
+@media print{.wtools{display:none}.wtop{background:#fff;color:var(--c);padding:0 0 4px;border-bottom:2px solid var(--c)}.wlg :is(.w,.r){color:#9b1c1c!important}.part+.part{break-before:page}main{padding:0}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}.wh::after{content:''}}
+</style></head><body>
+<header class="wtop"><div class="wrow"><h1>糖尿病 初診・入院時チェックシート</h1><div class="wupd">最終更新：2026年11月16日</div></div>
+<div class="wlg"><span class="d">薬剤</span> <span class="n">目標値・基準値</span> <span class="w">警告</span></div></header>
+<div class="wtools"><div class="win"><input id="q" type="search" placeholder="キーワードで探す" aria-label="キーワードで探す"><span id="hits"></span><button id="tg" type="button">すべて閉じる</button></div>
+<nav class="wnav" aria-label="項目"><a class="wnp" href="#p1">1</a><a href="#s1">0 はじめに：糖尿病とは</a><a href="#s2">1 診断</a><a href="#s3">2 病型と病態（インスリン依存の判断が最優先）</a><a href="#s4">3 初診時・入院時の問診・診察（サマリを埋めながら）</a><a href="#s5">4 検査と血糖指標の読み方</a><a href="#s6">5 慢性合併症のスクリーニング</a><a class="wnp" href="#p2">2</a><a href="#s7">6 コントロール目標</a><a href="#s8">7 治療方針の立て方（インスリン非依存状態）</a><a href="#s9">8 2型糖尿病の薬物療法のアルゴリズム（JDS 第2版）</a><a href="#s10">腎機能（eGFR, mL/分/1.73m²）による使い分け</a><a class="wnp" href="#p3">3</a><a href="#s11">9 血糖降下薬の一覧（成人2型、開始処方の例）</a><a href="#s12">10 インスリン療法</a><a href="#s13">11 入院時の血糖管理（初日にやること）</a><a class="wnp" href="#p4">4</a><a href="#s14">12 周術期（術前の休薬）</a><a href="#s15">13 急性合併症（DKA・HHS）</a><a href="#s16">14 低血糖・シックデイ</a><a href="#s17">15 糖尿病専門医に相談・紹介</a></nav></div>
+<main><div id="mw">
+
+<div style="width: auto; height: auto; background: transparent; padding: 0px; gap: 0px; border: 0px; box-shadow: none;">
+<section class="part" id="p1"><h2 class="wpt"><span class="wpn">1</span>診断・病型・初診時の評価</h2><div class="page" data-z="1.802" style="font-size: 8.6px; line-height: 1.5; zoom: 1.802;">
+
+<div class="cols wcols">
+
+<div class="sec wunit" id="s1"><div class="h wh" role="button" tabindex="0" aria-expanded="true">0　はじめに：糖尿病とは</div><div class="b">
+<p>・インスリン作用不足による<span class="n">慢性の高血糖</span>を主徴とする代謝疾患群</p>
+<p class="i">1型：β細胞の破壊。2型：分泌低下・抵抗性の素因＋過食・運動不足・肥満・加齢</p>
+<p>・急激で高度の作用不足 → <span class="w">ケトアシドーシス・高度脱水・昏睡</span></p>
+<p>・慢性の高血糖 → 細小血管症（網膜症・腎症・神経障害）と大血管症（動脈硬化）</p>
+<p>・治療の目標：糖尿病のない人と変わらない寿命と生活の質</p>
+</div></div>
+
+<div class="sec wunit" id="s2"><div class="h wh" role="button" tabindex="0" aria-expanded="true">1　診断</div><div class="b">
+<div class="tw"><table class="t"><thead><tr><th>判定</th><th>空腹時血糖</th><th>75gOGTT 2時間値</th><th>その他</th></tr></thead><tbody>
+<tr><th>糖尿病型</th><td><span class="n">≧126</span></td><td><span class="n">≧200</span></td><td>随時血糖<span class="n">≧200</span><br>HbA1c<span class="n">≧6.5%</span></td></tr>
+<tr><th>正常型</th><td>＜110</td><td>かつ ＜140</td><td>空腹時100〜109は正常高値</td></tr>
+<tr><th>境界型</th><td colspan="3">上記以外（IFG：空腹時110〜125かつ2時間＜140、IGT：2時間140〜199）</td></tr>
+</tbody></table></div>
+<div class="sh">診断の流れ</div>
+<div class="flow">
+<div class="fb s1">初回検査で糖尿病型（血糖 and/or HbA1c）</div>
+<div class="fa">▼</div>
+<div class="three wst9" style="flex-wrap: wrap;">
+<div class="fb">血糖とHbA1cが<br>ともに糖尿病型<div class="res">→ 糖尿病</div></div>
+<div class="fb">血糖のみ糖尿病型<br>＋典型症状（口渇・多飲・多尿・体重減少）または確実な網膜症<div class="res">→ 糖尿病</div></div>
+<div class="fb">血糖のみ（症状なし）<br>または HbA1cのみ<div class="res">→ 再検査（1か月以内）</div></div>
+</div>
+<div class="fa">▼ 再検査</div>
+<div class="two wst6" style="flex-wrap: wrap;"><div class="fb">糖尿病型を再確認<br><span class="nt">少なくとも一方は血糖値（HbA1cのみの反復は不可）</span><div class="res">→ 糖尿病</div></div><div class="fb">糖尿病型にならない<div class="res">→ 糖尿病の疑い：3〜6か月以内に再検</div></div></div>
+</div>
+<p>・尿糖は診断に用いない。<span class="n">初診時の尿ケトン体は必ず見る</span></p>
+<p>・OGTTを強く推奨：空腹時110〜125、随時140〜199、HbA1c 6.0〜6.4%</p>
+<p class="i">明らかな高血糖があればOGTTは行わない</p>
+<p>・入院時の高血糖：感染症・手術などのストレスで一時的に上がる</p>
+<p class="i">慢性の高血糖かはHbA1cで判断し、ストレスが去ってから再評価する</p>
+<p class="m">空腹時・随時血糖、HbA1c、尿ケトン体</p>
+</div></div>
+
+<div class="sec wunit" id="s3"><div class="h wh" role="button" tabindex="0" aria-expanded="true">2　病型と病態（インスリン依存の判断が最優先）</div><div class="b">
+<p>・成因：1型（自己免疫性・特発性）、2型、その他、妊娠糖尿病</p>
+<p class="i">その他：膵外分泌疾患、内分泌疾患（Cushing症候群・先端巨大症など）、肝疾患、薬剤（ステロイド・免疫チェックポイント阻害薬など）、遺伝子異常</p>
+<p>・<span class="w">インスリン依存状態</span>：生命維持にインスリンが不可欠、ケトン体が著増しやすい</p>
+<p class="i">目安：空腹時CPR<span class="n">＜0.6 ng/mL</span>（24時間尿中CPR≦20 μg/日）。空腹時CPR<span class="n">≧1.0</span>なら非依存状態</p>
+<p class="i">2型でも清涼飲料水ケトアシドーシスなどで一時的に依存状態になる</p>
+<div class="sh">1型の3つの病型</div>
+<div class="tw"><table class="t"><thead><tr><th></th><th>急性発症</th><th>劇症</th><th>緩徐進行（SPIDDM）</th></tr></thead><tbody>
+<tr><th>発症</th><td>高血糖症状から約3か月以内にケトーシス・ケトアシドーシス</td><td>高血糖症状から<span class="w">約1週間以内</span>にケトーシス・ケトアシドーシス</td><td>診断時にケトーシスなく、すぐにはインスリン不要</td></tr>
+<tr><th>検査</th><td>膵島関連自己抗体が陽性（陰性でも内因性インスリン欠乏があれば）</td><td>初診時血糖≧288かつ<span class="w">HbA1c＜8.7%</span>、尿中CPR＜10 μg/日 または 空腹時CPR＜0.3・負荷後＜0.5</td><td>経過中に自己抗体陽性。3か月以降に空腹時CPR＜0.6で確定</td></tr>
+<tr><th>治療</th><td>診断早期からインスリン継続</td><td>直ちにインスリン、専門医へ</td><td><span class="w">SU薬は避ける</span>。必要に応じてインスリン</td></tr>
+</tbody></table></div>
+<p>・自己抗体：抗GAD抗体（ほかIA-2、ZnT8、IAA、ICA）</p>
+<p>・免疫チェックポイント阻害薬の投与例：投与前と来院ごとに血糖を測る</p>
+<div class="sh">空腹時の血糖・インスリンから計算する指標</div>
+<p>・HOMA-IR（抵抗性）＝空腹時IRI×空腹時血糖÷405</p>
+<p class="i">1.6以下は正常、<span class="n">2.5以上</span>で抵抗性あり</p>
+<p>・HOMA-β（分泌能）＝360×空腹時IRI÷（空腹時血糖−63）</p>
+<p class="i">単位は%。低いほど基礎分泌が低い</p>
+<p class="nt">・HOMA-IRは空腹時血糖＞140、インスリン治療中は評価できない。HOMA-βも高血糖時・SU薬内服中は不正確</p>
+<p class="m">空腹時CPR・IRI（血糖と同時）、抗GAD抗体、尿・血中ケトン体、血液ガス</p>
+</div></div>
+
+<div class="sec wunit" style="break-before:column" id="s4"><div class="h wh" role="button" tabindex="0" aria-expanded="true">3　初診時・入院時の問診・診察（サマリを埋めながら）</div><div class="b">
+<p>・病歴</p>
+<p class="i">口渇・多尿・体重減少、健診歴と発症時期、<span class="n">20歳時と最大体重</span></p>
+<p class="i">妊娠糖尿病・巨大児出産歴、家族歴、治療歴・低血糖歴、飲酒・喫煙</p>
+<p class="i">生活：独居か、介護者、食事を準備する人</p>
+<p>・身体：身長・体重・BMI・腹囲、血圧（臥位・立位）</p>
+<p class="i">皮膚（白癬・爪肥厚・注射部位の硬結）、Cushing徴候・黒色表皮腫、口腔（歯周病）</p>
+<p class="i">足背・後脛骨動脈の触知、足の潰瘍・胼胝</p>
+<p>・神経：アキレス腱反射、<span class="n">内踝振動覚（C128音叉で10秒以下は低下）</span>、モノフィラメント、起立性低血圧</p>
+<p>・<span class="w">2型は診断時に合併症があることがまれでない</span> → <span class="n">初診時に必ず眼科コンサルを予約</span></p>
+<p class="m">身長・体重・腹囲、血圧、足の視診・触診、腱反射・振動覚</p>
+</div></div>
+
+<div class="sec wunit" id="s5"><div class="h wh" role="button" tabindex="0" aria-expanded="true">4　検査と血糖指標の読み方</div><div class="b">
+<p>・HbA1c：過去1〜2か月の平均、基準4.6〜6.2%</p>
+<p class="i">平均血糖が約30 mg/dL上がるとHbA1c 1%上昇（HbA1c 7%≒平均血糖154）</p>
+<div class="tw"><table class="t"><tbody>
+<tr><th>高めに出る</th><td>急速に改善した糖尿病、鉄欠乏状態</td></tr>
+<tr><th>低めに出る</th><td>急激な発症・増悪、鉄欠乏性貧血の回復期、溶血、失血・輸血後、ESA治療中、<span class="w">肝硬変、透析</span></td></tr>
+</tbody></table></div>
+<p>・GA（グリコアルブミン）：過去約2週間、基準11〜16%</p>
+<p class="i">急な変化を見たいとき、HbA1cが使えないときに使う。ネフローゼ・甲状腺機能亢進症で低値</p>
+<p class="m">血糖・HbA1c、CPR、抗GAD抗体、脂質、肝・腎機能（eGFR）、尿定性（ケトン・蛋白）、尿アルブミン/Cr比、心電図</p>
+</div></div>
+
+<div class="sec wunit" id="s6"><div class="h wh" role="button" tabindex="0" aria-expanded="true">5　慢性合併症のスクリーニング</div><div class="b">
+<div class="sh">① 網膜症</div>
+<p>・診断したら必ず眼科へ。受診間隔の目安</p>
+<p class="i">網膜症なし 1年ごと／単純 6か月ごと／増殖前 2か月ごと／増殖 1か月ごと</p>
+<div class="sh">② 腎症</div>
+<div class="tw"><table class="t"><thead><tr><th>病期（2023）</th><th>UACR（mg/gCr）</th><th>eGFR</th></tr></thead><tbody>
+<tr><th>第1期 正常アルブミン尿</th><td>＜30</td><td>≧30</td></tr>
+<tr><th>第2期 微量アルブミン尿</th><td>30〜299</td><td>≧30</td></tr>
+<tr><th>第3期 顕性アルブミン尿</th><td>≧300（またはUPCR≧0.5 g/gCr）</td><td>≧30</td></tr>
+<tr><th>第4期 GFR高度低下・末期腎不全</th><td>問わない</td><td>＜30</td></tr>
+<tr><th>第5期 腎代替療法</th><td colspan="2">透析中・腎移植後</td></tr>
+</tbody></table></div>
+<p>・尿アルブミンは3〜6か月に1回。微量アルブミン尿は日を変えて3回中2回で判断</p>
+<p>・治療：<span class="d">ACE阻害薬・ARB</span>、<span class="d">SGLT2阻害薬</span>、<span class="d">フィネレノン</span>を検討</p>
+<div class="sh">③ 神経障害（簡易診断基準）</div>
+<p>・他の末梢神経障害を否定したうえで、次の3項目のうち2つで「あり」</p>
+<p class="i">両側の足趾先・足底のしびれ・疼痛／両側アキレス腱反射の低下・消失／両側内踝の振動覚低下</p>
+<div class="sh">④ 大血管症（動脈硬化性疾患）</div>
+<p>・冠動脈疾患：<span class="w">無症状（無痛性）のことが多い</span></p>
+<p class="i">原因不明の血糖悪化・下腿浮腫・心電図変化があれば心筋梗塞を疑い、トロポニン・心エコー</p>
+<p class="i">初診時に心電図。必要に応じて負荷心電図・冠動脈CT</p>
+<p>・脳血管障害：脳梗塞が多く、ラクナ梗塞も多い。頸動脈エコー（IMT・プラーク）</p>
+<p>・末梢動脈疾患（PAD）：<span class="n">ABI≦0.9</span>で疑う。膝下の病変が多く、間欠性跛行が出にくい</p>
+<p>・予防：血糖だけでなく血圧・脂質・禁煙をまとめて管理する</p>
+<p class="i">二次予防では抗血小板薬。SGLT2阻害薬・GLP-1RAの一部は心血管イベントを減らす</p>
+<div class="sh">⑤ 足と感染症</div>
+<p>・足：白癬・胼胝・潰瘍を毎回見る（潰瘍既往・神経障害・PAD・透析は特に）</p>
+<p>・感染症：気腫性腎盂腎炎・胆嚢炎、壊死性筋膜炎、Fournier壊疽、ムコール症、悪性外耳道炎</p>
+<p class="i">肺炎球菌・インフルエンザ・COVID-19ワクチンを勧める</p>
+<p class="m">眼底（眼科）、尿アルブミン/Cr比、eGFR、腱反射・振動覚・モノフィラメント、心電図、ABI、頸動脈エコー</p>
+</div></div>
+
+
+</div>
+
+</div></section>
+
+<section class="part" id="p2"><h2 class="wpt"><span class="wpn">2</span>コントロール目標と治療方針</h2><div class="page" data-z="1.802" style="font-size: 8.6px; line-height: 1.5; zoom: 1.802;">
+
+<div class="cols wcols">
+
+<div class="sec wunit" id="s7"><div class="h wh" role="button" tabindex="0" aria-expanded="true">6　コントロール目標</div><div class="b">
+<div class="tw"><table class="t"><thead><tr><th>目標</th><th>HbA1c</th><th>どんなとき</th></tr></thead><tbody>
+<tr><th>血糖正常化</th><td class="c"><span class="n">＜6.0%</span></td><td>食事・運動のみ、または薬物でも低血糖なく達成可能</td></tr>
+<tr><th>合併症予防</th><td class="c"><span class="n">＜7.0%</span></td><td>空腹時＜130、食後2時間＜180が目安</td></tr>
+<tr><th>治療強化困難</th><td class="c"><span class="n">＜8.0%</span></td><td>低血糖などで強化が難しい</td></tr>
+</tbody></table></div>
+<div class="sh">高齢者（65歳以上）：認知機能とADLで3区分</div>
+<div class="tw"><table class="t"><thead><tr><th>重症低血糖が危惧される薬<br>（インスリン・SU薬・グリニド薬など）</th><th>カテゴリーⅠ<br>認知正常かつADL自立</th><th>カテゴリーⅡ<br>軽度認知障害〜軽度認知症 or 手段的ADL低下</th><th>カテゴリーⅢ<br>中等度以上の認知症 or 基本的ADL低下 or 多病</th></tr></thead><tbody>
+<tr><th>なし</th><td class="c"><span class="n">＜7.0%</span></td><td class="c"><span class="n">＜7.0%</span></td><td class="c"><span class="n">＜8.0%</span></td></tr>
+<tr><th>あり</th><td class="c">65〜74歳 <span class="n">＜7.5%</span>（下限6.5）<br>75歳以上 <span class="n">＜8.0%</span>（下限7.0）</td><td class="c"><span class="n">＜8.0%</span><br>（下限7.0）</td><td class="c"><span class="n">＜8.5%</span><br>（下限7.5）</td></tr>
+</tbody></table></div>
+<div class="sh">DASC-8（カテゴリーの判定）</div>
+<div class="tw"><table class="t dasc"><thead><tr><th>No</th><th>質問</th><th>評価する項目</th></tr></thead><tbody>
+<tr><td class="c">1</td><td>財布や鍵など、物を置いた場所がわからなくなることがありますか</td><td>記憶（近時記憶）</td></tr>
+<tr><td class="c">2</td><td>今日が何月何日かわからないときがありますか</td><td>見当識（時間）</td></tr>
+<tr><td class="c">3</td><td>一人で買い物はできますか</td><td rowspan="3">手段的ADL<br>（買い物・交通機関・金銭管理）</td></tr>
+<tr><td class="c">4</td><td>バスや電車、自家用車などを使って一人で外出できますか</td></tr>
+<tr><td class="c">5</td><td>貯金の出し入れや、家賃や公共料金の支払いは一人でできますか</td></tr>
+<tr><td class="c">6</td><td>トイレは一人でできますか</td><td rowspan="3">基本的ADL<br>（排泄・食事・移動）</td></tr>
+<tr><td class="c">7</td><td>食事は一人でできますか</td></tr>
+<tr><td class="c">8</td><td>家のなかでの移動は一人でできますか</td></tr>
+</tbody></table></div>
+<p>・点数：1〜2は「1 まったくない／2 ときどきある／3 頻繁にある／4 いつもそうだ」</p>
+<p class="i">3〜5は「1 問題なくできる／2 だいたいできる／3 あまりできない／4 まったくできない」</p>
+<p class="i">6〜8は「1 問題なくできる／2 見守りや声がけを要する／3 一部介助を要する／4 全介助を要する」</p>
+<p>・合計（8〜32点）：<span class="n">10点以下 カテゴリーⅠ／11〜16点 Ⅱ／17点以上 Ⅲ</span>が目安</p>
+<p class="nt">・導入の質問（もの忘れの自覚）は採点しない</p>
+<div class="sh">血糖以外の目標</div>
+<p>・血圧<span class="n">＜130/80</span>（家庭125/75、年齢によらない）。LDL-C<span class="n">＜120</span>、TG＜150（随時＜175）、HDL≧40</p>
+<p class="i">細小血管症・PAD・喫煙あり LDL-C＜100、冠動脈疾患・アテローム血栓性脳梗塞の既往 ＜70</p>
+<p>・目標体重＝身長(m)²×22（65歳以上は22〜25）。肥満はまず<span class="n">3〜6か月で現体重の3%以上の減量</span>を目指す</p>
+<p class="i">BMI≧35の高度肥満は5〜10%減。達成したら20歳時の体重なども参考に次の目標を決める</p>
+<div class="sh">入院中</div>
+<p>・≧180が続けば治療開始。目標<span class="n">100〜180 mg/dL</span>（ICUは140〜180）</p>
+<p class="i">空腹時＜100なら基礎インスリンを減らす。終末期・透析では250程度まで許容</p>
+<p class="i"><span class="w">急性期は低めを狙わない</span>（低血糖のほうが危険）</p>
+<p class="w">・長く高かった血糖を急に下げると網膜症・神経障害が悪化しうる（増殖前網膜症以上は眼科と相談）</p>
+</div></div>
+
+<div class="sec wunit" id="s8"><div class="h wh" role="button" tabindex="0" aria-expanded="true">7　治療方針の立て方（インスリン非依存状態）</div><div class="b">
+<div class="flow">
+<div class="fb s1">まずインスリン適応の判断：ケトーシス（尿ケトン陽性）・急性代謝失調 → 十分な補液とインスリンを開始し、専門医へ</div>
+<div class="fa">▼</div>
+<div class="two wst6" style="flex-wrap: wrap;"><div class="fb">初回HbA1c <span class="n">＜9.0%</span><br>食事・運動療法と教育を2〜3か月 → 目標未達なら薬物療法</div><div class="fb">初回HbA1c <span class="n">≧9.0%</span><br>食事・運動に加え、経口薬またはGLP-1受容体作動薬の開始を考慮</div></div>
+</div>
+<p>・薬は少量から始める。糖毒性が解除されれば減量・中止できる。漫然と続けない</p>
+<p>・安定していた血糖が悪化したら<span class="w">悪性腫瘍（膵癌など）や他疾患の併発</span>を疑う</p>
+<div class="sh">食事療法</div>
+<p>・エネルギー＝目標体重×係数</p>
+<p class="i">軽い労作25〜30、普通の労作30〜35、重い労作35〜 kcal/kg目標体重</p>
+<p>・配分：炭水化物40〜60%、たんぱく質20%まで、残りを脂質</p>
+<p>・食塩：高血圧合併で<span class="n">6 g/日未満</span>。飲酒は25 g/日程度まで</p>
+<div class="sh">腎症のあるときのたんぱく質</div>
+<div class="tw"><table class="t"><thead><tr><th>腎症の状態</th><th>たんぱく質</th><th>エネルギー</th></tr></thead><tbody>
+<tr><th>正常〜微量アルブミン尿、eGFR≧45</th><td>エネルギーの<span class="n">20%未満</span>（制限はしない）</td><td>通常どおり</td></tr>
+<tr><th>顕性アルブミン尿、eGFR＜45、<br>または急速な低下（年3〜5 mL/分/1.73m²以上）</th><td><span class="n">0.6〜0.8 g/kg目標体重/日</span>を検討</td><td>30〜35 kcal/kg目標体重を十分に</td></tr>
+<tr><th>eGFR＜30（第4期）</th><td><span class="n">0.6〜0.8 g/kg目標体重/日</span>を検討</td><td>同上</td></tr>
+</tbody></table></div>
+<p>・制限は腎臓専門医・管理栄養士と相談して始める</p>
+<p class="w">・高齢者・サルコペニア・フレイル・栄養状態が悪い人では過度に制限しない</p>
+<p>・低たんぱく食ではエネルギー不足になりやすい → 体重・筋肉量の減少に注意</p>
+<div class="sh">運動療法</div>
+<p>・中強度の有酸素運動を週150分以上（週3回以上）、レジスタンス運動を週2〜3回</p>
+<p class="w">・空腹時血糖≧250、尿ケトン中等度以上、増殖前網膜症以上、急性感染症では制限</p>
+</div></div>
+
+<div class="sec wunit" id="s9"><div class="h wh" role="button" tabindex="0" aria-expanded="true">8　2型糖尿病の薬物療法のアルゴリズム（JDS 第2版）</div><div class="b">
+<div class="flow">
+<div class="fb s1">インスリンの絶対的・相対的適応は？（→ 10）　はい → インスリン治療</div>
+<div class="fa">▼ いいえ</div>
+<div class="fb">目標HbA1cを決める（一般／高齢者）</div>
+<div class="fa">▼</div>
+<div class="step"><div class="sl">Step1　病態に応じて選ぶ</div>
+<div class="two wst6" style="flex-wrap: wrap;"><div class="fb"><span class="bh">非肥満（BMI＜25）</span><br>インスリン分泌不全を想定<br><span class="d">DPP-4阻害薬</span>、<span class="d">ビグアナイド</span>、<span class="d">α-GI</span>*、<span class="d">グリニド</span>*、<span class="d">SU薬</span>、<span class="d">SGLT2阻害薬</span>†、<span class="d">GLP-1RA</span>†、<span class="d">イメグリミン</span></div>
+<div class="fb"><span class="bh">肥満（BMI≧25）</span><br>インスリン抵抗性を想定<br><span class="d">ビグアナイド</span>、<span class="d">SGLT2阻害薬</span>、<span class="d">GLP-1RA</span>、<span class="d">DPP-4阻害薬</span>、<span class="d">チアゾリジン</span>、<span class="d">α-GI</span>*、<span class="d">イメグリミン</span>、<span class="d">チルゼパチド</span></div></div>
+<p class="nt" style="padding-left:0;text-indent:0;margin-top:1px">*食後高血糖の改善　†やせでは体重減少に注意。日本人は低いBMIでも内臓脂肪型（腹囲 男≧85・女≧90 cm）</p></div>
+<div class="fa">▼</div>
+<div class="step"><div class="sl">Step2　安全性：該当する薬を避ける</div>
+<p>・高齢者（低血糖リスク）：<span class="w">SU薬（グリメピリド・グリクラジドなど）、グリニド薬</span></p>
+<p>・腎機能障害：<span class="w">メトホルミン、SU薬、ピオグリタゾン、腎排泄型グリニド（ナテグリニド）</span>。高度障害ではSU薬・メトホルミン・ピオグリタゾンは禁忌 → 下の表</p>
+<p>・心不全：<span class="w">ピオグリタゾン、メトホルミン（禁忌）</span></p>
+<p>・肝硬変・重度肝障害：<span class="w">メトホルミン、SU薬、ビルダグリプチン、ピオグリタゾン</span></p>
+<p>・脱水・飲酒・低栄養・手術前後：<span class="w">メトホルミン、SGLT2阻害薬</span></p></div>
+<div class="fa">▼</div>
+<div class="step"><div class="sl">Step3　併存疾患（Additional benefits）</div>
+<p>・慢性腎臓病（特に顕性腎症）→ <span class="d">SGLT2阻害薬</span>・<span class="d">GLP-1RA</span></p>
+<p>・心不全 → <span class="d">SGLT2阻害薬</span>　・心血管疾患 → <span class="d">SGLT2阻害薬</span>・<span class="d">GLP-1RA</span></p></div>
+<div class="fa">▼</div>
+<div class="step"><div class="sl">Step4　患者背景：服薬継続率とコスト</div>
+<p>・高価：<span class="d">GLP-1RA</span>（特に経口セマグルチド）、<span class="d">チルゼパチド</span>、配合注</p>
+<p>・中等度：<span class="d">SGLT2阻害薬</span>、<span class="d">DPP-4阻害薬</span>、<span class="d">イメグリミン</span>（後発品のある薬は安くなる）</p>
+<p>・安価：<span class="d">メトホルミン</span>、<span class="d">SU薬</span>、<span class="d">ピオグリタゾン</span>、<span class="d">α-GI</span></p>
+<p>・回数：週1回注射・1日1回内服は継続しやすい。α-GI・グリニドは1日3回食直前</p></div>
+<div class="fa">▼</div>
+<div class="fb s1">約3か月ごとに再評価。未達なら生活習慣を見直し、インスリン適応から考え直して追加・変更</div>
+</div>
+<p>・作用機序の違う薬を組み合わせる</p>
+<p class="i"><span class="w">SU薬＋グリニド、DPP-4阻害薬＋GLP-1RA（GIP/GLP-1RA）は併用しない</span></p>
+<p class="ev">📘 ADA 2026：ASCVD（または高リスク）にはGLP-1RAかSGLT2阻害薬、心不全・CKD（eGFR 20〜60またはアルブミン尿）にはSGLT2阻害薬（CKDはGLP-1RAも）を、HbA1cにかかわらず用いる。HbA1c＞10%・血糖≧300・高血糖症状ではインスリンを考慮し、それ以外では初期・追加ともインスリンよりGLP-1系を優先する</p>
+</div></div>
+
+<div class="sec wunit" id="s10"><div class="h wh" role="button" tabindex="0" aria-expanded="true">腎機能（eGFR, mL/分/1.73m²）による使い分け</div><div class="b">
+<div class="tw"><table class="t ren"><thead><tr><th>薬</th><th>60〜45</th><th>45〜30</th><th>30〜15</th><th>透析</th></tr></thead><tbody>
+<tr><th>メトホルミン</th><td>最大1,500 mg</td><td>最大750 mg</td><td class="x">禁忌</td><td class="x">禁忌</td></tr>
+<tr><th>イメグリミン</th><td>通常量</td><td colspan="2">500 mg 1日2回（eGFR 10〜15は1日1回）</td><td class="x">推奨されない</td></tr>
+<tr><th>SGLT2阻害薬</th><td>通常量</td><td>血糖低下は弱い（心腎保護目的は継続）</td><td>血糖低下は期待できない</td><td class="x">使わない</td></tr>
+<tr><th>シタグリプチン</th><td colspan="4">Ccr≧50：50 mg／30〜50：25 mg／＜30・透析：12.5 mg</td></tr>
+<tr><th>ビルダグリプチン</th><td>50 mg 1日2回</td><td colspan="3">50 mg 1日1回（中等度以上の障害・透析）</td></tr>
+<tr><th>アログリプチン</th><td colspan="4">Ccr≧50：25 mg／30〜50：12.5 mg／＜30・透析：6.25 mg</td></tr>
+<tr><th>リナグリプチン・テネリグリプチン</th><td colspan="4">調節不要（5 mg、20 mg）</td></tr>
+<tr><th>トレラグリプチン（週1回）</th><td colspan="4">Ccr≧50：100 mg／30〜50：50 mg／＜30・透析：25 mg</td></tr>
+<tr><th>GLP-1RA・チルゼパチド</th><td colspan="4">添文上の調節なし（透析のデータは少ない。嘔吐・下痢による脱水に注意）</td></tr>
+<tr><th>SU薬</th><td>少量で慎重</td><td>低血糖に注意して最小量</td><td class="x">重篤な腎障害は禁忌</td><td class="x">禁忌</td></tr>
+<tr><th>ナテグリニド</th><td>慎重</td><td>慎重</td><td>慎重</td><td class="x">禁忌</td></tr>
+<tr><th>ミチグリニド・レパグリニド</th><td colspan="4">慎重投与（低血糖に注意して少量から）</td></tr>
+<tr><th>α-GI</th><td colspan="3">使用可（重篤な腎障害は慎重）</td><td>使用可</td></tr>
+<tr><th>ピオグリタゾン</th><td>慎重（浮腫）</td><td>慎重</td><td class="x">重篤な腎障害は禁忌</td><td class="x">禁忌</td></tr>
+<tr><th>インスリン</th><td colspan="4">腎機能が下がるほど必要量が減り、作用が遷延する → 減量して低血糖に注意</td></tr>
+</tbody></table></div>
+<p class="nt">・DPP-4阻害薬の区切りはeGFRではなくCcr（mL/分）。処方前に電子添文で確認する</p>
+</div></div>
+
+
+</div>
+
+</div></section>
+
+<section class="part" id="p3"><h2 class="wpt"><span class="wpn">3</span>血糖降下薬・インスリン・入院時の血糖管理</h2><div class="page" data-z="1.802" style="font-size: 8.6px; line-height: 1.5; zoom: 1.802;">
+
+<div class="cols wcols">
+
+<div class="sec full wunit" id="s11"><div class="h wh" role="button" tabindex="0" aria-expanded="true">9　血糖降下薬の一覧（成人2型、開始処方の例）</div><div class="b">
+<div class="tw"><table class="drug">
+<thead><tr><th style="width:11%">系統</th><th style="width:44%">開始処方の例 → 増量</th><th style="width:6%">低血糖<br>体重</th><th style="width:39%">注意・禁忌</th></tr></thead><tbody>
+<tr><th>ビグアナイド</th><td>例：<span class="d">メトホルミン</span>（メトグルコ）250 mg 2錠 分2 朝夕食後から開始<br>→ 効果をみて増量、最大2,250 mg/日</td><td>低<br>不変〜減</td><td><span class="w">eGFR＜30・透析は禁忌</span>。乳酸アシドーシス：脱水・経口摂取困難・手術前後・大量飲酒・心肺機能障害には使わない。腹部症状、ビタミンB12低下</td></tr>
+<tr><th>DPP-4阻害薬</th><td>例：<span class="d">シタグリプチン</span>（ジャヌビア/グラクティブ）50 mg 分1 朝食後<br>腎機能を問わず：<span class="d">リナグリプチン</span>（トラゼンタ）5 mg 分1、<span class="d">テネリグリプチン</span>（テネリア）20 mg 分1<br>週1回：<span class="d">トレラグリプチン</span>（ザファテック）100 mg</td><td>低<br>不変</td><td>多くは腎機能で減量（腎機能の表）。ビルダグリプチンは重度肝障害で禁忌<br><span class="w">SU薬に追加するときはSU薬を減らす</span>（65歳以上・Cr≧1.0では必須）：グリメピリド2 mg/日以下、グリクラジド40 mg/日以下<br>水疱性類天疱瘡、腸閉塞</td></tr>
+<tr><th>SGLT2阻害薬</th><td>例：<span class="d">エンパグリフロジン</span>（ジャディアンス）10 mg 分1 朝食前または後 → 最大25 mg<br><span class="d">ダパグリフロジン</span>（フォシーガ）5 mg → 10 mg、<span class="d">カナグリフロジン</span>（カナグル）100 mg</td><td>低<br>減</td><td>尿路・性器感染、Fournier壊疽、脱水、<span class="w">正常血糖ケトアシドーシス</span>（血中ケトンを確認）<br>75歳以上・利尿薬併用は慎重。<span class="w">シックデイ・術前は休薬</span></td></tr>
+<tr><th>GLP-1RA</th><td>例：<span class="d">デュラグルチド</span>（トルリシティ）0.75 mg 週1回皮下注 → 1.5 mg<br><span class="d">セマグルチド</span>（オゼンピック）0.25 mg 週1回を4週 → 0.5 mg → 効果不十分なら4週以上あけて1.0 mg<br><span class="d">リラグルチド</span>（ビクトーザ）0.3 mg 1日1回 → 1週以上ごとに0.3 mgずつ増量、維持0.9 mg（最大1.8 mg）<br>経口：<span class="d">セマグルチド</span>（リベルサス）3 mg 分1を4週 → 7 mg → 効果不十分なら4週以上あけて14 mg</td><td>低<br>減</td><td>悪心・下痢（低用量から漸増）、急性膵炎（発症したら再投与しない）、胆嚢炎・胆管炎、イレウス<br>リベルサス：1日最初の飲食前の空腹時に水120 mL以下、30分は飲食・他剤不可<br><span class="w">インスリン依存状態からの切り替えは不可</span></td></tr>
+<tr><th>GIP/GLP-1RA</th><td>例：<span class="d">チルゼパチド</span>（マンジャロ）2.5 mg 週1回を4週 → 5 mg → 効果不十分なら4週以上あけて2.5 mgずつ、最大15 mg</td><td>低<br>減</td><td>GLP-1RAと同様。急速な改善で網膜症が顕在化・増悪しうる → 増殖網膜症などは眼科と連携</td></tr>
+<tr><th>イメグリミン</th><td>例：<span class="d">イメグリミン</span>（ツイミーグ）500 mg 2錠 1日2回 朝夕</td><td>低<br>不変</td><td>腎機能で減量（腎機能の表）。重度の食欲減退・嘔吐（脱水に至った例あり）。メトホルミン併用で腹部症状</td></tr>
+<tr><th>チアゾリジン</th><td>例：<span class="d">ピオグリタゾン</span>（アクトス）15 mg 分1 朝食後 → 30 mg（最大45 mg、インスリン併用時は30 mg）</td><td>低<br>増</td><td><span class="w">心不全・その既往は禁忌</span>、浮腫、閉経後女性の骨折。重篤な肝・腎障害、膀胱癌治療中は使わない</td></tr>
+<tr><th>α-GI</th><td>例：<span class="d">ボグリボース</span>（ベイスン）0.2 mg 3錠 分3 毎食直前 → 最大0.3 mg 1日3回<br><span class="d">ミグリトール</span>（セイブル）50 mg 1日3回 毎食直前</td><td>低<br>不変</td><td>腹部膨満・放屁。開腹歴・高齢者で腸閉塞<br><span class="w">低血糖時はブドウ糖</span>（砂糖では遅い）</td></tr>
+<tr><th>SU薬</th><td>例：<span class="d">グリメピリド</span>（アマリール）0.25 mg 分1 朝食後 → 0.5 mg → 0.75 mg<br><span class="d">グリクラジド</span>（グリミクロン）10 mg 分1 朝食後 → 20 mg → 40 mg<br>研修医はこの量までにとどめ、これで足りなければ他の薬へ</td><td><span class="w">高</span><br>増</td><td><span class="w">遷延性低血糖</span>（高齢・腎障害・肝障害）。重篤な肝・腎障害で禁忌<br><span class="w">グリベンクラミド（オイグルコン）は低血糖リスクが高く使わない</span><br>SU薬2剤の併用・グリニドとの併用はしない</td></tr>
+<tr><th>グリニド</th><td>弱い → 強い（いずれも1日3回 毎食直前）<br><span class="d">ナテグリニド</span> 90 mg → <span class="d">ミチグリニド</span> 5 mg → 10 mg → <span class="d">レパグリニド</span> 0.25 mg → 0.5 mg</td><td>中<br>増</td><td>食前30分では食事前に低血糖になる<br><span class="w">透析ではナテグリニド禁忌</span>。食後高血糖に</td></tr>
+</tbody></table></div>
+<p>・経口薬に共通の禁忌：重症ケトーシス、意識障害、重症感染症、<span class="w">手術前後</span>、重篤な外傷、妊娠</p>
+<p>・配合注：<span class="d">ゾルトファイ</span>（デグルデク＋リラグルチド）、<span class="d">ソリクア</span>（グラルギン＋リキシセナチド）、週1回の<span class="d">キーンス</span>（イコデク＋セマグルチド、承認済み・未発売）</p>
+</div></div>
+
+<div class="sec wunit" id="s12"><div class="h wh" role="button" tabindex="0" aria-expanded="true">10　インスリン療法</div><div class="b">
+<p>・<span class="w">絶対的適応</span></p>
+<p class="i">①インスリン依存状態 ②高血糖性昏睡（DKA・HHS） ③重症の肝障害・腎障害の合併</p>
+<p class="i">④重症感染症・外傷・中等度以上の手術（全身麻酔など） ⑤糖尿病合併妊婦（食事療法で目標未達のGDMを含む） ⑥静脈栄養時</p>
+<p>・相対的適応</p>
+<p class="i">①著明な高血糖（空腹時<span class="n">≧250</span>、随時<span class="n">≧350</span>） ②経口薬で目標未達 ③やせで栄養状態低下 ④ステロイド治療時の高血糖 ⑤糖毒性の解除</p>
+<p>・<span class="w">1型（インスリン依存状態）はいかなる場合も中断しない</span>（食べられなくても基礎インスリンは継続）</p>
+<div class="tw"><table class="t"><thead><tr><th>種類</th><th>代表薬</th><th>使い方</th></tr></thead><tbody>
+<tr><th>超速効型</th><td><span class="d">リスプロ</span>（ヒューマログ）、<span class="d">アスパルト</span>（ノボラピッド）、フィアスプ、ルムジェブ</td><td>食直前（フィアスプ・ルムジェブは食事開始時、必要なら開始後20分以内も可）。最大作用は約2時間</td></tr>
+<tr><th>速効型</th><td><span class="d">ヒューマリンR</span>、ノボリンR</td><td>食前30分。<span class="n">静注・持続静注・輸液への混注はこれ</span></td></tr>
+<tr><th>持効型</th><td><span class="d">グラルギン</span>（ランタス）、<span class="d">デグルデク</span>（トレシーバ）、デテミル（レベミル）、週1回の<span class="d">イコデク</span>（アウィクリ）</td><td>1日1回。基礎分泌の代わり。イコデクは週1回で、用量を変えた効果が遅れて出る</td></tr>
+<tr><th>中間型・混合型</th><td>ヒューマリンN、ノボラピッド30ミックス、ライゾデグ（デグルデク70%＋アスパルト30%）</td><td>注射回数を減らしたいとき</td></tr>
+</tbody></table></div>
+<div class="sh">始め方</div>
+<p>・外来でBOT：経口薬は継続し、<span class="d">持効型</span>を1日1回</p>
+<p class="i"><span class="n">0.1〜0.2単位/kg（4〜8単位）</span>から。必要量は0.4〜0.5単位/kg（20〜30単位）まで増えることが多い</p>
+<p>・入院で強化療法：1日総量（TDD）＝体重×<span class="n">0.2（やせ）〜0.4（肥満）単位</span></p>
+<p class="i">高齢者は<span class="n">0.15〜0.3</span>、腎障害はさらに少なめ</p>
+<p class="i">4等分して毎食前の超速効型＋持効型で開始（例 60 kg・やせ：12単位/日 → 3-3-3＋3）</p>
+<div class="sh">調整</div>
+<p>・責任インスリンで調整する</p>
+<p class="i">朝食前血糖 → 持効型／昼食前 → 朝の超速効型／夕食前 → 昼／就寝前 → 夕</p>
+<p class="i"><span class="n">2単位ずつ</span>動かす（やせ・1型でTDDが少ない人は1単位ずつ）</p>
+<p>・インスリン効果値（超速効型1単位で下がる血糖）≒1800÷TDD（経験則）</p>
+<p class="i">例 TDD 36単位 → 約50 mg/dL → 補正スケールは50刻み</p>
+<p>・GLP-1RAを足したら、インスリン量を見直す</p>
+</div></div>
+
+<div class="sec wunit" id="s13"><div class="h wh" role="button" tabindex="0" aria-expanded="true">11　入院時の血糖管理（初日にやること）</div><div class="b">
+<p>・主科の治療が最優先。<span class="n">手術日・退院日に間に合う</span>血糖管理をする</p>
+<p class="i">「血糖が悪くて退院できない」は避け、続きは外来でよい</p>
+<p>・HbA1cを確認する（同じ月に測っていなければ測る）</p>
+<p>・インスリン導入の可能性があれば、早めに<span class="n">指示簿で</span>血糖測定・手技指導を入れる</p>
+<div class="tw"><table class="t"><thead><tr><th>食事</th><th>経口薬・GLP-1RAの扱い</th></tr></thead><tbody>
+<tr><th>まったく食べられない</th><td>経口薬・GLP-1RAはやめられるものからすべてやめ、インスリンで管理</td></tr>
+<tr><th>5割未満・急性感染症</th><td><span class="w">メトホルミン、SGLT2阻害薬、SU薬・グリニド、イメグリミン</span>を中止</td></tr>
+<tr><th>安定して食べられる</th><td>禁忌がなければ継続可。急性期を越えたら導入すべき薬（心腎保護など）を見直す</td></tr>
+</tbody></table></div>
+<p>・<span class="w">スライディングスケール単独は続けない</span>（後追いになる）</p>
+<p class="i">例外：軽症の2型で血糖＜180を保てる場合。食事量が読めたら固定打ち＋補正へ</p>
+<div class="tw"><table class="t"><thead><tr><th>補正スケール例（mg/dL）</th><th>≦150</th><th>151〜200</th><th>201〜250</th><th>251〜300</th><th>301〜350</th><th>≧351</th></tr></thead><tbody>
+<tr><th>感受性大（やせ・高齢）</th><td class="c">0</td><td class="c">0</td><td class="c">2</td><td class="c">3</td><td class="c">4</td><td class="c">5</td></tr>
+<tr><th>標準</th><td class="c">0</td><td class="c">2</td><td class="c">4</td><td class="c">6</td><td class="c">8</td><td class="c">10</td></tr>
+<tr><th>抵抗性大（肥満・ステロイド）</th><td class="c">0</td><td class="c">4</td><td class="c">8</td><td class="c">12</td><td class="c">16</td><td class="c">20</td></tr>
+</tbody></table></div>
+<div class="sh">絶食・糖入り輸液</div>
+<p>・<span class="w">糖を抜かない</span>（ケトーシスを防ぐ）。持効型は糖入り輸液が十分なら継続、なければ減量</p>
+<p>・<span class="d">速効型</span>を混注する目安：ブドウ糖5〜10 gに1単位</p>
+<p class="i">病棟で始めるときの目安。肥満は少ない糖で1単位、やせは多い糖で1単位。ブドウ糖50 g以上ならK補充</p>
+<p class="i">周術期で1〜2時間ごとに測定するならGIK式：6時間分のインスリン（単位）＝6時間で入れるブドウ糖(g)÷5＋直前血糖÷100</p>
+<p>・TPN・ステロイド投与中は高血糖になりやすい</p>
+<p>・血糖測定は、安定したら回数を減らす</p>
+<p>・<span class="d">メトホルミン</span>とヨード造影：検査前に一時中止し、<span class="w">投与後48時間は再開しない</span></p>
+<p class="i">緊急検査は除く。腎機能悪化が心配ならeGFRを測ってから再開</p>
+<p class="m">毎食前・就寝前血糖（必要時）、K、尿・血中ケトン体</p>
+</div></div>
+
+
+</div>
+
+</div></section>
+
+<section class="part" id="p4"><h2 class="wpt"><span class="wpn">4</span>周術期・急性合併症・紹介</h2><div class="page" data-z="1.802" style="font-size: 8.6px; line-height: 1.5; zoom: 1.802;">
+
+<div class="cols wcols" style="column-fill:balance;height:auto">
+
+<div class="sec wunit" id="s14"><div class="h wh" role="button" tabindex="0" aria-expanded="true">12　周術期（術前の休薬）</div><div class="b">
+<p>・目標：術前〜術後<span class="n">100〜180 mg/dL</span>、尿ケトン陰性</p>
+<p>・待機手術：術前3か月以内の<span class="n">HbA1c＜8%</span>が目安（HbA1cだけで延期はしない）</p>
+<p class="i"><span class="w">空腹時≧200、食後≧300、尿ケトン陽性なら延期を勧める</span></p>
+<div class="tw"><table class="t"><thead><tr><th>薬</th><th>術前</th><th>手術当日</th></tr></thead><tbody>
+<tr><th>SGLT2阻害薬</th><td><span class="w">3日前</span>までに中止（2型糖尿病のない心不全は別に検討）</td><td>中止</td></tr>
+<tr><th>ビグアナイド</th><td><span class="w">2日前</span>までに中止</td><td>中止</td></tr>
+<tr><th>SU薬</th><td>継続（高用量は2〜3日前までに中止）</td><td>中止</td></tr>
+<tr><th>GLP-1RA・GIP/GLP-1RA</th><td>継続（週1回製剤は<span class="w">1週間前から中止を考慮</span>、誤嚥リスク）</td><td>中止</td></tr>
+<tr><th>DPP-4・α-GI・TZD・グリニド・イメグリミン</th><td>継続</td><td>中止</td></tr>
+<tr><th>持効型・中間型</th><td>継続（前日夕以降75〜80%に減量を考慮）</td><td>継続・減量（<span class="w">1型は必須</span>）</td></tr>
+<tr><th>イコデク（週1回）</th><td>禁食が数日以上なら事前に連日製剤へ</td><td>継続</td></tr>
+</tbody></table></div>
+</div></div>
+
+<div class="sec wunit" id="s15"><div class="h wh" role="button" tabindex="0" aria-expanded="true">13　急性合併症（DKA・HHS）</div><div class="b">
+<div class="tw"><table class="t"><thead><tr><th></th><th>DKA</th><th>HHS</th></tr></thead><tbody>
+<tr><th>背景・誘因</th><td>インスリン依存状態、若年。中断・感染・心筋梗塞・清涼飲料水・<span class="w">SGLT2阻害薬</span></td><td>非依存状態、高齢。感染・脱水・ステロイド・高カロリー輸液</td></tr>
+<tr><th>血糖</th><td>＞250（SGLT2阻害薬では正常でも起こる）</td><td>＞600</td></tr>
+<tr><th>酸塩基</th><td><span class="n">pH≦7.30、HCO₃⁻≦18</span>、血中ケトン≧3 mM</td><td>pH 7.3〜7.4、有効浸透圧（2Na＋血糖/18）<span class="n">＞320</span></td></tr>
+</tbody></table></div>
+<p>・「高血糖≠ケトアシドーシス」：まず尿・血中ケトンと血液ガス</p>
+<p class="i">ケトーシスなら持効型が必要、ケトアシドーシスならインスリン持続静注</p>
+<div class="sh">初期治療（直ちに専門医のいる施設へ）</div>
+<p>・補液：<span class="d">生理食塩水</span>500〜1,000 mL/時で開始し、数時間後は250〜500 mL/時</p>
+<p>・インスリン：<span class="d">速効型インスリン</span><span class="n">0.1単位/kg/時</span>で持続静注</p>
+<p class="i">補液だけでも血糖は下がる。下げすぎに注意</p>
+<p>・カリウム</p>
+<p class="i"><span class="w">K＜3.5：インスリンを待ってK補充を先に</span></p>
+<p class="i">K≦5.0：輸液に<span class="d">KCl</span>を混注（<span class="w">末梢からは20 mEq/500 mLまで</span>）</p>
+<p>・血糖＜250：ブドウ糖を加え、インスリンを0.05単位/kg/時に減らす</p>
+<p>・<span class="d">重炭酸（メイロン）</span>はpH≧7.0では原則使わない</p>
+<p class="m">血液ガス（pH・HCO₃⁻・AG）、血糖、Na・K、ケトン体、乳酸、CPR、心電図</p>
+</div></div>
+
+<div class="sec wunit" id="s16"><div class="h wh" role="button" tabindex="0" aria-expanded="true">14　低血糖・シックデイ</div><div class="b">
+<p>・低血糖：症状があり血糖<span class="n">＜70 mg/dL</span></p>
+<p class="i">高齢者・自律神経障害では無自覚、ふらつきなど非典型な症状</p>
+<p class="i"><span class="w">持効型・SU薬の低血糖は遷延</span> → 回復後も入院で観察</p>
+<p>・経口摂取できる：<span class="d">ブドウ糖</span>5〜10 g（ブドウ糖を含む飲料なら150〜200 mL、砂糖なら20 g）</p>
+<p class="i">15分後に再検し、低ければ同量を追加。<span class="w">α-GI内服中は必ずブドウ糖</span></p>
+<p>・経口摂取できない：<span class="d">50%ブドウ糖</span>20 mL（20%なら40 mL）を静注</p>
+<p class="i">院外では<span class="d">グルカゴン点鼻</span>（バクスミー3 mg）</p>
+<p>・シックデイ：<span class="w">インスリンは自己判断で中断しない</span></p>
+<p class="i"><span class="d">メトホルミン</span>と<span class="d">SGLT2阻害薬</span>は中止。SU薬・グリニドは食事量に応じて中止・減量</p>
+<p class="i">水分を十分に、炭水化物を優先して絶食しない。3〜4時間ごとに血糖測定</p>
+<p>・<span class="w">早急に入院</span></p>
+<p class="i">嘔吐・下痢が止まらず食べられない／高熱が続き尿ケトン強陽性または血中ケトン≧3 mM／血糖≧350</p>
+</div></div>
+
+<div class="sec wunit" id="s17"><div class="h wh" role="button" tabindex="0" aria-expanded="true">15　糖尿病専門医に相談・紹介</div><div class="b">
+<p>・<span class="w">直ちに</span>：ケトーシス・DKA・HHSの疑い、1型の疑い、内因性インスリンの高度枯渇</p>
+<p>・低血糖を繰り返す、ステロイド・膵疾患・感染症で急に悪化、周術期の厳格な管理、妊娠（予定を含む）</p>
+<p>・目標未達が<span class="n">3か月以上</span>続く、新しい注射薬やインスリンを導入する、教育入院が必要</p>
+</div></div>
+
+</div>
+<div class="src">出典：日本糖尿病学会『糖尿病治療ガイド2024』文光堂、2024。日本糖尿病学会『糖尿病専門医研修ガイドブック 改訂第10版』診断と治療社、2026（15-2 周術期管理、15-7 シックデイ）。日本糖尿病学会『糖尿病診療ガイドライン2024』南江堂。2型糖尿病の薬物療法のアルゴリズム（第2版）糖尿病 2023;66:715-733。糖尿病性腎症病期分類2023 糖尿病 2023;66:797-805。日本糖尿病学会 インクレチン関連薬の安全な使用に関するRecommendation 第2版（2024）・SGLT2阻害薬／メトホルミンの適正使用に関するRecommendation。日本老年医学会 DASC-8（2018）。日本肥満学会『肥満症診療ガイドライン2022』。日本高血圧学会『高血圧管理・治療ガイドライン2025』。日本動脈硬化学会『動脈硬化性疾患予防ガイドライン2022』。各薬剤の電子添文（PMDA、2026年閲覧）。ADA. Standards of Care in Diabetes—2026. Diabetes Care 2026;49(Suppl 1)（Sec. 6、9、16）。Korytkowski MT, et al. J Clin Endocrinol Metab 2022（Endocrine Society 入院高血糖ガイドライン）。Umpierrez GE, et al. Hyperglycaemic crises in adults with diabetes: a consensus report. Diabetologia 2024。Matthews DR, et al. Diabetologia 1985（HOMA）。原資料：内分泌・代謝内科研修マニュアル（Googleドキュメント）。</div>
+</div></section>
+</div>
+</div><p class="wempty" id="none">該当する項目はありません。</p></main>
+<script>
+{
+const q=document.getElementById('q'),hits=document.getElementById('hits'),tg=document.getElementById('tg'),none=document.getElementById('none');
+const units=[...document.querySelectorAll('#mw .wunit')].filter(u=>!u.parentElement.closest('.wunit'));
+const parts=[...document.querySelectorAll('#mw .part')];
+const orig=new Map(units.map(u=>[u,u.innerHTML]));
+const setOpen=(u,o)=>{u.classList.toggle('wclosed',!o);const h=u.querySelector(':scope>.wh');if(h)h.setAttribute('aria-expanded',o?'true':'false');};
+document.addEventListener('click',e=>{const h=e.target.closest('.wh');if(!h)return;const u=h.parentElement;setOpen(u,u.classList.contains('wclosed'));});
+document.addEventListener('keydown',e=>{const h=e.target.closest&&e.target.closest('.wh');if(h&&(e.key==='Enter'||e.key===' ')){e.preventDefault();h.click();}});
+document.querySelectorAll('.wnav a').forEach(a=>a.addEventListener('click',()=>{const u=document.querySelector(a.getAttribute('href'));if(u&&u.classList.contains('wunit'))setOpen(u,true);}));
+const esc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+const mark=(el,re)=>{const w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);const ns=[];while(w.nextNode())ns.push(w.currentNode);
+  ns.forEach(t=>{re.lastIndex=0;if(!re.test(t.data))return;re.lastIndex=0;const f=document.createDocumentFragment();let i=0,m;while((m=re.exec(t.data))){f.append(t.data.slice(i,m.index));const k=document.createElement('mark');k.textContent=m[0];f.append(k);i=m.index+m[0].length;}f.append(t.data.slice(i));t.replaceWith(f);});};
+const others=parts.map(p=>[...p.querySelectorAll('.page *')].filter(e=>!e.closest('.wunit')&&!e.querySelector('.wunit')&&e.parentElement.querySelector(':scope>.wunit')));
+const run=()=>{const v=q.value.trim();units.forEach(u=>{u.innerHTML=orig.get(u);});
+  if(!v){[...units,...parts,...others.flat()].forEach(e=>e.classList.remove('hide'));hits.textContent='';none.style.display='none';return;}
+  const re=new RegExp(esc(v),'gi');let c=0;
+  units.forEach(u=>{const ok=u.textContent.toLowerCase().includes(v.toLowerCase());u.classList.toggle('hide',!ok);if(ok){c++;setOpen(u,true);mark(u,re);}});
+  others.flat().forEach(e=>e.classList.add('hide'));
+  parts.forEach(p=>p.classList.toggle('hide',!p.querySelector('.wunit:not(.hide)')));
+  hits.textContent=c+'件';none.style.display=c?'none':'block';};
+q.addEventListener('input',run);
+tg.addEventListener('click',()=>{const open=tg.textContent==='すべて開く';units.forEach(u=>{if(u.querySelector(':scope>.wh'))setOpen(u,open);});tg.textContent=open?'すべて閉じる':'すべて開く';});
+window.addEventListener('beforeprint',()=>units.forEach(u=>setOpen(u,true)));
+}
+</script>
+</body></html>

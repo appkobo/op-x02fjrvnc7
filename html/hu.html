@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>血尿・腎生検・頻尿チェックシート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.p1 .t{font-size:8.4px}.p1 .rule{font-size:8.8px}.p2 .t{font-size:8px}.p2 .rule{font-size:8.6px}
+.sec{break-inside:avoid;margin:0 0 4px 0;border:1px solid #c9cfe6}
+.h{display:flex;align-items:center;gap:5px;background:#e7eaf6;color:#1e2a66;font-weight:700;font-size:10px;padding:2px 6px;border-bottom:1px solid #c9cfe6}
+.b{padding:2px 6px 2px 6px}
+.b p{margin:0 0 1.5px 0;padding-left:7px;text-indent:-7px}
+.sub{font-weight:700;color:#1e2a66;margin:2px 0 1px 0}
+.src{font-size:6.8px;color:#6b7186;text-align:right;margin-top:1px;padding:0;text-indent:0}
+.d{background:#e1efe3;padding:0 1px}
+.n{background:#fff1bf;padding:0 1px}
+.w{color:#9b1c1c}
+.t{width:100%;border-collapse:collapse;margin:2px 0 1px 0;font-size:8.2px;line-height:1.3}
+.t th,.t td{border:1px solid #b9c1de;padding:1px 3px;text-align:left;vertical-align:top}
+.t th{background:#f1f3fa;font-weight:500;color:#1e2a66;text-align:center;vertical-align:middle}
+.t td.rh{background:#f1f3fa;font-weight:700;color:#1e2a66}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.rule{background:#eef1f8;border-left:3px solid #26326e;padding:2px 5px;font-size:8.6px;line-height:1.35}
+.rule b{color:#26326e;margin-right:3px}
+.flow{display:flex;gap:2px;align-items:stretch;margin:2px 0}
+.flow div{flex:1;border:1px solid #b9c1de;background:#f7f8fc;padding:1px 3px;font-size:8px;line-height:1.3}
+.flow span{align-self:center;color:#4a5a9a;font-weight:700}
+</style>
+<style>
+html,body{margin:0;background:#fff}
+#mw .page,#mw section.page{width:auto!important;height:auto!important;min-height:0!important;overflow:visible!important;padding:0!important;margin:0!important;box-shadow:none!important;break-after:auto!important;page-break-after:auto!important;background:transparent!important}
+
+/* VOICE 臨床の手引き。落ち着いて、早く引ける
+   IDEA 白衣のポケットに入れる診療カード：紙のチェックシートと同じ配色・色分け
+   PICTURE 色分けされた本文そのものが主役。図は元のまま
+   COLOUR 白地、シートごとの主色、薬剤＝緑、目標値＝黄、警告＝赤
+   TYPE Noto Sans JP 700 + 400
+   LAYOUT 広い画面は2段、狭い画面は1段。項目ごとに開閉、検索で絞り込み */
+:root{color-scheme:light;--c:rgb(30, 42, 102);--line:#c9cfe6;--sub:#5a6178;--tint:#f4f5f9}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:128px}
+body{margin:0;background:#fff;color:#1d2230;font:16px/1.6 'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;overflow-x:clip}
+#mw *{font-family:'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif}
+.wtop{background:var(--c);color:#fff;padding:22px max(4vw,16px) 14px}
+.wtop .wrow{max-width:1360px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 24px}
+h1{margin:0;font-size:clamp(24px,4vw,34px);line-height:1.2;font-weight:700}
+.wupd{font-size:13px;opacity:.9;white-space:nowrap}
+.wlg{max-width:1360px;margin:10px auto 0;font-size:14px;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
+.wlg *{white-space:normal!important;font-size:inherit!important}.wlg :is(.d,.n,.y){color:#1d2230}.wlg :is(.w,.r){color:#ffc2c2!important}
+.wtools{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);padding:10px max(4vw,16px)}
+.wtools .win{max-width:1360px;margin:0 auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#q{flex:1 1 220px;font:inherit;font-size:16px;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:inherit;min-height:44px}
+#q:focus{outline:2px solid var(--c);outline-offset:1px}
+.wtools button{font:inherit;font-size:14px;min-height:44px;padding:0 14px;border-radius:8px;border:1px solid var(--line);background:var(--tint);color:inherit;cursor:pointer}
+#hits{font-size:13px;color:var(--sub);white-space:nowrap}
+.wnav{display:flex;gap:6px;overflow-x:auto;max-width:1360px;margin:8px auto 0;padding-bottom:2px;scrollbar-width:thin}
+.wnav a{flex:none;font-size:13px;color:var(--c);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:5px 11px;white-space:nowrap}
+.wnav .wnp{background:var(--c);color:#fff;border-color:var(--c)}
+:is(.wnav a,.wtools button,.wh):focus-visible{outline:2px solid var(--c);outline-offset:2px}
+main{max-width:1360px;margin:0 auto;padding:6px max(4vw,16px) 40px}
+#mw h2.wpt{background:none;border-radius:0;font-weight:700;display:flex;align-items:center;gap:10px;font-size:21px;color:var(--c);margin:26px 0 12px;padding:0 0 6px;border-bottom:3px solid var(--c);line-height:1.35}
+.wpn{flex:none;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--c);color:#fff;font-size:15px}
+#mw img{max-width:100%;height:auto}
+#mw .wcols{columns:1!important;column-gap:14px;height:auto!important;max-height:none!important;min-height:0!important;flex:none!important;column-fill:balance!important}
+@media(min-width:1100px){#mw .wcols{columns:2!important}}
+@media(max-width:1099px){#mw .wcols *{break-before:auto!important;break-after:auto!important}}
+#mw .tw{overflow-x:auto;max-width:100%}
+.wh{cursor:pointer;position:relative;padding-right:1.6em!important}
+.wh::after{content:'－';position:absolute;right:.4em;top:50%;transform:translateY(-50%);font-weight:400}
+.wclosed>.wh::after{content:'＋'}
+.wclosed>:not(.wh){display:none!important}
+.wh+*{margin-top:0}
+mark{background:#ffd84a;color:inherit;border-radius:2px}
+.hide{display:none!important}
+.wempty{display:none;padding:24px 0;color:var(--sub)}
+@media(max-width:900px){#mw .wst9{display:block!important}#mw .wst9>*{width:auto!important;max-width:none!important;margin-bottom:6px}}
+@media(max-width:640px){#mw .svgw svg{min-width:620px}#mw .svgw img{min-width:560px;max-height:none!important}#mw .wst6{display:block!important}#mw .wst6>*{width:auto!important;max-width:none!important;margin-bottom:6px}.wpt{font-size:18px}}
+@media print{.wtools{display:none}.wtop{background:#fff;color:var(--c);padding:0 0 4px;border-bottom:2px solid var(--c)}.wlg :is(.w,.r){color:#9b1c1c!important}.part+.part{break-before:page}main{padding:0}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}.wh::after{content:''}}
+</style></head><body>
+<header class="wtop"><div class="wrow"><h1>血尿・腎生検・頻尿チェックシート</h1><div class="wupd">最終更新：2026年11月18日</div></div>
+<div class="wlg"><span class="d">薬剤</span>　<span class="n">目標値・基準</span>　<span class="w">警告</span></div></header>
+<div class="wtools"><div class="win"><input id="q" type="search" placeholder="キーワードで探す" aria-label="キーワードで探す"><span id="hits"></span><button id="tg" type="button">すべて閉じる</button></div>
+<nav class="wnav" aria-label="項目"><a class="wnp" href="#p1">1</a><a href="#s1">1. 肉眼的血尿の初期対応</a><a href="#s2">2. 非糸球体性血尿の悪性腫瘍リスクに応じた対応（血尿診断ガイドライン2023）</a><a href="#s3">3. 腎生検を行う意義が乏しい場合・行うべき症例</a><a class="wnp" href="#p2">2</a><a href="#s4">4. 腎生検を行う際の鑑別疾患の考え方</a><a href="#s5">5. 頻尿・多尿の鑑別（3ステップ）</a></nav></div>
+<main><div id="mw">
+
+<div style="width: auto; display: flex; flex-direction: column; gap: 0px; background: transparent; padding: 0px; border: 0px; box-shadow: none;">
+<section class="part" id="p1"><h2 class="wpt"><span class="wpn">1</span>血尿と腎生検</h2><div class="page p1" style="width: auto; height: auto; box-sizing: border-box; padding: 18px 22px 14px; font-family: &quot;Noto Sans JP&quot;, &quot;Noto Sans CJK JP&quot;, sans-serif; font-size: 9.4px; line-height: 1.44; color: rgb(29, 34, 48); background: rgb(255, 255, 255); display: flex; flex-direction: column; gap: 6px; overflow: visible; break-after: page; zoom: 1.649;" data-z="1.649">
+
+
+<div class="rules wst6">
+<div class="rule wunit wsolo"><b>肉眼的血尿は2段階</b>①まず<span class="w">緊急性の判断</span>（腎・泌尿器系臓器からの活動性出血＝膀胱タンポナーデ、腎出血の除外）②緊急性がなければ<span class="n">出血部位</span>を考える</div>
+<div class="rule wunit wsolo"><b>多くは下部尿路由来</b>肉眼的血尿をきたす疾患の多くは膀胱・下部尿路由来。尿中に変形赤血球があれば腎炎を疑い腎臓内科へ</div>
+<div class="rule wunit wsolo"><b>非糸球体性血尿はリスクで分ける</b>年齢・尿中赤血球数・尿路上皮癌リスク因子・喫煙歴・肉眼的血尿の既往で悪性腫瘍リスクを評価。<span class="w">中・高リスクは1項目でも満たせば該当</span></div>
+<div class="rule wunit wsolo"><b>腎生検は全例ではない</b>腎生検は侵襲のある検査。腎機能障害・尿検査異常があっても「リスクが高い」「行う意義が乏しい」場合は積極的適応にならない</div>
+</div>
+
+<div class="cols wcols" style="column-gap: 12px;">
+
+<div class="sec wunit" id="s1"><div class="h wh" role="button" tabindex="0" aria-expanded="true">1. 肉眼的血尿の初期対応</div><div class="b">
+<div class="sub">① 緊急性の判断（膀胱タンポナーデ、腎出血の除外）</div>
+<p>・<b>膀胱出血（による膀胱タンポナーデ）</b>：膀胱癌・放射線性膀胱炎・抗血栓薬・尿道カテーテル留置などが原因で膀胱内に活動性出血をきたし、膀胱内で大量の凝血塊がたまり尿を出せなくなる。症状は肉眼的血尿、尿閉など。膀胱癌・放射線性膀胱炎の治療中に気づかれる場合も、尿道カテーテル長期留置中の患者が抗血栓薬使用に伴って発症する場合もある</p>
+<p>・<b>腎出血</b>：腎生検後・腎腫瘍破裂・外傷などで生じる。肉眼的血尿よりも<span class="n">腰背部痛</span>で気づかれることが多い（腎実質内の出血に伴う腎実質の膨張で腎被膜が伸展される）。出血が多量、または出血源が腎杯に近接していれば肉眼的血尿もきたしうる</p>
+<p>・<b>活動性出血が疑われたら</b>：まずバイタルサインの安定化（末梢ルート確保、輸血準備）→出血源の同定（腹部エコー、腹部単純・造影CT）→腎出血ならIVR（止血困難なら腎摘）、膀胱出血なら<span class="n">フォーリーカテーテル留置下で膀胱還流</span>し泌尿器科コンサルト</p>
+<div class="sub">② 緊急性が除外できたら：出血部位を考える</div>
+<p>・<b>膀胱・下部尿路疾患</b>：腎臓から尿道までは距離が遠く、腎由来で肉眼的血尿をきたすにはそれなりの出血量が必要。膀胱・下部尿路なら少量でも肉眼的血尿になる。対応：<span class="d">抗血栓薬</span>内服中なら休薬を検討（休薬に伴う血栓傾向のリスクもあるため内服理由を確認し、休薬の是非は専門科〈循環器内科、脳神経内科など〉に相談のうえ決めるのが理想的）、<span class="n">尿細胞診</span>の提出（感度が低い点に注意。📘 感度0〜59%で、陰性でも膀胱鏡・CT urographyの代わりにはならない。肉眼的血尿では実施を検討）→待機的に泌尿器科へ。追加検査（尿細胞診、膀胱鏡、腎動脈エコー、造影CTなど）は尿路上皮癌のリスクに応じて選択</p>
+<p>・<b>腎炎</b>：尿中に<span class="n">変形赤血球</span>を伴えば腎炎を疑い腎臓内科へ。肉眼的血尿で見つかる腎炎で最も多いのはIgA腎症（典型的には扁桃腺炎の既往がある人が感冒様症状後にコーラ色の血尿）</p>
+<div class="sub">押さえておきたい点</div>
+<p>・出血源同定の検査：肉眼的血尿は高リスク群に準じて<span class="n">膀胱鏡＋CT urographyが基本</span>（血尿診断ガイドライン2023でCT urographyは強い推奨）。腎機能低下・造影剤アレルギーなどで造影できなければ個別に判断</p>
+<p>・若年発症の間欠的肉眼的血尿では<span class="n">ナットクラッカー症候群</span>が鑑別の上位：左腎静脈が腹部大動脈と上腸間膜動脈の間で狭小化し、腎静脈うっ血から肉眼的血尿・疝痛発作をきたす。評価は左腎静脈のドプラ超音波・造影CT・MRI（MRV）（エコーは術者の技量に左右されるためCT・MRIが望ましい）。随時尿の血尿が早朝尿で消失する点は遊走腎やナットクラッカー症候群を示唆。ほとんどは予後良好で経過観察、貧血の進行や肉眼的血尿・左側腹部痛の反復例では左腎静脈の転位術やステント留置が選択されることもある。📘 確定診断は逆行性静脈造影＋圧較差測定（左腎静脈–下大静脈の圧較差≧3 mmHg）。若年者はまず保存的治療（目安2年）</p>
+<p>・高齢者では悪性腫瘍スクリーニング：どこまで行うかは泌尿器科医の判断を仰ぐが、尿細胞診は侵襲も少なく高齢症例では全例行ってよい</p>
+<p>・<span class="w">アスピリン（バイアスピリン®）の抗血小板作用は1週間程度持続</span>するため、休薬による即座の止血効果は期待できない。休薬は当該科に血栓塞栓症リスクを確認し、メリットがデメリットを上回る場合に行う</p> <p>・<span class="w">抗血栓薬内服中でも血尿を薬のせいと決めつけない</span>：内服していない患者と同じくリスク分類に基づいて精査する（血尿診断ガイドライン2023）</p>
+<p>・泌尿器科の常勤医がいない施設では、初期対応や緊急性の判断は非専門の内科系医師にも求められる</p>
+<div class="flow wst9" style="flex-wrap: wrap;"><div>肉眼的血尿</div><span>→</span><div>腎・尿路の活動性出血？（エコー/造影CTで疑わしい所見）→腎出血はIVR・腎摘について当該科へ相談、膀胱タンポナーデは泌尿器科</div><span>→</span><div>否定的なら出血源の見極め：均一赤血球→膀胱/下部尿路（抗血栓薬の休薬検討、尿細胞診）→泌尿器科／変形赤血球→糸球体腎炎疑いで腎臓内科</div></div>
+<div class="src">p.14–20 図2（著者作成）、血尿診断ガイドライン2023 p.22、ナットクラッカー：中澤成晃ほか 泌尿紀要 2015</div>
+</div></div>
+
+<div class="sec wunit" id="s2"><div class="h wh" role="button" tabindex="0" aria-expanded="true">2. 非糸球体性血尿の悪性腫瘍リスクに応じた対応（血尿診断ガイドライン2023）</div><div class="b"> <p>・血尿は腎疾患と泌尿器科的疾患に大別される。非糸球体性血尿ではまず泌尿器科的疾患、特に<span class="w">見逃してはいけない泌尿器科的悪性疾患</span>を疑う</p>
+<div class="tw"><table class="t">
+<tbody><tr><th style="width: 17%"></th><th>該当条件</th><th style="width: 33%">対応</th></tr>
+<tr><td class="rh">低リスク群</td><td>下記の全てを満たす：男性＜40歳・女性＜50歳、尿中RBC 5〜10/HPF、リスク因子（−）</td><td>悪性腫瘍リスクは非常に低いことを説明し、以下のいずれかを選択：半年以内に再検、または中リスク群に準じて対応</td></tr>
+<tr><td class="rh">中リスク群</td><td>下記のいずれかに該当：男性40〜59歳・女性50〜59歳、尿中RBC 11〜25/HPF、1つ以上のリスク因子あり</td><td>膀胱鏡検査＋腎US＋尿細胞診（膀胱鏡検査を行わない場合：腎・膀胱US＋尿細胞診）</td></tr>
+<tr><td class="rh">高リスク群</td><td>下記のいずれかに該当：男女とも60歳超、尿中RBC＞25/HPF、喫煙歴あり、肉眼的血尿の既往</td><td>膀胱鏡検査＋CT urography＋尿細胞診</td></tr>
+</tbody></table></div>
+<p>・異常所見あり→疾患特異的なwork up、治療／異常所見なし→経過観察。<span class="w">肉眼的血尿は高リスク群に準じる</span></p>
+<p>・リスク因子：有害物質（ベンゼン化合物、芳香族アミンなど）への曝露、排尿刺激症状、フェナセチンなどの鎮痛剤多用、骨盤放射線照射の既往、シクロホスファミド・イホスファミドの治療歴、尿路上皮癌の家族歴・Lynch症候群、尿路への異物長期留置</p>
+<p>・HPF（high power field、高倍率視野）：顕微鏡的血尿は尿沈渣で赤血球≧5/HPF（無遠心尿では≧20/µL）</p>
+<p>・海外ガイドライン（AUA/SUFU 2020、2025年改訂）は喫煙歴を箱年数で分類（10箱年未満：低リスク、10〜30箱年：中リスク、30箱年超：高リスク）。2025年改訂で<span class="n">低／ごく低リスク群</span>を新設（すぐの精査は不要、6か月以内に尿検査を再検）、他にリスクのない60歳以上の女性は高リスクから外れた</p> <p>・📘 日本のガイドラインはアルゴリズムでは「喫煙歴あり」で高リスクとするが、同じガイドライン内の表（BQ泌-2）は箱年数で分類している</p>
+<div class="src">p.21–23 図1・表1（血尿診断ガイドライン改訂委員会 血尿診断ガイドライン2023 p.13、Barocas DA, et al. J Urol 2020・2025改訂）</div>
+</div></div>
+
+<div class="sec wunit" id="s3"><div class="h wh" role="button" tabindex="0" aria-expanded="true">3. 腎生検を行う意義が乏しい場合・行うべき症例</div><div class="b">
+<p>・「腎機能が悪い症例、尿検査異常がある症例は全例腎生検が必要」は誤解。腎生検のメリットとデメリットを比較し、①腎生検のリスクが高い場合（1章13項）②腎生検を行う意義が乏しい場合、は積極的適応にならない</p>
+<div class="sub">腎生検を行う意義が乏しい場合</div>
+<p>・<b>経過の長い腎機能障害で腎萎縮・腎皮質菲薄化</b>：糸球体硬化が進行しており病理学的に腎硬化症と区別できない可能性、十分量の検体を採取できない可能性がある</p>
+<p>・<b>「病的意義のない病態」「泌尿器科的疾患・尿路感染症」に伴う尿検査異常</b>：「尿検査異常＝腎炎／腎症」ではない。これらの可能性をまず除外し、再現性があるかを確認する（1章1項）</p>
+<p>・<b>特定の原疾患が強く疑われ、腎生検の結果が治療方針に影響しない</b>：例えば薬剤性急性尿細管間質性腎炎（NSAIDs、抗菌薬、PPIなど）は被疑薬の開始時期・臨床経過・尿細管マーカーで想定でき、病理所見は他疾患でも同様のため原因の鑑別にはならない。<span class="w">ただし被疑薬中止後も腎機能低下が遷延する場合は、ステロイド治療が選択肢にあがり、可逆性評価・診断確認目的で腎生検が必要</span>。治療経過が芳しくない、またはIgG4関連疾患・肉芽腫性疾患などが鑑別にあがる場合も、ステロイド治療と並行して腎生検を検討になりうる</p>
+<p>・<b>生活習慣病関連の病態が大きく関与</b>：生活習慣病以外の病態の病理学的評価が難しい。まず生活習慣病の是正を行い、十分な是正後も腎機能障害・尿検査異常が続く場合に初めて腎生検を考慮（例：糖尿病性腎症の結節性病変・びまん性病変・滲出性病変・細動脈硝子化・polar vasculosisなどは陽性でも腎生検前の治療方針に影響しない）。📘 一方、病理所見の重症度は末期腎不全への進行と関連する（RPS分類・日本の病理分類）。<span class="n">非典型的な経過（急な蛋白尿増加・腎機能低下、血尿、網膜症なしなど）</span>では糖尿病以外の腎疾患が高率に見つかるため、腎生検を検討する</p>
+<div class="sub">腎生検を行うべき症例（ざっくり3つ）</div>
+<p>・<span class="n">① 免疫抑制療法が必要な腎疾患 ② 異常蛋白が腎組織に沈着する疾患（MGRS、アミロイドーシス）③ 遺伝子異常による腎疾患（Alport症候群、Fabry病など）</span>：血液・尿検査といった間接的所見のみでは確定診断に至らず、「一般的なCKD治療」から外れた特別な治療が必要になるため、疑わしい場合は積極的に検討する</p> <p>・📘 MGRS（腎臓に意義のある単クローン性ガンマグロブリン血症）：単クローン性免疫グロブリンが腎病変を起こすが、血液疾患としての治療基準は満たさない状態。診断には腎生検が必須（IKMG 2019）</p>
+<div class="src">p.108–109、115–117</div>
+</div></div>
+
+</div>
+<div style="border-top: 1px solid #c9cfe6; padding-top: 3px; font-size: 6.6px; line-height: 1.4; color: #4a5068">
+出典：谷口智基『無敵の腎臓内科』中外医学社、2024年 第1版、第1章 検査 2「肉眼的血尿が出た時，どのように初期対応すればよいですか？」（p.14–20）、3「血尿の患者さんを泌尿器科へ紹介予定ですが，特に注意すべき症例（高リスク群）について教えてください．」（p.21–23）、12（p.106–118）。各項目の出典はページ番号で示した。
+</div>
+</div></section>
+
+<section class="part" id="p2"><h2 class="wpt"><span class="wpn">2</span>腎疾患の鑑別の考え方、頻尿と多尿</h2><div class="page p2" style="width: auto; height: auto; box-sizing: border-box; padding: 18px 22px 14px; font-family: &quot;Noto Sans JP&quot;, &quot;Noto Sans CJK JP&quot;, sans-serif; font-size: 9.2px; line-height: 1.42; color: rgb(29, 34, 48); background: rgb(255, 255, 255); display: flex; flex-direction: column; gap: 5px; overflow: visible; zoom: 1.685;" data-z="1.685">
+
+
+<div class="rules wst6">
+<div class="rule wunit wsolo"><b>腎病理をイメージする3原則</b>①血尿・蛋白尿どちらがメインか、乏しいか ②病変の主座（糸球体、尿細管、弓状動脈）③動脈硬化リスク（性別、喫煙歴、併存疾患、心血管イベントの家族歴など）</div>
+<div class="rule wunit wsolo"><b>2つ以上の病変が重なると</b>尿所見のみで病変の主座を見分けることは困難（例：微小変化型ネフローゼ症候群に高度の低Alb血症・腎前性AKIが合併すると尿細管障害も合併しうる）</div>
+<div class="rule wunit wsolo"><b>頻尿か多尿か</b>主訴が頻尿でも医学的に頻尿とは限らない。<span class="n">排尿日誌</span>（尿量・尿回数に加えて水分摂取量も）をつけてもらう。イメージは「多尿＝内科的疾患」「頻尿＝泌尿器科的疾患」</div>
+<div class="rule wunit wsolo"><b>夜間頻尿＝泌尿器科疾患と決めつけない</b>「夜間頻尿」の訴えには夜間多尿が一部含まれる。問診と排尿日誌で原因を絞る</div>
+</div>
+
+<div class="cols wcols" style="column-gap: 12px;">
+
+<div class="sec wunit" id="s4"><div class="h wh" role="button" tabindex="0" aria-expanded="true">4. 腎生検を行う際の鑑別疾患の考え方</div><div class="b">
+<p>・3原則で「どんな腎病理像が得られそうか？」をイメージし、さらに<span class="n">a）臨床経過（急性、亜急性、慢性）b）血液検査所見（免疫グロブリンのclonality、補体、自己抗体、M蛋白など）c）年齢、性別、体格 d）既往歴、生活歴、家族歴、使用薬</span>を加味して具体的な鑑別疾患を考える</p>
+<div class="sub">① 血尿・蛋白尿どちらがメインか</div>
+<p>・<b>糸球体性血尿</b>：糸球体・ボーマン嚢内の細胞増殖を伴う疾患。変形赤血球は、糸球体毛細血管腔から原尿内に漏れ出た赤血球が尿細管内を移動する間に浸透圧変化にさらされて生じる。代表はIgA腎症（IgA/C3がメサンギウム領域に沈着、メサンギウム増殖性糸球体腎炎、重症例では半月体形成）</p>
+<p>・<b>蛋白尿</b>：病的蛋白尿の主因は<span class="n">糸球体基底膜（特にポドサイト）の障害</span>、サブの原因がオーバーフロー蛋白尿と尿細管障害。健常人で蛋白尿が出ないのは、糸球体基底膜のポドサイトが「物理的バリア（size barrier）」と「電荷的バリア（charge barrier）」で蛋白の漏出を防ぎ（分子量6〜7万以上の物質は透過させにくい、アルブミンもスリットも陰性荷電）、わずかに漏れた蛋白質も近位尿細管などで再吸収されるため</p>
+<div class="tw"><table class="t">
+<tbody><tr><th style="width: 22%">成因</th><th style="width: 34%">原疾患</th><th>特徴・補足</th></tr>
+<tr><td>糸球体基底膜の物理的／電荷的バリアの障害</td><td>一次性：微小変化型ネフローゼ症候群、膜性腎症、膜性増殖性糸球体腎炎、巣状糸球体硬化症、IgA腎症など／二次性：糖尿病性腎症、ループス腎炎、アミロイドーシス</td><td>病的蛋白尿の多くを占める。障害度合いで一部の蛋白質が選択的に漏れるか、あらゆる蛋白質が漏れるかが異なる（尿蛋白選択性）。非選択的なら予後不良な腎病変が示唆される</td></tr>
+<tr><td>尿細管障害</td><td>Dent病、逆流性腎症など</td><td>原因としては稀。α1MG、β2MGなど低分子蛋白尿。基本的には少量（1 g/gCre未満）</td></tr>
+<tr><td>オーバーフロー蛋白尿</td><td>多発性骨髄腫（Bence Jones型）、軽鎖沈着症、横紋筋融解症</td><td>原因としては稀。ただし軽鎖沈着症では糸球体係蹄沈着によるポドサイト障害・尿細管障害もきたしうる</td></tr>
+</tbody></table></div>
+<p>　初学者は「病的蛋白尿が出る原因は主に3つあるが、その多くは糸球体基底膜の障害」という点だけ押さえればよい</p>
+<p>・<b>血尿・蛋白尿が乏しい</b>：弓状動脈レベルの血管障害、尿細管障害</p>
+<div class="sub">② 病変の主座</div>
+<div class="tw"><table class="t">
+<tbody><tr><th>糸球体病変</th><th>尿細管障害</th><th>弓状動脈・葉間動脈</th></tr>
+<tr><td>血尿（変形赤血球）・蛋白尿が目立つ。血尿主体なら糸球体・ボーマン嚢内の増殖性病変、蛋白尿主体なら糸球体基底膜（特にポドサイト）の障害が疑われる</td><td>血尿・蛋白尿などの尿検査異常は乏しいことが多い。尿細管性蛋白尿が出る場合もあるが高度蛋白尿は稀。尿細管マーカー（尿中NAG、β2MGなど）が上昇</td><td>糸球体虚血をきたすため、血尿・蛋白尿などの尿検査異常は乏しいことが多い</td></tr>
+</tbody></table></div>
+<div class="sub">③ 動脈硬化リスク</div>
+<p>・特に高齢者ではprimaryの糸球体・尿細管病変に動脈硬化性の糸球体硬化などが加わる。<span class="n">葉間動脈の内膜肥厚に加えて、糸球体虚血の所見（糸球体係蹄のwrinkling・糸球体硬化など）が被膜直下を中心に認められる場合</span>は、動脈硬化性病変の併存を考える（葉間動脈から遠い皮質表層の糸球体は虚血に、葉間動脈近傍の傍髄質の糸球体は高血圧に晒されやすい〈strain vessel hypothesis〉。酸素需要の多い近位尿細管・太いヘンレループが集まる皮質は虚血に弱い）</p>
+<div class="sub">臨床経過・尿所見から糸球体疾患をざっくり鑑別する</div>
+<div class="tw"><table class="t">
+<tbody><tr><th style="width: 30%">STEP 1：臨床経過</th><th>代表的な疾患</th></tr>
+<tr><td>急性（数日〜1か月程度）</td><td>微小変化型ネフローゼ症候群、IgA腎症の急性増悪、感染後糸球体腎炎、急速進行性糸球体腎炎など</td></tr>
+<tr><td>亜急性（1か月〜数か月程度）</td><td>膜性増殖性糸球体腎炎、巣状糸球体硬化症など</td></tr>
+<tr><td>慢性（半年〜数年程度）</td><td>膜性腎症、IgA腎症など</td></tr>
+</tbody></table></div>
+<p>・STEP 2：尿検査異常のパターン：<span class="n">血尿メイン＝増殖性病変</span>（IgA腎症、感染後糸球体腎炎、膜性増殖性糸球体腎炎）／<span class="n">蛋白尿メイン＝ポドサイト障害</span>（微小変化型ネフローゼ症候群、膜性腎症、巣状分節性糸球体硬化症〈FSGS〉）。病変の程度によっては両方をきたす（例：IgA腎症の重症例では半月体を形成し血尿・蛋白尿を生じる）</p>
+<p>・微小変化型ネフローゼ症候群は若年者に多く急性発症、膜性腎症は主に中高年者に多く亜急性〜慢性発症。微小変化型の重要な鑑別の1つは巣状糸球体硬化症で、両者の鑑別に腎生検は必要</p>
+<p>・<span class="w">高齢者で全身症状・炎症反応を伴う腎機能障害・尿検査異常をきたした場合は、血管炎の可能性を念頭に置く</span></p>
+<div class="src">p.109–117 表1・表2・図1（深川雅史ほか レジデントのための腎臓病診療マニュアル第3版 p.28、日本腎病理協会/日本腎臓学会 腎生検病理アトラス改訂版、南学正臣 プロフェッショナル腎臓病学 2020、森建文ほか 肝臓 2017、白石直樹ほか 日内会誌 2013）</div>
+</div></div>
+
+<div class="sec wunit" id="s5"><div class="h wh" role="button" tabindex="0" aria-expanded="true">5. 頻尿・多尿の鑑別（3ステップ）</div><div class="b">
+<div class="sub">STEP 1：頻尿と多尿の鑑別</div>
+<div class="tw"><table class="t">
+<tbody><tr><th style="width: 13%"></th><th>定義・注意点</th></tr>
+<tr><td class="rh">頻尿</td><td>一概に何回以上が異常とは言えないが、頻尿：起床時から就寝までに<span class="n">8回以上</span>排尿する状態が続く／夜間頻尿：夜間、排尿のために1回以上起床する日が続く。※1日の排尿回数は個人差が大きく、8回未満でも頻尿の自覚症状があれば頻尿と言える</td></tr>
+<tr><td class="rh">多尿</td><td>多尿：<span class="n">1日尿量≧3 L</span>／夜間多尿：<span class="n">夜間多尿指数（夜間尿量÷24時間尿量）＞0.33（65歳以上）、＞0.20（若年者）</span>（夜間頻尿診療ガイドライン第2版 2020）</td></tr>
+<tr><td class="rh">実際には</td><td>広義の定義では「頻尿かつ多尿」の症例が発生し鑑別疾患が立てにくいため、頻尿＝1日の排尿回数は多いが1日尿量は多尿の定義を満たさない（3 L/日未満）、多尿＝1日の排尿回数・1日尿量いずれも多い（3 L/日以上）と区別することが多い</td></tr>
+</tbody></table></div>
+<div class="sub">STEP 2：多尿の鑑別</div>
+<p>・① <b>浸透圧利尿の除外</b>（尿浸透圧＞300 mOsm）：尿糖↑（糖尿病、<span class="d">SGLT2阻害薬</span>）、尿中Na排泄↑（<span class="d">利尿薬</span>、急性尿細管壊死の回復期）、尿中UN排泄↑（高タンパク食、尿管閉塞解除後）、その他の浸透圧物質（<span class="d">マンニトール</span>、<span class="d">造影剤</span>）</p>
+<p>・② <b>多飲の除外</b>：心因性多飲が強調されがちだが、<span class="w">背景に重症糖尿病が隠れている場合</span>がある。水分摂取量を評価し、多飲なら水分摂取量制限後に尿量低下・尿浸透圧増加が生じるかを評価</p>
+<p>・③ <b>尿崩症の鑑別</b>：①②が除外できれば「真の尿崩症」→内分泌内科への紹介を検討。AVP分泌低下症（旧：中枢性尿崩症）＝視床下部–下垂体後葉でのバソプレシン（AVP）分泌不全による自由水保持能低下（腎尿細管はintactでバソプレシン補充に反応＝補充が診断的治療）、AVP抵抗症（旧：腎性尿崩症）＝バソプレシン分泌は保たれるが腎尿細管でのバソプレシン反応性が低下</p>
+<p>・④ <b>夜間頻尿・夜間多尿</b>：夜間多尿の原因は「頻尿は泌尿器科的疾患、多尿は内科的疾患」と同様</p>
+<div class="tw"><table class="t">
+<tbody><tr><th style="width: 22%">原疾患</th><th>夜間多尿の病態</th></tr>
+<tr><td>糖尿病</td><td>浸透圧利尿、口渇による多飲。※自律神経障害に伴う神経因性膀胱による排尿障害の要素も関与し、病態は単純ではない</td></tr>
+<tr><td>慢性心不全</td><td>夕・夜間の<span class="d">利尿薬</span>使用／昼間に生じたうっ血に対してBNP分泌を介して代償的に夜間尿量が増加／（体液貯留例で）夜間の仰臥位による下肢→上半身への体液移動が睡眠時無呼吸症候群を増悪させ、結果的に夜間多尿につながる</td></tr>
+<tr><td>慢性腎不全</td><td>塩分排泄遅延</td></tr>
+<tr><td>睡眠時無呼吸症候群</td><td>胸腔内圧低下による心拡大→Na利尿ペプチド↑</td></tr>
+</tbody></table></div>
+<div class="sub">STEP 3：頻尿の鑑別（前立腺肥大症）</div>
+<p>・<b>尿閉（保存的治療）</b>：最初は導尿・尿道カテーテル留置＋尿閉の原因検索。次に<span class="d">α1遮断薬</span>（タムスロシン、ナフトピジル、シロドシン、ウラピジル、プラゾシン、アルフゾシン）、<span class="d">5α還元酵素阻害薬</span>（デュタステリド）。起立性低血圧などがなければα遮断薬を優先的に使用し、α遮断薬が使いにくい症例・尿道カテーテル離脱が困難な症例で5α還元酵素阻害薬を追加（著者の見解）</p>
+<p>・エビデンス：シロドシンはプラセボと比較して尿道カテーテル離脱率が有意に高い（76.7% vs 36.7%）。9つのRCTのメタ解析でα1遮断薬群はプラセボより離脱率が高い（56.8% vs 38.9%）。α遮断薬で離脱困難な症例に5α還元酵素阻害薬を追加すると7か月後に63.5%で離脱可能（PS良好群で有効）</p>
+<p>・<b>手術療法</b>：前立腺が大きいほど将来の尿閉・手術のリスクが高い（<span class="n">30 mL以上</span>でリスク約3倍。5α還元酵素阻害薬の目安は日本のガイドライン2017で30 mL以上、欧州〈EAU〉で＞40 mL。本は＞50 mLを目安とする）。手術を考えるのは薬物治療の効果不良、反復する尿閉・肉眼的血尿・尿路感染、膀胱結石、上部尿路障害（水腎症）がある場合で、体積だけでは決めない。手術適応は尿閉の原因である「膀胱出口部閉塞・排尿筋低活動」の証明が重要で、内圧尿流検査の施行が推奨される。前立腺体積は腹部エコーで<span class="n">縦（cm）×横（cm）×高さ（cm）÷2</span>（正常値20〜30 mL程度）</p>
+<p>・<b>夜間頻尿</b>：まず多尿・夜間多尿を除外。あれば生活指導（水分・カフェイン・アルコール摂取量の確認）と内科的疾患の検索（浸透圧利尿、心因性多飲、尿崩症、糖尿病、慢性心不全・CKD、睡眠時無呼吸症候群）を行い、膀胱蓄尿障害への対応よりも原因疾患・生活習慣に準じた治療を優先→頻尿が日中・夜間ともにあるか夜間のみかを問診。<span class="n">1日中持続</span>：膀胱蓄尿障害への対応（① <span class="d">α遮断薬</span>、<span class="d">PDE5阻害薬</span> ②〈①が無効なら〉<span class="d">抗コリン薬</span>、<span class="d">5α還元酵素阻害薬</span>などの併用を考慮）／<span class="n">夜間のみ</span>：睡眠障害を疑う</p>
+<p>・<span class="w">尿閉・高度排尿困難（残尿多量）を伴う前立腺肥大症では抗コリン薬は禁忌</span>（尿閉を悪化させうる）。上の②の抗コリン薬併用は排尿症状が軽い蓄尿障害の場合。抗男性ホルモン薬はテストステロンの産生と前立腺細胞への取り込みを抑制し、前立腺の増殖を抑える</p> <p>・📘 本にない薬：<span class="d">β3作動薬</span>（ミラベグロン、ビベグロン。過活動膀胱に使い、抗コリン薬より尿閉リスクが低い）。男性の夜間多尿による夜間頻尿には<span class="d">デスモプレシン</span>（ミニリンメルト®）。<span class="w">低Na血症に注意</span>し、血清Naを投与前、開始後1週以内、1か月後に測る。5α還元酵素阻害薬は前立腺が大きい例（30 mL以上）で使う</p>
+<div class="src">p.156–163 表2〜4・図1（Abrams P, et al. Neurourol Urodyn 2002、青木芳隆ほか 日老医誌 2013、瀬在明 日大医誌 2020、Kumar S, et al. Urology 2013、Guang-Jun D, et al. Ir J Med Sci 2015、Inahara M, et al. 日泌尿会誌 2014、Lo KL, et al. Int Urol Nephrol 2010、Dubey D, et al. BJU Int 2001、日本泌尿器科学会 男性下部尿路症状・前立腺肥大症診療ガイドライン2017 p.10–2）</div>
+</div></div>
+
+</div>
+<div style="border-top: 1px solid #c9cfe6; padding-top: 3px; font-size: 6.6px; line-height: 1.4; color: #4a5068">
+出典：谷口智基『無敵の腎臓内科』中外医学社、2024年 第1版、第1章 検査 12「腎生検すべき症例は？腎生検する際に鑑別疾患はどうやって考えている？」（p.106–118）、第2章 症候 1「頻尿に対する適切な対応を教えてください．」（p.156–163）。各項目の出典はページ番号で示した。
+</div>
+</div></section>
+</div>
+</div><p class="wempty" id="none">該当する項目はありません。</p></main>
+<script>
+{
+const q=document.getElementById('q'),hits=document.getElementById('hits'),tg=document.getElementById('tg'),none=document.getElementById('none');
+const units=[...document.querySelectorAll('#mw .wunit')].filter(u=>!u.parentElement.closest('.wunit'));
+const parts=[...document.querySelectorAll('#mw .part')];
+const orig=new Map(units.map(u=>[u,u.innerHTML]));
+const setOpen=(u,o)=>{u.classList.toggle('wclosed',!o);const h=u.querySelector(':scope>.wh');if(h)h.setAttribute('aria-expanded',o?'true':'false');};
+document.addEventListener('click',e=>{const h=e.target.closest('.wh');if(!h)return;const u=h.parentElement;setOpen(u,u.classList.contains('wclosed'));});
+document.addEventListener('keydown',e=>{const h=e.target.closest&&e.target.closest('.wh');if(h&&(e.key==='Enter'||e.key===' ')){e.preventDefault();h.click();}});
+document.querySelectorAll('.wnav a').forEach(a=>a.addEventListener('click',()=>{const u=document.querySelector(a.getAttribute('href'));if(u&&u.classList.contains('wunit'))setOpen(u,true);}));
+const esc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+const mark=(el,re)=>{const w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);const ns=[];while(w.nextNode())ns.push(w.currentNode);
+  ns.forEach(t=>{re.lastIndex=0;if(!re.test(t.data))return;re.lastIndex=0;const f=document.createDocumentFragment();let i=0,m;while((m=re.exec(t.data))){f.append(t.data.slice(i,m.index));const k=document.createElement('mark');k.textContent=m[0];f.append(k);i=m.index+m[0].length;}f.append(t.data.slice(i));t.replaceWith(f);});};
+const others=parts.map(p=>[...p.querySelectorAll('.page *')].filter(e=>!e.closest('.wunit')&&!e.querySelector('.wunit')&&e.parentElement.querySelector(':scope>.wunit')));
+const run=()=>{const v=q.value.trim();units.forEach(u=>{u.innerHTML=orig.get(u);});
+  if(!v){[...units,...parts,...others.flat()].forEach(e=>e.classList.remove('hide'));hits.textContent='';none.style.display='none';return;}
+  const re=new RegExp(esc(v),'gi');let c=0;
+  units.forEach(u=>{const ok=u.textContent.toLowerCase().includes(v.toLowerCase());u.classList.toggle('hide',!ok);if(ok){c++;setOpen(u,true);mark(u,re);}});
+  others.flat().forEach(e=>e.classList.add('hide'));
+  parts.forEach(p=>p.classList.toggle('hide',!p.querySelector('.wunit:not(.hide)')));
+  hits.textContent=c+'件';none.style.display=c?'none':'block';};
+q.addEventListener('input',run);
+tg.addEventListener('click',()=>{const open=tg.textContent==='すべて開く';units.forEach(u=>{if(u.querySelector(':scope>.wh'))setOpen(u,open);});tg.textContent=open?'すべて閉じる':'すべて開く';});
+window.addEventListener('beforeprint',()=>units.forEach(u=>setOpen(u,true)));
+}
+</script>
+</body></html>

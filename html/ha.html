@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>頭痛チェックシート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.sec{break-inside:avoid;margin:0 0 4px 0;border:1px solid #c9cfe6}
+.h{display:flex;align-items:center;gap:5px;background:#e7eaf6;color:#1e2a66;font-weight:700;font-size:9px;padding:2px 6px;border-bottom:1px solid #c9cfe6}
+.b{padding:2px 6px 2px 6px}
+.b p{margin:0 0 1.5px 0;padding-left:7px;text-indent:-7px}
+.sub{font-weight:700;color:#1e2a66;margin:2px 0 1px 0}
+.src{font-size:6.2px;color:#6b7186;text-align:right;margin-top:1px;padding:0;text-indent:0}
+.m{margin:2px 0 0 0;padding:1px 4px;background:#f4f5f9;border-left:2px solid #8a93b8;font-size:7.4px}
+.m b{color:#26326e;margin-right:3px}
+.up{margin:2px 0 1px 0;padding:1px 4px;background:#eaf4fa;border-left:2px solid #2e86ab;font-size:7.6px}
+.d{background:#e1efe3;padding:0 1px}
+.n{background:#fff1bf;padding:0 1px}
+.w{color:#9b1c1c}
+.t{width:100%;border-collapse:collapse;margin:2px 0 1px 0;font-size:7.1px;line-height:1.3}
+.t th,.t td{border:1px solid #b9c1de;padding:1px 3px;text-align:left;vertical-align:top}
+.t th{background:#f1f3fa;font-weight:500;color:#1e2a66;text-align:center;vertical-align:middle}
+.t td.rh{background:#f1f3fa;font-weight:700;color:#1e2a66}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.rule{background:#eef1f8;border-left:3px solid #26326e;padding:2px 5px;font-size:7.9px;line-height:1.35}
+.rule b{color:#26326e;margin-right:3px}
+</style>
+<style>
+html,body{margin:0;background:#fff}
+#mw .page,#mw section.page{width:auto!important;height:auto!important;min-height:0!important;overflow:visible!important;padding:0!important;margin:0!important;box-shadow:none!important;break-after:auto!important;page-break-after:auto!important;background:transparent!important}
+
+/* VOICE 臨床の手引き。落ち着いて、早く引ける
+   IDEA 白衣のポケットに入れる診療カード：紙のチェックシートと同じ配色・色分け
+   PICTURE 色分けされた本文そのものが主役。図は元のまま
+   COLOUR 白地、シートごとの主色、薬剤＝緑、目標値＝黄、警告＝赤
+   TYPE Noto Sans JP 700 + 400
+   LAYOUT 広い画面は2段、狭い画面は1段。項目ごとに開閉、検索で絞り込み */
+:root{color-scheme:light;--c:rgb(30, 42, 102);--line:#c9cfe6;--sub:#5a6178;--tint:#f4f5f9}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:128px}
+body{margin:0;background:#fff;color:#1d2230;font:16px/1.6 'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;overflow-x:clip}
+#mw *{font-family:'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif}
+.wtop{background:var(--c);color:#fff;padding:22px max(4vw,16px) 14px}
+.wtop .wrow{max-width:1360px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 24px}
+h1{margin:0;font-size:clamp(24px,4vw,34px);line-height:1.2;font-weight:700}
+.wupd{font-size:13px;opacity:.9;white-space:nowrap}
+.wlg{max-width:1360px;margin:10px auto 0;font-size:14px;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
+.wlg *{white-space:normal!important;font-size:inherit!important}.wlg :is(.d,.n,.y){color:#1d2230}.wlg :is(.w,.r){color:#ffc2c2!important}
+.wtools{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);padding:10px max(4vw,16px)}
+.wtools .win{max-width:1360px;margin:0 auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#q{flex:1 1 220px;font:inherit;font-size:16px;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:inherit;min-height:44px}
+#q:focus{outline:2px solid var(--c);outline-offset:1px}
+.wtools button{font:inherit;font-size:14px;min-height:44px;padding:0 14px;border-radius:8px;border:1px solid var(--line);background:var(--tint);color:inherit;cursor:pointer}
+#hits{font-size:13px;color:var(--sub);white-space:nowrap}
+.wnav{display:flex;gap:6px;overflow-x:auto;max-width:1360px;margin:8px auto 0;padding-bottom:2px;scrollbar-width:thin}
+.wnav a{flex:none;font-size:13px;color:var(--c);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:5px 11px;white-space:nowrap}
+.wnav .wnp{background:var(--c);color:#fff;border-color:var(--c)}
+:is(.wnav a,.wtools button,.wh):focus-visible{outline:2px solid var(--c);outline-offset:2px}
+main{max-width:1360px;margin:0 auto;padding:6px max(4vw,16px) 40px}
+#mw h2.wpt{background:none;border-radius:0;font-weight:700;display:flex;align-items:center;gap:10px;font-size:21px;color:var(--c);margin:26px 0 12px;padding:0 0 6px;border-bottom:3px solid var(--c);line-height:1.35}
+.wpn{flex:none;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--c);color:#fff;font-size:15px}
+#mw img{max-width:100%;height:auto}
+#mw .wcols{columns:1!important;column-gap:14px;height:auto!important;max-height:none!important;min-height:0!important;flex:none!important;column-fill:balance!important}
+@media(min-width:1100px){#mw .wcols{columns:2!important}}
+@media(max-width:1099px){#mw .wcols *{break-before:auto!important;break-after:auto!important}}
+#mw .tw{overflow-x:auto;max-width:100%}
+.wh{cursor:pointer;position:relative;padding-right:1.6em!important}
+.wh::after{content:'－';position:absolute;right:.4em;top:50%;transform:translateY(-50%);font-weight:400}
+.wclosed>.wh::after{content:'＋'}
+.wclosed>:not(.wh){display:none!important}
+.wh+*{margin-top:0}
+mark{background:#ffd84a;color:inherit;border-radius:2px}
+.hide{display:none!important}
+.wempty{display:none;padding:24px 0;color:var(--sub)}
+@media(max-width:900px){#mw .wst9{display:block!important}#mw .wst9>*{width:auto!important;max-width:none!important;margin-bottom:6px}}
+@media(max-width:640px){#mw .svgw svg{min-width:620px}#mw .svgw img{min-width:560px;max-height:none!important}#mw .wst6{display:block!important}#mw .wst6>*{width:auto!important;max-width:none!important;margin-bottom:6px}.wpt{font-size:18px}}
+@media print{.wtools{display:none}.wtop{background:#fff;color:var(--c);padding:0 0 4px;border-bottom:2px solid var(--c)}.wlg :is(.w,.r){color:#9b1c1c!important}.part+.part{break-before:page}main{padding:0}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}.wh::after{content:''}}
+</style></head><body>
+<header class="wtop"><div class="wrow"><h1>頭痛チェックシート</h1><div class="wupd">最終更新：2026年11月13日</div></div>
+<div class="wlg"><span class="d">薬剤</span>　<span class="n">目標値・基準</span>　<span class="w">警告</span>　📘 最新情報</div></header>
+<div class="wtools"><div class="win"><input id="q" type="search" placeholder="キーワードで探す" aria-label="キーワードで探す"><span id="hits"></span><button id="tg" type="button">すべて閉じる</button></div>
+<nav class="wnav" aria-label="項目"><a class="wnp" href="#p1">1</a><a href="#s1">1. red flags（SNOOPE）と画像評価の適応</a><a href="#s2">2. くも膜下出血：初診で見逃されやすい（報告により1割強〜1/4）</a><a href="#s3">3. 椎骨動脈解離</a><a href="#s4">4. RCVS（可逆性脳血管攣縮症候群）</a><a href="#s5">5. 脳静脈血栓症（CVT）</a><a href="#s6">6. 下垂体卒中</a><a href="#s7">7. 入院適応と帰宅時の説明</a><a class="wnp" href="#p2">2</a><a href="#s8">8. 片頭痛の診断：「実は片頭痛ではないか」と考える</a><a href="#s9">9. 片頭痛の急性期治療</a><a href="#s10">10. 薬剤の使用過多による頭痛（MOH）</a><a href="#s11">11. 片頭痛の発作予防</a><a href="#s12">12. CGRP関連薬</a><a href="#s13">13. 緊張型頭痛</a><a href="#s14">14. 群発頭痛（三叉神経・自律神経性頭痛）</a></nav></div>
+<main><div id="mw">
+
+<div style="width: auto; display: flex; flex-direction: column; gap: 0px; background: transparent; padding: 0px; border: 0px; box-shadow: none;">
+<section class="part" id="p1"><h2 class="wpt"><span class="wpn">1</span>二次性頭痛を見逃さない</h2><div class="page" style="width: auto; height: auto; box-sizing: border-box; padding: 18px 22px 14px; font-family: &quot;Noto Sans JP&quot;, &quot;Noto Sans CJK JP&quot;, sans-serif; font-size: 8.6px; line-height: 1.4; color: rgb(29, 34, 48); background: rgb(255, 255, 255); display: flex; flex-direction: column; gap: 5px; overflow: visible; break-after: page; zoom: 1.802;" data-z="1.802">
+
+
+
+<div class="rules wst6">
+<div class="rule wunit wsolo"><b>まず除外</b>突然〜急性の頭痛で必ず除外するのは<span class="n">くも膜下出血</span>と<span class="n">細菌性髄膜炎</span>。SNOOPEが1つでもあれば頭部CTから始める</div>
+<div class="rule wunit wsolo"><b>巣症状</b>神経学的所見がないことで二次性頭痛は否定できない。SAH・髄膜炎はくも膜下腔に沿って広がり、局所症状を欠くことがある</div>
+<div class="rule wunit wsolo"><b>いつもと違う</b>片頭痛の既往がある人の性状の変わった頭痛（P：pattern change）は、前と同じ頭痛として片づけず二次性として精査する</div>
+<div class="rule wunit wsolo"><b>CTの限界</b>脳静脈血栓症・動脈解離・下垂体卒中・RCVSは単純CTだけでは診断が難しい。疑えばMRI・MRA（MRV）を撮る</div>
+</div>
+
+<div class="cols wcols" style="column-gap: 12px;">
+
+<div class="sec wunit" id="s1"><div class="h wh" role="button" tabindex="0" aria-expanded="true">1. red flags（SNOOPE）と画像評価の適応</div><div class="b">
+<div class="tw"><table class="t">
+<tbody><tr><th style="width:9%"></th><th>項目</th><th style="width:9%"></th><th>項目</th></tr>
+<tr><td class="rh">S</td><td>全身症状（発熱・体重減少）</td><td class="rh">O</td><td>50歳以上の新規発症</td></tr>
+<tr><td class="rh">S</td><td>全身疾患（悪性腫瘍・免疫不全・コントロール不良の糖尿病）</td><td class="rh">P</td><td>性状・持続・重症度の変化</td></tr>
+<tr><td class="rh">N</td><td>神経局在症状（意識障害を含む）</td><td class="rh">E</td><td>運動中の発症</td></tr>
+<tr><td class="rh">O</td><td>突然発症</td><td class="rh">E</td><td>増悪傾向</td></tr>
+</tbody></table></div>
+<p>・免疫不全者・担癌患者は、真菌性髄膜炎・癌性髄膜炎のリスクが高く、非典型的な臨床像をとる</p>
+<p>・頭部CTはルーチンでは不要で、異常は症状・身体所見から予測できる（50歳以上、突然発症、神経学的異常所見など）。個々の所見の診断特性は限られるため、複数の所見を確かめる</p>
+<p>・前兆を伴う場合は頭蓋内病変の可能性が上がる→前兆が片頭痛として典型的かを確認する</p>
+<p>・下垂体病変・動脈解離は群発頭痛様の頭痛を起こしうる→持続するHorner症候群、中高年発症、治療抵抗性なら画像検査</p>
+<p class="m"><b>オーダー</b>頭部CT／血液検査／血液ガス（CO-Hb）／心電図／頭部MRI・MRA（MRV）</p>
+</div></div>
+
+<div class="sec wunit" id="s2"><div class="h wh" role="button" tabindex="0" aria-expanded="true">2. くも膜下出血：初診で見逃されやすい（報告により1割強〜1/4）</div><div class="b">
+<p>・問題になるのは<span class="n">血腫量が少なく重症感に乏しい非典型例</span></p>
+<p>・<span class="w">若年でも起こる</span>：家族歴・結合組織疾患・多発性嚢胞腎を聴取（SAHの家族歴は必ず聞く）</p>
+<p>・<span class="w">歩いて受診する</span>：誤診例は重症感に乏しい患者が多い</p>
+<p>・部位は片側・全体いずれもあり、後頸部痛のこともある。<span class="w">自然軽快や鎮痛薬で軽快しても安心しない</span></p>
+<p>・主訴が<span class="n">嘔吐</span>にすり替わると誤診が増える（胃腸炎・ウイルス性髄膜炎と誤る）→制吐薬で落ち着いたら背後の症状を拾う。<span class="n">頭痛＋一過性意識消失</span>ではSAHを必ず考える</p>
+<div class="sub">頭部CTのpitfall</div>
+<p>・読影は能動的に：<span class="n">すべての脳溝・脳槽が髄液と同じ吸収値か</span>をしらみつぶしに確認する。原因不明の水頭症、側脳室後角の鈍化も傍証</p>
+<p>・感度：<span class="n">発症6時間以内はほぼ100%</span>（第3世代以降のCTを経験のある医師が読影した場合）、その後は下がる（多列CTの後ろ向き研究では72時間まで97%超）→6時間以降のCT陰性ではSAHを除外しきれない</p>
+<div class="tw"><table class="t">
+<tbody><tr><th style="width:15%">次の検査</th><th>利点</th><th>欠点</th></tr>
+<tr><td class="rh">腰椎穿刺</td><td>髄膜炎も同時に評価できる</td><td>雷鳴頭痛の他疾患（下垂体卒中・RCVS）を鑑別できない／血性髄液とtraumatic tapの区別が難しい／侵襲的（疼痛で血圧上昇、再破裂リスク）</td></tr>
+<tr><td class="rh">MRI・MRA</td><td>FLAIR高信号で脳溝内の血腫を検出、MRAで動脈瘤を同定、雷鳴頭痛の他疾患（RCVS・PRES・脳静脈血栓症・下垂体卒中）も鑑別、非侵襲的</td><td>髄膜炎は鑑別できない／FLAIR高信号には偽陽性がある（髄膜炎、側副血行路、髄液拍動、アーチファクト）</td></tr>
+</tbody></table></div>
+<p>・どちらを先に行うかは、救急科・脳神経外科とあらかじめ施設で共有しておく</p>
+</div></div>
+
+<div class="sec wunit" id="s3"><div class="h wh" role="button" tabindex="0" aria-expanded="true">3. 椎骨動脈解離</div><div class="b">
+<p>・<span class="n">特発性が多い</span>：<span class="w">頸部回旋などのエピソードがないことで否定しない</span></p>
+<p>・臨床像は3つ：<span class="n">後頸部痛のみ／脳梗塞合併／解離性動脈瘤（未破裂またはSAH合併）</span></p>
+<p>・<span class="n">片側の後頸部〜後頭部痛</span>が多い（頭痛または頸部痛は8〜9割）。持続性で鎮痛薬が効きにくいことが多いが、性状だけで診断も除外もできない</p>
+<p>・<span class="n">頸部の動きで痛みがほとんど変わらない</span>（筋骨格系の痛みは回旋・前後屈で増悪）。患側への側屈で増悪→頸椎症、対側への側屈で増悪→筋筋膜性疼痛を示唆</p>
+<p>・脳梗塞は痛みから<span class="n">数時間〜数日の潜時</span>をおいて起こる。頸動脈解離の報告では82%が1週以内、最長約1か月→後方循環の梗塞では数日前までさかのぼって頸部痛を問診し、必ず椎骨動脈解離を考える</p>
+<p>・SAH合併は<span class="n">発症3日以内がほとんど（96.4%）</span>、最長11日（頭蓋内動脈解離全体のデータ）</p>
+<p>・画像：MRA・血管造影で<span class="n">pearl and string sign</span>（pearlはBPAS、stringはMRAで評価）、亜急性期（発症3日以降）の<span class="n">T1強調像高信号</span>（壁在血腫）、double lumen、intimal flap、経時的変化。診断がつかないときや治療介入の判断に血管造影</p>
+</div></div>
+
+<div class="sec wunit" id="s4"><div class="h wh" role="button" tabindex="0" aria-expanded="true">4. RCVS（可逆性脳血管攣縮症候群）</div><div class="b">
+<p>・<span class="n">雷鳴頭痛を短期間に繰り返す</span>。中年女性に多く（平均42歳）、反復する雷鳴頭痛の鑑別として重要。疼痛で不穏になり暴れることがある</p>
+<p>・誘因（約半数）：妊娠、入浴・シャワー、α刺激薬（点鼻薬を含む）、SSRI/SNRI、カルシニューリン阻害薬、エリスロポエチン、インターフェロン、トリプタン</p>
+<p>・片頭痛の既往が約40%→いつもと違う（のたうち回る）点に注目。<span class="w">片頭痛と判断してトリプタンを使うと誘因になる</span></p>
+<p>・MRA：急性期は末梢の攣縮で、時間とともに中枢へ移る。<span class="n">初回が陰性でも疑えば再検</span>する</p>
+<p>・合併症：円蓋部SAH、脳梗塞、PRES。RCVS²スコアは参考</p>
+<p>・治療：<span class="n">誘因の除去＋安静・鎮痛</span>。Ca拮抗薬の有用性は前向き研究がなく不明。<span class="w">ステロイドは増悪因子との報告があり避ける</span>。通常3か月以内に改善する</p>
+</div></div>
+
+<div class="sec wunit" id="s5"><div class="h wh" role="button" tabindex="0" aria-expanded="true">5. 脳静脈血栓症（CVT）</div><div class="b">
+<p>・頭痛約90%、巣症状20〜50%、けいれん20〜40%：<span class="w">特異的な症状はない</span>→リスク因子と画像で診断する</p>
+<p>・リスク因子：妊娠・経口避妊薬・ホルモン補充療法、鉄欠乏性貧血、悪性腫瘍、骨髄増殖性疾患、脱水、炎症性腸疾患、SLE、Behçet病、甲状腺疾患、遺伝性凝固異常、抗リン脂質抗体症候群、感染症（中耳炎・副鼻腔炎）、外傷</p>
+<p>・単純CT：静脈洞の<span class="n">局所的な</span>高吸収（dense triangle sign、感度63〜73%、発症後14日まで残りうる）。若年・脱水・多血症では生理的に高吸収になる。造影CTのempty delta signは急性期には出ないことがある→<span class="n">頭痛ではSAHだけでなく静脈洞の吸収値も毎回確認する</span></p>
+<p>・MRI・MRV：T2*強調像の血栓低信号、MRVの描出不良（横静脈洞は生理的な左右差があり、片側の描出不良を閉塞と誤らない）、静脈性の浮腫・出血・梗塞</p>
+<p>・<span class="n">非典型的な部位の脳出血、動脈支配に合致しない梗塞、円蓋部に限局したSAH</span>を見たら積極的に疑う。読影は専門医と相談する</p>
+<p>・治療：<span class="d">ヘパリン</span>による抗凝固。<span class="w">CVTによる脳出血は抗凝固療法の禁忌にならない</span></p>
+<p class="up">📘 最新情報：急性期は低分子量ヘパリンが好まれ、その後の経口抗凝固薬として、選択された例ではDOACも妥当な選択肢になる。<span class="w">妊娠中と抗リン脂質抗体症候群ではDOACを使わない</span>（AHA Scientific Statement 2024）</p>
+</div></div>
+
+<div class="sec wunit" id="s6"><div class="h wh" role="button" tabindex="0" aria-expanded="true">6. 下垂体卒中</div><div class="b">
+<p>・下垂体腺腫（特に非機能性のmacroadenoma、プロラクチノーマ）に出血・梗塞が起こる。<span class="n">下垂体卒中を契機に腺腫が見つかることが多い（〜80%）</span></p>
+<p>・誘因（10〜40%）：高血圧・血圧変動、手術（特に心臓手術）、下垂体負荷試験、血管造影、抗凝固薬、妊娠、頭部外傷</p>
+<p>・頭痛が最多で初発症状になりやすい（眼窩後部が多い、嘔気・嘔吐を伴う）。<span class="w">無菌性髄膜炎を起こし、細菌性髄膜炎と区別できないことがある</span></p>
+<p>・上方圧迫：<span class="n">視力低下・視野障害</span>、視床下部（意識障害）／側方圧迫：海綿静脈洞（<span class="n">動眼・滑車・外転神経、三叉神経第1・2枝</span>）による眼球運動障害・顔面の感覚障害</p>
+<p>・約80%に下垂体前葉ホルモンの欠乏がある。<span class="w">急性の副腎不全（約2/3）が生命予後に最も重要</span>：低血圧＋低Na血症→<span class="n">副腎不全を疑えば採血後、結果を待たずにヒドロコルチゾン</span>。甲状腺・性腺機能低下も多い。尿崩症はまれ（約5%）</p>
+<p>・CTでは<span class="n">トルコ鞍の腫瘤・拡大</span>を毎回確認（冠状断・矢状断が見やすい）。造影MRI（ダイナミック）の判断は脳神経外科と相談。手術か保存療法かも脳神経外科と相談する</p>
+</div></div>
+
+<div class="sec wunit" id="s7"><div class="h wh" role="button" tabindex="0" aria-expanded="true">7. 入院適応と帰宅時の説明</div><div class="b">
+<p>・対応は原因に準ずる。初療で原因がわからず、<span class="n">突然発症・増悪する頭痛・初発の頭痛</span>なら経過観察入院を考慮する</p>
+<p>・帰宅時は「症状が改善しない場合は早めに受診してください」と伝える</p>
+</div></div>
+
+</div>
+</div></section>
+
+<section class="part" id="p2"><h2 class="wpt"><span class="wpn">2</span>一次性頭痛：片頭痛を見逃さない</h2><div class="page" style="width: auto; height: auto; box-sizing: border-box; padding: 18px 22px 14px; font-family: &quot;Noto Sans JP&quot;, &quot;Noto Sans CJK JP&quot;, sans-serif; font-size: 8.6px; line-height: 1.4; color: rgb(29, 34, 48); background: rgb(255, 255, 255); display: flex; flex-direction: column; gap: 5px; overflow: visible; zoom: 1.802;" data-z="1.802">
+
+<div class="cols wcols" style="column-gap: 12px;">
+
+<div class="sec wunit" id="s8"><div class="h wh" role="button" tabindex="0" aria-expanded="true">8. 片頭痛の診断：「実は片頭痛ではないか」と考える</div><div class="b">
+<p>・有病率<span class="n">8.4%</span>（前兆なし5.8%、前兆あり2.6%）。90%以上は40歳以前の発症で、<span class="w">高齢初発の片頭痛はまれ</span>→二次性頭痛を十分に考える</p>
+<p>・受診者に限れば緊張型頭痛より片頭痛が多い。プライマリ・ケア医が片頭痛以外の一次性頭痛と診断した例の<span class="n">82%が片頭痛または片頭痛の疑い</span>だった（Landmark Study）</p>
+<p>・予兆：数日〜数時間前の肩こり・あくび・眠気など。<span class="w">この肩こりで緊張型頭痛と判断しない</span></p>
+<p>・前兆：視覚（閃輝暗点）・感覚・言語。<span class="n">5〜60分</span>持続し、60分以内に頭痛が始まるのが典型。60分を超える前兆、運動障害は他疾患を考え画像を撮る。前兆がなくても否定できない。前兆だけの発作をTIAと誤ることがある</p>
+<p>・頭痛：<span class="n">4〜72時間</span>、拍動性、片側（両側も多い）。<span class="n">日常動作で増悪し支障をきたす</span>（身体活動での増悪の陽性尤度比3.7）、悪心・嘔吐（19.2）、光・音・におい過敏（約5）、アロディニア。発作中はじっと横になる（群発頭痛は暴れる）。頭部の圧迫で楽になることがある（緊張型はマッサージを好む）</p>
+<p>・既往：乗り物酔い、周期性嘔吐症、めまい症、アトピー素因、家族歴も参考になる</p>
+<p>・<span class="n">POUND</span>（拍動性／4〜72時間／片側性／悪心・嘔吐／日常生活に支障）の<span class="n">4項目以上</span>で片頭痛を示唆。<span class="w">SAHでも満たしうるので、SNOOPEを除外してから使う</span></p>
+<p>・誘因：天候変化、睡眠不足、疲労、ストレスとその後の弛緩、不規則なカフェイン、チョコレート・チーズ・ワイン、経口避妊薬・ホルモン療法、点鼻血管収縮薬、SSRI、月経</p>
+<p>・片頭痛と緊張型頭痛は明確に分けられるとは限らない→<span class="n">片頭痛を疑う所見が少しでもあれば治療を検討</span>する</p>
+</div></div>
+
+<div class="sec wunit" id="s9"><div class="h wh" role="button" tabindex="0" aria-expanded="true">9. 片頭痛の急性期治療</div><div class="b">
+<p>・軽症〜中等症：<span class="d">NSAIDs</span>または<span class="d">アセトアミノフェン</span>／中等症〜重症：<span class="d">トリプタン</span>＋NSAIDs（スマトリプタン＋ナプロキセンはどちらの単剤より有効）</p>
+<p>・トリプタンは<span class="n">頭痛の早期に内服</span>する。ピークに達してからでは効きにくい</p>
+<div class="tw"><table class="t">
+<tbody><tr><th style="width:36%">薬剤</th><th>用法・用量（成人）</th></tr>
+<tr><td><span class="d">ロキソプロフェン</span>（ロキソニン）</td><td>1回60 mg、1日3回まで（頓用は1回60〜120 mg）。頭痛は適応外</td></tr>
+<tr><td><span class="d">アセトアミノフェン</span>（カロナール）</td><td>1回300〜1,000 mg、1日4,000 mgまで</td></tr>
+<tr><td><span class="d">スマトリプタン</span>錠（イミグラン）</td><td>1回50 mg、2時間あけて追加可、1日200 mgまで（効果不十分なら次回100 mg）</td></tr>
+<tr><td><span class="d">エレトリプタン</span>（レルパックス）</td><td>1回20 mg、2時間あけて追加可、1日40 mgまで</td></tr>
+<tr><td><span class="d">ゾルミトリプタン</span>（ゾーミッグ）</td><td>1回2.5 mg、2時間あけて追加可、1日10 mgまで</td></tr>
+<tr><td><span class="d">リザトリプタン</span>（マクサルト）</td><td>1回10 mg、2時間あけて追加可、1日20 mgまで</td></tr>
+<tr><td><span class="d">スマトリプタン</span>皮下注</td><td>1回3 mg、1時間以上あけて1日6 mgまで</td></tr>
+<tr><td><span class="d">スマトリプタン</span>点鼻</td><td>1回20 mg、2時間以上あけて1日40 mgまで</td></tr>
+</tbody></table></div>
+<p>・特徴：リザトリプタンは短期効果が高いが<span class="w">プロプラノロールと併用禁忌</span>。エレトリプタンはCYP3A4で代謝され併用薬に注意。ナラトリプタン（アマージ）は効き始めが緩やかで長く効く。皮下注は短時間の効果が最も優れ、<span class="n">強い悪心・嘔吐</span>があるときに使う</p>
+<p>・副作用：一過性の熱感、頭部・胸部の締め付け感（使ううちに慣れる、事前に説明する）</p>
+<p>・<span class="w">トリプタンの禁忌</span>：虚血性心疾患・異型狭心症、脳血管障害・TIA、末梢血管障害、コントロール不良の高血圧、重篤な肝機能障害、エルゴタミン・他のトリプタンとの併用。その他の併用禁忌は製剤で異なる（MAO阻害薬、エレトリプタンではリトナビルなど）。リザトリプタンは血液透析中も禁忌。脳幹性前兆を伴う片頭痛・片麻痺性片頭痛には投与しない</p>
+<p>・<span class="d">ラスミジタン</span>（レイボー）：5-HT1F作動薬で<span class="n">血管収縮作用がなく</span>、心血管リスクでトリプタンが使えない例の代替。1回100 mg（50 mgまたは200 mgも可）、再発時は24時間で200 mgまで。効果はトリプタンに劣り、めまい・眠気が多い→<span class="w">自動車の運転をさせない</span></p>
+<p>・<span class="d">リメゲパント</span>（ナルティークOD 75 mg）：ゲパント系で急性期と予防の両方に適応。急性期は1回75 mg、<span class="n">1日75 mgを超えない</span>。高価、CYP3A4・P-gpを介した相互作用が多い</p>
+<div class="sub">救急外来（悪心・嘔吐が強い、内服できない）</div>
+<p>・<span class="d">メトクロプラミド</span>静注（プリンペラン10 mg＋生食50 mLを30分。片頭痛は適応外）、<span class="d">スマトリプタン</span>皮下注、<span class="d">アセトアミノフェン</span>静注（アセリオ1,000 mgを15分）。大後頭神経ブロックも有望</p>
+<p>・<span class="d">デキサメタゾン</span>10〜25 mgは短期の再発予防に有用→重度で再燃しやすい発作で考慮する</p>
+<p>・<span class="w">オピオイドは使わない</span>（7日以内の再受診が増え、依存の問題もある）</p>
+<p class="up">📘 最新情報（AHS 2025、救急外来の注射薬）：必ず提示＝プロクロルペラジン静注、大後頭神経ブロック／提示すべき＝メトクロプラミド静注、ケトロラク静注、スマトリプタン皮下注、眼窩上神経ブロック（ほかに国内未発売のデクスケトプロフェン静注）／提示してもよい＝デキサメタゾン静注（急性期治療として）／アセトアミノフェン静注は提示しなくてよい（Level C、2016年版から変更）／<span class="w">ヒドロモルフォン静注は提示してはならない</span>。国内のプロクロルペラジン注は筋注製剤</p>
+</div></div>
+
+<div class="sec wunit" id="s10"><div class="h wh" role="button" tabindex="0" aria-expanded="true">10. 薬剤の使用過多による頭痛（MOH）</div><div class="b">
+<p>・片頭痛は重度の発作が多く、リバウンドを起こしやすいトリプタンを使うため、MOHを併発しやすい</p>
+<p>・頓用の鎮痛薬を<span class="n">3か月を超えて定期的に乱用</span>し、使用頻度が増えた時期に一致して頭痛が増悪していればMOHを考える</p>
+<p class="up">📘 ICHD-3の基準：頭痛が<span class="n">月15日以上</span>あり、トリプタン・エルゴタミン・オピオイド・複合鎮痛薬は<span class="n">月10日以上</span>、単一成分の鎮痛薬は<span class="n">月15日以上</span>（複数系統の併用は合計で月10日以上）の使用が3か月を超えて続く。もともと頭痛性疾患がある患者に起こる</p>
+<p>・<span class="n">慢性連日頭痛・早朝の頭痛</span>はMOHを示唆する（早朝頭痛は脳腫瘍・睡眠時無呼吸でも起こるが、最多はMOH）</p>
+</div></div>
+
+<div class="sec wunit" id="s11"><div class="h wh" role="button" tabindex="0" aria-expanded="true">11. 片頭痛の発作予防</div><div class="b">
+<p>・適応：<span class="n">片頭痛発作が月2回以上、または生活に支障をきたす頭痛が月3日以上</span>（頭痛の診療ガイドライン2021）。急性期治療だけで終わらせない</p>
+<p>・<span class="n">頭痛ダイアリー・アプリで記録</span>して効果を判定する</p>
+<p>・生活指導：規則正しい睡眠・食事・運動。有酸素運動で発作回数・期間・痛みが減る</p>
+<div class="tw"><table class="t">
+<tbody><tr><th style="width:33%">薬剤</th><th>用法・用量（成人）</th></tr>
+<tr><td><span class="d">プロプラノロール</span>（インデラル）</td><td>1日20〜30 mgを2〜3回に分割で開始、1日60 mgまで</td></tr>
+<tr><td><span class="d">バルプロ酸</span>（デパケン）</td><td>1日400〜800 mgを2〜3回に分割（普通錠。R錠は1〜2回）、1日1,000 mgまで</td></tr>
+<tr><td><span class="d">ロメリジン</span>（ミグシス）</td><td>1回5 mg 1日2回、1日20 mgまで</td></tr>
+</tbody></table></div>
+<p>・保険適用のある薬で比較的質の高い研究があるのは<span class="d">バルプロ酸</span>、<span class="d">プロプラノロール</span>、CGRP関連抗体薬。ロメリジンはエビデンスが乏しいが副作用が少ない。アミトリプチリンは短期のエビデンスのみ。ベラパミルは有用性が明確でない。うつ病がある例ではベンラファキシンが好まれる</p>
+<p>・<span class="w">プロプラノロール</span>：心不全・徐脈・気管支喘息に注意、高齢者・喫煙者に使いにくい、リザトリプタンと併用禁忌</p>
+<p>・<span class="w">バルプロ酸</span>：<span class="w">催奇形性</span>、薬剤性過敏症症候群、高NH₃血症、膵炎。体重増加・脱毛・骨粗鬆症も問題になる</p>
+</div></div>
+
+<div class="sec wunit" id="s12"><div class="h wh" role="button" tabindex="0" aria-expanded="true">12. CGRP関連薬</div><div class="b">
+<p>・CGRPは三叉神経から放出される神経ペプチドで、血管拡張と疼痛伝達に働く。血管収縮作用がなく、心血管リスクがある例でも使用を検討できる</p>
+<div class="sub">抗体薬（発作予防）</div>
+<div class="tw"><table class="t">
+<tbody><tr><th style="width:38%">薬剤</th><th>用法・用量</th></tr>
+<tr><td><span class="d">ガルカネズマブ</span>（エムガルティ）</td><td>初回240 mg、以後1か月ごとに120 mg 皮下注</td></tr>
+<tr><td><span class="d">フレマネズマブ</span>（アジョビ）</td><td>4週ごとに225 mg、または12週ごとに675 mg 皮下注</td></tr>
+<tr><td><span class="d">エレヌマブ</span>（アイモビーグ）</td><td>4週ごとに70 mg 皮下注</td></tr>
+<tr><td><span class="d">エプチネズマブ</span>（ビエプチ）</td><td>12週ごとに100 mg 点滴静注（2026年9月16日承認）</td></tr>
+</tbody></table></div>
+<p>・対象（最適使用推進ガイドライン）：<span class="n">投与前3か月以上、片頭痛日数が月平均4日以上</span>／非薬物療法・急性期治療を適切に行っても日常生活に支障がある／<span class="n">既存の予防薬（プロプラノロール、バルプロ酸、ロメリジンなど）のいずれか</span>が効果不十分、忍容性が低い、または禁忌・安全性の懸念で使えない</p>
+<p>・<span class="n">開始後3か月を目安に効果を評価</span>（エプチネズマブは3か月〈1回投与後〉または6か月〈2回投与後〉）し、漫然と続けない。副作用は注射部位反応、エレヌマブでは便秘</p>
+<p class="up">📘 最新情報：日本頭痛学会のポジションステートメント（2025年10月）は、CGRP関連抗体薬を他の予防薬と同等に第一選択薬に含めた。保険診療上の要件（上記）は変わらない</p>
+<div class="sub">ゲパント（経口のCGRP受容体拮抗薬）</div>
+<p>・<span class="d">リメゲパント</span>（ナルティークOD、2025年12月発売）：予防は<span class="n">75 mgを隔日</span>。急性期にも使える（9.を参照）</p>
+<p>・<span class="d">アトゲパント</span>（アクイプタ、2026年4月発売）：予防のみ。<span class="n">60 mgを1日1回</span>。CCr 30 mL/分未満・強いCYP3A阻害薬併用では10 mg、OATP阻害薬併用では30 mg</p>
+</div></div>
+
+<div class="sec wunit" id="s13"><div class="h wh" role="button" tabindex="0" aria-expanded="true">13. 緊張型頭痛</div><div class="b">
+<p>・両側性、締め付けられる非拍動性の痛み、悪心・嘔吐なし、日常動作で増悪しない、過敏症状が目立たない。救急外来を受診することはまれ</p>
+<p>・<span class="w">肩こり≠緊張型頭痛</span>。緊張型頭痛と診断しても片頭痛は除外できない（併存も多い）</p>
+<p>・治療：支障があれば<span class="d">アセトアミノフェン</span>・<span class="d">NSAIDs</span>（乱用でMOHに注意）。予防は非薬物療法</p>
+</div></div>
+
+<div class="sec wunit" id="s14"><div class="h wh" role="button" tabindex="0" aria-expanded="true">14. 群発頭痛（三叉神経・自律神経性頭痛）</div><div class="b">
+<p>・20〜40歳代、<span class="n">男性に多い（男女比3〜7：1）</span>。飲酒が誘因</p>
+<p>・片側の眼の奥の激痛が<span class="n">15〜180分</span>。頭痛と同側の<span class="n">自律神経症状</span>（結膜充血、流涙、鼻閉、鼻漏、眼瞼浮腫、前額・顔面の発汗、縮瞳、眼瞼下垂）。数週〜数か月の群発期にほぼ毎日（多いと1日8回）</p>
+<p>・<span class="n">落ち着きなく暴れまわる</span>、<span class="n">就寝中にも起こる</span>点が片頭痛との違い。間欠期は無症状なので発作時の様子を聞く</p>
+<p>・鑑別：<span class="w">急性緑内障発作</span>（患側散瞳、対光反射減弱、角膜混濁、結膜充血）、副鼻腔炎（蝶形骨洞）、三叉神経領域の帯状疱疹、内頸動脈海綿静脈洞瘻、Wallenberg症候群、眼窩先端部アスペルギルス症（高齢者・糖尿病・免疫抑制）</p>
+<p>・急性期：<span class="d">純酸素</span>をフェイスマスクで<span class="n">7 L/分 15分間</span>吸入（国内GL）、<span class="d">スマトリプタン</span>3 mg皮下注（1日6 mgまで）</p>
+<p class="up">📘 最新情報：EAN 2023は100%酸素<span class="n">12 L/分以上を15分</span>吸入することを強く推奨する</p>
+<p>・予防：<span class="d">ベラパミル</span>（適応外だが、群発頭痛への内服は審査上認められている）</p>
+<p class="up">📘 最新情報：2018年度から群発頭痛は在宅酸素療法の対象になった（関連学会の診断基準で診断され、群発期間中に1日平均1回以上の発作がある患者）</p>
+</div></div>
+
+</div>
+<div style="border-top: 1px solid #c9cfe6; padding-top: 3px; font-size: 6.6px; line-height: 1.4; color: #4a5068">
+出典：総合診療科 研修医レクチャー資料「頭痛」（2026年5月）とその参考文献。日本神経学会・日本頭痛学会・日本神経治療学会 監修『頭痛の診療ガイドライン2021』（医学書院）、国際頭痛分類 第3版（ICHD-3、Cephalalgia 2018）、日本頭痛学会『CGRP関連新規片頭痛治療薬ガイドライン（暫定版）』・ポジションステートメント（2025年10月）、厚生労働省 最適使用推進ガイドライン（ガルカネズマブ、エプチネズマブ）、Robblee J, et al. Headache 2026;66:53-76（AHS 2025 救急外来ガイドライン）、Saposnik G, et al. Stroke 2024;55:e77-e90（AHA 脳静脈血栓症）、Yaghi S, et al. Stroke 2024（AHA 頸部動脈解離）、Biousse V, et al. Stroke 1995（PMID 7831694）、Arnold M, et al. Stroke 2006（PMID 16960096）、Tayyebi S, et al. Sci Rep 2020（PMC6972746）、Vincent A, et al. Emerg Med J 2022（PMID 34819306）、Rajasekaran S, et al. Clin Endocrinol 2011（UK 下垂体卒中GL）、May A, et al. Eur J Neurol 2023（EAN 群発頭痛GL）、Tepper SJ, et al. Headache 2004（Landmark Study）、各薬剤の電子添文（ナルティークOD、アクイプタ、レイボー、ビエプチ ほか）。OpenEvidenceでも照合した（2026年11月12日）。用量・禁忌・適応は処方前に必ず最新の電子添文で確認すること。
+</div>
+</div></section>
+</div>
+</div><p class="wempty" id="none">該当する項目はありません。</p></main>
+<script>
+{
+const q=document.getElementById('q'),hits=document.getElementById('hits'),tg=document.getElementById('tg'),none=document.getElementById('none');
+const units=[...document.querySelectorAll('#mw .wunit')].filter(u=>!u.parentElement.closest('.wunit'));
+const parts=[...document.querySelectorAll('#mw .part')];
+const orig=new Map(units.map(u=>[u,u.innerHTML]));
+const setOpen=(u,o)=>{u.classList.toggle('wclosed',!o);const h=u.querySelector(':scope>.wh');if(h)h.setAttribute('aria-expanded',o?'true':'false');};
+document.addEventListener('click',e=>{const h=e.target.closest('.wh');if(!h)return;const u=h.parentElement;setOpen(u,u.classList.contains('wclosed'));});
+document.addEventListener('keydown',e=>{const h=e.target.closest&&e.target.closest('.wh');if(h&&(e.key==='Enter'||e.key===' ')){e.preventDefault();h.click();}});
+document.querySelectorAll('.wnav a').forEach(a=>a.addEventListener('click',()=>{const u=document.querySelector(a.getAttribute('href'));if(u&&u.classList.contains('wunit'))setOpen(u,true);}));
+const esc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+const mark=(el,re)=>{const w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);const ns=[];while(w.nextNode())ns.push(w.currentNode);
+  ns.forEach(t=>{re.lastIndex=0;if(!re.test(t.data))return;re.lastIndex=0;const f=document.createDocumentFragment();let i=0,m;while((m=re.exec(t.data))){f.append(t.data.slice(i,m.index));const k=document.createElement('mark');k.textContent=m[0];f.append(k);i=m.index+m[0].length;}f.append(t.data.slice(i));t.replaceWith(f);});};
+const others=parts.map(p=>[...p.querySelectorAll('.page *')].filter(e=>!e.closest('.wunit')&&!e.querySelector('.wunit')&&e.parentElement.querySelector(':scope>.wunit')));
+const run=()=>{const v=q.value.trim();units.forEach(u=>{u.innerHTML=orig.get(u);});
+  if(!v){[...units,...parts,...others.flat()].forEach(e=>e.classList.remove('hide'));hits.textContent='';none.style.display='none';return;}
+  const re=new RegExp(esc(v),'gi');let c=0;
+  units.forEach(u=>{const ok=u.textContent.toLowerCase().includes(v.toLowerCase());u.classList.toggle('hide',!ok);if(ok){c++;setOpen(u,true);mark(u,re);}});
+  others.flat().forEach(e=>e.classList.add('hide'));
+  parts.forEach(p=>p.classList.toggle('hide',!p.querySelector('.wunit:not(.hide)')));
+  hits.textContent=c+'件';none.style.display=c?'none':'block';};
+q.addEventListener('input',run);
+tg.addEventListener('click',()=>{const open=tg.textContent==='すべて開く';units.forEach(u=>{if(u.querySelector(':scope>.wh'))setOpen(u,open);});tg.textContent=open?'すべて閉じる':'すべて開く';});
+window.addEventListener('beforeprint',()=>units.forEach(u=>setOpen(u,true)));
+}
+</script>
+</body></html>

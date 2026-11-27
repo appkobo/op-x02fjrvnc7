@@ -9,8 +9,8 @@
   var STAR = '<svg viewBox="0 0 24 24"><path d="M12 3.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.7l5.8-.8z"/></svg>';
 
   /* ---------- 端末内の記録（お気に入り・最近・読んでいた位置） ---------- */
-  var st = { fav: [], recent: [], pos: {}, fs: 0 };
-  try { var raw = JSON.parse(localStorage.getItem("op1") || "{}"); st.fav = raw.fav || []; st.recent = raw.recent || []; st.pos = raw.pos || {}; st.fs = [0, 1, 2].indexOf(raw.fs) >= 0 ? raw.fs : 0; } catch (e) {}
+  var st = { fav: [], recent: [], pos: {}, fs: 0, usePdf: {}, posH: {} };
+  try { var raw = JSON.parse(localStorage.getItem("op1") || "{}"); st.fav = raw.fav || []; st.recent = raw.recent || []; st.pos = raw.pos || {}; st.fs = [0, 1, 2].indexOf(raw.fs) >= 0 ? raw.fs : 0; st.usePdf = raw.usePdf || {}; st.posH = raw.posH || {}; } catch (e) {}
   st.fav = st.fav.filter(function (i) { return BY[i]; });
   st.recent = st.recent.filter(function (i) { return BY[i]; });
   function save() { try { localStorage.setItem("op1", JSON.stringify(st)); } catch (e) {} }
@@ -24,16 +24,21 @@
   /* ---------- PDFの取得と端末への保存 ---------- */
   var saved = {};
   function pdfUrl(s) { return "pdf/" + s.id + ".pdf?v=" + s.v; }
+  function htmlUrl(s) { return "html/" + s.id + ".html?v=" + s.html; }
   function hasCaches() { return typeof caches !== "undefined"; }
   function refreshSaved() {
     if (!hasCaches()) return Promise.resolve();
     return caches.open(PDF_CACHE).then(function (c) { return c.keys(); }).then(function (keys) {
-      saved = {};
+      var sp = {}, sh = {};
       keys.forEach(function (r) {
-        var u = new URL(r.url), m = u.pathname.match(/\/pdf\/([^/]+)\.pdf$/);
-        if (m && BY[m[1]] && u.searchParams.get("v") === BY[m[1]].v) saved[m[1]] = true;
+        var u = new URL(r.url), m = u.pathname.match(/\/pdf\/([^/]+)\.pdf$/), h = u.pathname.match(/\/html\/([^/]+)\.html$/);
+        if (m && BY[m[1]] && u.searchParams.get("v") === BY[m[1]].v) sp[m[1]] = true;
         else if (m && !BY[m[1]]) caches.open(PDF_CACHE).then(function (c) { c.delete(r); });   // 収録から外したシートは端末からも消す
+        if (h && BY[h[1]] && BY[h[1]].html && u.searchParams.get("v") === BY[h[1]].html) sh[h[1]] = true;
+        else if (h) caches.open(PDF_CACHE).then(function (c) { c.delete(r); });                 // 古いHTML版も消す
       });
+      saved = {};
+      SHEETS.forEach(function (s) { if (sp[s.id] && (!s.html || sh[s.id])) saved[s.id] = true; });
     }).catch(function () {});
   }
   function fetchPdf(s) {
@@ -146,7 +151,7 @@
     if (act && act.dataset.act === "news") { openPanel("<h2>News</h2><div class=\"news\">" + C.news.map(newsRow).join("") + "</div>"); return; }
     if (act && act.dataset.act === "feedback") { openFeedback(null); return; }
     var o = e.target.closest("[data-open]");
-    if (o) openSheet(o.dataset.open, o.dataset.page ? +o.dataset.page : null, true);
+    if (o) openSheet(o.dataset.open, o.dataset.page ? +o.dataset.page : null, true, o.dataset.page ? query.split(/\s+/)[0] : "");
   });
   $("list").addEventListener("keydown", function (e) {
     if (e.key === "Enter" && e.target.classList.contains("card")) openSheet(e.target.dataset.open, null, true);
@@ -180,6 +185,7 @@
   function setFs(i) {
     st.fs = i; save(); applyFs();
     Array.prototype.forEach.call(document.querySelectorAll("[data-fs]"), function (b) { var on = +b.dataset.fs === i; b.classList.toggle("on", on); b.setAttribute("aria-pressed", on); });
+    if (cur && cur.html) { try { hframe.contentDocument.documentElement.style.zoom = fsHtmlZoom(); if (cur.pad) cur.pad(); } catch (e) {} }
     if (cur && cur.pgs.length) { var p = cur.page; zoom = startZoom(); layout(); updateZoomLabel(); scroller.scrollLeft = 0; scrollToPage(p - 1, 0, false); cur.gen++; pump(); }
   }
   var DPR = Math.min(window.devicePixelRatio || 1, 3);
@@ -199,9 +205,64 @@
     $("btnStar").classList.toggle("on", !!on);
   }
 
-  function openSheet(id, page, push) {
+  /* HTML版（文字の大きさに合わせて折り返す）。そのシートにHTML版があり、PDF表示を選んでいないときに使う */
+  var hframe = $("hframe");
+  function useHtml(s) { return !!s.html && !st.usePdf[s.id]; }
+  function fsHtmlZoom() { return [1, 1.2, 1.4][st.fs] || 1; }
+  function setMode(s) {
+    var b = $("btnMode"), h = useHtml(s);
+    b.hidden = !s.html; b.textContent = h ? "PDF" : "HTML";
+    b.setAttribute("aria-label", h ? "PDFで表示する" : "HTML版で表示する");
+    $("viewer").classList.toggle("hm", h); hframe.hidden = !h;
+  }
+  function openHtml(s, page, push, term) {
+    var id = s.id, my = cur = { s: s, html: true, pdf: null, pgs: [], vis: {}, gen: 0, page: 1, busy: false, links: {} };
+    showView("viewer"); setMode(s);
+    $("vName").textContent = s.name; $("vSub").textContent = s.sub; updateStar();
+    if (push) history.pushState({ s: id }, "", "#" + id);
+    st.recent = [id].concat(st.recent.filter(function (i) { return i !== id; })).slice(0, 8); save();
+    setLoading("読み込み中");
+    fetch(htmlUrl(s)).then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.text(); }).then(function () {
+      if (cur !== my) return;
+      hframe.onload = function () {
+        if (cur !== my) return;
+        var d, w;
+        try { d = hframe.contentDocument; w = hframe.contentWindow; } catch (e) { return; }
+        if (!d || !d.body || d.location.href === "about:blank") return;
+        setLoading(null);
+        d.documentElement.style.zoom = fsHtmlZoom();
+        var pad = function () { var t = d.querySelector(".wtools"); if (t) d.documentElement.style.scrollPaddingTop = (t.offsetHeight + 8) + "px"; };   // 上に固定された検索欄に見出しが隠れないようにする
+        pad(); my.pad = pad;
+        var h1 = d.querySelector(".wtop h1"); if (h1) h1.textContent = s.name + (s.sub ? "　" + s.sub : "");
+        Array.prototype.forEach.call(d.querySelectorAll('a[href^="http"]'), function (a) { a.target = "_blank"; a.rel = "noopener noreferrer"; });
+        d.addEventListener("click", function (e) {      // ページ内の移動で「戻る」の履歴を増やさない
+          var a = e.target.closest && e.target.closest('a[href^="#"]'); if (!a) return;
+          e.preventDefault();
+          var t = d.getElementById(a.getAttribute("href").slice(1)); if (t) t.scrollIntoView();
+        });
+        var q = d.getElementById("q");
+        if (term && q) { q.value = term; q.dispatchEvent(new Event("input", { bubbles: true })); }
+        else if (st.posH[id]) w.scrollTo(0, st.posH[id]);
+      };
+      hframe.contentWindow.location.replace(new URL(htmlUrl(s), location.href).href);   // 履歴を増やさずに読み込む
+    }).catch(function (err) {
+      if (cur !== my) return;
+      console.warn(err);
+      setLoading("読み込めなかった。<br>通信できる場所で一度開くと、次からは圏外でも見られる。<br><button class=\"big\" id=\"retry\" style=\"width:auto;padding:0 22px;margin:14px auto 0\">もう一度</button>", true);
+      $("retry").onclick = function () { openSheet(id, page, false, term); };
+    });
+  }
+  $("btnMode").addEventListener("click", function () {
+    if (!cur) return;
+    var s = cur.s;
+    if (useHtml(s)) st.usePdf[s.id] = 1; else delete st.usePdf[s.id];
+    save(); openSheet(s.id, null, false);
+  });
+  function openSheet(id, page, push, term) {
     var s = BY[id]; if (!s) return;
     closeSheetDoc();
+    if (useHtml(s)) { openHtml(s, page, push, term); return; }
+    setMode(s);
     var my = cur = { s: s, pdf: null, pgs: [], vis: {}, gen: 0, page: 1, busy: false, links: {} };
     showView("viewer");
     zoom = startZoom();
@@ -243,6 +304,10 @@
   }
   function closeSheetDoc() {
     if (!cur) return;
+    if (cur.html) {
+      try { var y = Math.round(hframe.contentWindow.scrollY || 0); if (y > 0) st.posH[cur.s.id] = y; else delete st.posH[cur.s.id]; save(); } catch (e) {}
+      hframe.onload = null; try { hframe.contentWindow.location.replace("about:blank"); } catch (e) {}
+    }
     if (cur.io) cur.io.disconnect();
     if (cur.task) { try { cur.task.cancel(); } catch (e) {} }
     if (cur.pdf) cur.pdf.destroy();
@@ -250,7 +315,7 @@
     cur = null; pagesEl.innerHTML = "";
   }
   function goHome() {
-    closeSheetDoc(); setLoading(null); showView("home");
+    closeSheetDoc(); setLoading(null); $("viewer").classList.remove("hm"); hframe.hidden = true; showView("home");
     refreshSaved().then(renderHome); renderHome();
   }
 
@@ -469,7 +534,7 @@
     var c = $("sheetBody").querySelector(".cur"); if (c) c.scrollIntoView({ block: "center" });
   });
   $("btnFs").addEventListener("click", function () {
-    openPanel("<h2>文字サイズ</h2>" + fsHtml() + "<p>一覧や説明の文字と、シートを開いたときの大きさが変わる。画面の幅に収まらないときは、横にも動かして読む。</p>");
+    openPanel("<h2>文字サイズ</h2>" + fsHtml() + "<p>一覧や説明の文字と、シートの文字の大きさが変わる。HTML版があるシートは画面の幅で折り返す。PDFのシートは拡大して開くので、幅に収まらないときは横にも動かして読む。</p>");
   });
   $("btnFs2").addEventListener("click", function () { $("btnFs").click(); });
   $("sheetBody").addEventListener("click", function (e) {
@@ -494,7 +559,7 @@
       (hasCaches() ? '<button class="big" id="saveAll"' + (n === SHEETS.length ? " disabled" : "") + ">" + (n === SHEETS.length ? "すべて保存済み" : "すべて端末に保存（約" + mb + "MB）") + "</button>" : "<p>このブラウザでは端末への保存が使えない。</p>") +
       "<h3>ホーム画面に置く</h3><p>ブラウザのメニューから「ホーム画面に追加」を選ぶと、アプリのように起動できる。</p>" +
       "<h3>文字サイズ</h3>" + fsHtml() +
-      "<h3>操作</h3><p>拡大はピンチ、ダブルタップ、右下の＋−。倍率の数字を押すと元に戻る。文字サイズは右上の「あ」からも変えられる。目次の行をタップするとその項目へ移動する。前回読んでいたページから再開する。</p>" +
+      "<h3>操作</h3><p>拡大はピンチ、ダブルタップ、右下の＋−。倍率の数字を押すと元に戻る。文字サイズは右上の「あ」からも変えられる。HTML版があるシートは、文字を大きくしても画面の幅で折り返す。右上の「PDF」「HTML」で表示を切り替えられる。目次の行をタップするとその項目へ移動する。前回読んでいたページから再開する。</p>" +
       "<h3>注意</h3><p>個人で作成した学習用のまとめで、内容の正確さを保証するものではない。診療に使うときは、各シートに記載の原典・最新のガイドライン・添付文書を確認すること。患者情報は入力・保存しない。</p>" +
       (C.feedback ? '<h3>ご意見・お問い合わせ</h3><p>内容の誤りや使いにくい点があれば知らせてください。</p><button class="big ghost" id="fbOpen">ご意見・お問い合わせを書く</button>' : "") +
       '<button class="big ghost" id="reload">最新版を確認して読み込み直す</button>' +
@@ -539,7 +604,10 @@
       btn.textContent = "保存中 " + (i + 1) + " / " + todo.length;
       var s = todo[i++];
       caches.open(PDF_CACHE).then(function (c) {
-        return fetch(pdfUrl(s)).then(function (res) { if (!res.ok) throw new Error("HTTP"); return c.put(pdfUrl(s), res); });
+        return fetch(pdfUrl(s)).then(function (res) { if (!res.ok) throw new Error("HTTP"); return c.put(pdfUrl(s), res); }).then(function () {
+          if (!s.html) return;
+          return fetch(htmlUrl(s)).then(function (res) { if (!res.ok) throw new Error("HTTP"); return c.put(htmlUrl(s), res); });
+        });
       }).then(function () { saved[s.id] = true; }, function () { fail++; }).then(next);
     })();
   }

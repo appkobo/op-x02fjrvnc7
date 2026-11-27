@@ -61,6 +61,10 @@ def make(rows_p, drive_p):
     for e in pub:
         if e["action"] != "keep": print(" ", e["action"], e["id"], e["name"], "←", e["title"], e["driveId"])
     for e in remove: print("  remove", e["id"], e["name"])
+    hp = J("html.json")
+    hmap = load(hp) if os.path.exists(hp) else {}
+    stale = [e["name"] for e in pub if e["id"] in hmap and (hmap[e["id"]].get("driveId") != e["driveId"] or hmap[e["id"]].get("modified") != e["modified"])]
+    if stale: print("  PDFが新しくなったためHTML版を外しPDF表示に戻した（HTML版の作り直しが必要）:", "、".join(stale))
     if blocked: print("  基準は満たすがスマホ版PDFが見つからない:", "、".join(blocked))
     if unknown: print("  設定にないテーマ（その他に入れた）:", "、".join(unknown))
 

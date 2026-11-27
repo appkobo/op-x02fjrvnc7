@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>K・Ca異常チェックシート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.sec{break-inside:avoid;margin:0 0 4px 0;border:1px solid #c9cfe6}
+.h{display:flex;align-items:center;gap:5px;background:#e7eaf6;color:#1e2a66;font-weight:700;font-size:9px;padding:2px 6px;border-bottom:1px solid #c9cfe6}
+.b{padding:2px 6px 2px 6px}
+.b p{margin:0 0 1.5px 0;padding-left:7px;text-indent:-7px}
+.sub{font-weight:700;color:#1e2a66;margin:2px 0 1px 0}
+.src{font-size:6.2px;color:#6b7186;text-align:right;margin-top:1px;padding:0;text-indent:0}
+.d{background:#e1efe3;padding:0 1px}
+.n{background:#fff1bf;padding:0 1px}
+.w{color:#9b1c1c}
+.t{width:100%;border-collapse:collapse;margin:2px 0 1px 0;font-size:7.1px;line-height:1.3}
+.t th,.t td{border:1px solid #b9c1de;padding:1px 3px;text-align:left;vertical-align:top}
+.t th{background:#f1f3fa;font-weight:500;color:#1e2a66;text-align:center;vertical-align:middle}
+.t td.rh{background:#f1f3fa;font-weight:700;color:#1e2a66}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.rule{background:#eef1f8;border-left:3px solid #26326e;padding:2px 5px;font-size:7.9px;line-height:1.35}
+.rule b{color:#26326e;margin-right:3px}
+.flow{display:flex;gap:2px;align-items:stretch;margin:2px 0}
+.flow div{flex:1;border:1px solid #b9c1de;background:#f7f8fc;padding:1px 3px;font-size:7px;line-height:1.3}
+.flow span{align-self:center;color:#4a5a9a;font-weight:700}
+</style>
+<style>
+html,body{margin:0;background:#fff}
+#mw .page,#mw section.page{width:auto!important;height:auto!important;min-height:0!important;overflow:visible!important;padding:0!important;margin:0!important;box-shadow:none!important;break-after:auto!important;page-break-after:auto!important;background:transparent!important}
+
+/* VOICE 臨床の手引き。落ち着いて、早く引ける
+   IDEA 白衣のポケットに入れる診療カード：紙のチェックシートと同じ配色・色分け
+   PICTURE 色分けされた本文そのものが主役。図は元のまま
+   COLOUR 白地、シートごとの主色、薬剤＝緑、目標値＝黄、警告＝赤
+   TYPE Noto Sans JP 700 + 400
+   LAYOUT 広い画面は2段、狭い画面は1段。項目ごとに開閉、検索で絞り込み */
+:root{color-scheme:light;--c:rgb(30, 42, 102);--line:#c9cfe6;--sub:#5a6178;--tint:#f4f5f9}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:128px}
+body{margin:0;background:#fff;color:#1d2230;font:16px/1.6 'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;overflow-x:clip}
+#mw *{font-family:'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif}
+.wtop{background:var(--c);color:#fff;padding:22px max(4vw,16px) 14px}
+.wtop .wrow{max-width:1360px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 24px}
+h1{margin:0;font-size:clamp(24px,4vw,34px);line-height:1.2;font-weight:700}
+.wupd{font-size:13px;opacity:.9;white-space:nowrap}
+.wlg{max-width:1360px;margin:10px auto 0;font-size:14px;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
+.wlg *{white-space:normal!important;font-size:inherit!important}.wlg :is(.d,.n,.y){color:#1d2230}.wlg :is(.w,.r){color:#ffc2c2!important}
+.wtools{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);padding:10px max(4vw,16px)}
+.wtools .win{max-width:1360px;margin:0 auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#q{flex:1 1 220px;font:inherit;font-size:16px;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:inherit;min-height:44px}
+#q:focus{outline:2px solid var(--c);outline-offset:1px}
+.wtools button{font:inherit;font-size:14px;min-height:44px;padding:0 14px;border-radius:8px;border:1px solid var(--line);background:var(--tint);color:inherit;cursor:pointer}
+#hits{font-size:13px;color:var(--sub);white-space:nowrap}
+.wnav{display:flex;gap:6px;overflow-x:auto;max-width:1360px;margin:8px auto 0;padding-bottom:2px;scrollbar-width:thin}
+.wnav a{flex:none;font-size:13px;color:var(--c);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:5px 11px;white-space:nowrap}
+.wnav .wnp{background:var(--c);color:#fff;border-color:var(--c)}
+:is(.wnav a,.wtools button,.wh):focus-visible{outline:2px solid var(--c);outline-offset:2px}
+main{max-width:1360px;margin:0 auto;padding:6px max(4vw,16px) 40px}
+#mw h2.wpt{background:none;border-radius:0;font-weight:700;display:flex;align-items:center;gap:10px;font-size:21px;color:var(--c);margin:26px 0 12px;padding:0 0 6px;border-bottom:3px solid var(--c);line-height:1.35}
+.wpn{flex:none;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--c);color:#fff;font-size:15px}
+#mw img{max-width:100%;height:auto}
+#mw .wcols{columns:1!important;column-gap:14px;height:auto!important;max-height:none!important;min-height:0!important;flex:none!important;column-fill:balance!important}
+@media(min-width:1100px){#mw .wcols{columns:2!important}}
+@media(max-width:1099px){#mw .wcols *{break-before:auto!important;break-after:auto!important}}
+#mw .tw{overflow-x:auto;max-width:100%}
+.wh{cursor:pointer;position:relative;padding-right:1.6em!important}
+.wh::after{content:'－';position:absolute;right:.4em;top:50%;transform:translateY(-50%);font-weight:400}
+.wclosed>.wh::after{content:'＋'}
+.wclosed>:not(.wh){display:none!important}
+.wh+*{margin-top:0}
+mark{background:#ffd84a;color:inherit;border-radius:2px}
+.hide{display:none!important}
+.wempty{display:none;padding:24px 0;color:var(--sub)}
+@media(max-width:900px){#mw .wst9{display:block!important}#mw .wst9>*{width:auto!important;max-width:none!important;margin-bottom:6px}}
+@media(max-width:640px){#mw .svgw svg{min-width:620px}#mw .svgw img{min-width:560px;max-height:none!important}#mw .wst6{display:block!important}#mw .wst6>*{width:auto!important;max-width:none!important;margin-bottom:6px}.wpt{font-size:18px}}
+@media print{.wtools{display:none}.wtop{background:#fff;color:var(--c);padding:0 0 4px;border-bottom:2px solid var(--c)}.wlg :is(.w,.r){color:#9b1c1c!important}.part+.part{break-before:page}main{padding:0}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}.wh::after{content:''}}
+</style></head><body>
+<header class="wtop"><div class="wrow"><h1>K・Ca異常チェックシート</h1><div class="wupd">最終更新：2026年11月11日</div></div>
+<div class="wlg"><span class="d">薬剤</span>　<span class="n">目標値・基準</span>　<span class="w">警告</span></div></header>
+<div class="wtools"><div class="win"><input id="q" type="search" placeholder="キーワードで探す" aria-label="キーワードで探す"><span id="hits"></span><button id="tg" type="button">すべて閉じる</button></div>
+<nav class="wnav" aria-label="項目"><a class="wnp" href="#p1">1</a><a href="#s1">1. 高K血症：緊急度を決める（K異常は診断と治療を並行、原因検索より治療を優先する場合がある）</a><a href="#s2">2. 繋ぎの治療と注意点（病態ごとに使い分け・修正する）</a><a href="#s3">3. 偽性高K血症の除外（採血管の中だけでKが高い→治療不要）</a><a href="#s4">4. 緊急透析が不要な高K血症：4ステップ</a><a href="#s5">5. 緊急透析の開始までにかかる時間（著者の推定。SNSアンケートをもとにした目安）</a><a href="#s6">6. 透析患者の血清K：目標を低めにすべきか（★★）</a><a class="wnp" href="#p2">2</a><a href="#s7">7. 低K血症：初期対応（K≦3.5）</a><a href="#s8">8. K補正の前に：被疑薬→Mg欠乏→K製剤→補充量</a><a href="#s9">9. KCL注射製剤の投与</a><a href="#s10">10. 低K血症の原因（血液ガスで分ける）</a><a href="#s11">11. 高Ca血症：まず測る、まず薬剤を疑う（★★）</a><a href="#s12">12. 高Caクリーゼ（原疾患治療と並行して緊急にCaを補正する）</a></nav></div>
+<main><div id="mw">
+
+<div style="width: auto; display: flex; flex-direction: column; gap: 0px; background: transparent; padding: 0px; border: 0px; box-shadow: none;">
+<section class="part" id="p1"><h2 class="wpt"><span class="wpn">1</span>高K血症・透析患者のK</h2><div class="page" style="width: auto; height: auto; box-sizing: border-box; padding: 18px 22px 14px; font-family: &quot;Noto Sans JP&quot;, &quot;Noto Sans CJK JP&quot;, sans-serif; font-size: 8.6px; line-height: 1.4; color: rgb(29, 34, 48); background: rgb(255, 255, 255); display: flex; flex-direction: column; gap: 5px; overflow: visible; break-after: page; zoom: 1.802;" data-z="1.802">
+
+
+
+<div class="rules wst6">
+<div class="rule wunit wsolo"><b>高K</b>K≧7.0で心電図異常（T波増高・PQ延長・P波消失・QRS拡大）、徐脈、低血圧があれば高K緊急症。緊急血液透析を準備し、繋ぎにグルコン酸Ca静注とグルコースインスリン療法を行う</div>
+<div class="rule wunit wsolo"><b>低K</b>心電図変化・神経筋症状・K&lt;2.5のいずれかがあれば呼吸・循環の安定化を優先する。補正前に被疑薬、Mg欠乏、K製剤の種類を確認する</div>
+<div class="rule wunit wsolo"><b>透析患者のK</b>「高K不整脈が怖いので低めに保つ」は誤り。透析中の急激なK低下が透析中・透析後の不整脈に関連する</div>
+<div class="rule wunit wsolo"><b>高Ca</b>測らなければ診断できない。血清Ca・Albを採血ルーチンに入れ、まず薬剤性（Ca製剤・活性型ビタミンD製剤など）を確認する</div>
+</div>
+
+<div class="cols wcols" style="column-gap: 12px;">
+
+<div class="sec wunit" id="s1"><div class="h wh" role="button" tabindex="0" aria-expanded="true">1. 高K血症：緊急度を決める（K異常は診断と治療を並行、原因検索より治療を優先する場合がある）</div><div class="b">
+<div class="flow wst9" style="flex-wrap: wrap;"><div><b>①緊急症か</b><br>K≧7.0で心電図異常・徐脈・低血圧→緊急透析の準備</div><span>→</span><div><b>②透析までの繋ぎ</b><br>グルコン酸Ca静注、GI療法</div><span>→</span><div><b>③偽性高Kの除外</b><br>緊急症でない場合</div><span>→</span><div><b>④入院適応</b><br>経口摂取・自尿でのK排泄</div></div>
+<p>・緊急治療の目安：<span class="n">血清K 7.0 mEq/L以上</span>で、心電図異常（<span class="n">T波増高、PQ延長、P波消失、QRS拡大</span>）、徐脈、低血圧を認めれば高K緊急症として扱う（CKD診療ガイド2024）。本書は「K 6.0より高いか」を目安としており、基準は資料により幅がある</p>
+<p>・<span class="w">最も危険なのはP波消失による徐脈</span>：有効な心室収縮に繋がらず、透析準備中に心停止に至りうる→グルコン酸Caなどに加え<span class="d">アトロピン</span>静注・経皮的ペーシングを考慮</p>
+<p>・<span class="w">緊急透析の依頼から開始まで約30〜90分</span>かかる。心電図変化がある例でその間を経過観察するのは危険で、繋ぎの治療が必要</p>
+<p>・入院加療が無難：経口摂取不良（血管内脱水で腎血流が低下し、陽イオン交換樹脂も内服困難）、全身状態不良</p>
+<p>・<span class="w">治療開始後も乏尿・腎機能低下が続き高Kが遷延する</span>＝自尿での代償的K排泄が期待できない→血液透析の併用を検討</p>
+<div class="src">p.234–238, 241, 246（図1：遠藤慶太ほか 日内会誌 2022をもとに作成）、緊急治療の目安：日本腎臓学会 CKD診療ガイド2024 第11章</div>
+</div></div>
+
+<div class="sec wunit" id="s2"><div class="h wh" role="button" tabindex="0" aria-expanded="true">2. 繋ぎの治療と注意点（病態ごとに使い分け・修正する）</div><div class="b">
+<div class="tw"><table class="t">
+<tbody><tr><th style="width:22%">治療（効果発現）</th><th>作用と注意点</th></tr>
+<tr><td class="rh"><span class="d">グルコン酸Ca</span>静注（数分後）</td><td>心筋膜電位の安定化。最も即効性があり不整脈を予防する→心電図変化があればまず行う。<span class="w">K濃度を下げる効果はない</span></td></tr>
+<tr><td class="rh">グルコースインスリン療法（30分後）</td><td>細胞内シフト。<span class="w">一定時間後に細胞外へ戻り再燃しうる</span>。治療前血糖が高くない例は低血糖に注意：ブドウ糖2.5 g＋インスリン1単位は低血糖リスクが高く、5 g＋1単位は低い<br>例：○ <span class="d">ヒューマリンR 5単位＋50%ブドウ糖液50 mL</span>　△ 10単位＋50%ブドウ糖液50 mL<br>高度腎機能障害ではインスリン排泄が遅れ、過剰投与になりやすい</td></tr>
+<tr><td class="rh">輸液＋<span class="d">フロセミド</span>静注（30分後）</td><td>尿中K排泄。脱水による腎血流低下、利尿薬抵抗性（一部の急性心不全、高度低Alb血症）では効果が乏しい<br>脱水：フロセミドは腎不全を悪化させうる→代わりにKフリー輸液を追加／急性心不全：1回量を増やす（通常20 mgボーラス→40 mgなど）／高度低Alb：アルブミン製剤を追加</td></tr>
+<tr><td class="rh"><span class="d">ロケルマ</span>高用量</td><td>便中K排泄。従来の陽イオン交換樹脂より便秘が少なく、本書は末梢静脈路の確保が難しい例で積極的に検討するとしている。<span class="w">電子添文では、効果発現が緩徐なため緊急の治療を要する高K血症には使用しない</span>とされる</td></tr>
+<tr><td class="rh">β2刺激薬吸入（30分後）</td><td>吸入手技が不確実になりうる。溢水・肺うっ血を伴う腎不全では高拍出性心不全の増悪が懸念され、実際に使うことは稀</td></tr>
+</tbody></table></div>
+<div class="sub">ロケルマ（ジルコニウムシクロケイ酸Na水和物）</div>
+<p>・開始：<span class="d">1回10 g 1日3回を2日間</span>。必要に応じて最長3日間まで（3日目の投与前にKが目標に達していないことを確認し、3日後も未達なら他の治療を検討）</p>
+<p>・維持：<span class="d">1回5 g 1日1回</span>、適宜増減し最高1日1回15 g。増量は5 gずつ1週間以上あけ、開始・調整の約1週後にKを測定</p>
+<p>・血液透析患者：<span class="d">1回5 g を非透析日に1日1回</span>（最大透析間隔後の透析前Kで調整、最高1日1回15 g）</p>
+<p>・<span class="w">K&lt;3.5で減量・中止を考慮、K&lt;3.0で中止</span></p>
+<p>・<span class="w">5 gあたりNa 0.4 g（食塩相当約1 g）</span>を含み、高用量の長期投与はNa負荷になる</p>
+<p>・薬価（2026年度改定）：ロケルマ5 g 1,005.1円・10 g 1,475.3円、カリメート散1 g 8.1円（5 g 40.5円）→本書は医療経済的観点から、高用量は短期使用にとどめるのが望ましいとしている（著者私見）</p>
+<div class="src">p.238–240 表1（ブドウ糖：インスリン比は Harel Z, et al. PLoS One 2016）、ロケルマ懸濁用散分包 電子添文、薬価はJAPIC（KEGG）</div>
+</div></div>
+
+<div class="sec wunit" id="s3"><div class="h wh" role="button" tabindex="0" aria-expanded="true">3. 偽性高K血症の除外（採血管の中だけでKが高い→治療不要）</div><div class="b">
+<p>・採血時の溶血（溶血所見陽性：AST↑・LDH↑）</p>
+<p>・血小板増多症（<span class="n">≧50万/µL</span>）、白血球増多症（<span class="n">≧12万/µL</span>）。<span class="w">腫瘍崩壊症候群は透析を含む集学的治療が必要</span></p>
+<p>・家族性偽性高K血症（極めて稀）</p>
+<p>・疑わしい場合は<span class="n">ヘパリン採血</span>で再検する</p>
+<div class="src">p.237, 240</div>
+</div></div>
+
+<div class="sec wunit" id="s4"><div class="h wh" role="button" tabindex="0" aria-expanded="true">4. 緊急透析が不要な高K血症：4ステップ</div><div class="b">
+<div class="sub">① K過剰摂取を疑うエピソード</div>
+<p>・代表は生野菜・果物。<span class="n">その季節の旬の野菜・果物を聞く</span>と当たることが多い：春 いちご／夏 トマト・キュウリ・スイカ／秋 柿・ぶどう／冬 みかん／季節を問わず<span class="n">バナナ</span></p>
+<p>・代替塩（NaCl：KCl＝3：1）、一部の経腸栄養剤。偽性高Kを否定したら、まずK制限指導を試す（K制限のみで改善することもある）</p>
+<div class="sub">② 脱水症</div>
+<p>・腎血流低下で尿中K排泄が落ちる→輸液で腎血流を増やす</p>
+<p>・乳酸・酢酸リンゲル液のKは4 mEq/L（500 mLで2 mEq）。60 kgの成人（細胞外液12 L）に500 mL投与しても<span class="n">K上昇は0.2 mEq/L未満</span>の見込み。生理食塩水は高Cl性代謝性アシドーシスで高Kを増悪させうる</p>
+<p>・著者の使い分け：高KがcriticalでわずかなKも入れたくない→<span class="d">1号液</span>／criticalではないが血管内脱水が強い→<span class="d">乳酸・酢酸リンゲル液</span></p>
+<div class="sub">③ RAS阻害薬・MRA</div>
+<p>・血管内脱水あり：原則休薬（腎血流低下の改善が主目的）。<span class="w">サイアザイド系などの利尿薬も休薬必須</span></p>
+<p>・血管内脱水なし：<span class="n">使用目的を休薬前に必ず確認</span>。臓器障害のない高血圧なら休薬を優先。慢性心不全・蛋白尿陽性CKDなど臓器保護目的では、軽度の高Kなら陽イオン交換樹脂・K制限を併用して継続、高度なら是正まで一時休薬</p>
+<div class="sub">④ その他の原因（是正後も遷延すれば検索。原因除去を原則とし、不十分なら陽イオン交換樹脂を検討）</div>
+<div class="tw"><table class="t">
+<tbody><tr><th style="width:21%">原因</th><th>内訳</th><th style="width:24%">治療</th></tr>
+<tr><td class="rh">薬剤</td><td>細胞内→外シフト：β遮断薬、ジギタリス中毒、カルシニューリン阻害薬、ジアゾキシド、ミノキシジル、サクシニルコリン、アルギニン、D-マンニトール<br>腎排泄低下：NSAIDs、カルシニューリン阻害薬、ST合剤、ヘパリン、メシル酸ナファモスタット、直接的レニン阻害薬、ペンタミジン、トリアムテレン</td><td>被疑薬の中止</td></tr>
+<tr><td class="rh">高K性尿細管性アシドーシス（Ⅳ型）</td><td>アルドステロン分泌低下：糖尿病性腎症、副腎不全<br>アルドステロン不応：尿細管間質性腎炎、逆流性腎症など</td><td>原疾患治療、<span class="d">重曹</span>、陽イオン交換樹脂</td></tr>
+<tr><td class="rh">細胞内→外シフト</td><td>横紋筋融解症、高血糖、高K性周期性四肢麻痺</td><td>原疾患治療、Kフリー輸液＋利尿薬</td></tr>
+</tbody></table></div>
+<div class="src">p.241–245, 247–248 図3・表2（冨永直人ほか 日腎会誌 2012、深川雅史ほか レジデントのための腎臓病診療マニュアル第3版 をもとに作成）</div>
+</div></div>
+
+<div class="sec wunit" id="s5"><div class="h wh" role="button" tabindex="0" aria-expanded="true">5. 緊急透析の開始までにかかる時間（著者の推定。SNSアンケートをもとにした目安）</div><div class="b">
+<p>・必要な3条件：①シャントまたはblood accessが使える ②透析回路の準備 ③透析できる場所（透析室・ICU）への搬送</p>
+<p>・① blood accessの確保：約45〜60分（右内頸静脈の穿刺が容易でも、物品準備・X線での先端確認を含む）／② 回路準備：15〜30分程度／③ 搬送：最低でも10分程度</p>
+<p>・door-to-dialysis time：<span class="n">使えるシャント・blood accessあり 約30分</span>／<span class="n">なし 約60分</span>（留置と回路準備を並行した場合。並行が難しければ約90分）</p>
+<div class="src">p.250–252 コラム7</div>
+</div></div>
+
+<div class="sec wunit" id="s6"><div class="h wh" role="button" tabindex="0" aria-expanded="true">6. 透析患者の血清K：目標を低めにすべきか（★★）</div><div class="b">
+<p>・透析歴が長いほど残腎機能が落ち、体内のK除去は透析に依存する。透析液のKは多くが2.0 mEq/L前後→<span class="n">血清Kは透析日の前後で乱高下</span>する</p>
+<p>・日本透析医学会のデータ：K&lt;3.5の割合は透析前は数%、透析後は約40%</p>
+<p>・<span class="w">透析中の急激なK低下が透析中・透析後の不整脈に関連する</span>：開始数時間の急な低下でPVCなど、透析液と血液のK勾配が大きいほど翌日までの心血管イベント・不整脈入院が増える（海外の報告。前向き研究ではなく、透析条件も日本と異なる）。それでも透析後に2台前半まで下がる例があり、致死的不整脈は十分起こりうる</p>
+<p>・虚血性心疾患・慢性心房細動などの心疾患があると、低Kによる不整脈の閾値が下がる。透析患者は心疾患の有病率が高い</p>
+<p>・予後：死亡リスクはK 5 mEq/L前後で最も低く、それより高くても低くても上がる（海外）。日本でも心疾患の有無によらず、透析前Kが軽度高値の群の方が生命予後が良い。低栄養の関与もありうるが、少なくとも低Kと予後には関連がある</p>
+<div class="tw"><table class="t">
+<tbody><tr><th>学会・文献</th><th style="width:32%">血清Kの目標</th></tr>
+<tr><td>日本透析医学会 維持血液透析ガイドライン（2013）</td><td>明記なし</td></tr>
+<tr><td>日本透析医学会 専門研修指導マニュアル第4版</td><td><span class="n">5.5 mEq/L以下</span>（下限の記載なし）</td></tr>
+<tr><td>日本腎臓学会 CKD診療ガイドライン2018（CKD全般）</td><td><span class="n">4.0〜5.5 mEq/L</span></td></tr>
+<tr><td>日本腎臓学会 CKD診療ガイド2024（RA系阻害薬の用量調整時の管理目標）</td><td><span class="n">4.0〜5.5 mEq/L</span></td></tr>
+</tbody></table></div>
+<p>・著者の私見：透析患者の血清Kは<span class="n">4台後半〜5前半</span>が妥当</p>
+<p>・透析前K 3.0〜3.5程度では透析後に3.0未満まで下がりうる。血清Kの目標を低めに設定するのは不適切</p>
+<div class="src">p.269–275（執筆時点 2023年12月）</div>
+</div></div>
+
+</div>
+</div></section>
+
+<section class="part" id="p2"><h2 class="wpt"><span class="wpn">2</span>低K血症・高Ca血症</h2><div class="page" style="width: auto; height: auto; box-sizing: border-box; padding: 18px 22px 14px; font-family: &quot;Noto Sans JP&quot;, &quot;Noto Sans CJK JP&quot;, sans-serif; font-size: 8.6px; line-height: 1.4; color: rgb(29, 34, 48); background: rgb(255, 255, 255); display: flex; flex-direction: column; gap: 5px; overflow: visible; zoom: 1.802;" data-z="1.802">
+
+<div class="cols wcols" style="column-gap: 12px;">
+
+<div class="sec wunit" id="s7"><div class="h wh" role="button" tabindex="0" aria-expanded="true">7. 低K血症：初期対応（K≦3.5）</div><div class="b">
+<div class="flow"><div><b>1 緊急性</b><br>あれば2へ、なければ3→4</div><span>→</span><div><b>2 呼吸・循環の安定化</b></div><span>→</span><div><b>3 不整脈を来しやすい基礎疾患</b></div><span>→</span><div><b>4 偽性低Kの除外</b></div><span>→</span><div><b>K補正</b></div></div>
+<p>・緊急性が高い：<span class="n">心電図変化</span>（QT延長 QTc≧0.46秒、陰性T波、U波、PVC）、<span class="n">神経筋症状</span>（軽症は筋力低下、重症は呼吸筋障害による呼吸不全）、<span class="n">K&lt;2.5</span>のいずれか→急変に備え心電図・呼吸をモニタリング</p>
+<p>・PVCが先行するT波に重なるR on TはTdP・心室細動の引き金になる</p>
+<p>・<span class="w">呼吸・循環の安定化を疎かにして経静脈的K補正に先走らない</span>：多型性心室頻拍・心室細動は電気的除細動、呼吸が不安定なら人工呼吸管理</p>
+<p>・末梢ルート1本をK補正に使うと、そのルートからボーラス投与ができず心停止時に対応が遅れる→重症例は<span class="n">末梢静脈路を2本以上</span>。高濃度K補充が必要、または2本確保が難しければ、初療が落ち着いた時点で中心静脈路を確保する</p>
+<p>・急性冠症候群の急性期、ジギタリス使用中、高NH₃血症を伴う肝不全・肝硬変（低Kが肝性脳症の一因）では、<span class="w">軽度の低Kでも要注意</span></p>
+<p>・偽性低K：白血球増多（<span class="n">&gt;20万/µL</span>）の検体を室温で放置すると、Kが白血球に取り込まれる→補正不要</p>
+<div class="src">p.255–258 図4</div>
+</div></div>
+
+<div class="sec wunit" id="s8"><div class="h wh" role="button" tabindex="0" aria-expanded="true">8. K補正の前に：被疑薬→Mg欠乏→K製剤→補充量</div><div class="b">
+<div class="sub">ステップ1 被疑薬（医原性の要素は必ず先に確認）</div>
+<p>・<span class="w">甘草を含む漢方・グリチルリチン</span>（偽性アルドステロン症）、ループ・サイアザイド系利尿薬、アミノグリコシド系抗菌薬、シスプラチンなど→必要性が低ければ休薬</p>
+<div class="sub">ステップ2 Mg欠乏</div>
+<p>・Mg欠乏ではROMKを介したK排泄の抑制が外れ、尿中K排泄が亢進する→Kとともに<span class="n">Mgも補充</span></p>
+<p>・体内総Mgを正確に評価する方法はない（細胞外Mgは約1%）。著者は低K＋低MgならMg補充を検討し、低Mgがなければ補充しない</p>
+<p>・処方例：点滴 <span class="d">生食100 mL＋硫酸マグネシウム20 mEq 1A</span>を60分以上かけて／経口 <span class="d">酸化マグネシウム330 mg 3錠/日</span></p>
+<p>・<span class="w">点滴の溶媒をブドウ糖にしない</span>（Kが細胞内へシフト）。<span class="w">酸化Mgの過量は下痢で低Kを悪化</span>させる</p>
+<p>・📘 最新情報：2026年7月、PPI・P-CAB含有製剤の電子添文に低Mg血症が重大な副作用として追記された（長期投与で出現、低Mgに起因する低K・低Caを伴うことがある、長期投与時は定期的にMgを測定）→<span class="n">長期PPI服用者の低K・低Mgでは被疑薬に加える</span></p>
+<div class="sub">ステップ3 K製剤の選択</div>
+<p>・代謝性アルカローシス（低Kの多く、Cl欠乏）→Clも補える<span class="d">KCL製剤</span>。代謝性アシドーシス（下痢、Ⅰ/Ⅱ型RTAなど）→<span class="d">有機酸含有K製剤</span>（代謝されてHCO₃⁻を生じる）。<span class="w">アルカローシスに有機酸K製剤は遷延させる</span></p>
+<p>・点滴で使えるのはKCLのみ。経管投与には簡易懸濁できる<span class="d">グルコン酸カリウム</span>（多くの内服K製剤は簡易懸濁できず、ED tubeを閉塞させやすい）</p>
+<div class="tw"><table class="t">
+<tbody><tr><th>製剤</th><th style="width:38%">K含有量</th></tr>
+<tr><td><span class="d">塩化カリウム徐放錠</span></td><td>1錠600 mgあたり8 mEq</td></tr>
+<tr><td><span class="d">アスパラカリウム</span></td><td>1錠300 mgあたり1.8 mEq</td></tr>
+<tr><td><span class="d">グルコン酸K錠5mEq</span></td><td>1錠あたり5 mEq</td></tr>
+</tbody></table></div>
+<div class="sub">ステップ4 補充量（血清Kによる目安）</div>
+<div class="tw"><table class="t">
+<tbody><tr><th style="width:30%">血清K（mEq/L）</th><th>K補充</th></tr>
+<tr><td>K&gt;2.5</td><td><span class="n">40〜100 mEq/日</span>を経口または経静脈</td></tr>
+<tr><td>2.0&lt;K&lt;2.5</td><td><span class="n">80〜100 mEq/日</span>を経静脈</td></tr>
+<tr><td>K&lt;2.0</td><td><span class="n">80〜100 mEq/日</span>を経静脈＋Mg補充</td></tr>
+</tbody></table></div>
+<p>・目安にとどめる：細胞内シフトが主の病態（周期性四肢麻痺など）は細胞内外の濃度勾配が大きく重症化しやすく、体内K欠乏（利尿薬など）は同じ値でも軽症が多い</p>
+<p>・KCLは内服しにくい→分割して1回量を減らす、経口と経静脈を併用する</p>
+<div class="src">p.258–261, 263–265, 267 図5・図6・表2・表3（表3：深川雅史ほか 同マニュアル をもとに作成）</div>
+</div></div>
+
+<div class="sec wunit" id="s9"><div class="h wh" role="button" tabindex="0" aria-expanded="true">9. KCL注射製剤の投与</div><div class="b">
+<div class="tw"><table class="t">
+<tbody><tr><th style="width:21%">添付文書</th><th>理由と運用</th></tr>
+<tr><td class="rh">濃度<br><span class="n">40 mEq/L以下</span></td><td>主に末梢静脈の<span class="n">静脈炎予防</span>。中心静脈では100〜200 mEq/Lまで引き上げることがある（溢水例で輸液量を抑えたいとき。ICUなど慣れた環境に限る）</td></tr>
+<tr><td class="rh">速度<br><span class="n">20 mEq/時以下</span></td><td>急激な血清K上昇による<span class="n">致死的不整脈の予防</span>。濃度と違い<span class="w">中心静脈でも厳守</span>。<span class="w">中心静脈への急速投与は右心房内のK濃度が急上昇し、絶対に行わない</span></td></tr>
+<tr><td class="rh">1日総量<br><span class="n">100 mEq以下</span></td><td>多く要するときはMg補充・MR拮抗薬の併用も検討するが、最も重要なのは原因検索。高用量では心電図モニタリング</td></tr>
+</tbody></table></div>
+<p>・処方例：末梢 <span class="d">生食500 mL＋KCL 20 mEq 1本</span>（40 mEq/L）／中心静脈 <span class="d">生食100 mL＋KCL 20 mEq 1本</span>（200 mEq/L）を1時間以上かけて</p>
+<p>・濃度上限は静脈炎、速度上限は不整脈のため：<span class="w">2つの理由を混同しない</span></p>
+<div class="src">p.261–263, 265 表4（KCL注キット「テルモ」添付文書 2023年4月改訂 ほか）</div>
+</div></div>
+
+<div class="sec wunit" id="s10"><div class="h wh" role="button" tabindex="0" aria-expanded="true">10. 低K血症の原因（血液ガスで分ける）</div><div class="b">
+<div class="tw"><table class="t">
+<tbody><tr><th>代謝性アルカローシス</th><th>正常</th><th>代謝性アシドーシス</th></tr>
+<tr><td>高血圧：原発性アルドステロン症・Cushing症候群などの内分泌異常、腎血管性高血圧、悪性高血圧症、偽性アルドステロン症<br>血圧正常〜低血圧：利尿薬・嘔吐（偽性Bartter症候群）、Bartter/Gitelman症候群<br>尿中Cl：嘔吐・胃液喪失は低下、利尿薬・Bartter/Gitelmanは正常〜高値</td><td>周期性四肢麻痺（甲状腺機能亢進症、家族性、特発性）<br>refeeding症候群<br>低Mg血症</td><td>下痢<br>糖尿病性ケトアシドーシス<br>尿細管性アシドーシス（特にシェーグレン症候群による尿細管間質性腎炎）<br>トルエン（シンナー）中毒</td></tr>
+</tbody></table></div>
+<div class="src">p.268 コラム8 図1（深川雅史ほか 同マニュアル をもとに作成）</div>
+</div></div>
+
+<div class="sec wunit" id="s11"><div class="h wh" role="button" tabindex="0" aria-expanded="true">11. 高Ca血症：まず測る、まず薬剤を疑う（★★）</div><div class="b">
+<p>・基準の目安：<span class="n">血清Ca 10.1 mg/dL超</span>（JCCLS共用基準範囲 8.8〜10.1 mg/dLの上限。本書は10.0 mg/dL以上）</p>
+<p>・健診や定期外来の採血セットにCaが入っていないことがある。症状が非特異的で進行まで気づかれにくく、腎障害・代謝性脳症を来し、医原性を含めると意外と多く、悪性腫瘍が隠れていることがある→<span class="n">Ca・Albをルーチンで測る</span></p>
+<p>・<span class="w">要注意の組み合わせ</span>：骨粗鬆症へのCa製剤・活性型ビタミンD製剤＋圧迫骨折の腰痛へのNSAIDs＋やせ型高齢者（筋肉量が少なくCreが見かけ上正常）。脱水が加わると腎血流低下と高Ca悪化が重なり、薬剤性腎障害の発見が遅れてCKDに至る</p>
+<p>・高Caを伴う骨粗鬆症・圧迫骨折には悪性疾患が潜んでいることがある</p>
+<div class="sub">専門医紹介の目安（明確な基準はない）：1つでも満たせば専門施設へ</div>
+<p>・①<span class="n">血清Ca&gt;12.0 mg/dL</span> ②有症状（意識障害、全身倦怠感、食思不振、嘔気、口渇、多飲、多尿）③新規の腎障害</p>
+<div class="sub">原因精査の3ステップ</div>
+<div class="tw"><table class="t">
+<tbody><tr><th style="width:18%">① 被疑薬</th><td>Ca製剤（Ca過剰摂取）、<span class="d">活性型ビタミンD製剤</span>、テリパラチド・炭酸リチウム・テオフィリン（PTH作用過剰）、サイアザイド系利尿薬（尿細管でのCa再吸収亢進）、酸化マグネシウム（Ca製剤・ビタミンD製剤と組み合わさって悪化）、ビタミンA中毒→<span class="n">原則中止</span>。他の原因と重なることもあり、薬剤だけで説明できなければ②へ</td></tr>
+<tr><th>② intact PTH</th><td>高値→<span class="n">FECa</span>：≧1%は原発性副甲状腺機能亢進症・異所性PTH産生腫瘍（骨融解によるCa上昇が再吸収を上回り高Ca尿、腎・尿路結石）／&lt;1%は家族性低Ca尿性高Ca血症（CaSR異常、常染色体優性、基本的に予後良好）<br>低値→<span class="n">PTHrP</span>：上昇はPTHrP産生腫瘍（成人T細胞白血病、肺癌、口腔・咽頭・鼻腔癌、乳癌、腎癌など）／上昇なしは腫瘍の骨浸潤（多発性骨髄腫など）、サルコイドーシス、甲状腺機能亢進症、褐色細胞腫、長期臥床など。<span class="w">病的骨折、PTH低値なのにX線・CTで骨融解・骨硬化像</span>があれば骨浸潤を積極的に疑う<br>📘 最新情報：FECa（Ca/Crクリアランス比）は1つの値では区別できない。&lt;0.01は家族性低Ca尿性高Ca血症を示唆、0.01〜0.02は判定保留域、&gt;0.02は原発性副甲状腺機能亢進症を支持する。保留域や家族歴があれば遺伝子検査（CASRなど）を考慮（第5回国際ワークショップ 2022）</td></tr>
+<tr><th>③ 1,25(OH)₂D</th><td>上記が否定的なら測定。高値（製剤・サプリの過剰摂取を否定）なら肉芽腫性疾患、一部の悪性リンパ腫</td></tr>
+</tbody></table></div>
+<p>・ミルク・アルカリ症候群：<span class="n">高Ca血症・代謝性アルカローシス・腎機能障害</span>の3徴。酸化Mgで血中Mg↑→PTH↓→腎でのHCO₃⁻再吸収↑→アルカローシス→遠位尿細管でのCa再吸収↑、高Caによる尿濃縮障害（多尿→脱水→腎血流低下）が悪循環となりCKDに進展する</p>
+<p>・原因の内訳：教科書の「原発性副甲状腺機能亢進症と悪性腫瘍で約90%」は海外データ。倉敷中央病院（補正Ca≧12.0の189例、重症例のみ・単施設のデータ）では悪性腫瘍57.1%、<span class="n">薬剤性22.7%</span>、原発性副甲状腺機能亢進症6.8%、その他13.2%</p>
+<div class="src">p.276–283 図2・図3・表2、p.289–291 コラム9（Felsenfeld AJ 2006、Michels TC 2013、伊藤慶彦ほか 2017）</div>
+</div></div>
+
+<div class="sec wunit" id="s12"><div class="h wh" role="button" tabindex="0" aria-expanded="true">12. 高Caクリーゼ（原疾患治療と並行して緊急にCaを補正する）</div><div class="b">
+<p>・定義：<span class="n">血清Ca≧14 mg/dL</span>、有症状（意識障害、全身倦怠感、食思不振、嘔気、口渇、多飲、多尿など）、臓器障害（腎不全、代謝性脳症など）のいずれかを満たす高Ca血症</p>
+<div class="tw"><table class="t">
+<tbody><tr><th style="width:44%">状況</th><th>第一選択</th></tr>
+<tr><td>非常に高度（<span class="n">&gt;16 mg/dL</span>）かつ意識障害</td><td>血液透析</td></tr>
+<tr><td>大量輸液で溢水のリスクが高い（乏尿、心不全の併発）</td><td>血液透析（アクセス留置のしやすさから腹膜透析より選ばれやすい）</td></tr>
+<tr><td>大量輸液が安全に行える</td><td>大量輸液＋<span class="d">ループ利尿薬</span></td></tr>
+</tbody></table></div>
+<p>・📘 最新情報：ループ利尿薬はルーチンには使わない。腎機能障害・心不全などで溢水が懸念される場合に限り、<span class="w">十分な補液で体液量を回復させた後</span>に慎重に使う（Endocrine Society 2023、英国の救急指針 2016）。補液前の投与は脱水を遷延させ高Caを悪化させうる</p>
+<p>・補助療法：<span class="d">カルシトニン製剤</span>はデメリットが小さく、基本的に行う（<span class="d">エルカトニン（エルシトニン注）1回40単位 1日2回朝晩、筋注または点滴静注</span>。点滴は1〜2時間かけて）／<span class="d">ビスホスホネート</span>点滴（例：<span class="d">ゾメタ4 mg＋生食100 mL</span>を15分以上かけて）は<span class="w">高度腎機能障害の合併時に使いにくい可能性がある</span></p>
+<p>・<span class="w">サイアザイド系利尿薬は高Caを来すため使わない</span></p>
+<p>・📘 最新情報：デノスマブ（ランマーク）は、海外指針（Endocrine Society 2023）では悪性腫瘍による高Ca血症に提案されるが、<span class="w">国内では高Ca血症の適応はない</span>（骨転移・骨髄腫の骨病変、骨巨細胞腫のみ）</p>
+<div class="src">p.283–286 図4（深川雅史ほか 同マニュアル、成瀬光栄ほか 内分泌代謝専門医ガイドブック第4版 をもとに作成）、エルシトニン注 電子添文（2026年4月）、ランマーク 再審査報告書（2025年）</div>
+</div></div>
+
+</div>
+<div style="border-top: 1px solid #c9cfe6; padding-top: 3px; font-size: 6.6px; line-height: 1.4; color: #4a5068">
+出典：谷口智基『無敵の腎臓内科』中外医学社、2024年 第1版、第3章 電解質異常 3「高K血症の治療方法を教えてください」、4「低K血症の治療方法を教えてください」、5「高K血症による不整脈を予防するため、透析患者さんの血清K濃度の目標は少し低めに設定すべきでしょうか？」、6「高Ca血症って治療しないといけないですか？」、コラム7〜9（p.234–291）。各ページの出典はページ番号で示した。最新情報：ロケルマ・エルシトニン注・KCL注キット「テルモ」の電子添文、PMDA「プロトンポンプインヒビター含有製剤の使用上の注意の改訂」（2026年7月14日）、日本腎臓学会 CKD診療ガイド2024、日本臨床検査医学会 JCCLS共用基準範囲、Endocrine Society 2023（悪性腫瘍に伴う高Ca血症）、Society for Endocrinology 救急指針（2016）、Bilezikian JP, et al. JBMR 2022（第5回国際ワークショップ）。OpenEvidenceでも照合した（2026年11月11日）。用量・禁忌・適応は処方前に必ず最新の電子添文で確認すること。
+</div>
+</div></section>
+</div>
+</div><p class="wempty" id="none">該当する項目はありません。</p></main>
+<script>
+{
+const q=document.getElementById('q'),hits=document.getElementById('hits'),tg=document.getElementById('tg'),none=document.getElementById('none');
+const units=[...document.querySelectorAll('#mw .wunit')].filter(u=>!u.parentElement.closest('.wunit'));
+const parts=[...document.querySelectorAll('#mw .part')];
+const orig=new Map(units.map(u=>[u,u.innerHTML]));
+const setOpen=(u,o)=>{u.classList.toggle('wclosed',!o);const h=u.querySelector(':scope>.wh');if(h)h.setAttribute('aria-expanded',o?'true':'false');};
+document.addEventListener('click',e=>{const h=e.target.closest('.wh');if(!h)return;const u=h.parentElement;setOpen(u,u.classList.contains('wclosed'));});
+document.addEventListener('keydown',e=>{const h=e.target.closest&&e.target.closest('.wh');if(h&&(e.key==='Enter'||e.key===' ')){e.preventDefault();h.click();}});
+document.querySelectorAll('.wnav a').forEach(a=>a.addEventListener('click',()=>{const u=document.querySelector(a.getAttribute('href'));if(u&&u.classList.contains('wunit'))setOpen(u,true);}));
+const esc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+const mark=(el,re)=>{const w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);const ns=[];while(w.nextNode())ns.push(w.currentNode);
+  ns.forEach(t=>{re.lastIndex=0;if(!re.test(t.data))return;re.lastIndex=0;const f=document.createDocumentFragment();let i=0,m;while((m=re.exec(t.data))){f.append(t.data.slice(i,m.index));const k=document.createElement('mark');k.textContent=m[0];f.append(k);i=m.index+m[0].length;}f.append(t.data.slice(i));t.replaceWith(f);});};
+const others=parts.map(p=>[...p.querySelectorAll('.page *')].filter(e=>!e.closest('.wunit')&&!e.querySelector('.wunit')&&e.parentElement.querySelector(':scope>.wunit')));
+const run=()=>{const v=q.value.trim();units.forEach(u=>{u.innerHTML=orig.get(u);});
+  if(!v){[...units,...parts,...others.flat()].forEach(e=>e.classList.remove('hide'));hits.textContent='';none.style.display='none';return;}
+  const re=new RegExp(esc(v),'gi');let c=0;
+  units.forEach(u=>{const ok=u.textContent.toLowerCase().includes(v.toLowerCase());u.classList.toggle('hide',!ok);if(ok){c++;setOpen(u,true);mark(u,re);}});
+  others.flat().forEach(e=>e.classList.add('hide'));
+  parts.forEach(p=>p.classList.toggle('hide',!p.querySelector('.wunit:not(.hide)')));
+  hits.textContent=c+'件';none.style.display=c?'none':'block';};
+q.addEventListener('input',run);
+tg.addEventListener('click',()=>{const open=tg.textContent==='すべて開く';units.forEach(u=>{if(u.querySelector(':scope>.wh'))setOpen(u,open);});tg.textContent=open?'すべて閉じる':'すべて開く';});
+window.addEventListener('beforeprint',()=>units.forEach(u=>setOpen(u,true)));
+}
+</script>
+</body></html>

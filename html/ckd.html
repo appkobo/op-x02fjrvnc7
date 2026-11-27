@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CKD全身管理チェックシート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#26326e}a:hover{color:#141b45}
+.sec{break-inside:avoid;margin:0 0 4px 0;border:1px solid #c9cfe6}
+.h{display:flex;align-items:center;gap:5px;background:#e7eaf6;color:#1e2a66;font-weight:700;font-size:9px;padding:2px 6px;border-bottom:1px solid #c9cfe6}
+.b{padding:2px 6px 2px 6px}
+.b p{margin:0 0 1.5px 0;padding-left:7px;text-indent:-7px}
+.b p.m{margin:2px 0 0 0;padding:2px 4px 2px 4px;text-indent:0;background:#eef1f8;border-radius:2px}
+.ml{display:inline-block;font-weight:700;color:#ffffff;background:#4a5a9a;font-size:6.8px;padding:0 4px;border-radius:2px;margin-right:4px;line-height:11px}
+.sub{font-weight:700;color:#1e2a66;margin:2px 0 1px 0}
+.d{background:#e1efe3;padding:0 1px}
+.n{background:#fff1bf;padding:0 1px}
+.w{color:#9b1c1c}
+.t{width:100%;border-collapse:collapse;margin:2px 0 1px 0;font-size:7.2px;line-height:1.3}
+.t th,.t td{border:1px solid #b9c1de;padding:1px 3px;text-align:center;vertical-align:middle}
+.t th{background:#f1f3fa;font-weight:500;color:#1e2a66}
+.t td{background:#fffbea}
+.t td.rh{background:#f1f3fa;font-weight:700;color:#1e2a66}
+.ga{width:100%;border-collapse:collapse;font-size:7px;line-height:1.25}
+.ga th,.ga td{border:1px solid #b9c1de;padding:1px 3px;text-align:center;vertical-align:middle}
+.ga th{background:#f1f3fa;font-weight:500;color:#1e2a66}
+.ga th.l{text-align:left}
+.ga td.hd{background:#f1f3fa;color:#1e2a66}
+.ga td.g{background:#a8d5a2}.ga td.y{background:#f7e27a}.ga td.o{background:#f4a259}.ga td.r{background:#e4574b}
+.rf{width:100%;table-layout:fixed;border-collapse:collapse;margin:2px 0 1px 0;font-size:6.8px;line-height:1.25}
+.rf th,.rf td{border:1px solid #b9c1de;padding:1px 2px;text-align:center;vertical-align:middle}
+.rf th{background:#f1f3fa;font-weight:500;color:#1e2a66}
+.rf th.l{text-align:left;font-weight:700}
+.rf td{background:#ffffff;color:#1d2230}
+.rf td.c{background:#f7e27a}
+.rf td.s{background:#f4a259;font-weight:700}
+</style>
+<style>
+html,body{margin:0;background:#fff}
+#mw .page,#mw section.page{width:auto!important;height:auto!important;min-height:0!important;overflow:visible!important;padding:0!important;margin:0!important;box-shadow:none!important;break-after:auto!important;page-break-after:auto!important;background:transparent!important}
+
+/* VOICE 臨床の手引き。落ち着いて、早く引ける
+   IDEA 白衣のポケットに入れる診療カード：紙のチェックシートと同じ配色・色分け
+   PICTURE 色分けされた本文そのものが主役。図は元のまま
+   COLOUR 白地、シートごとの主色、薬剤＝緑、目標値＝黄、警告＝赤
+   TYPE Noto Sans JP 700 + 400
+   LAYOUT 広い画面は2段、狭い画面は1段。項目ごとに開閉、検索で絞り込み */
+:root{color-scheme:light;--c:rgb(30, 42, 102);--line:#c9cfe6;--sub:#5a6178;--tint:#f4f5f9}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:128px}
+body{margin:0;background:#fff;color:#1d2230;font:16px/1.6 'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;overflow-x:clip}
+#mw *{font-family:'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif}
+.wtop{background:var(--c);color:#fff;padding:22px max(4vw,16px) 14px}
+.wtop .wrow{max-width:1360px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 24px}
+h1{margin:0;font-size:clamp(24px,4vw,34px);line-height:1.2;font-weight:700}
+.wupd{font-size:13px;opacity:.9;white-space:nowrap}
+.wlg{max-width:1360px;margin:10px auto 0;font-size:14px;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
+.wlg *{white-space:normal!important;font-size:inherit!important}.wlg :is(.d,.n,.y){color:#1d2230}.wlg :is(.w,.r){color:#ffc2c2!important}
+.wtools{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);padding:10px max(4vw,16px)}
+.wtools .win{max-width:1360px;margin:0 auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#q{flex:1 1 220px;font:inherit;font-size:16px;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:inherit;min-height:44px}
+#q:focus{outline:2px solid var(--c);outline-offset:1px}
+.wtools button{font:inherit;font-size:14px;min-height:44px;padding:0 14px;border-radius:8px;border:1px solid var(--line);background:var(--tint);color:inherit;cursor:pointer}
+#hits{font-size:13px;color:var(--sub);white-space:nowrap}
+.wnav{display:flex;gap:6px;overflow-x:auto;max-width:1360px;margin:8px auto 0;padding-bottom:2px;scrollbar-width:thin}
+.wnav a{flex:none;font-size:13px;color:var(--c);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:5px 11px;white-space:nowrap}
+.wnav .wnp{background:var(--c);color:#fff;border-color:var(--c)}
+:is(.wnav a,.wtools button,.wh):focus-visible{outline:2px solid var(--c);outline-offset:2px}
+main{max-width:1360px;margin:0 auto;padding:6px max(4vw,16px) 40px}
+#mw h2.wpt{background:none;border-radius:0;font-weight:700;display:flex;align-items:center;gap:10px;font-size:21px;color:var(--c);margin:26px 0 12px;padding:0 0 6px;border-bottom:3px solid var(--c);line-height:1.35}
+.wpn{flex:none;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--c);color:#fff;font-size:15px}
+#mw img{max-width:100%;height:auto}
+#mw .wcols{columns:1!important;column-gap:14px;height:auto!important;max-height:none!important;min-height:0!important;flex:none!important;column-fill:balance!important}
+@media(min-width:1100px){#mw .wcols{columns:2!important}}
+@media(max-width:1099px){#mw .wcols *{break-before:auto!important;break-after:auto!important}}
+#mw .tw{overflow-x:auto;max-width:100%}
+.wh{cursor:pointer;position:relative;padding-right:1.6em!important}
+.wh::after{content:'－';position:absolute;right:.4em;top:50%;transform:translateY(-50%);font-weight:400}
+.wclosed>.wh::after{content:'＋'}
+.wclosed>:not(.wh){display:none!important}
+.wh+*{margin-top:0}
+mark{background:#ffd84a;color:inherit;border-radius:2px}
+.hide{display:none!important}
+.wempty{display:none;padding:24px 0;color:var(--sub)}
+@media(max-width:900px){#mw .wst9{display:block!important}#mw .wst9>*{width:auto!important;max-width:none!important;margin-bottom:6px}}
+@media(max-width:640px){#mw .svgw svg{min-width:620px}#mw .svgw img{min-width:560px;max-height:none!important}#mw .wst6{display:block!important}#mw .wst6>*{width:auto!important;max-width:none!important;margin-bottom:6px}.wpt{font-size:18px}}
+@media print{.wtools{display:none}.wtop{background:#fff;color:var(--c);padding:0 0 4px;border-bottom:2px solid var(--c)}.wlg :is(.w,.r){color:#9b1c1c!important}.part+.part{break-before:page}main{padding:0}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}.wh::after{content:''}}
+</style></head><body>
+<header class="wtop"><div class="wrow"><h1>CKD全身管理チェックシート</h1><div class="wupd">最終更新：2026年11月3日</div></div>
+<div class="wlg"><span class="d">薬剤</span>　<span class="n">目標値</span>　<span class="ml">測定</span>測定すべき項目</div></header>
+<div class="wtools"><div class="win"><input id="q" type="search" placeholder="キーワードで探す" aria-label="キーワードで探す"><span id="hits"></span><button id="tg" type="button">すべて閉じる</button></div>
+<nav class="wnav" aria-label="項目"><a class="wnp" href="#p1">1</a><a href="#s1">0. はじめに：CKDの定義と重症度分類</a><a href="#s2">1. 血圧管理</a><a href="#s3">2. 腎保護薬（SGLT2阻害薬・MRA など）</a><a href="#s4">3. 糖尿病</a><a href="#s5">4. 脂質異常症</a><a href="#s6">5. Volume評価・体液管理</a><a href="#s7">6. 代謝性アシドーシス</a><a class="wnp" href="#p2">2</a><a href="#s8">7. 高K血症</a><a href="#s9">8. 腎性貧血（KDIGO 2026）</a><a href="#s10">9. CKD-MBD（骨・ミネラル代謝異常）</a><a href="#s11">10. 高尿酸血症</a><a href="#s12">11. 食事・栄養</a><a href="#s13">12. 生活習慣</a><a href="#s14">13. 内服薬管理・シックデイ</a><a href="#s15">14. 感染予防</a><a href="#s16">15. 専門医紹介・フォロー</a></nav></div>
+<main><div id="mw">
+
+<div style="width: auto; display: flex; flex-direction: column; gap: 0px; background: transparent; padding: 0px; border: 0px; box-shadow: none;">
+<section class="part" id="p1"><h2 class="wpt"><span class="wpn">1</span>定義・血圧・腎保護薬・代謝</h2><div class="page" style="width: auto; height: auto; box-sizing: border-box; padding: 18px 22px 14px; font-family: &quot;Noto Sans JP&quot;, &quot;Noto Sans CJK JP&quot;, sans-serif; font-size: 8.6px; line-height: 1.4; color: rgb(29, 34, 48); background: rgb(255, 255, 255); display: flex; flex-direction: column; gap: 6px; overflow: visible; break-after: page; zoom: 1.802;" data-z="1.802">
+
+
+<div class="sec wunit" style="margin: 0" id="s1"><div class="h wh" role="button" tabindex="0" aria-expanded="true">0. はじめに：CKDの定義と重症度分類</div><div class="b wst6" style="display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap;">
+<div style="flex: 1 1 0; min-width: 0">
+<div class="sub">定義（CKD診療ガイド2024）</div>
+<p>・健康に影響を与える腎臓の構造や機能の異常が<span class="n">3か月を超えて持続</span>する状態。次のいずれか</p>
+<p>　①腎障害の指標：<span class="n">蛋白尿 0.15 g/gCr以上</span>（0.15 g/日以上）、<span class="n">アルブミン尿 30 mg/gCr以上</span>（30 mg/日以上）、尿沈渣異常、尿細管障害による電解質異常など、病理・画像での異常、腎移植の既往</p>
+<p>　②<span class="n">GFR 60 mL/分/1.73m²未満</span></p>
+<p>・重症度は原疾患（Cause）・GFR区分（G）・蛋白尿区分（A）の CGA分類で評価する（例：糖尿病 G3aA2）</p>
+<p>・eGFRは血清Crで算出し、筋肉量が極端な例（サルコペニア・四肢切断・筋肉量が多い例）や、高齢者で eGFR低下のみのときの確認にはシスタチンC（eGFRcys）も用いる</p>
+<div class="sub" style="margin-top: 3px">基本方針</div>
+<p>・生活習慣の是正＋血圧管理（RAS阻害薬）＋SGLT2阻害薬を土台とし、2型糖尿病合併ではフィネレノン・GLP-1受容体作動薬を重ねる集約的治療で、末期腎不全と心血管病の両方を防ぐ</p>
+<p>・死亡・末期腎不全・心血管死亡のリスクは、表の<span style="color: #1f6b3a; font-weight: 700">緑</span>を基準に<span style="color: #8a6d00; font-weight: 700">黄</span>→<span style="color: #b4550a; font-weight: 700">オレンジ</span>→<span style="color: #b42318; font-weight: 700">赤</span>の順に上昇する</p>
+</div>
+<div style="flex: 1 1 392px;">
+<div class="tw"><table class="ga">
+<tbody><tr><th colspan="2" style="width: 34%">原疾患／蛋白尿区分</th><th>A1</th><th>A2</th><th>A3</th></tr>
+<tr><th colspan="2" class="l">糖尿病関連腎臓病：尿アルブミン/Cr比（mg/gCr）</th><td class="hd">正常<br>30未満</td><td class="hd">微量アルブミン尿<br>30〜299</td><td class="hd">顕性アルブミン尿<br>300以上</td></tr>
+<tr><th colspan="2" class="l">高血圧性腎硬化症・腎炎・多発性嚢胞腎・移植腎・不明・その他：尿蛋白/Cr比（g/gCr）</th><td class="hd">正常<br>0.15未満</td><td class="hd">軽度蛋白尿<br>0.15〜0.49</td><td class="hd">高度蛋白尿<br>0.50以上</td></tr>
+<tr><th rowspan="6" style="width: 9%">GFR区分<br>（mL/分<br>/1.73m²）</th><th class="l">G1　正常または高値　≧90</th><td class="g"></td><td class="y"></td><td class="o"></td></tr>
+<tr><th class="l">G2　正常または軽度低下　60〜89</th><td class="g"></td><td class="y"></td><td class="o"></td></tr>
+<tr><th class="l">G3a　軽度〜中等度低下　45〜59</th><td class="y"></td><td class="o"></td><td class="r"></td></tr>
+<tr><th class="l">G3b　中等度〜高度低下　30〜44</th><td class="o"></td><td class="r"></td><td class="r"></td></tr>
+<tr><th class="l">G4　高度低下　15〜29</th><td class="r"></td><td class="r"></td><td class="r"></td></tr>
+<tr><th class="l">G5　高度低下〜末期腎不全　&lt;15</th><td class="r"></td><td class="r"></td><td class="r"></td></tr>
+</tbody></table></div>
+<div style="font-size: 6.2px; color: #4a5068; margin-top: 1px">重症度は原疾患・GFR区分・蛋白尿区分を合わせたステージで評価する（KDIGO 2012を日本人用に改変、CKD診療ガイド2024）。尿アルブミン定量の保険適用は糖尿病または早期糖尿病性腎症で微量アルブミン尿を疑う場合（3か月に1回）</div>
+</div>
+</div></div>
+<div class="cols wcols" style="column-gap: 12px;">
+<div class="sec wunit" id="s2"><div class="h wh" role="button" tabindex="0" aria-expanded="true">1. 血圧管理</div><div class="b">
+<p>・目標：糖尿病・蛋白尿・年齢によらず原則 <span class="n">診察室 130/80 mmHg未満（家庭 125/75未満）</span></p>
+<p>・糖尿病なし・蛋白尿陰性（A1）は 140/90 を中間目標とし、段階的に 130/80 未満へ</p>
+<p>・75歳以上・フレイルは腎機能・ADLで個別化。少量から開始し、起立性低血圧・AKI・高K血症に注意</p>
+<p>・第一選択：A2/A3 は <span class="d">RAS阻害薬</span>（最大耐用量まで漸増）、A1 は RAS阻害薬・CCB・利尿薬から。併用は他の第一選択薬（病態によりARNI・MRA）。ACE阻害薬とARBの併用は避ける</p>
+<p>・例：<span class="d">ロサルタン</span> 25〜50 mg 1日1回→最大100 mg、<span class="d">アジルサルタン</span> 20 mg 1日1回→最大40 mg</p>
+<p>・開始・増量の2〜4週後に Cr・K を測定。<span class="n">Cr上昇30%未満</span>は継続、K≧5.5で減量・休薬・紹介を検討。eGFR&lt;30でも一律には中止しない</p>
+<p class="m"><span class="ml">測定</span>診察室血圧・家庭血圧（朝・晩）、起立時血圧、Cr（eGFR）、K、尿蛋白/Cr比（糖尿病は尿アルブミン/Cr比）</p>
+</div></div>
+
+<div class="sec wunit" id="s3"><div class="h wh" role="button" tabindex="0" aria-expanded="true">2. 腎保護薬（SGLT2阻害薬・MRA など）</div><div class="b">
+<div class="sub">SGLT2阻害薬</div>
+<p>・糖尿病合併：蛋白尿の有無によらず <span class="n">eGFR≧20</span> で開始</p>
+<p>・糖尿病非合併：蛋白尿ありで eGFR≧20 なら推奨、蛋白尿なしは利益とリスクを勘案</p>
+<p>・<span class="d">フォシーガ（ダパグリフロジン）10 mg</span> 1日1回／<span class="d">ジャディアンス（エンパグリフロジン）10 mg</span> 1日1回／<span class="d">カナグル（カナグリフロジン）100 mg</span> 1日1回（2型糖尿病合併CKDのみ、添付文書上eGFR&lt;30では新規開始しない）</p>
+<p>・2週〜2か月で eGFR（initial dip）を確認。eGFR&lt;15 で新規開始しないが、継続中に15未満となっても継続可</p>
+<p>・<span class="w">シックデイは休薬、手術3日前から休薬</span>。尿路・性器感染、脱水（利尿薬併用・高齢者）、正常血糖ケトアシドーシスに注意</p>
+<div class="sub">フィネレノン（ケレンディア）：2型糖尿病合併CKD、RAS阻害薬併用下</div>
+<p>・開始時 K&gt;5.5 は禁忌、eGFR&lt;25 は適否を慎重に判断。eGFR≧60：<span class="d">20 mg</span> 1日1回、eGFR&lt;60：<span class="d">10 mg</span> で開始→4週後に K≦4.8 かつ eGFR低下≦30% なら 20 mg へ増量</p>
+<p>・K 4.8〜5.5 は用量維持、K&gt;5.5 で休薬し K≦5.0 で10 mg再開。<span class="w">イトラコナゾール・クラリスロマイシン等の強力CYP3A4阻害薬は併用禁忌</span></p>
+<p>・慢性心不全にも適応（eGFR≧60：20→40 mg、eGFR 25〜59：10→20 mg）</p>
+<div class="sub">その他</div>
+<p>・GLP-1受容体作動薬（2型糖尿病、特に肥満合併）：<span class="d">セマグルチド</span> 週1回 0.25 mg×4週→0.5 mg、最大1.0 mg（腎機能での調整不要）</p>
+<p>・球形吸着炭（G3b〜G4、任意）：<span class="d">6 g 分3</span>、他剤と30〜60分ずらす</p>
+<p class="m"><span class="ml">測定</span>開始前と開始・増量の2〜4週後（フィネレノンは4週後、以後定期）に Cr（eGFR）・K、体重・血圧（脱水）、尿蛋白/Cr比・尿アルブミン/Cr比（効果判定）</p>
+</div></div>
+
+<div class="sec wunit" id="s4"><div class="h wh" role="button" tabindex="0" aria-expanded="true">3. 糖尿病</div><div class="b">
+<p>・<span class="n">HbA1c 7.0%未満</span>を目安に、低血糖リスク・併存症に応じて個別設定。65歳以上は下表で設定する</p>
+<div class="tw"><table class="t">
+<tbody><tr><th style="width: 22%">重症低血糖が危惧される薬剤（インスリン・SU薬・グリニド薬など）</th><th>カテゴリーⅠ<br>認知機能正常かつADL自立</th><th>カテゴリーⅡ<br>軽度認知障害〜軽度認知症、または手段的ADL低下・基本的ADL自立</th><th>カテゴリーⅢ<br>中等度以上の認知症、または基本的ADL低下、または多くの併存疾患・機能障害</th></tr>
+<tr><td class="rh">なし</td><td>7.0%未満</td><td>7.0%未満</td><td>8.0%未満</td></tr>
+<tr><td class="rh">あり</td><td>65〜74歳：7.5%未満（下限6.5%）<br>75歳以上：8.0%未満（下限7.0%）</td><td>8.0%未満（下限7.0%）</td><td>8.5%未満（下限7.5%）</td></tr>
+</tbody></table></div>
+<p style="font-size: 6.5px; color: #4a5068; padding-left: 0; text-indent: 0">高齢者糖尿病の血糖コントロール目標（日本糖尿病学会・日本老年医学会，2016）の内容を表に整理。エンドオブライフでは著しい高血糖・脱水の防止を優先。カテゴリーⅢで多剤併用の有害作用が懸念される場合などは8.5%未満も可</p>
+<p>・<span class="d">メトホルミン</span>：eGFR 45〜59 は最大1,500 mg/日、30〜44 は最大750 mg/日（有益性が上回る場合のみ）、<span class="w">30未満は禁忌</span>。ヨード造影検査の前に中止し、48時間は再開しない（腎機能悪化が懸念されれば eGFR を確認して再開）</p>
+<p>・DPP-4阻害薬：<span class="d">リナグリプチン 5 mg</span>・<span class="d">テネリグリプチン 20 mg</span> は調整不要、他は腎機能で減量</p>
+<p>・SU薬・インスリンは腎機能低下で低血糖が遷延しやすく、減量や薬剤変更を検討。<span class="w">SU薬は G4以降で禁忌</span></p>
+<p class="m"><span class="ml">測定</span>HbA1c・血糖（腎性貧血・ESA使用中はHbA1cが低めに出るためグリコアルブミンも参考）、尿アルブミン/Cr比（少なくとも半年に1回、DKD診断後は3か月毎）、眼底検査</p>
+</div></div>
+
+<div class="sec wunit" id="s5"><div class="h wh" role="button" tabindex="0" aria-expanded="true">4. 脂質異常症</div><div class="b">
+<p>・LDL-C目標：<span class="n">120 mg/dL未満</span>（CKDは高リスク）。糖尿病で細小血管症・PAD・喫煙ありは 100未満、冠動脈疾患・アテローム血栓性脳梗塞の既往は 100未満（ACS・FH・糖尿病合併などは70未満）</p>
+<p>・スタチン±エゼチミブを行う（CKD GL2023 推奨2B）。例：<span class="d">アトルバスタチン 10 mg</span>（腎機能による用量規定なし）、<span class="d">ロスバスタチン 2.5 mg</span> で開始（CCr&lt;30 mL/min/1.73m²は2.5 mg開始・最大5 mg）、<span class="d">エゼチミブ 10 mg</span></p>
+<p>・フィブラート系は中〜高度腎障害で慎重投与・禁忌のものがある。横紋筋融解症に注意</p>
+<p class="m"><span class="ml">測定</span>LDL-C・HDL-C・TG・TC（TG高値や非空腹時は non-HDL-C）、スタチン開始後は CK・AST・ALT</p>
+</div></div>
+
+<div class="sec wunit" id="s6"><div class="h wh" role="button" tabindex="0" aria-expanded="true">5. Volume評価・体液管理</div><div class="b">
+<p>・身体所見：体重推移（最も鋭敏）、血圧・脈拍の起立時変化、浮腫、頸静脈怒張、肺ラ音、口腔・腋窩の乾燥</p>
+<p>・画像：胸部X線（心拡大・肺うっ血・胸水）、エコー（下大静脈径と呼吸性変動、肺エコーのB-line）</p>
+<p>・検査：BNP・NT-proBNP は腎機能低下で高めに出るため、絶対値より推移で判断する。BUN/Cr比・Hb・Albの上昇は脱水を示唆する</p>
+<p>・過剰：減塩＋<span class="d">ループ利尿薬</span>（フロセミド 添付文書用量 1日1回40〜80 mg、腎機能低下例ではさらに増量を要することがある）。過度の利尿は脱水・AKIを招く。SGLT2阻害薬追加時は利尿薬減量を検討</p>
+<p>・不足：利尿薬・RAS阻害薬・SGLT2阻害薬を見直し（シックデイ対応）、必要に応じ補液</p>
+<p class="m"><span class="ml">測定</span>体重（受診毎・家庭）、血圧・脈拍（起立時）、Na、BUN/Cr、Hb、Alb、BNP または NT-proBNP、胸部X線、随時尿Na/Cr（推定食塩摂取量）</p>
+</div></div>
+
+<div class="sec wunit" id="s7"><div class="h wh" role="button" tabindex="0" aria-expanded="true">6. 代謝性アシドーシス</div><div class="b">
+<p>・G3b以降は静脈血ガスで評価。<span class="n">HCO₃⁻ &lt;21 mmol/L</span> で治療を開始し、<span class="n">22以上</span>を目標とする（上限は24前後）</p>
+<p>・<span class="d">炭酸水素Na（重曹）</span>1日 1.0〜1.5 g から開始。浮腫・血圧上昇に注意</p>
+<p>・高K血症がなければ野菜・果物の摂取も有用。MRA投与中は特に注意する</p>
+<p class="m"><span class="ml">測定</span>静脈血ガス（HCO₃⁻・pH）、Na・Cl、K</p>
+</div></div>
+
+</div>
+</div></section>
+
+<section class="part" id="p2"><h2 class="wpt"><span class="wpn">2</span>電解質・貧血・骨・生活・紹介</h2><div class="page" style="width: auto; height: auto; box-sizing: border-box; padding: 18px 22px 14px; font-family: &quot;Noto Sans JP&quot;, &quot;Noto Sans CJK JP&quot;, sans-serif; font-size: 8.6px; line-height: 1.4; color: rgb(29, 34, 48); background: rgb(255, 255, 255); display: flex; flex-direction: column; gap: 6px; overflow: visible; zoom: 1.802;" data-z="1.802">
+
+<div class="cols wcols" style="column-gap: 12px;">
+<div class="sec wunit" id="s8"><div class="h wh" role="button" tabindex="0" aria-expanded="true">7. 高K血症</div><div class="b">
+<p>・管理目標 <span class="n">4.0〜5.5 mEq/L</span>。5.5以上で対策、<span class="w">K&gt;6.0、または心電図変化を伴えば、心電図モニターのできる施設で緊急治療</span>（心電図が正常でも危険は否定できない）</p>
+<p>・原因検索：RAS阻害薬・MRA・β遮断薬・NSAIDs・ST合剤、脱水、便秘、アシドーシス、偽性高K（溶血）</p>
+<p>・<span class="d">ロケルマ</span>：10 g×3回/日を2日間（最長3日）→ 5 g 1日1回で維持（最大15 g）。Na含有のため浮腫に注意</p>
+<p>・<span class="d">ポリスチレンスルホン酸Ca</span>（カリメート等）15〜30 g/日 分2〜3（便秘・腸閉塞に注意）</p>
+<p>・食事指導・便秘対策・アシドーシス補正を併用し、RAS阻害薬はできる限り継続する</p>
+<p class="m"><span class="ml">測定</span>K（溶血の有無・LDHも確認）、高値時は心電図、HCO₃⁻、Cr（eGFR）、BUN</p>
+</div></div>
+
+<div class="sec wunit" id="s9"><div class="h wh" role="button" tabindex="0" aria-expanded="true">8. 腎性貧血（KDIGO 2026）</div><div class="b">
+<p>・貧血：Hb 男性&lt;13、女性&lt;12 g/dL。Hb測定は G3：年1回以上、G4：年2回、G5：3か月毎</p>
+<p>・初期評価：血算・網赤血球・フェリチン・TSAT。消化管出血・悪性腫瘍・葉酸／B12欠乏など他の原因を鑑別する</p>
+<p>・鉄補充の開始：<span class="n">フェリチン&lt;100 ng/mL かつ TSAT&lt;40%</span>、または<span class="n">フェリチン100〜300 かつ TSAT&lt;25%</span>。経口か静注かは重症度・忍容性・患者の希望で選び、1〜3か月で効果不十分・不耐なら静注へ。フェリチン&gt;700 または TSAT≧40% で定期補充を控え、全身性感染症の間は一時休止を考慮（クエン酸第二鉄はP吸着も兼ねる）</p>
+<p>・<span class="d">ESA</span>：鉄充足と可逆的原因の是正後、多くは <span class="n">Hb 8.5〜10.0</span> で開始。<span class="n">Hb 10〜11.5 を目安、11.5以上の維持に使わない</span>（国内GL2015の保存期目標は11〜13）。保存期は皮下注。2週で1 g/dL超の上昇は25〜50%減量。導入は腎臓専門医と相談</p>
+<p>・例：<span class="d">ダルベポエチン アルファ 30 µg</span> 2週に1回皮下注から（維持30〜120 µg/2週、4週1回60〜180 µgへ変更可）</p>
+<p>・<span class="d">HIF-PH阻害薬</span>：ESAを優先し、経口希望・ESA不耐時に考慮。ESAと併用しない。<span class="w">活動性悪性腫瘍・最近の心血管／血栓イベントでは使わない</span>（多発性嚢胞腎・増殖性網膜症・肺高血圧は慎重）。3〜4か月で効果不十分なら中止</p>
+<p class="m"><span class="ml">測定</span>Hb、MCV、網赤血球、血清鉄・TIBC（TSAT＝血清鉄/TIBC）、フェリチン（鉄補充中は3か月毎）、葉酸・ビタミンB12、便潜血、CRP。ESA開始・用量変更後は2〜4週毎にHb</p>
+</div></div>
+
+<div class="sec wunit" id="s10"><div class="h wh" role="button" tabindex="0" aria-expanded="true">9. CKD-MBD（骨・ミネラル代謝異常）</div><div class="b">
+<p>・頻度：P・補正Ca・intact PTH を G3b：6〜12か月、G4：3〜6か月、G5：P・Caは1〜3か月・PTHは3〜6か月毎（異常値ではより頻回）</p>
+<p>・P：上昇時は<span class="n">基準値内（2.5〜4.5 mg/dL）</span>へ下げることを目指す。Ca：<span class="n">補正Ca&lt;8.4</span>で低Ca血症（Alb&lt;4.0は Ca＋（4−Alb））。PTH：<span class="n">透析導入時に intact PTH 450 pg/mL を超えない</span>よう管理。低Mgは補正し、高Mgに注意</p>
+<p>・高P血症：P値によらず加工食品（P添加物）を減らす。P負荷の少ないたんぱく質を優先して過剰摂取を避ける（過度な制限による低栄養に注意）。P吸着薬（<span class="d">クエン酸第二鉄・炭酸ランタン・ビキサロマー・沈降炭酸Ca</span>）は特徴で選ぶ。<span class="w">炭酸Caは3,000 mg/日（Ca 1,200 mg）を上限に必要最小限</span></p>
+<p>・低Ca血症：Pが高くなければ活性型ビタミンD、高ければCa含有P吸着薬を主体に。<span class="d">アルファカルシドール 0.5 µg/日</span>（カルシトリオール 0.25 µg/日）までは腎機能への影響が少ないとされる。<span class="w">血清Ca上昇を伴うAKIに注意</span>し、Ca・Crを定期的に測る</p>
+<p>・骨粗鬆症：<span class="w">G4以降はデノスマブ・ロモソズマブ初回で急な低Ca血症</span>→ 開始前に活性型ビタミンD・Ca製剤を先行投与</p>
+<p class="m"><span class="ml">測定</span>Ca、P、Alb（補正Ca）、intact PTH、Mg、ALP、骨密度（DEXA）</p>
+</div></div>
+
+<div class="sec wunit" id="s11"><div class="h wh" role="button" tabindex="0" aria-expanded="true">10. 高尿酸血症</div><div class="b">
+<p>・尿酸&gt;7.0 mg/dLで生活指導。痛風発作の反復・痛風結節があれば <span class="n">6.0以下</span>を維持</p>
+<p>・無症候性への尿酸低下療法は eGFR低下速度の抑制のみ示唆（腎・心イベント抑制は未証明）→ 個別に判断</p>
+<p>・<span class="d">フェブキソスタット</span> 10 mg から漸増（最大60 mg）／<span class="d">トピロキソスタット</span> 20 mg×2回から（最大80 mg×2回）。アロプリノールは腎機能で減量</p>
+<p class="m"><span class="ml">測定</span>血清尿酸、Cr（eGFR）、尿pH（尿路結石・尿酸排泄促進薬使用時）</p>
+</div></div>
+
+<div class="sec wunit" id="s12"><div class="h wh" role="button" tabindex="0" aria-expanded="true">11. 食事・栄養</div><div class="b">
+<p>・食塩 <span class="n">6 g未満/日</span>（下限は設けず過度な制限は避ける。高齢者は段階的・無理のない目標に）</p>
+<p>・たんぱく質（g/kg標準体重/日）：G1〜2 過剰摂取を避ける（上限目安1.3）／<span class="n">G3a 0.8〜1.0</span>／<span class="n">G3b〜G5 0.6〜0.8</span></p>
+<p>・高齢者は画一的に制限せず個別判断。サルコペニア・フレイル合併で緩和する場合の上限目安：G1〜2 1.5、G3a 1.3、G3b 0.8、G4〜5 は0.8を目安に緩和を検討（尿蛋白・腎機能低下速度・末期腎不全と死亡の絶対リスクで総合判断）</p>
+<p>・エネルギー 25〜35 kcal/kg/日（たんぱく質制限時は30以上を確保）。目標体重は65歳未満 BMI 22、65歳以上 BMI 22〜25</p>
+<p>・K制限は高K血症時のみ（G3b 2,000、G4〜5 1,500 mg/日以下を目安）、P制限は高P血症時。管理栄養士の栄養指導を活用する</p>
+<p class="m"><span class="ml">測定</span>体重、Alb、BUN、K、P、推定食塩摂取量（随時尿Na/Cr）、24時間蓄尿があれば食塩・蛋白摂取量、握力・下腿周囲長（サルコペニア）</p>
+</div></div>
+
+<div class="sec wunit" id="s13"><div class="h wh" role="button" tabindex="0" aria-expanded="true">12. 生活習慣</div><div class="b">
+<p>・禁煙／肥満があれば減量／可能な範囲で日常的に運動（歩数を段階的に増やし 6,000〜10,000歩/日を目安）／節酒</p>
+<p class="m"><span class="ml">測定</span>体重・BMI、腹囲、喫煙・飲酒状況</p>
+</div></div>
+
+<div class="sec wunit" id="s14"><div class="h wh" role="button" tabindex="0" aria-expanded="true">13. 内服薬管理・シックデイ</div><div class="b">
+<p>・全薬剤の投与量・投与間隔を腎機能で確認（体格の小さい高齢者は eGFR個別値やCCrで評価）</p>
+<p>・避ける・注意：<span class="d">NSAIDs</span>、<span class="d">アミノグリコシド</span>、ヨード造影剤（前後の補液）、バラシクロビル（CCrで減量、精神神経症状）、Mg製剤（高Mg血症）、ST合剤（高K・Cr上昇）</p>
+<p>・<span class="w">シックデイ（嘔吐・下痢・発熱・摂食不良）</span>：SGLT2阻害薬・メトホルミン・SU薬・RAS阻害薬・MRA・利尿薬・NSAIDs を一時休薬し、回復後の再開方法も伝えておく（再開忘れが多い）</p>
+<p class="m"><span class="ml">測定</span>Cr（eGFR、体表面積未補正の個別eGFR）、体重（Cockcroft-Gault式のCCr）、Mg（Mg製剤使用時）、薬物血中濃度（必要時）</p>
+</div></div>
+
+<div class="sec wunit" id="s15"><div class="h wh" role="button" tabindex="0" aria-expanded="true">14. 感染予防</div><div class="b">
+<p>・インフルエンザ（毎年）、肺炎球菌、新型コロナ、帯状疱疹（必要に応じて）の接種を確認</p>
+<p>・保存期CKDでは<span class="n">B型肝炎ワクチンを推奨</span>し、接種後に抗体獲得を確認する</p>
+<p class="m"><span class="ml">測定</span>ワクチン接種歴、HBs抗原・HBs抗体（接種前後）</p>
+</div></div>
+
+<div class="sec wunit" id="s16"><div class="h wh" role="button" tabindex="0" aria-expanded="true">15. 専門医紹介・フォロー</div><div class="b">
+<div class="sub">かかりつけ医から腎臓専門医・専門医療機関への紹介基準</div>
+<div class="tw"><table class="rf">
+<tbody><tr><th style="width: 20%">GFR区分<br>（mL/分/1.73m²）</th><th>A1<br>ACR&lt;30<br>UPCR&lt;0.15</th><th>A2<br>ACR 30〜299<br>UPCR 0.15〜0.49</th><th>A3<br>ACR≧300<br>UPCR≧0.50</th></tr>
+<tr><th class="l">G1〜G2　≧60</th><td></td><td class="c">血尿＋なら紹介、蛋白尿のみなら生活指導・診療継続</td><td class="s">紹介</td></tr>
+<tr><th class="l">G3a　45〜59</th><td class="c">40歳未満は紹介、40歳以上は生活指導・診療継続</td><td class="s">紹介</td><td class="s">紹介</td></tr>
+<tr><th class="l">G3b〜G5　&lt;45</th><td class="s">紹介</td><td class="s">紹介</td><td class="s">紹介</td></tr>
+</tbody></table></div>
+<p style="font-size: 6.3px; color: #4a5068; padding-left: 0; text-indent: 0">ACR：尿アルブミン/Cr比（mg/gCr、糖尿病）、UPCR：尿蛋白/Cr比（g/gCr、糖尿病以外）。作成：日本腎臓学会、監修：日本医師会（CKD診療ガイド2024掲載）</p>
+<p>・上記以外に<span class="w">3か月以内に30%以上の eGFR低下</span>は速やかに紹介</p>
+<p>・紹介目的：原因精査／進展抑制の治療強化（治療抵抗性の蛋白尿・腎機能低下・高血圧の見直し、二次性高血圧の鑑別）／保存期腎不全の管理・腎代替療法の導入</p>
+<p>・糖尿病合併：上記に該当すれば糖尿病専門医への紹介も考慮。3か月以上治療しても HbA1c が目標に届かない場合、合併症のハイリスク・発症例も糖尿病専門医へ</p>
+<p>・フォロー：eGFRと尿所見を定期的に評価し、間隔は病期・低下速度に応じて決める。G4以降は腎代替療法（血液透析・腹膜透析・移植・保存的腎臓療法）の情報提供と意思決定支援を始める</p>
+<p class="m"><span class="ml">測定</span>Cr（eGFRの推移・低下速度）、尿定性（蛋白・潜血）、尿蛋白/Cr比・尿アルブミン/Cr比、尿沈渣、腎エコー（初診時）</p>
+</div></div>
+
+</div>
+<div style="border-top: 1px solid #c9cfe6; padding-top: 3px; font-size: 6.6px; line-height: 1.4; color: #4a5068">
+出典：日本腎臓学会 エビデンスに基づくCKD診療ガイドライン2023／CKD診療ガイド2024／CKD患者の血圧管理に関するステートメント（2026年6月）、日本高血圧学会 高血圧管理・治療ガイドライン2025、慢性腎臓病に対する食事療法基準2026年版、日本糖尿病学会 糖尿病診療ガイドライン2024・メトホルミンの適正使用に関するRecommendation、日本糖尿病学会・日本老年医学会 高齢者糖尿病の血糖コントロール目標（2016）、KDIGO 2024 CKD Guideline・2026 Anemia in CKD Guideline、Sick Day Medication Guidance（AJKD 2023）、VA/DoD Primary Care Management of CKD（2025）、日本透析医学会 慢性腎臓病患者における腎性貧血治療のガイドライン2015・慢性腎臓病に伴う骨・ミネラル代謝異常の診療ガイドライン2025年改訂版（透析会誌 2026）、日本動脈硬化学会 動脈硬化性疾患予防ガイドライン2022、日本痛風・尿酸核酸学会 高尿酸血症・痛風の治療ガイドライン第3版、かかりつけ医から腎臓専門医・専門医療機関への紹介基準（日本腎臓学会作成・日本医師会監修）、各薬剤の電子添文（2026年10月26日照合）。用量・禁忌・適応は処方前に必ず最新の電子添文で確認すること。
+</div>
+</div></section>
+</div>
+</div><p class="wempty" id="none">該当する項目はありません。</p></main>
+<script>
+{
+const q=document.getElementById('q'),hits=document.getElementById('hits'),tg=document.getElementById('tg'),none=document.getElementById('none');
+const units=[...document.querySelectorAll('#mw .wunit')].filter(u=>!u.parentElement.closest('.wunit'));
+const parts=[...document.querySelectorAll('#mw .part')];
+const orig=new Map(units.map(u=>[u,u.innerHTML]));
+const setOpen=(u,o)=>{u.classList.toggle('wclosed',!o);const h=u.querySelector(':scope>.wh');if(h)h.setAttribute('aria-expanded',o?'true':'false');};
+document.addEventListener('click',e=>{const h=e.target.closest('.wh');if(!h)return;const u=h.parentElement;setOpen(u,u.classList.contains('wclosed'));});
+document.addEventListener('keydown',e=>{const h=e.target.closest&&e.target.closest('.wh');if(h&&(e.key==='Enter'||e.key===' ')){e.preventDefault();h.click();}});
+document.querySelectorAll('.wnav a').forEach(a=>a.addEventListener('click',()=>{const u=document.querySelector(a.getAttribute('href'));if(u&&u.classList.contains('wunit'))setOpen(u,true);}));
+const esc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+const mark=(el,re)=>{const w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);const ns=[];while(w.nextNode())ns.push(w.currentNode);
+  ns.forEach(t=>{re.lastIndex=0;if(!re.test(t.data))return;re.lastIndex=0;const f=document.createDocumentFragment();let i=0,m;while((m=re.exec(t.data))){f.append(t.data.slice(i,m.index));const k=document.createElement('mark');k.textContent=m[0];f.append(k);i=m.index+m[0].length;}f.append(t.data.slice(i));t.replaceWith(f);});};
+const others=parts.map(p=>[...p.querySelectorAll('.page *')].filter(e=>!e.closest('.wunit')&&!e.querySelector('.wunit')&&e.parentElement.querySelector(':scope>.wunit')));
+const run=()=>{const v=q.value.trim();units.forEach(u=>{u.innerHTML=orig.get(u);});
+  if(!v){[...units,...parts,...others.flat()].forEach(e=>e.classList.remove('hide'));hits.textContent='';none.style.display='none';return;}
+  const re=new RegExp(esc(v),'gi');let c=0;
+  units.forEach(u=>{const ok=u.textContent.toLowerCase().includes(v.toLowerCase());u.classList.toggle('hide',!ok);if(ok){c++;setOpen(u,true);mark(u,re);}});
+  others.flat().forEach(e=>e.classList.add('hide'));
+  parts.forEach(p=>p.classList.toggle('hide',!p.querySelector('.wunit:not(.hide)')));
+  hits.textContent=c+'件';none.style.display=c?'none':'block';};
+q.addEventListener('input',run);
+tg.addEventListener('click',()=>{const open=tg.textContent==='すべて開く';units.forEach(u=>{if(u.querySelector(':scope>.wh'))setOpen(u,open);});tg.textContent=open?'すべて閉じる':'すべて開く';});
+window.addEventListener('beforeprint',()=>units.forEach(u=>setOpen(u,true)));
+}
+</script>
+</body></html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AKI・薬剤性腎障害チェックシート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.p1 .t{font-size:7.8px}.p1 .rule{font-size:8.4px}.p2 .t{font-size:8px}.p2 .rule{font-size:8.2px}.p1 .rule{font-size:9.2px}
+.sec{break-inside:avoid;margin:0 0 4px 0;border:1px solid #c9cfe6}
+.h{display:flex;align-items:center;gap:5px;background:#e7eaf6;color:#1e2a66;font-weight:700;font-size:10px;padding:2px 6px;border-bottom:1px solid #c9cfe6}
+.b{padding:2px 6px 2px 6px}
+.b p{margin:0 0 1.5px 0;padding-left:7px;text-indent:-7px}
+.sub{font-weight:700;color:#1e2a66;margin:2px 0 1px 0}
+.src{font-size:6.8px;color:#6b7186;text-align:right;margin-top:1px;padding:0;text-indent:0}
+.d{background:#e1efe3;padding:0 1px}
+.n{background:#fff1bf;padding:0 1px}
+.w{color:#9b1c1c}
+.t{width:100%;border-collapse:collapse;margin:2px 0 1px 0;font-size:8.2px;line-height:1.3}
+.t th,.t td{border:1px solid #b9c1de;padding:1px 3px;text-align:left;vertical-align:top}
+.t th{background:#f1f3fa;font-weight:500;color:#1e2a66;text-align:center;vertical-align:middle}
+.t td.rh{background:#f1f3fa;font-weight:700;color:#1e2a66}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.rule{background:#eef1f8;border-left:3px solid #26326e;padding:2px 5px;font-size:8.6px;line-height:1.35}
+.rule b{color:#26326e;margin-right:3px}
+.flow{display:flex;gap:2px;align-items:stretch;margin:2px 0}
+.flow div{flex:1;border:1px solid #b9c1de;background:#f7f8fc;padding:1px 3px;font-size:8px;line-height:1.3}
+.flow span{align-self:center;color:#4a5a9a;font-weight:700}
+</style>
+<style>
+html,body{margin:0;background:#fff}
+#mw .page,#mw section.page{width:auto!important;height:auto!important;min-height:0!important;overflow:visible!important;padding:0!important;margin:0!important;box-shadow:none!important;break-after:auto!important;page-break-after:auto!important;background:transparent!important}
+
+/* VOICE 臨床の手引き。落ち着いて、早く引ける
+   IDEA 白衣のポケットに入れる診療カード：紙のチェックシートと同じ配色・色分け
+   PICTURE 色分けされた本文そのものが主役。図は元のまま
+   COLOUR 白地、シートごとの主色、薬剤＝緑、目標値＝黄、警告＝赤
+   TYPE Noto Sans JP 700 + 400
+   LAYOUT 広い画面は2段、狭い画面は1段。項目ごとに開閉、検索で絞り込み */
+:root{color-scheme:light;--c:rgb(30, 42, 102);--line:#c9cfe6;--sub:#5a6178;--tint:#f4f5f9}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:128px}
+body{margin:0;background:#fff;color:#1d2230;font:16px/1.6 'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;overflow-x:clip}
+#mw *{font-family:'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif}
+.wtop{background:var(--c);color:#fff;padding:22px max(4vw,16px) 14px}
+.wtop .wrow{max-width:1360px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 24px}
+h1{margin:0;font-size:clamp(24px,4vw,34px);line-height:1.2;font-weight:700}
+.wupd{font-size:13px;opacity:.9;white-space:nowrap}
+.wlg{max-width:1360px;margin:10px auto 0;font-size:14px;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
+.wlg *{white-space:normal!important;font-size:inherit!important}.wlg :is(.d,.n,.y){color:#1d2230}.wlg :is(.w,.r){color:#ffc2c2!important}
+.wtools{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);padding:10px max(4vw,16px)}
+.wtools .win{max-width:1360px;margin:0 auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#q{flex:1 1 220px;font:inherit;font-size:16px;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:inherit;min-height:44px}
+#q:focus{outline:2px solid var(--c);outline-offset:1px}
+.wtools button{font:inherit;font-size:14px;min-height:44px;padding:0 14px;border-radius:8px;border:1px solid var(--line);background:var(--tint);color:inherit;cursor:pointer}
+#hits{font-size:13px;color:var(--sub);white-space:nowrap}
+.wnav{display:flex;gap:6px;overflow-x:auto;max-width:1360px;margin:8px auto 0;padding-bottom:2px;scrollbar-width:thin}
+.wnav a{flex:none;font-size:13px;color:var(--c);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:5px 11px;white-space:nowrap}
+.wnav .wnp{background:var(--c);color:#fff;border-color:var(--c)}
+:is(.wnav a,.wtools button,.wh):focus-visible{outline:2px solid var(--c);outline-offset:2px}
+main{max-width:1360px;margin:0 auto;padding:6px max(4vw,16px) 40px}
+#mw h2.wpt{background:none;border-radius:0;font-weight:700;display:flex;align-items:center;gap:10px;font-size:21px;color:var(--c);margin:26px 0 12px;padding:0 0 6px;border-bottom:3px solid var(--c);line-height:1.35}
+.wpn{flex:none;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--c);color:#fff;font-size:15px}
+#mw img{max-width:100%;height:auto}
+#mw .wcols{columns:1!important;column-gap:14px;height:auto!important;max-height:none!important;min-height:0!important;flex:none!important;column-fill:balance!important}
+@media(min-width:1100px){#mw .wcols{columns:2!important}}
+@media(max-width:1099px){#mw .wcols *{break-before:auto!important;break-after:auto!important}}
+#mw .tw{overflow-x:auto;max-width:100%}
+.wh{cursor:pointer;position:relative;padding-right:1.6em!important}
+.wh::after{content:'－';position:absolute;right:.4em;top:50%;transform:translateY(-50%);font-weight:400}
+.wclosed>.wh::after{content:'＋'}
+.wclosed>:not(.wh){display:none!important}
+.wh+*{margin-top:0}
+mark{background:#ffd84a;color:inherit;border-radius:2px}
+.hide{display:none!important}
+.wempty{display:none;padding:24px 0;color:var(--sub)}
+@media(max-width:900px){#mw .wst9{display:block!important}#mw .wst9>*{width:auto!important;max-width:none!important;margin-bottom:6px}}
+@media(max-width:640px){#mw .svgw svg{min-width:620px}#mw .svgw img{min-width:560px;max-height:none!important}#mw .wst6{display:block!important}#mw .wst6>*{width:auto!important;max-width:none!important;margin-bottom:6px}.wpt{font-size:18px}}
+@media print{.wtools{display:none}.wtop{background:#fff;color:var(--c);padding:0 0 4px;border-bottom:2px solid var(--c)}.wlg :is(.w,.r){color:#9b1c1c!important}.part+.part{break-before:page}main{padding:0}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}.wh::after{content:''}}
+</style></head><body>
+<header class="wtop"><div class="wrow"><h1>AKI・薬剤性腎障害チェックシート</h1><div class="wupd">最終更新：2026年11月15日</div></div>
+<div class="wlg"><span class="d">薬剤</span>　<span class="n">目標値・基準</span>　<span class="w">警告</span></div></header>
+<div class="wtools"><div class="win"><input id="q" type="search" placeholder="キーワードで探す" aria-label="キーワードで探す"><span id="hits"></span><button id="tg" type="button">すべて閉じる</button></div>
+<nav class="wnav" aria-label="項目"><a class="wnp" href="#p1">1</a><a href="#s1">1. AKIの定義（KDIGO）</a><a href="#s2">2. 尿閉と乏尿を鑑別する</a><a href="#s3">3. 腎後性→腎前性AKIを除外する</a><a href="#s4">4. 腎性AKI：尿所見と尿量で障害部位を推定する</a><a href="#s5">5. 機序からみた薬剤性腎障害の主な原因薬剤（抜粋）</a><a class="wnp" href="#p2">2</a><a href="#s6">6. 薬剤性腎障害の要点（5つ）</a><a href="#s7">7. 薬剤性腎障害の診断と治療</a><a href="#s8">8. 腎機能低下時に有害事象をきたしうる薬剤</a></nav></div>
+<main><div id="mw">
+
+<div style="width: auto; display: flex; flex-direction: column; gap: 0px; background: transparent; padding: 0px; border: 0px; box-shadow: none;">
+<section class="part" id="p1"><h2 class="wpt"><span class="wpn">1</span>AKIの診かた</h2><div class="page p1" style="width: auto; height: auto; box-sizing: border-box; padding: 18px 22px 14px; font-family: &quot;Noto Sans JP&quot;, &quot;Noto Sans CJK JP&quot;, sans-serif; font-size: 8.9px; line-height: 1.4; color: rgb(29, 34, 48); background: rgb(255, 255, 255); display: flex; flex-direction: column; gap: 5px; overflow: visible; break-after: page; zoom: 1.742;" data-z="1.742">
+
+
+<div class="rules wst6">
+<div class="rule wunit wsolo"><b>Cre上昇は必須ではない</b>AKIは「血清Creもしくは尿量」で定義する。<span class="w">CreはAKI発症から約24〜48時間遅れて上昇</span>するため、Creだけでは診断が遅れる</div>
+<div class="rule wunit wsolo"><b>評価の順番</b>①尿閉と乏尿を鑑別 ②腎後性→腎前性→腎性の順にみる ③<span class="w">腎毒性をきたしうる薬剤は必ず中止</span>（当たり前だが意外とできていない）</div>
+<div class="rule wunit wsolo"><b>尿量が保たれていてもOKではない</b>薬剤性腎障害の多くは尿細管間質障害で、<span class="w">初期は多尿傾向</span>。多尿による脱水傾向にも注意する</div>
+<div class="rule wunit wsolo"><b>内服薬をすべて確認</b>腎機能障害をみたら、市販薬・漢方・サプリメントを含む内服薬と、<span class="n">直近1か月以内に新たに始まった薬剤</span>を確認する</div>
+</div>
+
+<div class="cols wcols" style="column-gap: 12px;">
+
+<div class="sec wunit" id="s1"><div class="h wh" role="button" tabindex="0" aria-expanded="true">1. AKIの定義（KDIGO）</div><div class="b">
+<p>・以下の3つのうちいずれかを満たす：<span class="n">48時間以内に血清Creが0.3 mg/dL以上上昇</span>／<span class="n">7日以内と考えられる経過で、血清Creが以前の値（ベースライン）の1.5倍以上に上昇</span>／<span class="n">尿量が6時間以上0.5 mL/kg/時を下回る</span></p>
+<div class="tw"><table class="t">
+<tbody><tr><th style="width: 12%">ステージ</th><th>血清Cre</th><th style="width: 34%">尿量</th></tr>
+<tr><td class="rh">1</td><td>ベースラインの1.5〜1.9倍、または0.3 mg/dL以上の上昇</td><td>＜0.5 mL/kg/時が6〜12時間</td></tr>
+<tr><td class="rh">2</td><td>ベースラインの2.0〜2.9倍</td><td>＜0.5 mL/kg/時が12時間以上</td></tr>
+<tr><td class="rh">3</td><td>ベースラインの3倍以上、4.0 mg/dL以上への増加、腎代替療法の開始、18歳未満ではeGFR＜35 mL/分/1.73 m²に低下</td><td>＜0.3 mL/kg/時が24時間以上、または無尿が12時間以上</td></tr>
+</tbody></table></div>
+<p>・尿量低下がAKIの基準に組み入れられたのは、Creベースの分類だけでは診断が遅れうるため</p>
+<p>・📘 KDIGOは2026年3月にAKI/AKDガイドラインの草案を公開した（構造的バイオマーカーを組み込んだ定義、AKIとAKDを連続体として扱う枠組み）。最終版の刊行後に要更新。日本のAKI（急性腎障害）診療ガイドラインは2016年版が最新</p>
+<div class="src">p.343–344 表1・図1（深川雅史ほか レジデントのための腎臓病診療マニュアル第3版 p.246–7 より）。📘 KDIGO 2026 AKI/AKD Guideline（草案、パブリックレビュー版）</div>
+</div></div>
+
+<div class="sec wunit" id="s2"><div class="h wh" role="button" tabindex="0" aria-expanded="true">2. 尿閉と乏尿を鑑別する</div><div class="b">
+<div class="tw"><table class="t">
+<tbody><tr><th style="width: 11%"></th><th>定義</th><th>原因</th><th style="width: 26%">鑑別方法</th></tr>
+<tr><td class="rh">尿閉</td><td>尿は作れているが膀胱内から排泄できない</td><td>神経因性膀胱、前立腺肥大症、間質性膀胱炎など</td><td>エコーで<span class="n">膀胱拡張</span>。水腎症は両側が多い</td></tr>
+<tr><td class="rh">乏尿</td><td>尿産生が低下。1日400 mL以下：乏尿、100 mL以下：無尿</td><td>腎前性・腎性・腎後性があり多岐にわたる</td><td>エコーで<span class="n">膀胱虚脱</span></td></tr>
+</tbody></table></div>
+<p>・尿閉が持続すると両側尿路がうっ滞し両側の水腎症をきたす。尿管・腎杯の病変による腎後性AKIは片側の水腎症が多いが、骨盤腔内の広範な病変（進行した子宮頸癌、IgG4関連疾患による後腹膜線維症など）では両側になる</p>
+<p>・尿閉では<span class="n">尿道カテーテル留置</span>が治療になる（腎機能・尿量の急激な回復も期待できる）</p>
+<div class="sub">尿閉治療のポイント</div>
+<p>・尿閉の原因除去（例：抗コリン作用を有する薬剤）／排尿障害自体への治療（例：<span class="d">コリン作動薬</span>、<span class="d">α遮断薬</span>）／改善しなければ間欠的自己導尿や膀胱カテーテル長期留置／全身性疾患・器質的疾患の治療も並行（例：糖尿病の血糖管理、脊髄病変への手術療法）</p>
+<p>・<span class="w">前立腺肥大症を伴う過活動膀胱に抗コリン薬を使う場合は、副作用の尿閉に注意</span></p>
+<div class="sub">尿閉・排尿困難をきたしうる薬剤（主に抗コリン薬・α1受容体刺激薬）</div>
+<div class="tw"><table class="t">
+<tbody><tr><th style="width: 30%">分類</th><th>代表的な薬剤</th></tr>
+<tr><td>気管支拡張薬</td><td>スピロペント（β2刺激薬）、テオドール（キサンチン系）、テルシガン（抗コリン）※原典はいずれも抗コリン作用と分類</td></tr>
+<tr><td>抗ヒスタミン薬（抗コリン）</td><td>セレスタミン、ピレチア、レスタミン、ペナ</td></tr>
+<tr><td>三環系抗うつ薬</td><td>トフラニール、トリプタノール（抗コリン・α1刺激・中枢性の排尿反射抑制）</td></tr>
+<tr><td>抗パーキンソン薬（抗コリン・α1刺激）／抗精神病薬（ドパミン拮抗）</td><td>アーテン、アキネトン、ドパール、ペルマックス／ウインタミン</td></tr>
+<tr><td>クラスⅠ群抗不整脈薬・鎮痙薬（抗コリン）／消化性潰瘍治療薬（抗コリン・排尿筋弛緩）</td><td>リスモダン、メキシチール、サンリズム／ブスコパン、セスデン／タガメット、ドグマチール</td></tr>
+<tr><td>麻薬性・非麻薬性鎮痛薬</td><td>MSコンチン、レペタン、コデインリン酸塩（オピオイド受容体を介した排尿反射の抑制）</td></tr>
+<tr><td>頻尿・尿失禁治療薬</td><td>バップフォー、ベシケア、ウリトス、ステーブラ（デトルシトールは販売終了）</td></tr>
+</tbody></table></div>
+<p>・日常診療で何気なく処方する薬剤（総合感冒薬のPL顆粒など）も含まれるため、高齢男性・前立腺肥大症など排尿障害のリスクがある患者へ処方するときは、必ず副作用を十分に説明する</p>
+<div class="src">p.345–347 POINT・表2・表3（表3は熊野新太郎ほか 調剤と情報 2013;19:12 より）</div>
+</div></div>
+
+<div class="sec wunit" id="s3"><div class="h wh" role="button" tabindex="0" aria-expanded="true">3. 腎後性→腎前性AKIを除外する</div><div class="b">
+<p>・<b>腎後性</b>：観血的処置・手術療法が必要なことが多く、内科的治療とは色合いが異なる。処置がうまくいけば腎機能が急激に回復することも多い→まず除外する。腹部エコー・CTでの腎形態の確認で評価し、泌尿器科にコンサルト（尿管ステント留置・腎瘻造設など）</p>
+<p>・<b>腎前性</b>：特に鑑別すべきもの。主病態は腎血流低下で、治療も比較的シンプル。情報を可能な限り多く集めて「腎前性AKIらしさ」を評価する：<span class="n">体液喪失を示唆する病歴、バイタルサイン、体重の推移、身体所見、胸部X線・超音波検査、血液の濃縮所見、FENa・FEUN・尿中Cl濃度</span>（原典2章4項、体液量・浮腫・利尿薬チェックシート参照）</p>
+<p>・<span class="w">明らかな脱水がある状況では、利尿薬・NSAIDs・RAS阻害薬・SGLT2阻害薬は休薬</span>すべき。ビタミンD製剤も脱水時の内服で高Ca血症→多尿が脱水・腎前性AKIを増悪させるため、減量・休薬を検討する</p>
+<div class="src">p.345–348、353</div>
+</div></div>
+
+<div class="sec wunit" id="s4"><div class="h wh" role="button" tabindex="0" aria-expanded="true">4. 腎性AKI：尿所見と尿量で障害部位を推定する</div><div class="b">
+<div class="tw"><table class="t">
+<tbody><tr><th style="width: 19%">障害部位</th><th>尿所見</th><th style="width: 22%">尿量</th></tr>
+<tr><td class="rh">糸球体病変</td><td>変形赤血球（糸球体・ボーマン嚢内の増殖性病変）、腎性蛋白尿（糸球体係蹄病変、主にポドサイト障害）</td><td>↓（原尿が作れない。全身浮腫を伴うことが多い）</td></tr>
+<tr><td class="rh">尿細管・間質障害</td><td>尿細管マーカー↑（蛋白尿が出る症例もある）</td><td>急性尿細管壊死：↓<br>尿細管間質性腎炎：急性期↑、慢性期↓</td></tr>
+<tr><td class="rh">尿細管腔の閉塞</td><td>多量の円柱、尿細管マーカーの上昇</td><td>↓</td></tr>
+<tr><td class="rh">弓状動脈病変</td><td>尿所見に乏しい（糸球体虚血のため血尿・蛋白尿が出にくい）</td><td>↓</td></tr>
+</tbody></table></div>
+<p>・<b>尿所見のポイント</b>：尿細管マーカーは腎前性AKIによる尿細管虚血でも上昇しうる。慢性炎症の存在下では尿中β2MG↑（上昇度合いが尿中NAGと乖離している場合は、尿細管障害よりも慢性炎症の影響を疑う）。細胞性円柱は、赤血球円柱＝糸球体・ボーマン嚢内の増殖性病変、白血球円柱・顆粒円柱・蝋様円柱＝糸球体・尿細管間質の炎症／壊死、脂肪円柱・卵円形脂肪体＝ネフローゼ症候群、上皮円柱＝尿細管上皮障害。多量の円柱による尿細管閉塞＝円柱腎症（cast nephropathy）</p>
+<p>・<b>乏尿をきたす腎病変</b>：糸球体病変（半月体形成性糸球体腎炎など）、中血管より大きい動脈病変（腎梗塞）、尿細管腔の閉塞（骨髄腫腎、横紋筋融解症）、糸球体虚血に伴う尿細管壊死（脱水症の遷延）。※病変が軽微なら該当しない。2つ以上の病変が合併すると病変と尿量は1対1に対応しない。片側の腎梗塞は対側が代償するため乏尿にならないが、両側や片腎症例の腎梗塞では乏尿が生じうる</p>
+<p>・<b>多尿をきたす腎病変</b>：<span class="n">尿細管間質性腎炎</span>の急性期（病初期）。尿細管でのNa・水再吸収能が低下する。炎症が遷延し間質線維化→糸球体硬化に至ると尿量は低下する</p>
+<p>・<span class="w">薬剤性尿細管間質性腎炎によるAKIで「尿量が保たれているからOK」と考えてはいけない</span>：腎血流低下があっても尿細管糸球体フィードバックが正常に機能せず、多尿傾向が持続して糸球体虚血が遷延・増悪しうる。被疑薬中止（＋ステロイド）による炎症の鎮静化に加えて、適切な体液管理を心がける</p>
+<p>・<span class="d">NSAIDs</span>は急性尿細管間質性腎炎をきたすが、輸入細動脈収縮による腎血流低下と、それに伴う尿細管虚血・壊死もきたすため、多尿の方向には作用しない。<span class="w">高Ca血症</span>は急性期に尿細管間質性腎炎に加えて「尿細管のCaセンサーを介したNaCl再吸収低下」と「ADH作用抑制による浸透圧勾配の形成不全」による尿濃縮障害をきたし、多尿となる</p>
+<div class="src">p.348–354 表4〜6・図2（Cherney DZ, et al. Can J Diabetes 2014、Raghavan R, et al. Clin Nephrol 2014、今井圓裕 日内会誌 1999、酒井行直ほか 日腎会誌 2016、平田純生ほか 日腎会誌 2016）</div>
+</div></div>
+
+<div class="sec wunit" id="s5"><div class="h wh" role="button" tabindex="0" aria-expanded="true">5. 機序からみた薬剤性腎障害の主な原因薬剤（抜粋）</div><div class="b">
+<div class="tw"><table class="t">
+<tbody><tr><th style="width: 18%">機序</th><th style="width: 38%">病態</th><th>主要薬剤</th></tr>
+<tr><td rowspan="4">中毒性</td><td>尿細管毒性物質による急性尿細管壊死、尿細管萎縮</td><td>アミノグリコシド系抗菌薬、白金製剤、ヨード造影剤、バンコマイシン、コリスチン、浸透圧製剤</td></tr>
+<tr><td>慢性間質性腎炎</td><td>NSAIDs、重金属、アリストロキア酸</td></tr>
+<tr><td>血栓性微小血管症／近位尿細管障害（Fanconi症候群など）</td><td>カルシニューリン阻害薬、マイトマイシンC／アミノグリコシド系抗菌薬</td></tr>
+<tr><td>集合管障害（尿濃縮力障害、遠位尿細管性アシドーシス、高K血症）</td><td>リチウム製剤、アムホテリシンB、ST合剤、カルシニューリン阻害薬</td></tr>
+<tr><td rowspan="2">アレルギー・免疫学的機序</td><td>急性尿細管間質性腎炎</td><td>抗菌薬、H2ブロッカー、NSAIDsなど多数</td></tr>
+<tr><td>微小変化型ネフローゼ／膜性腎症／半月体形成性腎炎／ANCA関連血管炎</td><td>金製剤、D-ペニシラミン、NSAIDs、リチウム製剤など／金製剤、D-ペニシラミン、ブシラミン、NSAIDs、カプトプリル、インフリキシマブ／D-ペニシラミン、ブシラミン／PTU、アロプリノール、D-ペニシラミン</td></tr>
+<tr><td rowspan="4">間接毒性</td><td>腎血流量の低下（脱水・血圧低下に併発）</td><td>NSAIDs、RAS阻害薬（ACEI、ARB、抗アルドステロン薬）</td></tr>
+<tr><td>横紋筋融解症による尿細管障害</td><td>各種向精神薬、スタチン、フィブラート系薬</td></tr>
+<tr><td>高Ca血症による浸透圧利尿</td><td>ビタミンD製剤、カルシウム製剤</td></tr>
+<tr><td>電解質異常（低Na・低K血症）／慢性低K血症による尿細管障害</td><td>NSAIDs／利尿薬、下剤</td></tr>
+<tr><td rowspan="2">尿路閉塞性</td><td>腫瘍崩壊症候群（過剰なプリン体生成の結果、尿酸結石による閉塞）</td><td>抗癌薬</td></tr>
+<tr><td>結晶形成性薬剤による尿細管閉塞</td><td>溶解度の低い抗ウイルス薬、抗菌薬の一部、トピラマート</td></tr>
+</tbody></table></div>
+<p>・尿細管障害の代表的被疑薬：急性尿細管間質性腎炎＝βラクタム系抗菌薬、PPI、NSAIDsなど多数／慢性尿細管間質障害＝アリストロキア酸（個人輸入の伝統薬製剤・煎じ薬などに含有、国内承認の生薬・漢方製剤には含まれない）、リチウム（腎性尿崩症）、シクロスポリン／急性尿細管壊死＝アミノグリコシド系抗菌薬、バンコマイシン、造影剤、重金属（シスプラチン、水銀など）／尿細管腔の閉塞＝薬剤の析出（メトトレキサート、アシクロビル〈バラシクロビル〉）、横紋筋融解症によるミオグロビン円柱（スタチン、フィブラート系薬剤、抗精神病薬）</p>
+<p>・すべて覚える必要はなく、「被疑薬が腎臓のどの部分に作用するのか？」という視点を持つ</p>
+<div class="src">p.370, 375 表4・表6（表4は日本腎臓学会ほか 薬剤性腎障害診療ガイドライン2016 日腎会誌 2016;58:477-555 より、表6は同ガイドライン・田部井薫 日腎会誌 2010 ほか、アリストロキア酸は厚生労働省）</div>
+</div></div>
+
+</div>
+<div style="border-top: 1px solid #c9cfe6; padding-top: 3px; font-size: 6.6px; line-height: 1.4; color: #4a5068">
+出典：谷口智基『無敵の腎臓内科』中外医学社、2024年 第1版、第6章 急性腎障害（AKI）1「急性腎障害（AKI）をどうやって診ますか？」（p.341–354）、3（p.370・375）。各項目の出典はページ番号で示した。
+</div>
+</div></section>
+
+<section class="part" id="p2"><h2 class="wpt"><span class="wpn">2</span>腎障害をおこす薬剤・腎機能低下時に注意する薬剤</h2><div class="page p2" style="width: auto; height: auto; box-sizing: border-box; padding: 18px 22px 14px; font-family: &quot;Noto Sans JP&quot;, &quot;Noto Sans CJK JP&quot;, sans-serif; font-size: 9.2px; line-height: 1.42; color: rgb(29, 34, 48); background: rgb(255, 255, 255); display: flex; flex-direction: column; gap: 5px; overflow: visible; zoom: 1.685;" data-z="1.685">
+
+
+<div class="rules wst6">
+<div class="rule wunit wsolo"><b>主な原因薬剤</b><span class="d">NSAIDs</span>、<span class="d">抗菌薬</span>、<span class="d">PPI</span>、<span class="d">造影剤</span>、（担癌患者では）<span class="d">抗腫瘍薬</span>。近年は免疫チェックポイント阻害薬（ICI）も注目</div>
+<div class="rule wunit wsolo"><b>決めつけない</b>原因薬剤を使用中でも「＝薬剤性腎障害」とするのは早計。まず原則どおり<span class="n">腎後性→腎前性→腎性</span>の順に評価し、薬剤以外の原因がないか調べる</div>
+<div class="rule wunit wsolo"><b>脱水が引き金</b>用量依存性（中毒性）や尿細管腔内での析出による腎障害は、脱水症（感染症、熱中症など）を併発しているケースが多い（著者の印象。過剰投与などでは単独でも発症しうる）</div>
+<div class="rule wunit wsolo"><b>8.の薬剤を処方するとき（著者提案）</b>シックデイルールを患者と相談する（体調悪化時に減量・休薬）、<span class="n">新規開始時は少量から</span>、開始する際は腎機能を必ずチェックする</div>
+</div>
+
+<div class="cols wcols" style="column-gap: 12px;">
+
+<div class="sec wunit" id="s6"><div class="h wh" role="button" tabindex="0" aria-expanded="true">6. 薬剤性腎障害の要点（5つ）</div><div class="b">
+<p>・<b>① 主な原因薬剤</b>：高齢者の薬剤性腎障害の主な被疑薬は<span class="d">NSAIDs、抗腫瘍薬、抗菌薬、造影剤</span>（厚労科研 平成21〜23年度）。<span class="d">PPI</span>による急性尿細管間質性腎炎はPPI使用者の中では非常に稀だが、使用者数が多いため薬剤性尿細管間質性腎炎の被疑薬の約4〜6%を占める。PPIは処方される閾値が低い印象があり、不要な症例への投薬は避けた方が無難かもしれない（著者私見）。📘 PPIの長期使用はCKDの発症・進行や低Mg血症と関連する（因果関係は未確定、CKD診療ガイド2024）</p>
+<p>・<b>② 免疫チェックポイント阻害薬</b>：irAEの機序は、腎の内因性抗原に対する免疫寛容の破綻と、併用薬剤に対する免疫寛容の破綻の2つの仮説がある。ICIによる腎障害はirAE全体の1〜5%程度に留まるが、<span class="w">PPIやNSAIDsなど悪性腫瘍領域でよく使われる薬剤が発症の危険因子</span>。多くは急性尿細管間質性腎炎で、ステロイドへの反応性は比較的良好。腎臓内科のみならずICIを使用する医師も認識しておく</p>
+<div class="tw"><table class="t">
+<tbody><tr><th style="width: 30%">診断時のCre</th><th>対応</th></tr>
+<tr><td class="rh">ベース値の2倍未満（グレード1）</td><td>ICIや腎障害の原因となりうる併用薬を一旦休薬。3〜7日毎にCre・尿蛋白の推移をフォロー</td></tr>
+<tr><td class="rh">ベース値の2〜3倍（グレード2）</td><td>ICIや併用薬を一旦休薬し、<span class="d">PSL 0.5〜1 mg/kg/日</span>を開始。1週間後に改善がなければPSL 1〜2 mg/kg/日へ増量（📘 ASCO 2021：この場合ICIは恒久中止）。Creがベース値の1.5倍未満になれば4週間以上かけて漸減</td></tr>
+<tr><td class="rh">3倍以上 or Cre＞4.0 mg/dL（グレード3）</td><td>ICI中止＋<span class="d">PSL 1〜2 mg/kg/日</span>を開始。Creがベース値の1.5倍未満になれば4週間以上かけて漸減。反応性に乏しければ免疫抑制薬の併用も検討</td></tr>
+<tr><td class="rh">📘 6倍超 or 透析が必要（グレード4）</td><td>ICI恒久中止＋<span class="d">PSL 1〜2 mg/kg/日</span>（グレード3に準じ、4週間以上かけて漸減）。2〜3日で改善しなければ免疫抑制薬の追加を検討（ASCO 2021）</td></tr>
+</tbody></table></div>
+<p>　Creベースの治療プロトコールでよいのか、尿検査異常が主体の症例にも同様の治療でよいのかは今後の課題</p>
+<p>・<b>③ 脱水症を契機に発症</b>：被疑薬の使用中に脱水症が生じると血中濃度が上昇し発症リスクが高まる。輸入細動脈を収縮させる薬剤や糸球体内圧を下げる薬剤も、脱水の併発で糸球体虚血→急性尿細管壊死をきたしうる</p>
+<div class="tw"><table class="t">
+<tbody><tr><th style="width: 30%">機序</th><th>代表的な薬剤</th></tr>
+<tr><td>用量依存性（中毒性）</td><td>バンコマイシン、カルシニューリン阻害薬、アミノグリコシド系抗菌薬、NSAIDs、リチウム</td></tr>
+<tr><td>尿細管腔内での析出</td><td>メトトレキサート、アシクロビル、バラシクロビル</td></tr>
+<tr><td>輸入細動脈の収縮</td><td>カルシニューリン阻害薬、NSAIDs、SGLT2阻害薬（※）</td></tr>
+<tr><td>糸球体内圧の低下</td><td>RAS阻害薬、アルドステロン受容体拮抗薬</td></tr>
+</tbody></table></div>
+<p>　※SGLT2阻害薬は大規模研究のサブ解析などでAKI発症の予防効果がある可能性が指摘されている。一方で、シックデイ時は輸入細動脈の収縮作用が腎血流低下を助長する可能性もあり、脱水時のAKIの被疑薬になりうる。📘 RCTのメタ解析ではAKIは約2割減少（RR 0.78、2024）。<span class="w">シックデイには必ず休薬し、手術は3日前から休薬</span>（日本糖尿病学会 Recommendation 2022）</p>
+<p>・<b>④ 尿細管間質障害をきたす薬剤が多い</b>：急性尿細管間質性腎炎であれば発症早期は多尿傾向。「尿量確保できているからOK！」と勘違いせず、むしろ多尿による脱水傾向に注意する。慢性化すると組織低酸素・腎性貧血の進行により糸球体障害も併発し、緩徐に尿量が低下しうる</p>
+<p>・<b>⑤ 病態ごとにみるポイントが異なる</b>：被疑薬によって生じうる所見が実際にあるかを確認する。被疑薬で生じうる所見がない、または説明できない所見があれば、それ以外の原因を疑う（例：PPIによる腎障害疑い→多尿傾向で血尿・蛋白尿は目立たず、尿細管マーカー上昇という尿細管間質性腎炎に矛盾しない所見があるか確認）</p>
+<div class="tw"><table class="t">
+<tbody><tr><th style="width: 30%">病態</th><th>臨床症状</th><th style="width: 30%">評価すべき項目</th></tr>
+<tr><td>糸球体障害</td><td>血尿・蛋白尿、四肢浮腫・尿量低下</td><td>尿定性・沈渣、尿蛋白定量</td></tr>
+<tr><td>腎血流低下による急性尿細管壊死</td><td>尿量低下</td><td>FENa、FEUN、尿中Cl、尿細管マーカー</td></tr>
+<tr><td>尿細管腔閉塞</td><td>尿量低下</td><td></td></tr>
+<tr><td>急性尿細管間質性腎炎</td><td>初期は多尿→慢性化して糸球体障害を併発すれば尿量低下・四肢浮腫</td><td>尿細管マーカー</td></tr>
+<tr><td>慢性間質障害</td><td>糸球体がintactな時期は多尿→糸球体障害が進行すれば尿量減少・四肢浮腫</td><td>尿細管マーカー</td></tr>
+<tr><td>血栓性微小血管症</td><td>血尿・蛋白尿、溶血性貧血、血小板低下、四肢浮腫・尿量低下</td><td>尿定性・沈渣、ハプトグロビン・LDH、血算・凝固・線溶系マーカー</td></tr>
+</tbody></table></div>
+<div class="src">p.366–369 POINT・表1〜3（日本腎臓学会ほか がん薬物療法時の腎障害診療ガイドライン2022 p.104–8、金子修三ほか 日腎会誌 2016、Muriithi AK, et al. Kidney Int 2015、Cortazar FB, et al. Kidney Int 2016、Perazella MA, et al. Clin J Am Soc Nephrol 2022）。📘 Schneider BJ, et al. J Clin Oncol 2021（ASCO）、CKD診療ガイド2024、日本糖尿病学会 SGLT2阻害薬の適正使用に関するRecommendation 2022</div>
+</div></div>
+
+<div class="sec wunit" id="s7"><div class="h wh" role="button" tabindex="0" aria-expanded="true">7. 薬剤性腎障害の診断と治療</div><div class="b">
+<div class="sub">診断</div>
+<p>・① まずは原則どおり「腎後性→腎前性→腎性」の順に評価する。腎性AKIが主病態と思われる場合に薬剤性腎障害を想起する</p>
+<p>・② AKI発症の<span class="n">直近1か月以内</span>に新たに始まった薬剤がないか確認する。<span class="w">ただし免疫チェックポイント阻害薬では、投与開始から数か月〜1年後あたりに発症する場合もある</span></p>
+<p>・③ 被疑薬を同定したら、その薬剤が腎障害をきたす機序を確認する ④ 腎障害の機序に応じたマーカーを提出し、矛盾がないか確認する</p>
+<p>・腎生検、DLST（リンパ球幼若化試験）を含め、<span class="w">単一の検査が薬剤性腎障害を確定づけるわけではなく、あくまで総合的判断</span></p>
+<div class="sub">治療</div>
+<p>・① まずは<span class="n">被疑薬中止</span> ② <span class="n">適正量の輸液</span>も重要（特に脱水症を契機に発症した場合や、尿細管間質性腎炎による多尿を伴う場合）③ ①②で腎機能が改善しない場合は<span class="n">腎生検＋ステロイド治療</span>を検討（腎生検は確定診断というよりも可逆性評価の意味合いが強い）</p>
+<div class="src">p.371 POINT</div>
+</div></div>
+
+<div class="sec wunit" id="s8"><div class="h wh" role="button" tabindex="0" aria-expanded="true">8. 腎機能低下時に有害事象をきたしうる薬剤</div><div class="b">
+<p>・健常人では安全でも、腎機能低下を生じた際に有害事象をきたしうる薬剤は多数ある。全国の薬剤師へのアンケート調査（2009年）では、非専門医が経口内服薬として日常処方しうるものとして<span class="d">アシクロビル／バラシクロビル、アロプリノール、ジゴキシン、NSAIDs、Mg製剤</span>が候補にあがった（選択バイアス、短期間、2009年以降に流通が広がった薬剤は反映されない、腎機能が評価できない診療所からの処方箋は含まれない、などのlimitationあり）</p>
+<p>・外来でこれらを処方する際は「<span class="w">風邪などで体調悪化をきたした際、薬による副作用が出る可能性があるため継続してよいか必ず相談して下さい</span>」と指導しておく</p>
+<div class="tw"><table class="t">
+<tbody><tr><th style="width: 50%">薬剤（著者が特に注意が必要と感じているもの）</th><th>副作用</th></tr>
+<tr><td>経口血糖降下薬（特にSU薬・ビグアナイド系）、インスリン製剤</td><td>SU薬・インスリン製剤：低血糖／ビグアナイド系：乳酸アシドーシス</td></tr>
+<tr><td>抗凝固薬（ワーファリン、DOAC）</td><td>出血傾向</td></tr>
+<tr><td>プレガバリン（リリカ）</td><td>傾眠傾向、ふらつき</td></tr>
+<tr><td>精神科関連の薬剤（例：リスペリドン、デュロキセチン、炭酸リチウム）</td><td>中毒症状</td></tr>
+<tr><td>ロスバスタチン、フィブラート系薬剤</td><td>横紋筋融解症</td></tr>
+<tr><td>ルビプロストン（アミティーザ）</td><td>消化器症状（嘔気・嘔吐、下痢など）</td></tr>
+<tr><td>ビタミンD製剤（<span class="w">内服だけでなく外用薬でも生じる点に注意</span>）</td><td>高Ca血症・AKI</td></tr>
+</tbody></table></div>
+<p>・📘 現行の電子添文・ガイドの目安：<span class="d">メトホルミン</span>はeGFR 30未満で禁忌（eGFRに応じた1日最大量あり）／<span class="d">DOAC</span>は腎機能に応じて減量（ダビガトランはCcr 30未満、ほかはCcr 15未満で禁忌）／<span class="d">デュロキセチン</span>は高度腎障害で禁忌／<span class="d">ロスバスタチン</span>はCLcr 30未満で2.5 mgから開始し最大5 mg／<span class="d">ペマフィブラート</span>は腎機能による禁忌が2022年に削除（eGFR 30未満は慎重に、最大0.2 mg/日）／<span class="d">ルビプロストン</span>は重度腎障害で1回24 µg 1日1回から</p>
+<p>・<b>バラシクロビル</b>：内服後の意識障害では必ず中毒症状（アシクロビル脳症）を鑑別にあげる。特に潜在的な脱水症がある場合は血中濃度上昇のリスクが高い。高度の脱水症では尿細管腔内での結晶析出と急性尿細管壊死から乏尿になりうる（原典症例では被疑薬中止＋薬剤除去目的の血液透析で意識障害が速やかに改善）</p>
+<p>・<b>アメナメビル（アメナリーフ）</b>：肝代謝で腎不全患者の帯状疱疹の選択肢の1つだが、アシクロビル・バラシクロビルに比べて髄液移行性が低く、脳脊髄炎への効果が劣る可能性がある。顔面の三叉神経領域の帯状疱疹は脳脊髄炎合併に注意が必要なため、「腎不全患者の帯状疱疹＝全例アメナメビル」は不適切で、汎発化を示唆する皮膚所見や三叉神経領域の皮膚病変の有無に基づいて選択した方が無難</p>
+<p>・📘 アメナメビル治療中にVZVによる髄膜炎・脊髄炎を発症し、アシクロビルへの変更で回復した報告がある（2024）。リファンピシンとは併用禁忌。<span class="d">バラシクロビル</span>の帯状疱疹での用量（電子添文）：CLcr 50以上 1000 mg 8時間毎／30〜49 1000 mg 12時間毎／10〜29 1000 mg 24時間毎／10未満 500 mg 24時間毎</p>
+<p>・<b>エルデカルシトール（エディロール）</b>：腎機能障害では血清Caをさらに上昇させ<span class="w">高Ca血症となるおそれ</span>があり、投与初期は血清Caを頻回に測定する。<span class="w">急性腎障害は重大な副作用</span>（電子添文 2024年改訂）。シックデイ（食事が摂れない・脱水時）は活性型ビタミンDを一時休薬してよい（CKD診療ガイド2024）。腎機能が安定するまで一時休薬とし、CKDが残存した場合はアルファカルシドール0.25〜0.5 µg/日への変更も検討する（本書。本書の「CCr 50 mL/分未満で慎重投与」はCKD診療ガイド2012の基準で、現行の電子添文にはない）</p>
+<p>・より詳細な情報は、日本腎臓病薬物療法学会「腎機能低下時に最も注意の必要な薬剤投与量一覧」（本書は2019年版を引用。最新版を参照）を参照する</p>
+<div class="src">p.371–376 表5（和泉智ほか 日病薬誌 2010、平山尚ほか 透析会誌 2012、Kawashima M, et al. J Dermatol 2017、Kim SH, et al. Ann Dermatol 2017、CKD診療ガイド2012 p.118）。📘 エディロール・バルトレックス（バラシクロビル）・アメナリーフ・各薬剤の電子添文、Tada et al. 2024、CKD診療ガイド2024 第12章</div>
+</div></div>
+
+</div>
+<div style="border-top: 1px solid #c9cfe6; padding-top: 3px; font-size: 6.6px; line-height: 1.4; color: #4a5068">
+出典：谷口智基『無敵の腎臓内科』中外医学社、2024年 第1版、第6章 急性腎障害（AKI）3「腎機能障害をおこす薬剤，腎機能低下時に注意して使用すべき薬剤を教えてください．」（p.363–377）。各項目の出典はページ番号で示した。
+</div>
+</div></section>
+</div>
+</div><p class="wempty" id="none">該当する項目はありません。</p></main>
+<script>
+{
+const q=document.getElementById('q'),hits=document.getElementById('hits'),tg=document.getElementById('tg'),none=document.getElementById('none');
+const units=[...document.querySelectorAll('#mw .wunit')].filter(u=>!u.parentElement.closest('.wunit'));
+const parts=[...document.querySelectorAll('#mw .part')];
+const orig=new Map(units.map(u=>[u,u.innerHTML]));
+const setOpen=(u,o)=>{u.classList.toggle('wclosed',!o);const h=u.querySelector(':scope>.wh');if(h)h.setAttribute('aria-expanded',o?'true':'false');};
+document.addEventListener('click',e=>{const h=e.target.closest('.wh');if(!h)return;const u=h.parentElement;setOpen(u,u.classList.contains('wclosed'));});
+document.addEventListener('keydown',e=>{const h=e.target.closest&&e.target.closest('.wh');if(h&&(e.key==='Enter'||e.key===' ')){e.preventDefault();h.click();}});
+document.querySelectorAll('.wnav a').forEach(a=>a.addEventListener('click',()=>{const u=document.querySelector(a.getAttribute('href'));if(u&&u.classList.contains('wunit'))setOpen(u,true);}));
+const esc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+const mark=(el,re)=>{const w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);const ns=[];while(w.nextNode())ns.push(w.currentNode);
+  ns.forEach(t=>{re.lastIndex=0;if(!re.test(t.data))return;re.lastIndex=0;const f=document.createDocumentFragment();let i=0,m;while((m=re.exec(t.data))){f.append(t.data.slice(i,m.index));const k=document.createElement('mark');k.textContent=m[0];f.append(k);i=m.index+m[0].length;}f.append(t.data.slice(i));t.replaceWith(f);});};
+const others=parts.map(p=>[...p.querySelectorAll('.page *')].filter(e=>!e.closest('.wunit')&&!e.querySelector('.wunit')&&e.parentElement.querySelector(':scope>.wunit')));
+const run=()=>{const v=q.value.trim();units.forEach(u=>{u.innerHTML=orig.get(u);});
+  if(!v){[...units,...parts,...others.flat()].forEach(e=>e.classList.remove('hide'));hits.textContent='';none.style.display='none';return;}
+  const re=new RegExp(esc(v),'gi');let c=0;
+  units.forEach(u=>{const ok=u.textContent.toLowerCase().includes(v.toLowerCase());u.classList.toggle('hide',!ok);if(ok){c++;setOpen(u,true);mark(u,re);}});
+  others.flat().forEach(e=>e.classList.add('hide'));
+  parts.forEach(p=>p.classList.toggle('hide',!p.querySelector('.wunit:not(.hide)')));
+  hits.textContent=c+'件';none.style.display=c?'none':'block';};
+q.addEventListener('input',run);
+tg.addEventListener('click',()=>{const open=tg.textContent==='すべて開く';units.forEach(u=>{if(u.querySelector(':scope>.wh'))setOpen(u,open);});tg.textContent=open?'すべて閉じる':'すべて開く';});
+window.addEventListener('beforeprint',()=>units.forEach(u=>setOpen(u,true)));
+}
+</script>
+</body></html>
